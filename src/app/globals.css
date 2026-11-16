@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-canvas-base: #FAF7F2;
+  --color-canvas-subtle: #F4EFE6;
+  --color-canvas-card: #FFFFFF;
+  --color-canvas-dark: #12161A;
+  --color-charcoal-950: #111215;
+  --color-brand-orange: #EA580C;
+  --color-brand-amber: #F59E0B;
+  --color-brand-cyan: #00C0E8;
+  --color-border-subtle: #E8E3DA;
+}
+
+@layer base {
+  * {
+    border-color: #E8E3DA;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    background-color: #FAF7F2;
+    color: #111215;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #FAF7F2;
+    color: #111215;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background-color: #FEF3C7;
+    color: #B45309;
+  }
+}
+
+/* Subtle organic paper texture grain */
+.paper-bg {
+  background-color: #FAF7F2;
+  background-image: radial-gradient(#E8E2D5 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF7F2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4CDC2;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B8B0A2;
+}

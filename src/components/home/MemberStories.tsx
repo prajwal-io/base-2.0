@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { TESTIMONIALS } from "@/data/communityData";
 
 export function MemberStories() {
@@ -16,6 +16,7 @@ export function MemberStories() {
   const handleNext = () => {
     setStartIndex((prev) => (prev === TESTIMONIALS.length - 1 ? 0 : prev + 1));
   };
+  const stories = [...TESTIMONIALS.slice(startIndex), ...TESTIMONIALS.slice(0, startIndex)];
 
   return (
     <section className="py-12 sm:py-16 lg:py-20">
@@ -55,10 +56,10 @@ export function MemberStories() {
 
             {/* Testimonials 3-Card Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {TESTIMONIALS.map((item, idx) => (
+              {stories.map((item) => (
                 <div
                   key={item.author}
-                  className="rounded-2xl bg-white border border-border-subtle p-5 shadow-card flex flex-col justify-between hover:shadow-photo transition-all duration-300"
+                  className="story-card p-4 flex flex-col justify-between"
                 >
                   <div>
                     {/* Orange Quote Mark */}
@@ -77,6 +78,7 @@ export function MemberStories() {
                         src={item.avatar}
                         alt={item.author}
                         fill
+                        sizes="36px"
                         className="object-cover"
                       />
                     </div>
@@ -100,30 +102,33 @@ export function MemberStories() {
               Founder Spotlight
             </span>
 
-            <div className="rounded-2xl bg-white border border-border-subtle p-6 shadow-card hover:shadow-photo transition-all duration-300">
-              <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-charcoal-900 mb-5">
+            <div className="founder-card grid grid-cols-[minmax(96px,0.8fr)_1.2fr] gap-4 items-start">
+              <div className="relative aspect-[4/5] w-full rounded-lg overflow-hidden bg-charcoal-900">
                 <Image
                   src="/images/founder-portrait.jpg"
                   alt="Yashwanth Bondapalli, Founder of BacktoBase"
                   fill
+                  sizes="(max-width: 768px) 100px, 12vw"
                   className="object-cover object-top hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
-              <h4 className="font-display font-black text-xl text-charcoal-950 mb-1">
-                Yashwanth Bondapalli
-              </h4>
-              <p className="text-xs sm:text-sm text-charcoal-700 leading-relaxed font-normal mb-4">
-                The founder of BacktoBase. A student-led community built to create high-signal, high-trust spaces for students, builders, and professionals to learn, connect, and grow together.
-              </p>
+              <div>
+                <h4 className="font-display font-black text-xl text-charcoal-950 mb-1">
+                  Yashwanth Bondapalli
+                </h4>
+                <p className="text-xs sm:text-sm text-charcoal-700 leading-relaxed font-normal mb-4">
+                  The founder of BacktoBase. A student-led community built to create high-signal, high-trust spaces for students, builders, and professionals to learn, connect, and grow together.
+                </p>
 
-              <Link
-                href="/about#founder"
-                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-brand-orange hover:text-brand-orange-hover group"
-              >
-                <span>Meet the Founder</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+                <Link
+                  href="/about#founder"
+                  className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-brand-orange hover:text-brand-orange-hover group"
+                >
+                  <span>Meet the Founder</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             </div>
           </div>
 

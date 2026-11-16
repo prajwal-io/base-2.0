@@ -10,12 +10,12 @@ export function HeroSection() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
 
   return (
-    <section className="relative pt-6 pb-12 sm:pt-10 sm:pb-16 lg:pt-14 lg:pb-20 overflow-hidden">
+    <section className="hero-section relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
           
           {/* Left Column: Typographic Editorial Content */}
-          <div className="lg:col-span-7 flex flex-col justify-center">
+          <div className="min-w-0 lg:col-span-5 flex flex-col justify-center">
             {/* Eyebrow / Overline */}
             <div className="flex items-center gap-3 mb-4">
               <span className="text-[11px] sm:text-xs font-bold tracking-[0.18em] uppercase text-charcoal-700">
@@ -25,7 +25,7 @@ export function HeroSection() {
             </div>
 
             {/* Massive Editorial Headline */}
-            <h1 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-[4.75rem] leading-[0.92] tracking-tight text-charcoal-950 uppercase mb-6">
+            <h1 className="font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-[4.5rem] xl:text-[5rem] leading-[0.86] tracking-[-0.035em] text-charcoal-950 uppercase mb-5">
               Students<br />
               Builders<br />
               Creators<br />
@@ -39,10 +39,10 @@ export function HeroSection() {
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <Link
                 href="/join"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-orange hover:bg-brand-orange-hover text-white text-sm font-semibold tracking-wide shadow-sm hover:shadow-glow transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex w-full sm:w-auto justify-center items-center gap-2 px-6 py-3 rounded-full bg-brand-orange hover:bg-brand-orange-hover text-white text-sm font-semibold tracking-wide shadow-sm hover:shadow-glow transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span>Join the Community</span>
                 <ArrowRight className="w-4 h-4" />
@@ -51,7 +51,7 @@ export function HeroSection() {
               <button
                 type="button"
                 onClick={() => setVideoModalOpen(true)}
-                className="inline-flex items-center gap-2.5 px-5 py-3 rounded-full bg-canvas-subtle hover:bg-[#ECE4D8] border border-border-strong text-charcoal-900 text-sm font-semibold transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex w-full sm:w-auto justify-center items-center gap-2.5 px-5 py-3 rounded-full bg-canvas-subtle hover:bg-[#ECE4D8] border border-border-strong text-charcoal-900 text-sm font-semibold transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span className="flex items-center justify-center w-5 h-5 rounded-full bg-charcoal-950 text-white text-[10px]">
                   <Play className="w-2.5 h-2.5 fill-current ml-0.5" />
@@ -62,10 +62,10 @@ export function HeroSection() {
           </div>
 
           {/* Right Column: Angled Photographic Hero Collage */}
-          <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[460px] aspect-[4/4.2]">
+          <div className="min-w-0 lg:col-span-7 relative flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-[600px] aspect-[5/4]">
               {/* Warm golden-amber backdrop geometric plate */}
-              <div className="absolute inset-2 -rotate-3 rounded-3xl bg-gradient-to-tr from-brand-amber via-[#FBBF24] to-[#F59E0B] opacity-90 shadow-lg transform-gpu transition-transform hover:-rotate-1" />
+              <div className="absolute inset-2 -rotate-3 rounded-3xl bg-brand-amber opacity-90 shadow-lg transform-gpu transition-transform hover:-rotate-1" />
 
               {/* Main Center Photo: Speaker on stage with BacktoBase branding */}
               <motion.div
@@ -77,6 +77,7 @@ export function HeroSection() {
                   src="/images/hero-speaker.jpg"
                   alt="BacktoBase speaker addressing community on stage"
                   fill
+                  sizes="(max-width: 1024px) 90vw, 48vw"
                   className="object-cover"
                   priority
                 />
@@ -92,19 +93,7 @@ export function HeroSection() {
                   src="/images/hero-networking.jpg"
                   alt="Attendees networking at BacktoBase"
                   fill
-                  className="object-cover"
-                />
-              </motion.div>
-
-              {/* Inset Bottom-Left Photo: Auditorium audience */}
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="absolute -bottom-4 -left-3 w-40 sm:w-48 aspect-[16/10] rounded-xl overflow-hidden border-[3px] border-white shadow-photo z-20 bg-charcoal-900 -rotate-2"
-              >
-                <Image
-                  src="/images/hero-audience.jpg"
-                  alt="Audience engaged in session"
-                  fill
+                  sizes="(max-width: 640px) 44vw, 18vw"
                   className="object-cover"
                 />
               </motion.div>
@@ -118,6 +107,7 @@ export function HeroSection() {
                   src="/images/hero-standee.jpg"
                   alt="BacktoBase event banner standee"
                   fill
+                  sizes="(max-width: 640px) 28vw, 10vw"
                   className="object-cover"
                 />
               </motion.div>
@@ -155,6 +145,7 @@ export function HeroSection() {
                   src="/images/next-chapter-bg.jpg"
                   alt="BacktoBase Highlight reel preview"
                   fill
+                  sizes="(max-width: 768px) 100vw, 65vw"
                   className="object-cover opacity-60"
                 />
                 <div className="relative z-10 text-center p-6">

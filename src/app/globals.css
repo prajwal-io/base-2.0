@@ -34,17 +34,62 @@
     min-height: 100vh;
   }
 
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid #EA580C;
+    outline-offset: 3px;
+  }
+
   ::selection {
     background-color: #FEF3C7;
     color: #B45309;
   }
 }
 
-/* Subtle organic paper texture grain */
-.paper-bg {
-  background-color: #FAF7F2;
-  background-image: radial-gradient(#E8E2D5 0.75px, transparent 0.75px);
-  background-size: 24px 24px;
+.home-page main > section {
+  padding-block: clamp(1.75rem, 3.2vw, 3.25rem);
+}
+
+.brand-mark {
+  mix-blend-mode: multiply;
+}
+
+.home-page main > .hero-section {
+  padding-block: clamp(2rem, 4vw, 4rem);
+}
+
+.home-page .pillar-card {
+  border: 0;
+  border-radius: 0.75rem;
+  background: transparent;
+  box-shadow: none;
+}
+
+.home-page .story-card {
+  border: 0;
+  border-top: 1px solid #D4CDC2;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.home-page .founder-card {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.home-page .team-photo {
+  border: 0;
+  border-radius: 0.5rem;
+  box-shadow: none;
+}
+
+@media (max-width: 767px) {
+  .home-page main > section {
+    padding-block: 1.5rem;
+  }
 }
 
 /* Custom scrollbar */

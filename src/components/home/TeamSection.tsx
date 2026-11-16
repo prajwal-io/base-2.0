@@ -39,12 +39,13 @@ export function TeamSection() {
           {teamPhotos.map((photo, idx) => (
             <div
               key={idx}
-              className="group relative aspect-[16/11] rounded-2xl overflow-hidden bg-charcoal-900 border border-border-subtle shadow-card hover:shadow-photo transition-all duration-300"
+              className="team-photo group relative aspect-[16/11] overflow-hidden bg-charcoal-900 transition-transform duration-300 hover:-translate-y-1"
             >
               <Image
                 src={photo.src}
                 alt={photo.alt}
                 fill
+                sizes="(max-width: 768px) 50vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />

@@ -2,7 +2,7 @@ export function VenueStrip() {
   return (
     <section className="py-8 sm:py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 py-3 px-6 rounded-2xl md:rounded-full bg-white/70 backdrop-blur-sm border border-border-subtle shadow-sm overflow-x-auto">
+        <div className="flex w-full flex-col md:flex-row items-center justify-between gap-4 py-3 px-6 rounded-2xl md:rounded-full bg-white/70 backdrop-blur-sm border border-border-subtle shadow-sm">
           
           {/* Eyebrow Label */}
           <div className="flex items-center gap-2 shrink-0 pr-4 md:border-r border-border-subtle">
@@ -13,7 +13,7 @@ export function VenueStrip() {
           </div>
 
           {/* Venues Logos Row */}
-          <div className="flex items-center gap-6 sm:gap-8 md:gap-10 shrink-0 flex-wrap justify-center">
+          <div className="grid w-full grid-cols-2 justify-items-center gap-x-2 gap-y-3 sm:grid-cols-3 md:flex md:w-auto md:flex-wrap md:gap-10">
             
             {/* Health Catalyst */}
             <div className="flex items-center gap-1.5 opacity-85 hover:opacity-100 transition-opacity">

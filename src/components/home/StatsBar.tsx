@@ -47,6 +47,7 @@ export function StatsBar() {
                 src="/images/founder-portrait.jpg"
                 alt="Yashwanth Bondapalli, Founder of BacktoBase"
                 fill
+                sizes="56px"
                 className="object-cover"
               />
             </div>

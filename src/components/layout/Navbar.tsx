@@ -24,12 +24,13 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-2 group transition-transform hover:scale-[1.02]">
-          <div className="relative h-9 w-32 sm:w-36">
+          <div className="relative h-12 w-[180px] sm:h-[70px] sm:w-[260px]">
             <Image
               src="/images/backtobase-logo.png"
               alt="BacktoBase Logo"
               fill
-              className="object-contain"
+              sizes="(max-width: 640px) 180px, 260px"
+              className="brand-mark object-contain"
               priority
             />
           </div>
@@ -71,9 +72,11 @@ export function Navbar() {
 
           {/* Mobile Menu Toggle Button */}
           <button
+            type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden p-2 rounded-full bg-white/90 border border-[#E8E3DA] text-charcoal-900 shadow-sm"
             aria-label="Toggle Navigation Menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>

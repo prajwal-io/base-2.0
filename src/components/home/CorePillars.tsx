@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { BookOpen, Users, TrendingUp } from "lucide-react";
 
 export function CorePillars() {
   const pillars = [
@@ -7,25 +6,16 @@ export function CorePillars() {
       title: "Learn",
       description: "Gain real-world insights from practitioners, founders, and builders.",
       image: "/images/pillars-learn.jpg",
-      icon: BookOpen,
-      iconColor: "text-brand-orange",
-      iconBg: "bg-brand-amber-light",
     },
     {
       title: "Connect",
       description: "Meet like-minded people, collaborators, mentors, and future co-founders.",
       image: "/images/pillars-connect.jpg",
-      icon: Users,
-      iconColor: "text-brand-cyan",
-      iconBg: "bg-cyan-50",
     },
     {
       title: "Grow",
       description: "Build your skills, expand your network, and explore bigger opportunities.",
       image: "/images/pillars-grow.jpg",
-      icon: TrendingUp,
-      iconColor: "text-brand-amber",
-      iconBg: "bg-amber-50",
     },
   ];
 
@@ -53,11 +43,10 @@ export function CorePillars() {
           {/* Right Column: 3 Photographic Cards */}
           <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
             {pillars.map((pillar) => {
-              const Icon = pillar.icon;
               return (
                 <div
                   key={pillar.title}
-                  className="group rounded-2xl bg-white border border-border-subtle overflow-hidden shadow-card hover:shadow-photo transition-all duration-300 hover:-translate-y-1 flex flex-col"
+                  className="pillar-card group overflow-hidden flex flex-col"
                 >
                   {/* Photo frame */}
                   <div className="relative aspect-[16/10] w-full bg-charcoal-900 overflow-hidden">
@@ -65,22 +54,18 @@ export function CorePillars() {
                       src={pillar.image}
                       alt={`BacktoBase ${pillar.title}`}
                       fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 22vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
 
                   {/* Content area */}
-                  <div className="p-5 flex flex-col flex-grow">
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className={`p-1.5 rounded-lg ${pillar.iconBg} ${pillar.iconColor}`}>
-                        <Icon className="w-4 h-4" />
-                      </div>
-                      <h3 className="font-display font-bold text-lg text-charcoal-950">
-                        {pillar.title}
-                      </h3>
-                    </div>
+                  <div className="pt-3 flex flex-col flex-grow">
+                    <h3 className="font-display font-bold text-xl text-charcoal-950 mb-1">
+                      {pillar.title}
+                    </h3>
 
-                    <p className="text-xs sm:text-sm text-charcoal-700 leading-relaxed font-normal">
+                    <p className="text-sm text-charcoal-700 leading-relaxed font-normal">
                       {pillar.description}
                     </p>
                   </div>

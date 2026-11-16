@@ -43,6 +43,7 @@ export function FaqSection() {
                   }`}
                 >
                   <button
+                    type="button"
                     onClick={() => toggleItem(index)}
                     className="w-full py-4 px-6 flex items-center justify-between text-left gap-4"
                     aria-expanded={isOpen}

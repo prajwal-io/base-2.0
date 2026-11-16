@@ -12,6 +12,7 @@ export function NextChapterBanner() {
               src="/images/next-chapter-bg.jpg"
               alt="BacktoBase stage and audience in auditorium"
               fill
+              sizes="(max-width: 768px) 100vw, 60vw"
               className="object-cover object-center opacity-45 mix-blend-luminosity"
             />
             {/* Gradient Mask to smoothly transition from dark canvas to photo */}

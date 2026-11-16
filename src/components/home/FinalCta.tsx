@@ -11,10 +11,11 @@ export function FinalCta() {
           {/* Subtle photographic background overlay */}
           <div className="absolute inset-0 pointer-events-none opacity-20 mix-blend-screen">
             <Image
-              src="/images/final-cta-bg.jpg"
-              alt="BacktoBase audience background"
+              src="/images/next-chapter-bg.jpg"
+              alt=""
               fill
-              className="object-cover object-center"
+              sizes="(max-width: 768px) 100vw, 90vw"
+              className="object-cover object-right"
             />
           </div>
 

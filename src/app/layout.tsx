@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Barlow_Condensed, Inter } from "next/font/google";
+import { MotionConfig } from "framer-motion";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,11 +9,11 @@ const inter = Inter({
   display: "swap",
 });
 
-const display = Plus_Jakarta_Sans({
+const display = Barlow_Condensed({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  weight: ["500", "600", "700", "800"],
+  weight: ["600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -42,8 +43,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${display.variable}`}>
-      <body className="paper-bg text-charcoal-900 font-sans antialiased selection:bg-brand-amber-light selection:text-amber-900">
-        {children}
+      <body className="text-charcoal-900 font-sans antialiased selection:bg-brand-amber-light selection:text-amber-900">
+        <MotionConfig reducedMotion="user">{children}</MotionConfig>
       </body>
     </html>
   );

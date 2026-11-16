@@ -11,12 +11,13 @@ export function Footer() {
           
           {/* Logo + Tagline */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-            <Link href="/" className="relative h-8 w-32 shrink-0">
+            <Link href="/" className="relative h-12 w-48 shrink-0">
               <Image
                 src="/images/backtobase-logo.png"
                 alt="BacktoBase Logo"
                 fill
-                className="object-contain"
+                sizes="192px"
+                className="brand-mark object-contain"
               />
             </Link>
             <div className="h-4 w-[1px] bg-charcoal-300 hidden sm:block" />

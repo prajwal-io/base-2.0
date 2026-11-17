@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { EDITIONS } from "@/data/communityData";
 
 export function EventArchiveSection() {
@@ -47,26 +47,33 @@ export function EventArchiveSection() {
               
               {/* Stack of overlapping folders */}
               <div className="relative w-full max-w-2xl h-[280px] sm:h-[300px]">
-                {EDITIONS.slice(4, 9).map((edition, idx) => {
-                  const reverseIdx = 4 - idx; // 0 for Edition 9, 1 for Edition 8, etc.
+                {EDITIONS.slice().reverse().map((edition, reverseIdx) => {
                   const isSelected = activeEdition.id === edition.id;
                   
                   return (
                     <motion.div
                       key={edition.id}
-                      onClick={() => setActiveEditionIndex(edition.id - 1)}
                       style={{
                         zIndex: isSelected ? 30 : 20 - reverseIdx,
-                        top: `${reverseIdx * 12}px`,
-                        right: `${reverseIdx * 20}px`,
-                        left: `${reverseIdx * 6}px`,
+                        top: `${reverseIdx * 8}px`,
+                        right: `${reverseIdx * 2}%`,
+                        left: `${reverseIdx * 0.75}%`,
                       }}
-                      className={`absolute rounded-2xl cursor-pointer border transition-all duration-300 ${
+                      className={`absolute rounded-2xl border transition-all duration-300 ${
                         isSelected
                           ? "bg-white border-border-strong shadow-photo"
                           : "bg-[#F3ECE0] hover:bg-[#EDE3D3] border-border-subtle shadow-card"
                       } p-4 sm:p-6 overflow-hidden flex flex-col justify-between`}
                     >
+                      <button
+                        type="button"
+                        onClick={() => setActiveEditionIndex(edition.id - 1)}
+                        onFocus={() => setActiveEditionIndex(edition.id - 1)}
+                        aria-pressed={isSelected}
+                        aria-label={`Show Edition ${edition.editionNumber}: ${edition.title}`}
+                        className="absolute inset-0 z-0 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-orange"
+                      />
+                      <div className="relative z-10 flex flex-1 flex-col justify-between pointer-events-none">
                       {/* Folder tab content */}
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex items-center gap-3">
@@ -109,9 +116,10 @@ export function EventArchiveSection() {
                           </h4>
                         </div>
                       )}
+                      </div>
 
                       {/* Footer of folder */}
-                      <div className="flex items-center justify-between pt-2 border-t border-border-subtle">
+                      <div className="relative z-10 flex items-center justify-between pt-2 border-t border-border-subtle">
                         <span className="text-xs text-charcoal-600">
                           {edition.speakers.length} Featured Speakers
                         </span>

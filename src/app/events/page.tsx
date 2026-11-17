@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { EDITIONS } from "@/data/communityData";
 import { Calendar, MapPin, Users, ArrowUpRight, ArrowLeft } from "lucide-react";
@@ -12,8 +11,7 @@ export const metadata = {
 
 export default function EventsPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-canvas-base">
-      <Navbar />
+    <div className="flex flex-1 flex-col bg-canvas-base">
       <main className="flex-grow py-10 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -118,6 +116,16 @@ export default function EventsPage() {
                           </div>
                         ))}
                       </div>
+                      {edition.hosts?.length ? (
+                        <p className="text-xs text-charcoal-700 mt-4">
+                          <span className="font-semibold text-charcoal-900">Hosts:</span> {edition.hosts.join(", ")}
+                        </p>
+                      ) : null}
+                      {edition.supporters?.length ? (
+                        <p className="text-xs text-charcoal-700 mt-2">
+                          <span className="font-semibold text-charcoal-900">Additional contributors:</span> {edition.supporters.join(", ")}
+                        </p>
+                      ) : null}
                     </div>
                   </div>
 

@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { ArrowLeft, CheckCircle2, Send, Sparkles } from "lucide-react";
+import { createJoinEmailHref } from "@/data/joinEmail";
+import { ArrowLeft, Mail, Send, Sparkles } from "lucide-react";
 
 export default function JoinPage() {
   const [formData, setFormData] = useState({
@@ -16,22 +16,17 @@ export default function JoinPage() {
     message: "",
   });
 
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [emailDraftHref, setEmailDraftHref] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    // Simulate instantaneous client-side form registration
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-    }, 600);
+    const href = createJoinEmailHref(formData);
+    setEmailDraftHref(href);
+    window.location.href = href;
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-canvas-base">
-      <Navbar />
+    <div className="flex flex-1 flex-col bg-canvas-base">
       <main className="flex-grow py-10 sm:py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -43,18 +38,24 @@ export default function JoinPage() {
             <span>Back to Home</span>
           </Link>
 
-          {submitted ? (
-            <div className="rounded-3xl bg-white border border-border-subtle p-8 sm:p-12 text-center shadow-photo animate-in fade-in zoom-in duration-300">
+          {emailDraftHref ? (
+            <div className="rounded-3xl bg-white border border-border-subtle p-8 sm:p-12 text-center shadow-photo">
               <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-5 shadow-sm">
-                <CheckCircle2 className="w-9 h-9" />
+                <Mail className="w-9 h-9" />
               </div>
               <h2 className="font-display font-black text-3xl text-charcoal-950 uppercase tracking-tight mb-2">
-                Welcome to BacktoBase!
+                Email Draft Ready
               </h2>
-              <p className="text-base text-charcoal-700 max-w-md mx-auto mb-6">
-                Thank you for joining our community, <strong>{formData.name}</strong>. We have received your registration and will connect you with our Hyderabad cohort updates and next edition details.
+              <p role="status" aria-live="polite" className="text-base text-charcoal-700 max-w-md mx-auto mb-6">
+                Your email app should open with your application details filled in. Send the draft to complete your request; BacktoBase has not received it yet.
               </p>
               <div className="flex justify-center gap-4">
+                <a
+                  href={emailDraftHref}
+                  className="px-6 py-2.5 rounded-full bg-brand-orange text-white text-xs font-semibold hover:bg-brand-orange-hover transition-colors"
+                >
+                  Open Email Draft
+                </a>
                 <Link
                   href="/events"
                   className="px-6 py-2.5 rounded-full bg-brand-dark-pill text-white text-xs font-semibold hover:bg-brand-dark-pill-hover transition-colors"
@@ -76,7 +77,7 @@ export default function JoinPage() {
                 <span>Join The Hyderabad Cohort</span>
               </div>
               <h1 className="font-display font-black text-3xl sm:text-4xl text-charcoal-950 uppercase tracking-tight mb-3">
-                Be A Part Of What's Next.
+                Be A Part Of What&apos;s Next.
               </h1>
               <p className="text-sm text-charcoal-700 mb-8 font-normal leading-relaxed">
                 Whether you want to attend upcoming editions, volunteer as an organizer, speak on stage, or mentor student talent — we welcome you!
@@ -85,10 +86,11 @@ export default function JoinPage() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
+                    <label htmlFor="join-name" className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
                       Full Name *
                     </label>
                     <input
+                      id="join-name"
                       type="text"
                       required
                       value={formData.name}
@@ -99,10 +101,11 @@ export default function JoinPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
+                    <label htmlFor="join-email" className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
                       Email Address *
                     </label>
                     <input
+                      id="join-email"
                       type="email"
                       required
                       value={formData.email}
@@ -115,10 +118,11 @@ export default function JoinPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
+                    <label htmlFor="join-role" className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
                       I am a...
                     </label>
                     <select
+                      id="join-role"
                       value={formData.role}
                       onChange={(e) => setFormData({ ...formData, role: e.target.value })}
                       className="w-full px-4 py-2.5 rounded-xl bg-canvas-subtle border border-border-strong text-charcoal-950 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange/40"
@@ -132,10 +136,11 @@ export default function JoinPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
+                    <label htmlFor="join-institution" className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
                       College / Company Name
                     </label>
                     <input
+                      id="join-institution"
                       type="text"
                       value={formData.institution}
                       onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
@@ -146,10 +151,11 @@ export default function JoinPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
+                  <label htmlFor="join-interest" className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
                     Primary Interest
                   </label>
                   <select
+                    id="join-interest"
                     value={formData.interest}
                     onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
                     className="w-full px-4 py-2.5 rounded-xl bg-canvas-subtle border border-border-strong text-charcoal-950 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange/40"
@@ -162,10 +168,11 @@ export default function JoinPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
+                  <label htmlFor="join-message" className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
                     What drives you to join BacktoBase?
                   </label>
                   <textarea
+                    id="join-message"
                     rows={3}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -176,17 +183,10 @@ export default function JoinPage() {
 
                 <button
                   type="submit"
-                  disabled={loading}
-                  className="w-full py-3.5 rounded-full bg-brand-orange hover:bg-brand-orange-hover text-white font-display font-extrabold text-sm tracking-wide shadow-glow transition-all flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50"
+                  className="w-full py-3.5 rounded-full bg-brand-orange hover:bg-brand-orange-hover text-white font-display font-extrabold text-sm tracking-wide shadow-glow transition-all flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.99]"
                 >
-                  {loading ? (
-                    <span>Submitting...</span>
-                  ) : (
-                    <>
-                      <span>Submit Application</span>
-                      <Send className="w-4 h-4" />
-                    </>
-                  )}
+                  <span>Email Application</span>
+                  <Send className="w-4 h-4" />
                 </button>
               </form>
             </div>

@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { ArrowLeft, ArrowRight, Heart, Sparkles, Target, Compass } from "lucide-react";
+import { ArrowLeft, ArrowRight, Heart, Sparkles, Target } from "lucide-react";
 
 export const metadata = {
   title: "About BacktoBase — Mission, Philosophy & Founder",
@@ -11,8 +10,7 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-canvas-base">
-      <Navbar />
+    <div className="flex flex-1 flex-col bg-canvas-base">
       <main className="flex-grow py-10 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -62,7 +60,7 @@ export default function AboutPage() {
                 Students as Speakers
               </h3>
               <p className="text-sm text-charcoal-700 leading-relaxed">
-                You don't need to wait until you graduate to have a voice. In Edition 5, 16-year-old builders took the stage at EPAM Systems.
+                You don&apos;t need to wait until you graduate to have a voice. In Edition 5, 16-year-old builders took the stage at EPAM Systems.
               </p>
             </div>
 

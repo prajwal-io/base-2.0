@@ -33,7 +33,7 @@ export function FinalCta() {
             <div className="max-w-xl">
               <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl uppercase tracking-tight leading-[1.0] mb-4">
                 Be A Part Of<br />
-                <span className="text-brand-amber">What's Next.</span>
+                <span className="text-brand-amber">What&apos;s Next.</span>
               </h2>
               <p className="text-sm sm:text-base text-gray-300 font-normal leading-relaxed">
                 Join a growing community of students, builders, creators, and professionals shaping meaningful conversations, projects, and opportunities together.

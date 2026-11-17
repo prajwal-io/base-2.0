@@ -1,14 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Play, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Film } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function HeroSection() {
-  const [videoModalOpen, setVideoModalOpen] = useState(false);
-
   return (
     <section className="relative pt-6 pb-12 sm:pt-10 sm:pb-16 lg:pt-14 lg:pb-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,16 +45,13 @@ export function HeroSection() {
                 <ArrowRight className="w-4 h-4" />
               </Link>
 
-              <button
-                type="button"
-                onClick={() => setVideoModalOpen(true)}
-                className="inline-flex items-center gap-2.5 px-5 py-3 rounded-full bg-canvas-subtle hover:bg-[#ECE4D8] border border-border-strong text-charcoal-900 text-sm font-semibold transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+              <span
+                aria-label="Highlight video coming soon"
+                className="inline-flex items-center gap-2.5 px-5 py-3 rounded-full bg-canvas-subtle border border-border-strong text-charcoal-600 text-sm font-semibold cursor-not-allowed"
               >
-                <span className="flex items-center justify-center w-5 h-5 rounded-full bg-charcoal-950 text-white text-[10px]">
-                  <Play className="w-2.5 h-2.5 fill-current ml-0.5" />
-                </span>
-                <span>Watch a Highlight</span>
-              </button>
+                <Film className="w-4 h-4" aria-hidden="true" />
+                <span>Highlights Coming Soon</span>
+              </span>
             </div>
           </div>
 
@@ -127,60 +121,6 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Video Highlight Modal */}
-      <AnimatePresence>
-        {videoModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="relative w-full max-w-3xl rounded-3xl bg-charcoal-950 border border-charcoal-800 p-6 shadow-2xl text-white"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-brand-orange animate-pulse" />
-                  <h3 className="font-display font-bold text-lg">BacktoBase Community Highlight Reel</h3>
-                </div>
-                <button
-                  onClick={() => setVideoModalOpen(false)}
-                  className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-black flex items-center justify-center border border-charcoal-800">
-                <Image
-                  src="/images/next-chapter-bg.jpg"
-                  alt="BacktoBase Highlight reel preview"
-                  fill
-                  className="object-cover opacity-60"
-                />
-                <div className="relative z-10 text-center p-6">
-                  <div className="w-16 h-16 rounded-full bg-brand-orange/90 flex items-center justify-center mx-auto mb-3 shadow-glow cursor-pointer hover:scale-105 transition-transform">
-                    <Play className="w-7 h-7 text-white fill-current ml-1" />
-                  </div>
-                  <h4 className="font-display font-bold text-xl mb-1">9 Editions Across Hyderabad</h4>
-                  <p className="text-sm text-gray-300 max-w-md mx-auto">
-                    Bringing together students, builders, founders, and creators. Real energy, real connections.
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-4 flex justify-between items-center text-xs text-gray-400">
-                <span>Featured Venues: Microsoft, EPAM, Thoughtworks, DEVX, Health Catalyst</span>
-                <button
-                  onClick={() => setVideoModalOpen(false)}
-                  className="underline hover:text-white"
-                >
-                  Close
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

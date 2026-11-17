@@ -1,4 +1,3 @@
-import { Navbar } from "@/components/layout/Navbar";
 import { HeroSection } from "@/components/home/HeroSection";
 import { StatsBar } from "@/components/home/StatsBar";
 import { VenueStrip } from "@/components/home/VenueStrip";
@@ -14,8 +13,7 @@ import { Footer } from "@/components/layout/Footer";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex flex-col bg-canvas-base selection:bg-brand-amber-light selection:text-amber-900">
-      <Navbar />
+    <div className="flex flex-1 flex-col bg-canvas-base selection:bg-brand-amber-light selection:text-amber-900">
       <main className="flex-grow">
         <HeroSection />
         <StatsBar />

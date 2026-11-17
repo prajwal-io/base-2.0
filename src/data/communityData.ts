@@ -371,16 +371,6 @@ export const EDITIONS: Edition[] = [
   },
 ];
 
-export const VENUE_PARTNERS = [
-  { name: "Health Catalyst", logo: "/images/venues/health-catalyst.svg", mark: "★" },
-  { name: "Microsoft", logo: "/images/venues/microsoft.svg", mark: "■" },
-  { name: "EPAM Systems", logo: "/images/venues/epam.svg", mark: "<epam>" },
-  { name: "Thoughtworks", logo: "/images/venues/thoughtworks.svg", mark: "/thoughtworks/" },
-  { name: "DEVX", logo: "/images/venues/devx.svg", mark: "DEVX" },
-  { name: "Nanospace", logo: "/images/venues/nanospace.svg", mark: "Nanospace" },
-  { name: "Medicover Hospitals", logo: "/images/venues/medicover.svg", mark: "MEDICOVER" },
-];
-
 export const TESTIMONIALS = [
   {
     quote: "BacktoBase gave me the right people, the right conversations, and the nudge to actually build.",
@@ -425,41 +415,22 @@ export const FAQS = [
   },
 ];
 
-export const CORE_PILLARS = [
-  {
-    title: "Learn",
-    description: "Gain real-world insights from practitioners, founders, and builders.",
-    image: "/images/pillars-learn.jpg",
-    accent: "orange",
-    badgeLabel: "Insights",
-  },
-  {
-    title: "Connect",
-    description: "Meet like-minded people, collaborators, mentors, and future co-founders.",
-    image: "/images/pillars-connect.jpg",
-    accent: "cyan",
-    badgeLabel: "Network",
-  },
-  {
-    title: "Grow",
-    description: "Build your skills, expand your network, and explore bigger opportunities.",
-    image: "/images/pillars-grow.jpg",
-    accent: "amber",
-    badgeLabel: "Opportunities",
-  },
-];
-
 export const TEAM_MEMBERS = [
-  { name: "Sai Venkata Midhilesh Teki", role: "Core Organizing Team" },
-  { name: "Janardhana Chary Vinukonda", role: "Core Organizing Team" },
-  { name: "Ujwala Golla", role: "Host & Student Lead" },
-  { name: "Goutham Sai", role: "AI Speaker & Creator" },
-  { name: "Spandhana Chowdhary", role: "Event Lead" },
-  { name: "Prajwal Kanuparthi", role: "Operations & Tech" },
-  { name: "MVS Manvit", role: "Organizing Team" },
-  { name: "Sairam Thatikonda", role: "Host & Operations" },
-  { name: "Thanuja Chintham", role: "Anchor & Host" },
-  { name: "Aditi Rathan", role: "Organizing Team" },
-  { name: "Venkata Datta Chaitanya", role: "Tech & Ops" },
-  { name: "Hasini Anchoori", role: "Community Coordination" },
+  "Sai Venkata Midhilesh Teki",
+  "Janardhana Chary Vinukonda",
+  "Ujwala Golla",
+  "Goutham Sai",
+  "Spandhana Chowdhary",
+  "Prajwal Kanuparthi",
+  "MVS Manvit",
+  "Sairam Thatikonda",
+  "Thanuja Chintham",
+  "Aditi Rathan",
+  "Venkata Datta Chaitanya",
+  "Hasini Anchoori",
+  "Vennela Ankam",
+  "Jagan Pallapu",
+  "Sonia G",
+  "Sahasrika Gowrishetty",
+  "Nikhila Ravipati",
 ];

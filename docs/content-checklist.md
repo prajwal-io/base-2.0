@@ -40,4 +40,4 @@ All factual community details must derive from verified source PDFs or be marked
   - Aditya Varma (Product at Microsoft) — Quote from approved homepage design: "What I love most is the community — it's open, helpful, and genuinely rooted in learning."
   - Meghana K. (Developer & Creator) — Quote from approved homepage design: "I'm attending my first edition to speaking at a later one — the journey has been incredible."
 - **Founder Statement**: Approved bio from homepage design.
-- **Video Highlight**: Placeholder modal with community recap video player.
+- **Video Highlight**: Homepage shows a "Coming Soon" notice until an approved video source is supplied.

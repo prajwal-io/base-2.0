@@ -1,23 +1,51 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Calendar, Users, Info, HelpCircle, ArrowRight, Menu, X } from "lucide-react";
+import { CalendarDays, CircleHelp, Info, Users, ArrowRight, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { LiquidNavbar, NimbusIcons, type LiquidNavItem } from "@/components/ui/liquid-glass-navbar";
 
-const NAV_ITEMS = [
-  { name: "Home", href: "/", icon: Home },
-  { name: "Events", href: "/events", icon: Calendar },
-  { name: "Community", href: "/community", icon: Users },
-  { name: "About", href: "/about", icon: Info },
-  { name: "FAQs", href: "/#faqs", icon: HelpCircle },
+const NAV_ITEMS: (LiquidNavItem & { href: string })[] = [
+  { label: "Home", href: "/", icon: NimbusIcons.home, fx: "none" },
+  { label: "Events", href: "/events", icon: <CalendarDays aria-hidden="true" />, fx: "none" },
+  { label: "Community", href: "/community", icon: <Users aria-hidden="true" />, fx: "none" },
+  { label: "About", href: "/about", icon: <Info aria-hidden="true" />, fx: "none" },
+  { label: "FAQs", href: "/#faqs", icon: <CircleHelp aria-hidden="true" />, fx: "none" },
 ];
 
 export function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [pendingNav, setPendingNav] = useState<number | null>(null);
+  const pendingTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hash = useSyncExternalStore(
+    (onChange) => {
+      window.addEventListener("hashchange", onChange);
+      return () => window.removeEventListener("hashchange", onChange);
+    },
+    () => window.location.hash,
+    () => "",
+  );
+  const routeNav = pathname === "/" && hash === "#faqs"
+    ? 4
+    : Math.max(0, NAV_ITEMS.findIndex((item) => item.href === pathname));
+  const activeNav = pendingNav ?? routeNav;
+
+  const selectNav = (index: number) => {
+    setPendingNav(index);
+    if (pendingTimer.current) clearTimeout(pendingTimer.current);
+    pendingTimer.current = setTimeout(() => {
+      setPendingNav(null);
+      pendingTimer.current = null;
+    }, 700);
+  };
+
+  useEffect(() => () => {
+    if (pendingTimer.current) clearTimeout(pendingTimer.current);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 w-full pt-3 pb-2 px-4 sm:px-6 lg:px-8 pointer-events-none">
@@ -35,29 +63,14 @@ export function Navbar() {
           </div>
         </Link>
 
-        {/* Center Floating Pill Navigation */}
-        <nav className="hidden md:flex items-center gap-1 bg-white/85 backdrop-blur-md border border-[#E8E3DA] rounded-full px-2 py-1.5 shadow-pill">
-          {NAV_ITEMS.map((item) => {
-            const Icon = item.icon;
-            const isActive =
-              item.href === "/" ? pathname === "/" : pathname.startsWith(item.href) && item.href !== "/#faqs";
-
-            return (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`relative flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-full transition-all duration-200 ${
-                  isActive
-                    ? "text-charcoal-950 bg-canvas-subtle shadow-sm"
-                    : "text-charcoal-600 hover:text-charcoal-950 hover:bg-black/[0.03]"
-                }`}
-              >
-                <Icon className={`w-3.5 h-3.5 ${isActive ? "text-brand-orange" : "text-charcoal-500"}`} />
-                <span>{item.name}</span>
-              </Link>
-            );
-          })}
-        </nav>
+        <LiquidNavbar
+          items={NAV_ITEMS}
+          active={activeNav}
+          onChange={selectNav}
+          tone="light"
+          compact={false}
+          className="hidden md:inline-flex"
+        />
 
         {/* Right CTA Button */}
         <div className="flex items-center gap-3">
@@ -72,8 +85,10 @@ export function Navbar() {
           {/* Mobile Menu Toggle Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-full bg-white/90 border border-[#E8E3DA] text-charcoal-900 shadow-sm"
+            className="md:hidden p-2 rounded-full bg-white/90 border border-[#E8E3DA] text-charcoal-900 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
             aria-label="Toggle Navigation Menu"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -89,18 +104,17 @@ export function Navbar() {
             exit={{ opacity: 0, y: -10 }}
             className="md:hidden pointer-events-auto mt-2 mx-auto max-w-sm rounded-3xl bg-white border border-[#E8E3DA] p-4 shadow-xl"
           >
-            <div className="flex flex-col gap-1">
+            <nav id="mobile-navigation" aria-label="Mobile navigation" className="flex flex-col gap-1">
               {NAV_ITEMS.map((item) => {
-                const Icon = item.icon;
                 return (
                   <Link
-                    key={item.name}
+                    key={item.label}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center gap-3 px-4 py-2.5 rounded-2xl text-sm font-semibold text-charcoal-800 hover:bg-canvas-subtle hover:text-charcoal-950 transition-colors"
                   >
-                    <Icon className="w-4 h-4 text-brand-orange" />
-                    <span>{item.name}</span>
+                    <span className="flex w-4 h-4 items-center justify-center text-brand-orange [&_svg]:h-4 [&_svg]:w-4">{item.icon}</span>
+                    <span>{item.label}</span>
                   </Link>
                 );
               })}
@@ -114,7 +128,7 @@ export function Navbar() {
                   <ArrowRight className="w-4 h-4 text-brand-cyan" />
                 </Link>
               </div>
-            </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { TEAM_MEMBERS } from "@/data/communityData";
 import { ArrowLeft, ArrowRight, Users, ShieldCheck, HeartHandshake } from "lucide-react";
@@ -12,8 +11,7 @@ export const metadata = {
 
 export default function CommunityPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-canvas-base">
-      <Navbar />
+    <div className="flex flex-1 flex-col bg-canvas-base">
       <main className="flex-grow py-10 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -70,20 +68,17 @@ export default function CommunityPage() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {TEAM_MEMBERS.map((member, idx) => (
+              {TEAM_MEMBERS.map((member) => (
                 <div
-                  key={idx}
+                  key={member}
                   className="p-5 rounded-2xl bg-white border border-border-subtle shadow-card hover:shadow-photo transition-all duration-200"
                 >
                   <div className="w-10 h-10 rounded-full bg-brand-amber-light flex items-center justify-center text-brand-orange font-bold text-sm mb-3">
-                    {member.name.charAt(0)}
+                    {member.charAt(0)}
                   </div>
                   <h3 className="font-display font-bold text-base text-charcoal-950 mb-1">
-                    {member.name}
+                    {member}
                   </h3>
-                  <p className="text-xs text-charcoal-600 font-medium">
-                    {member.role}
-                  </p>
                 </div>
               ))}
             </div>

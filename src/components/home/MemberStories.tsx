@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { TESTIMONIALS } from "@/data/communityData";
 
 export function MemberStories() {
@@ -14,7 +14,7 @@ export function MemberStories() {
   };
 
   const handleNext = () => {
-    setStartIndex((prev) => (prev === TESTIMONIALS.length - 1 ? 0 : prev + 1));
+    setStartIndex((prev) => (prev + 1) % TESTIMONIALS.length);
   };
 
   return (
@@ -33,20 +33,18 @@ export function MemberStories() {
                   Real People. Real Impact.
                 </h3>
               </div>
-
-              {/* Prev / Next circular buttons */}
               <div className="flex items-center gap-2">
                 <button
                   onClick={handlePrev}
-                  className="p-2.5 rounded-full bg-white border border-border-strong hover:bg-canvas-subtle transition-colors shadow-sm"
-                  aria-label="Previous story"
+                  className="p-2.5 rounded-full bg-white border border-border-strong hover:bg-canvas-subtle transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
+                  aria-label="Show previous member story first"
                 >
                   <ArrowLeft className="w-4 h-4 text-charcoal-800" />
                 </button>
                 <button
                   onClick={handleNext}
-                  className="p-2.5 rounded-full bg-white border border-border-strong hover:bg-canvas-subtle transition-colors shadow-sm"
-                  aria-label="Next story"
+                  className="p-2.5 rounded-full bg-white border border-border-strong hover:bg-canvas-subtle transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
+                  aria-label="Show next member story first"
                 >
                   <ArrowRight className="w-4 h-4 text-charcoal-800" />
                 </button>
@@ -55,7 +53,9 @@ export function MemberStories() {
 
             {/* Testimonials 3-Card Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {TESTIMONIALS.map((item, idx) => (
+              {TESTIMONIALS.slice(startIndex)
+                .concat(TESTIMONIALS.slice(0, startIndex))
+                .map((item) => (
                 <div
                   key={item.author}
                   className="rounded-2xl bg-white border border-border-subtle p-5 shadow-card flex flex-col justify-between hover:shadow-photo transition-all duration-300"

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 
 export function NextChapterBanner() {
   return (
@@ -6,17 +6,8 @@ export function NextChapterBanner() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl bg-canvas-dark text-white overflow-hidden shadow-xl border border-charcoal-800">
           
-          {/* Background Photography Blend */}
-          <div className="absolute right-0 top-0 bottom-0 w-full md:w-3/5 pointer-events-none">
-            <Image
-              src="/images/next-chapter-bg.jpg"
-              alt="BacktoBase stage and audience in auditorium"
-              fill
-              className="object-cover object-center opacity-45 mix-blend-luminosity"
-            />
-            {/* Gradient Mask to smoothly transition from dark canvas to photo */}
-            <div className="absolute inset-0 bg-gradient-to-r from-canvas-dark via-canvas-dark/85 to-transparent" />
-          </div>
+          <CustomVisualSlot className="pointer-events-none absolute right-0 top-0 h-full w-full !bg-charcoal-900/35 md:w-3/5" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-canvas-dark via-canvas-dark/85 to-transparent" />
 
           {/* Content Layout */}
           <div className="relative z-10 px-6 sm:px-10 lg:px-14 py-10 sm:py-14 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">

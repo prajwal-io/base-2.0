@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Film } from "lucide-react";
-import { motion } from "framer-motion";
+import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 
 export function HeroSection() {
   return (
@@ -55,66 +54,16 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column: Angled Photographic Hero Collage */}
+          {/* Right Column: Custom visual component slots */}
           <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
             <div className="relative w-full max-w-[460px] aspect-[4/4.2]">
               {/* Warm golden-amber backdrop geometric plate */}
               <div className="absolute inset-2 -rotate-3 rounded-3xl bg-gradient-to-tr from-brand-amber via-[#FBBF24] to-[#F59E0B] opacity-90 shadow-lg transform-gpu transition-transform hover:-rotate-1" />
 
-              {/* Main Center Photo: Speaker on stage with BacktoBase branding */}
-              <motion.div
-                whileHover={{ scale: 1.02, rotate: 0 }}
-                transition={{ duration: 0.3 }}
-                className="absolute top-4 left-4 right-12 bottom-12 rounded-2xl overflow-hidden border-[3px] border-white shadow-photo z-10 bg-charcoal-950"
-              >
-                <Image
-                  src="/images/hero-speaker.jpg"
-                  alt="BacktoBase speaker addressing community on stage"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              </motion.div>
-
-              {/* Inset Top-Right Photo: Attendees networking */}
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="absolute -top-3 -right-2 w-36 sm:w-44 aspect-[4/3] rounded-xl overflow-hidden border-[3px] border-white shadow-photo z-20 bg-charcoal-900 rotate-2"
-              >
-                <Image
-                  src="/images/hero-networking.jpg"
-                  alt="Attendees networking at BacktoBase"
-                  fill
-                  className="object-cover"
-                />
-              </motion.div>
-
-              {/* Inset Bottom-Left Photo: Auditorium audience */}
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="absolute -bottom-4 -left-3 w-40 sm:w-48 aspect-[16/10] rounded-xl overflow-hidden border-[3px] border-white shadow-photo z-20 bg-charcoal-900 -rotate-2"
-              >
-                <Image
-                  src="/images/hero-audience.jpg"
-                  alt="Audience engaged in session"
-                  fill
-                  className="object-cover"
-                />
-              </motion.div>
-
-              {/* Inset Bottom-Right Photo: BacktoBase standee */}
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="absolute -bottom-2 right-2 w-24 sm:w-28 aspect-[9/16] rounded-xl overflow-hidden border-[3px] border-white shadow-photo z-20 bg-charcoal-900 rotate-1 hidden sm:block"
-              >
-                <Image
-                  src="/images/hero-standee.jpg"
-                  alt="BacktoBase event banner standee"
-                  fill
-                  className="object-cover"
-                />
-              </motion.div>
+              <CustomVisualSlot className="absolute top-4 left-4 right-12 bottom-12 rounded-2xl border-[3px] border-white shadow-photo z-10" />
+              <CustomVisualSlot className="absolute -top-3 -right-2 w-36 sm:w-44 aspect-[4/3] rounded-xl border-[3px] border-white shadow-photo z-20 rotate-2" />
+              <CustomVisualSlot className="absolute -bottom-4 -left-3 w-40 sm:w-48 aspect-[16/10] rounded-xl border-[3px] border-white shadow-photo z-20 -rotate-2" />
+              <CustomVisualSlot className="absolute -bottom-2 right-2 w-24 sm:w-28 aspect-[9/16] rounded-xl border-[3px] border-white shadow-photo z-20 rotate-1 hidden sm:block" />
             </div>
           </div>
 

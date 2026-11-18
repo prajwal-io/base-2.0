@@ -1,15 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 
 export function TeamSection() {
-  const teamPhotos = [
-    { src: "/images/team-1.jpg", alt: "BacktoBase team organizers collaborating" },
-    { src: "/images/team-2.jpg", alt: "BacktoBase discussion and event management" },
-    { src: "/images/team-3.jpg", alt: "BacktoBase speaker and host on stage" },
-    { src: "/images/team-4.jpg", alt: "BacktoBase anchor addressing the room" },
-  ];
-
   return (
     <section className="py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,21 +27,13 @@ export function TeamSection() {
           </Link>
         </div>
 
-        {/* Candid Photo Gallery Grid */}
+        {/* Custom component slots */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {teamPhotos.map((photo, idx) => (
-            <div
-              key={idx}
-              className="group relative aspect-[16/11] rounded-2xl overflow-hidden bg-charcoal-900 border border-border-subtle shadow-card hover:shadow-photo transition-all duration-300"
-            >
-              <Image
-                src={photo.src}
-                alt={photo.alt}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
-            </div>
+          {[0, 1, 2, 3].map((slot) => (
+            <CustomVisualSlot
+              key={slot}
+              className="aspect-[16/11] rounded-2xl border border-border-subtle shadow-card"
+            />
           ))}
         </div>
 

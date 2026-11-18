@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/layout/Footer";
 import { ArrowLeft, ArrowRight, Heart, Sparkles, Target } from "lucide-react";
+import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 
 export const metadata = {
   title: "About BacktoBase — Mission, Philosophy & Founder",
@@ -80,14 +80,7 @@ export default function AboutPage() {
           {/* Founder Section */}
           <section id="founder" className="rounded-3xl bg-canvas-dark text-white p-8 sm:p-12 lg:p-16 mb-16 overflow-hidden relative shadow-2xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              <div className="lg:col-span-5 relative aspect-square max-w-sm rounded-2xl overflow-hidden bg-charcoal-900 border-2 border-brand-amber/40 shadow-photo">
-                <Image
-                  src="/images/founder-portrait.jpg"
-                  alt="Yashwanth Bondapalli"
-                  fill
-                  className="object-cover"
-                />
-              </div>
+              <CustomVisualSlot className="aspect-square max-w-sm rounded-2xl border-2 border-brand-amber/40 shadow-photo lg:col-span-5" />
 
               <div className="lg:col-span-7 flex flex-col">
                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-amber mb-2">

@@ -188,7 +188,7 @@ export function LiquidNavbar({ items = DEFAULT_ITEMS, defaultActive = 0, active,
     const tick = (now: number) => {
       const dt = Math.min((now - s.last) / 1000, 1 / 30); s.last = now; step(dt); draw()
       const busy = s.moving || s.rips.length > 0 || s.sats.length > 0 || s.mouse.s > 0.01
-      if (s.visible && (!s.reduce || busy)) s.raf = requestAnimationFrame(tick)
+      if (s.visible && busy) s.raf = requestAnimationFrame(tick)
       else s.raf = 0
     }
     s.raf = requestAnimationFrame(tick)

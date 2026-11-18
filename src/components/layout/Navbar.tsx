@@ -31,7 +31,7 @@ export function Navbar() {
   );
   const routeNav = pathname === "/" && hash === "#faqs"
     ? 4
-    : Math.max(0, NAV_ITEMS.findIndex((item) => item.href === pathname));
+    : NAV_ITEMS.findIndex((item) => item.href === pathname);
   const activeNav = pendingNav ?? routeNav;
 
   const selectNav = (index: number) => {

@@ -1,18 +1,12 @@
 import assert from "node:assert/strict";
-import { existsSync } from "node:fs";
-import { join } from "node:path";
 import test from "node:test";
 import { EDITIONS, TEAM_MEMBERS } from "../src/data/communityData.ts";
 import { createJoinEmailHref } from "../src/data/joinEmail.ts";
 
-test("all nine editions have a local photo", () => {
+test("all nine edition records are present", () => {
   assert.deepEqual(EDITIONS.map((edition) => edition.editionNumber), [
     "01", "02", "03", "04", "05", "06", "07", "08", "09",
   ]);
-
-  for (const edition of EDITIONS) {
-    assert.ok(existsSync(join("public", edition.image.slice(1))), edition.image);
-  }
 });
 
 test("the roster matches the verified team list without duplicates", () => {

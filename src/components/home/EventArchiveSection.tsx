@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { EDITIONS } from "@/data/communityData";
+import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 
 export function EventArchiveSection() {
   const [activeEditionIndex, setActiveEditionIndex] = useState(8); // Edition 9 is index 8
@@ -100,14 +100,7 @@ export function EventArchiveSection() {
                               {edition.subtitle}
                             </p>
                           </div>
-                          <div className="sm:col-span-5 relative h-20 sm:h-24 rounded-xl overflow-hidden bg-charcoal-900">
-                            <Image
-                              src={edition.image}
-                              alt={edition.title}
-                              fill
-                              className="object-cover"
-                            />
-                          </div>
+                          <CustomVisualSlot className="h-20 rounded-xl sm:col-span-5 sm:h-24" />
                         </div>
                       ) : (
                         <div className="my-auto">

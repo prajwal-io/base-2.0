@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 
 export function FinalCta() {
   return (
@@ -8,15 +8,7 @@ export function FinalCta() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl bg-canvas-dark text-white overflow-hidden shadow-2xl border border-charcoal-800 p-8 sm:p-12 lg:p-14">
           
-          {/* Subtle photographic background overlay */}
-          <div className="absolute inset-0 pointer-events-none opacity-20 mix-blend-screen">
-            <Image
-              src="/images/final-cta-bg.jpg"
-              alt="BacktoBase audience background"
-              fill
-              className="object-cover object-center"
-            />
-          </div>
+          <CustomVisualSlot className="pointer-events-none absolute inset-0 !bg-charcoal-900/25" />
 
           {/* Top-Right Decorative Amber Burst Rays */}
           <div className="absolute top-5 right-6 text-brand-amber hidden sm:block">

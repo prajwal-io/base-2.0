@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { TESTIMONIALS } from "@/data/communityData";
+import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 
 export function MemberStories() {
   const [startIndex, setStartIndex] = useState(0);
@@ -72,14 +72,7 @@ export function MemberStories() {
 
                   {/* Author Meta */}
                   <div className="flex items-center gap-3 pt-3 border-t border-border-subtle">
-                    <div className="relative w-9 h-9 rounded-full overflow-hidden bg-charcoal-800 shrink-0 border border-border-strong">
-                      <Image
-                        src={item.avatar}
-                        alt={item.author}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+                    <CustomVisualSlot className="size-9 shrink-0 rounded-full border border-border-strong" />
                     <div>
                       <h4 className="font-display font-bold text-xs sm:text-sm text-charcoal-950 leading-tight">
                         {item.author}
@@ -101,14 +94,7 @@ export function MemberStories() {
             </span>
 
             <div className="rounded-2xl bg-white border border-border-subtle p-6 shadow-card hover:shadow-photo transition-all duration-300">
-              <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-charcoal-900 mb-5">
-                <Image
-                  src="/images/founder-portrait.jpg"
-                  alt="Yashwanth Bondapalli, Founder of BacktoBase"
-                  fill
-                  className="object-cover object-top hover:scale-105 transition-transform duration-500"
-                />
-              </div>
+              <CustomVisualSlot className="mb-5 aspect-square w-full rounded-xl" />
 
               <h4 className="font-display font-black text-xl text-charcoal-950 mb-1">
                 Yashwanth Bondapalli

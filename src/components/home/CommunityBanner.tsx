@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 
 export function CommunityBanner() {
   return (
@@ -16,18 +16,7 @@ export function CommunityBanner() {
             </h2>
           </div>
 
-          {/* Panoramic Group Photo */}
-          <div className="relative w-full aspect-[21/7] sm:aspect-[21/6] bg-charcoal-900 overflow-hidden">
-            <Image
-              src="/images/community-panoramic.jpg"
-              alt="BacktoBase Community wide group photo on stage"
-              fill
-              className="object-cover object-center hover:scale-[1.02] transition-transform duration-700"
-            />
-            {/* Subtle top and bottom dark edge vignettes */}
-            <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-canvas-dark to-transparent pointer-events-none" />
-            <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-canvas-dark to-transparent pointer-events-none" />
-          </div>
+          <CustomVisualSlot className="w-full aspect-[21/7] !bg-charcoal-900 sm:aspect-[21/6]" />
 
         </div>
       </div>

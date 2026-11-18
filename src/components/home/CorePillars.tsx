@@ -1,12 +1,11 @@
-import Image from "next/image";
 import { BookOpen, Users, TrendingUp } from "lucide-react";
+import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 
 export function CorePillars() {
   const pillars = [
     {
       title: "Learn",
       description: "Gain real-world insights from practitioners, founders, and builders.",
-      image: "/images/pillars-learn.jpg",
       icon: BookOpen,
       iconColor: "text-brand-orange",
       iconBg: "bg-brand-amber-light",
@@ -14,7 +13,6 @@ export function CorePillars() {
     {
       title: "Connect",
       description: "Meet like-minded people, collaborators, mentors, and future co-founders.",
-      image: "/images/pillars-connect.jpg",
       icon: Users,
       iconColor: "text-brand-cyan",
       iconBg: "bg-cyan-50",
@@ -22,7 +20,6 @@ export function CorePillars() {
     {
       title: "Grow",
       description: "Build your skills, expand your network, and explore bigger opportunities.",
-      image: "/images/pillars-grow.jpg",
       icon: TrendingUp,
       iconColor: "text-brand-amber",
       iconBg: "bg-amber-50",
@@ -59,15 +56,7 @@ export function CorePillars() {
                   key={pillar.title}
                   className="group rounded-2xl bg-white border border-border-subtle overflow-hidden shadow-card hover:shadow-photo transition-all duration-300 hover:-translate-y-1 flex flex-col"
                 >
-                  {/* Photo frame */}
-                  <div className="relative aspect-[16/10] w-full bg-charcoal-900 overflow-hidden">
-                    <Image
-                      src={pillar.image}
-                      alt={`BacktoBase ${pillar.title}`}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
+                  <CustomVisualSlot className="aspect-[16/10] w-full" />
 
                   {/* Content area */}
                   <div className="p-5 flex flex-col flex-grow">

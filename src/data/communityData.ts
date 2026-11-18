@@ -22,7 +22,6 @@ export interface Edition {
   supporters?: string[];
   organizers?: string[];
   highlights?: string[];
-  image: string;
   status: "Completed" | "Upcoming";
 }
 
@@ -38,7 +37,6 @@ export const EDITIONS: Edition[] = [
     location: "Hyderabad, Telangana",
     overview:
       "BacktoBase Edition 1 brought together students, working professionals, technology enthusiasts, and industry experts for an engaging learning and networking experience focused on moving beyond AI buzzwords.",
-    image: "/images/hero-speaker.jpg",
     status: "Completed",
     speakers: [
       {
@@ -83,7 +81,6 @@ export const EDITIONS: Edition[] = [
     location: "Hyderabad, Telangana",
     overview:
       "Edition 2 focused on bridging the gap between academic knowledge and industry expectations, helping students understand real-world AI engineering and navigate recruitment.",
-    image: "/images/hero-networking.jpg",
     status: "Completed",
     speakers: [
       {
@@ -115,7 +112,6 @@ export const EDITIONS: Edition[] = [
     location: "Hyderabad, Telangana",
     overview:
       "Hosted at Microsoft Hyderabad, Edition 3 brought together passionate learners, creators, and professionals for high-signal discussions on agentic workflows and data platforms.",
-    image: "/images/hero-audience.jpg",
     status: "Completed",
     speakers: [
       {
@@ -157,7 +153,6 @@ export const EDITIONS: Edition[] = [
     location: "Hyderabad, Telangana",
     overview:
       "Part of the Founders Using AI series, this edition brought together founders, students, and practitioners to analyze secure AI adoption and enterprise protection.",
-    image: "/images/pillars-learn.jpg",
     status: "Completed",
     speakers: [
       {
@@ -192,7 +187,6 @@ export const EDITIONS: Edition[] = [
     location: "Hyderabad, Telangana",
     overview:
       "A student-first breakthrough edition breaking the passive audience model by putting rising student builders and young prodigies directly on the main stage.",
-    image: "/images/pillars-grow.jpg",
     status: "Completed",
     speakers: [
       {
@@ -224,7 +218,6 @@ export const EDITIONS: Edition[] = [
     location: "Hyderabad, Telangana",
     overview:
       "Hosted at Thoughtworks Hyderabad, Edition 6 focused on sustainable tech communities, governance, cybersecurity, and career acceleration.",
-    image: "/images/pillars-connect.jpg",
     status: "Completed",
     speakers: [
       {
@@ -261,7 +254,6 @@ export const EDITIONS: Edition[] = [
     location: "Hyderabad, Telangana",
     overview:
       "A hands-on career workshop providing deep resume audits, 1-on-1 recruiter feedback, and actionable interview preparation for job seekers.",
-    image: "/images/team-2.jpg",
     status: "Completed",
     speakers: [
       {
@@ -301,7 +293,6 @@ export const EDITIONS: Edition[] = [
     location: "Hyderabad, Telangana",
     overview:
       "Edition 8 bridged the startup ecosystem by uniting early-stage founders, angel investors, sustainability pioneers, and creators.",
-    image: "/images/team-1.jpg",
     status: "Completed",
     speakers: [
       {
@@ -345,7 +336,6 @@ export const EDITIONS: Edition[] = [
     location: "Hyderabad, Telangana",
     overview:
       "A flagship gathering celebrating the digital creator economy, organic growth strategies, storytelling, and professional branding for builders.",
-    image: "/images/archive-preview.jpg",
     status: "Completed",
     speakers: [
       {
@@ -376,19 +366,16 @@ export const TESTIMONIALS = [
     quote: "BacktoBase gave me the right people, the right conversations, and the nudge to actually build.",
     author: "Sriya Reddy",
     role: "Student Builder",
-    avatar: "/images/avatar-sriya.jpg",
   },
   {
     quote: "What I love most is the community — it's open, helpful, and genuinely rooted in learning.",
     author: "Aditya Varma",
     role: "Product at Microsoft",
-    avatar: "/images/avatar-aditya.jpg",
   },
   {
     quote: "I'm attending my first edition to speaking at a later one — the journey has been incredible.",
     author: "Meghana K.",
     role: "Developer & Creator",
-    avatar: "/images/avatar-meghana.jpg",
   },
 ];
 

@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/layout/Footer";
 import { TEAM_MEMBERS } from "@/data/communityData";
 import { ArrowLeft, ArrowRight, Users, ShieldCheck, HeartHandshake } from "lucide-react";
+import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 
 export const metadata = {
   title: "The Community — BacktoBase Hyderabad",
@@ -14,7 +14,7 @@ export default function CommunityPage() {
     <div className="flex flex-1 flex-col bg-canvas-base">
       <main className="flex-grow py-10 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Header */}
           <div className="max-w-3xl mb-12">
             <Link
@@ -38,21 +38,9 @@ export default function CommunityPage() {
               Behind every edition is a dedicated crew of students, anchors, photographers, and coordinators who believe in creating inclusive, high-signal spaces.
             </p>
           </div>
+          <CustomVisualSlot className="mb-16 aspect-[21/8] rounded-3xl border border-border-subtle shadow-photo" />
 
-          {/* Group Photo Section */}
-          <div className="rounded-3xl overflow-hidden bg-charcoal-900 border border-border-subtle shadow-photo mb-16 relative aspect-[21/8]">
-            <Image
-              src="/images/community-panoramic.jpg"
-              alt="BacktoBase Full Community Gathering"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6 sm:p-10">
-              <span className="text-white font-display font-bold text-lg sm:text-xl">
-                Hyderabad Editions 1–9 Community Family
-              </span>
-            </div>
-          </div>
+
 
           {/* Organizing Roster Grid */}
           <div id="team" className="mb-16">

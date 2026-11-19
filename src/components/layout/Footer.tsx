@@ -16,7 +16,8 @@ export function Footer() {
                 src="/images/backtobase-logo.png"
                 alt="BacktoBase Logo"
                 fill
-                className="object-contain"
+                sizes="128px"
+                className="object-contain object-left"
               />
             </Link>
             <div className="h-4 w-[1px] bg-charcoal-300 hidden sm:block" />

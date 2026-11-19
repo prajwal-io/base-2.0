@@ -57,7 +57,8 @@ export function Navbar() {
               src="/images/backtobase-logo.png"
               alt="BacktoBase Logo"
               fill
-              className="object-contain"
+              sizes="(max-width: 640px) 128px, 144px"
+              className="object-contain object-left"
               priority
             />
           </div>

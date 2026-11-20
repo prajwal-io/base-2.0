@@ -18,6 +18,10 @@ const display = Inter_Tight({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ??
+      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"),
+  ),
   title: "BacktoBase — Students, Builders, Creators, Founders & Professionals",
   description:
     "A student-driven community to learn, build, share, and grow together — from campuses to the real world. Founded by Yashwanth Bondapalli in Hyderabad.",
@@ -34,6 +38,11 @@ export const metadata: Metadata = {
     title: "BacktoBase Community",
     description: "A student-driven community to learn, build, share, and grow together.",
     type: "website",
+    images: [{ url: "/images/community-panoramic.jpg", alt: "BacktoBase community gathering" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/images/community-panoramic.jpg"],
   },
 };
 

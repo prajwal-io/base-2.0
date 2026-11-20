@@ -2,14 +2,15 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { StatsBar } from "@/components/home/StatsBar";
 import { VenueStrip } from "@/components/home/VenueStrip";
 import { NextChapterBanner } from "@/components/home/NextChapterBanner";
-import { CorePillars } from "@/components/home/CorePillars";
-import { EventArchiveSection } from "@/components/home/EventArchiveSection";
+import EditorialLearnConnectGrow from "@/components/home/EditorialLearnConnectGrow";
+import EventArchiveFolders from "@/components/home/EventArchiveFolders";
 import { CommunityBanner } from "@/components/home/CommunityBanner";
 import { MemberStories } from "@/components/home/MemberStories";
 import { TeamSection } from "@/components/home/TeamSection";
 import { FaqSection } from "@/components/home/FaqSection";
 import { FinalCta } from "@/components/home/FinalCta";
 import { Footer } from "@/components/layout/Footer";
+import { EDITIONS } from "@/data/communityData";
 
 export default function HomePage() {
   return (
@@ -19,8 +20,15 @@ export default function HomePage() {
         <StatsBar />
         <VenueStrip />
         <NextChapterBanner />
-        <CorePillars />
-        <EventArchiveSection />
+        <EditorialLearnConnectGrow />
+        <EventArchiveFolders
+          archiveHref="/events"
+          events={EDITIONS.slice(-3).reverse().map((edition) => ({
+            edition: `Edition ${edition.editionNumber}`,
+            title: edition.title,
+            href: `/events#edition-${edition.editionNumber}`,
+          }))}
+        />
         <CommunityBanner />
         <MemberStories />
         <TeamSection />

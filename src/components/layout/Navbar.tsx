@@ -4,9 +4,10 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CalendarDays, CircleHelp, Info, Users, ArrowRight, Menu, X } from "lucide-react";
+import { CalendarDays, CircleHelp, Info, Users, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { LiquidNavbar, NimbusIcons, type LiquidNavItem } from "@/components/ui/liquid-glass-navbar";
+import { FlowButton } from "@/components/ui/flow-button";
 
 const NAV_ITEMS: (LiquidNavItem & { href: string })[] = [
   { label: "Home", href: "/", icon: NimbusIcons.home, fx: "none" },
@@ -55,10 +56,11 @@ export function Navbar() {
           <div className="relative h-9 w-32 sm:w-36">
             <Image
               src="/images/backtobase-logo.png"
-              alt="BacktoBase Logo"
-              fill
+              alt="BacktoBase"
+              width={977}
+              height={178}
               sizes="(max-width: 640px) 128px, 144px"
-              className="object-contain object-left"
+              className="block h-full w-full object-contain object-left"
               priority
             />
           </div>
@@ -75,13 +77,7 @@ export function Navbar() {
 
         {/* Right CTA Button */}
         <div className="flex items-center gap-3">
-          <Link
-            href="/join"
-            className="hidden sm:inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-brand-dark-pill hover:bg-brand-dark-pill-hover text-white text-xs sm:text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98]"
-          >
-            <span>Join the Community</span>
-            <ArrowRight className="w-3.5 h-3.5 text-brand-cyan" />
-          </Link>
+          <FlowButton text="Join the Community" className="hidden sm:flex px-5 py-2.5" />
 
           {/* Mobile Menu Toggle Button */}
           <button
@@ -120,14 +116,11 @@ export function Navbar() {
                 );
               })}
               <div className="pt-3 mt-2 border-t border-[#E8E3DA]">
-                <Link
-                  href="/join"
+                <FlowButton
+                  text="Join the Community"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full py-2.5 rounded-full bg-brand-dark-pill text-white text-sm font-semibold"
-                >
-                  <span>Join the Community</span>
-                  <ArrowRight className="w-4 h-4 text-brand-cyan" />
-                </Link>
+                  className="w-full justify-center"
+                />
               </div>
             </nav>
           </motion.div>

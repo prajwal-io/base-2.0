@@ -38,7 +38,7 @@ export default function CommunityPage() {
               Behind every edition is a dedicated crew of students, anchors, photographers, and coordinators who believe in creating inclusive, high-signal spaces.
             </p>
           </div>
-          <CustomVisualSlot className="mb-16 aspect-[21/8] rounded-3xl border border-border-subtle shadow-photo" />
+          <CustomVisualSlot src="/images/community-panoramic.jpg" alt="" sizes="(max-width: 1280px) 92vw, 1240px" className="mb-16 aspect-[21/8] rounded-3xl border border-border-subtle shadow-photo" />
 
 
 

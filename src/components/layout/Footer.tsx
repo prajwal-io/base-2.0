@@ -14,10 +14,11 @@ export function Footer() {
             <Link href="/" className="relative h-8 w-32 shrink-0">
               <Image
                 src="/images/backtobase-logo.png"
-                alt="BacktoBase Logo"
-                fill
+                alt="BacktoBase"
+                width={977}
+                height={178}
                 sizes="128px"
-                className="object-contain object-left"
+                className="block h-full w-full object-contain object-left"
               />
             </Link>
             <div className="h-4 w-[1px] bg-charcoal-300 hidden sm:block" />

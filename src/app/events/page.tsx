@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Footer } from "@/components/layout/Footer";
 import { EDITIONS } from "@/data/communityData";
-import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 import { Calendar, MapPin, Users, ArrowUpRight, ArrowLeft } from "lucide-react";
 
 export const metadata = {
@@ -131,8 +130,6 @@ export default function EventsPage() {
 
                   {/* Right Column: Custom visual slot & key highlights */}
                   <div className="lg:col-span-5 flex flex-col gap-4">
-                    <CustomVisualSlot className="aspect-[16/10] w-full rounded-2xl border border-border-subtle shadow-sm" />
-
                     {edition.highlights && (
                       <div className="p-4 rounded-2xl bg-canvas-subtle border border-border-subtle">
                         <h4 className="text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-2">

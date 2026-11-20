@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 
+const TEAM_PHOTOS = ["/images/team-1.jpg", "/images/team-2.jpg", "/images/team-3.jpg", "/images/team-4.jpg"];
+
 export function TeamSection() {
   return (
     <section className="py-12 sm:py-16">
@@ -29,9 +31,12 @@ export function TeamSection() {
 
         {/* Custom component slots */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[0, 1, 2, 3].map((slot) => (
+          {TEAM_PHOTOS.map((src) => (
             <CustomVisualSlot
-              key={slot}
+              key={src}
+              src={src}
+              alt=""
+              sizes="(max-width: 768px) 45vw, 290px"
               className="aspect-[16/11] rounded-2xl border border-border-subtle shadow-card"
             />
           ))}

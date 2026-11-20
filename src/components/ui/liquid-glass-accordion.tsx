@@ -175,6 +175,20 @@ type Sat = { x: number; y: number; vx: number; vy: number; r: number; k: number 
 type Rip = { x: number; y: number; age: number; amp: number }
 type GLC = { gl: WebGLRenderingContext; u: Record<string, WebGLUniformLocation | null> }
 type Target = { x: number; y: number; w: number; h: number }
+type Droplet = { x: number; y: number; vx: number; vy: number; r: number }
+
+export function makeDroplets(from: { x: number; y: number }, to: { x: number; y: number }): Droplet[] {
+  const distance = Math.abs(to.y - from.y)
+  if (distance <= 120) return []
+
+  return [0.3, 0.5, 0.7].map((position, index) => ({
+    x: from.x,
+    y: from.y + (to.y - from.y) * position,
+    vx: 0,
+    vy: 0,
+    r: 6 - index,
+  }))
+}
 
 const box = (): Box => ({ x: 0, y: 0, w: 0, h: 0, vx: 0, vy: 0, vw: 0, vh: 0 })
 
@@ -259,7 +273,6 @@ export function LiquidAccordion({
   const [gl, setGl] = React.useState<"on" | "off">("on")
   const [fx, setFx] = React.useState({ i: -1, n: 0 })
   const darkRef = React.useRef(0)
-  darkRef.current = tone === "dark" ? 1 : 0
   const H = `h${headingLevel}` as "h3"
 
   /* where the pool should be right now (follows the answer while it opens) */
@@ -362,16 +375,15 @@ export function LiquidAccordion({
         if (!s.split && s.moving && gap > 4 && s.open !== null) {
           s.split = true
           const top = Math.min(head.y, tail.y) + (head.y < tail.y ? head.h : tail.h)
-          ;[0.25, 0.55, 0.85].forEach((t, j) => {
-            s.sats.push({
-              x: head.x + (Math.random() - 0.5) * s.w * 0.35,
-              y: top + gap * t,
-              vx: (Math.random() - 0.5) * 80,
+          const droplets = makeDroplets({ x: head.x, y: top }, { x: tail.x, y: top + gap })
+          s.sats.push(...droplets.map((droplet) => ({
+              ...droplet,
+              x: droplet.x + (Math.random() - 0.5) * s.w * 0.35,
               vy: (head.vy + tail.vy) * 0.4,
-              r: 9 - j * 1.5 + Math.random() * 2,
+              r: droplet.r + 3 + Math.random() * 2,
+              vx: (Math.random() - 0.5) * 80,
               k: 60 + Math.random() * 80,
-            })
-          })
+            })))
         }
         s.sats = s.sats.filter((d) => {
           d.vx += (25 * (head.x - d.x) - 6 * d.vx) * dt
@@ -496,7 +508,10 @@ export function LiquidAccordion({
     loop()
   }, [current, loop, resize, target])
 
-  React.useEffect(() => { loop() }, [tone, items.length, loop])
+  React.useEffect(() => {
+    darkRef.current = tone === "dark" ? 1 : 0
+    loop()
+  }, [tone, items.length, loop])
 
   /* ---- interaction ---- */
   const local = (clientX: number, clientY: number) => {
@@ -512,7 +527,7 @@ export function LiquidAccordion({
       const o = ctx.createOscillator()
       const g = ctx.createGain()
       o.type = "sine"
-      o.frequency.setValueAtTime(420 + Math.random() * 80, t)
+      o.frequency.setValueAtTime(460, t)
       o.frequency.exponentialRampToValueAtTime(1500, t + 0.07)
       g.gain.setValueAtTime(0.0001, t)
       g.gain.exponentialRampToValueAtTime(0.15, t + 0.008)

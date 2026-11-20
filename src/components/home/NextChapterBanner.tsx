@@ -6,7 +6,7 @@ export function NextChapterBanner() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl bg-canvas-dark text-white overflow-hidden shadow-xl border border-charcoal-800">
           
-          <CustomVisualSlot className="pointer-events-none absolute right-0 top-0 h-full w-full !bg-charcoal-900/35 md:w-3/5" />
+          <CustomVisualSlot src="/images/next-chapter-bg.jpg" alt="" sizes="(max-width: 768px) 92vw, 750px" className="pointer-events-none absolute right-0 top-0 h-full w-full !bg-charcoal-900/35 md:w-3/5" />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-canvas-dark via-canvas-dark/85 to-transparent" />
 
           {/* Content Layout */}

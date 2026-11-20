@@ -56,9 +56,9 @@ const NIMBUS_CSS = `
 .nimbus-nav[data-refract="on"] .nimbus-glass{-webkit-backdrop-filter:url(#nimbus-refract) blur(2px) saturate(1.2) brightness(1.08);backdrop-filter:url(#nimbus-refract) blur(2px) saturate(1.2) brightness(1.08)}
 .nimbus-water{position:absolute;left:-14px;top:-14px;z-index:-1;pointer-events:none}.nimbus-nav[data-gl="off"] .nimbus-water{display:none}
 .nimbus-drop{display:none;position:absolute;top:6px;bottom:6px;left:0;border-radius:999px;z-index:-1;pointer-events:none;will-change:transform;background:radial-gradient(120% 140% at 30% 0%,rgba(255,255,255,.92),rgba(255,255,255,0) 55%),linear-gradient(120deg,rgba(245,158,11,.18),rgba(0,192,232,.12));box-shadow:inset 0 1px 1px rgba(255,255,255,.92),inset 0 -2px 6px rgba(234,88,12,.14),inset 0 0 0 1px rgba(234,88,12,.2),0 4px 12px -6px rgba(17,18,21,.16)}
-.nimbus-nav[data-gl="off"] .nimbus-drop{display:block}.nimbus-item{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border:0;border-radius:999px;background:none;color:var(--n-fg-soft);font-family:inherit;font-weight:600;font-size:12px;line-height:1;letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:color 150ms cubic-bezier(.2,0,0,1),background-color 150ms cubic-bezier(.2,0,0,1)}
+.nimbus-nav[data-gl="off"] .nimbus-drop{display:block}.nimbus-item{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border:0;border-radius:999px;background:none;color:var(--n-fg-soft);font-family:inherit;font-weight:600;font-size:12px;line-height:1;letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:color 120ms cubic-bezier(.2,0,0,1),background-color 120ms cubic-bezier(.2,0,0,1)}
 .nimbus-item[aria-current="page"]{color:var(--n-fg);background:rgba(234,88,12,.08)}.nimbus-item:focus-visible{outline:2px solid #EA580C;outline-offset:2px}
-.nv-ico{position:relative;display:inline-flex;flex:none}.nv-ico svg{transition:transform 150ms cubic-bezier(.2,0,0,1)}.nimbus-item[aria-current="page"] .nv-ico{color:#EA580C}.nimbus-item[aria-current="page"] .nv-ico svg{transform:translateY(-1px) scale(1.06)}.nv-door{fill:transparent}
+.nv-ico{position:relative;display:inline-flex;flex:none}.nv-ico svg{transition:transform 120ms cubic-bezier(.2,0,0,1)}.nimbus-item[aria-current="page"] .nv-ico{color:#EA580C}.nimbus-item[aria-current="page"] .nv-ico svg{transform:translateY(-1px) scale(1.06)}.nv-door{fill:transparent}
 .nv-ico[data-fx="pop"] svg{animation:nvPop .5s cubic-bezier(.3,1.6,.5,1) both}@keyframes nvPop{0%{transform:scale(.72)}60%{transform:scale(1.2)}100%{transform:translateY(-1px) scale(1.08)}}
 .nv-ico[data-fx="plane"] svg{animation:nvPlane 1.15s cubic-bezier(.55,0,.3,1) both}@keyframes nvPlane{0%{transform:none}12%{transform:translate(-3px,2px) rotate(7deg)}42%{transform:translate(64px,-26px) rotate(-24deg) scale(.9);opacity:0}43%{transform:translate(-60px,16px) rotate(-12deg) scale(.9);opacity:0}58%{opacity:1}80%{transform:translate(3px,-1px) rotate(2deg)}100%{transform:translateY(-1px) scale(1.08)}}
 .nv-ico[data-fx="plane"]::after{content:"";position:absolute;left:55%;top:48%;height:2px;width:46px;border-radius:2px;transform-origin:0 50%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95));animation:nvTrail 1.15s ease-out both;pointer-events:none}@keyframes nvTrail{0%,8%{opacity:0;transform:rotate(-22deg) scaleX(0)}30%{opacity:.9;transform:rotate(-22deg) scaleX(1)}55%,100%{opacity:0;transform:rotate(-22deg) translateX(30px) scaleX(.2)}}
@@ -154,19 +154,19 @@ export function LiquidNavbar({ items = DEFAULT_ITEMS, defaultActive = 0, active,
 
   const step = React.useCallback((dt: number) => {
     const s = st.current, T = s.t
-    s.time += dt; s.q += (T.q - s.q) * Math.min(1, dt * 28)
+    s.time += dt; s.q += (T.q - s.q) * Math.min(1, dt * 36)
     const bodies = [s.a, s.b]; let still = true
     if (s.reduce) { s.a.x = s.b.x = T.x; s.a.v = s.b.v = 0; s.sy.s = 1; s.sats = [] }
     else {
       bodies.forEach((B, i) => {
-        const lead = i === s.lead, k = lead ? 520 : 300, c = lead ? 46 : 34
+        const lead = i === s.lead, k = lead ? 760 : 470, c = lead ? 54 : 40
         B.v += (k * (T.x - B.x) - c * B.v) * dt; B.x += B.v * dt
         const lo = PAD + 6 + s.q + T.r - 3, hi = PAD + s.w - 6 - s.q - T.r + 3
         if (B.x < lo || B.x > hi) { s.sy.v -= Math.min(Math.abs(B.v), 900) * 0.0016; B.x = Math.max(lo, Math.min(hi, B.x)); B.v *= -0.25 }
         if (Math.abs(T.x - B.x) > 0.3 || Math.abs(B.v) > 3) still = false
       })
       const L = bodies[s.lead], syT = 1 - 0.2 * Math.min(Math.abs(L.v) / 1500, 1)
-      s.sy.v += (350 * (syT - s.sy.s) - 34 * s.sy.v) * dt; s.sy.s += s.sy.v * dt
+      s.sy.v += (430 * (syT - s.sy.s) - 40 * s.sy.v) * dt; s.sy.s += s.sy.v * dt
       if (Math.abs(s.sy.s - 1) > 0.002 || Math.abs(s.sy.v) > 0.02) still = false
       const sep = Math.abs(s.a.x - s.b.x), r = T.r * (1 - 0.3 * Math.min(sep / (2 * (T.q + T.r) || 1), 1))
       if (!s.split && s.moving && sep - 2 * T.q - 2 * r > -6) {
@@ -178,7 +178,7 @@ export function LiquidNavbar({ items = DEFAULT_ITEMS, defaultActive = 0, active,
     }
     if (s.moving && still) { s.moving = false; s.rips.push({ x: T.x, y: T.cy, age: 0, amp: s.split ? 1.2 : 0.7 }) }
     s.rips.forEach((p) => { p.age += dt }); s.rips = s.rips.filter((p) => p.age < 1.6)
-    s.mouse.s += ((s.mouse.on ? 1 : 0) - s.mouse.s) * Math.min(1, dt * 22)
+    s.mouse.s += ((s.mouse.on ? 1 : 0) - s.mouse.s) * Math.min(1, dt * 30)
   }, [])
 
   const loop = React.useCallback(() => {

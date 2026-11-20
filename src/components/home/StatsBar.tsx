@@ -42,7 +42,7 @@ export function StatsBar() {
             href="/about#founder"
             className="flex items-center gap-4 justify-start md:justify-center pt-4 md:pt-0 md:pl-8 group"
           >
-            <CustomVisualSlot className="size-14 shrink-0 rounded-full border-2 border-brand-amber/50 shadow-sm transition-transform group-hover:scale-105" />
+            <CustomVisualSlot src="/images/founder-avatar.jpg" alt="" sizes="56px" className="size-14 shrink-0 rounded-full border-2 border-brand-amber/50 shadow-sm transition-transform group-hover:scale-105" />
             <div className="flex flex-col">
               <span className="text-[11px] font-bold uppercase tracking-wider text-charcoal-500">
                 Founded By

@@ -80,7 +80,7 @@ export default function AboutPage() {
           {/* Founder Section */}
           <section id="founder" className="rounded-3xl bg-canvas-dark text-white p-8 sm:p-12 lg:p-16 mb-16 overflow-hidden relative shadow-2xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              <CustomVisualSlot className="aspect-square max-w-sm rounded-2xl border-2 border-brand-amber/40 shadow-photo lg:col-span-5" />
+              <CustomVisualSlot src="/images/founder-portrait.jpg" alt="Yashwanth Bondapalli, founder of BacktoBase" sizes="(max-width: 1024px) 80vw, 420px" className="aspect-square max-w-sm rounded-2xl border-2 border-brand-amber/40 shadow-photo lg:col-span-5" />
 
               <div className="lg:col-span-7 flex flex-col">
                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-amber mb-2">

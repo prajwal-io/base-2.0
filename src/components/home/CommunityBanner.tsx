@@ -16,7 +16,7 @@ export function CommunityBanner() {
             </h2>
           </div>
 
-          <CustomVisualSlot className="w-full aspect-[21/7] !bg-charcoal-900 sm:aspect-[21/6]" />
+          <CustomVisualSlot src="/images/community-panoramic.jpg" alt="" sizes="(max-width: 1280px) 92vw, 1240px" className="w-full aspect-[21/7] !bg-charcoal-900 sm:aspect-[21/6]" />
 
         </div>
       </div>

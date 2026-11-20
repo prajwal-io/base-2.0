@@ -8,7 +8,7 @@ export function FinalCta() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl bg-canvas-dark text-white overflow-hidden shadow-2xl border border-charcoal-800 p-8 sm:p-12 lg:p-14">
           
-          <CustomVisualSlot className="pointer-events-none absolute inset-0 !bg-charcoal-900/25" />
+          <CustomVisualSlot src="/images/final-cta-bg.jpg" alt="" sizes="(max-width: 1280px) 92vw, 1240px" className="pointer-events-none absolute inset-0 opacity-30" />
 
           {/* Top-Right Decorative Amber Burst Rays */}
           <div className="absolute top-5 right-6 text-brand-amber hidden sm:block">

@@ -30,9 +30,14 @@ export function Navbar() {
     () => window.location.hash,
     () => "",
   );
-  const routeNav = pathname === "/" && hash === "#faqs"
-    ? 4
-    : NAV_ITEMS.findIndex((item) => item.href === pathname);
+  // Sub-pages keep a sensible nav item highlighted so the sliding pill never gets stranded.
+  const routeNav = (() => {
+    if (pathname === "/" && hash === "#faqs") return 4;
+    if (pathname.startsWith("/founder")) return 3; // About
+    if (pathname.startsWith("/join")) return 2; // Community
+    const exact = NAV_ITEMS.findIndex((item) => item.href === pathname);
+    return exact === -1 ? 0 : exact;
+  })();
   const activeNav = pendingNav ?? routeNav;
 
   const selectNav = (index: number) => {
@@ -41,7 +46,7 @@ export function Navbar() {
     pendingTimer.current = setTimeout(() => {
       setPendingNav(null);
       pendingTimer.current = null;
-    }, 700);
+    }, 450);
   };
 
   useEffect(() => () => {
@@ -51,19 +56,22 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full pt-3 pb-2 px-4 sm:px-6 lg:px-8 pointer-events-none">
       <div className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
-        {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-2 group transition-transform hover:scale-[1.02]">
-          <div className="relative h-9 w-32 sm:w-36">
-            <Image
-              src="/images/backtobase-logo.png"
-              alt="BacktoBase"
-              width={977}
-              height={178}
-              sizes="(max-width: 640px) 128px, 144px"
-              className="block h-full w-full object-contain object-left"
-              priority
-            />
-          </div>
+        {/* Mobile-only logo pill (on desktop the logo lives inside the nav pill) */}
+        <Link
+          href="/"
+          aria-label="BacktoBase home"
+          className="group flex md:hidden items-center rounded-full border border-[#E8E3DA] bg-white/85 px-4 py-2 shadow-pill backdrop-blur-md transition-transform duration-150 hover:scale-[1.03] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange sm:px-5"
+        >
+          <Image
+            src="/images/backtobase-logo.png"
+            alt="BacktoBase"
+            width={977}
+            height={178}
+            quality={95}
+            sizes="(max-width: 640px) 150px, 190px"
+            className="block h-7 w-auto sm:h-8 lg:h-9"
+            priority
+          />
         </Link>
 
         <LiquidNavbar
@@ -72,6 +80,20 @@ export function Navbar() {
           onChange={selectNav}
           tone="light"
           compact={false}
+          brand={
+            <Link href="/" aria-label="BacktoBase home" className="nimbus-brand">
+              <Image
+                src="/images/backtobase-logo.png"
+                alt="BacktoBase"
+                width={977}
+                height={178}
+                quality={95}
+                sizes="170px"
+                className="block h-7 w-auto"
+                priority
+              />
+            </Link>
+          }
           className="hidden md:inline-flex"
         />
 
@@ -96,9 +118,10 @@ export function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.14, ease: [0.2, 0, 0, 1] }}
             className="md:hidden pointer-events-auto mt-2 mx-auto max-w-sm rounded-3xl bg-white border border-[#E8E3DA] p-4 shadow-xl"
           >
             <nav id="mobile-navigation" aria-label="Mobile navigation" className="flex flex-col gap-1">

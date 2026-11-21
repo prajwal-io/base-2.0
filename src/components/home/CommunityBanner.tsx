@@ -1,11 +1,10 @@
-import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
+import Image from "next/image";
 
 export function CommunityBanner() {
   return (
     <section className="py-8 sm:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl bg-canvas-dark text-white overflow-hidden shadow-2xl border border-charcoal-800">
-          
           {/* Header text inside dark banner */}
           <div className="p-6 sm:p-8 md:p-10 text-center flex flex-col items-center">
             <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-2">
@@ -16,8 +15,16 @@ export function CommunityBanner() {
             </h2>
           </div>
 
-          <CustomVisualSlot src="/images/community-panoramic.jpg" alt="" sizes="(max-width: 1280px) 92vw, 1240px" className="w-full aspect-[21/7] !bg-charcoal-900 sm:aspect-[21/6]" />
-
+          <div className="w-full bg-black">
+            <Image
+              src="/images/community-panoramic.jpg"
+              alt="BacktoBase student community group photo"
+              width={1024}
+              height={229}
+              unoptimized
+              className="block w-full h-auto"
+            />
+          </div>
         </div>
       </div>
     </section>

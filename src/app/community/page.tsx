@@ -1,8 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/layout/Footer";
+import { CommunityRosterClient } from "@/components/community/CommunityRosterClient";
 import { TEAM_MEMBERS } from "@/data/communityData";
 import { ArrowLeft, ArrowRight, Users, ShieldCheck, HeartHandshake } from "lucide-react";
-import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 
 export const metadata = {
   title: "The Community — BacktoBase Hyderabad",
@@ -38,39 +39,21 @@ export default function CommunityPage() {
               Behind every edition is a dedicated crew of students, anchors, photographers, and coordinators who believe in creating inclusive, high-signal spaces.
             </p>
           </div>
-          <CustomVisualSlot src="/images/community-panoramic.jpg" alt="" sizes="(max-width: 1280px) 92vw, 1240px" className="mb-16 aspect-[21/8] rounded-3xl border border-border-subtle shadow-photo" />
-
-
-
-          {/* Organizing Roster Grid */}
-          <div id="team" className="mb-16">
-            <div className="flex items-center justify-between mb-8">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange block mb-1">
-                  Our Volunteers & Leaders
-                </span>
-                <h2 className="font-display font-black text-3xl sm:text-4xl text-charcoal-950 uppercase tracking-tight">
-                  Organizing Team Roster
-                </h2>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {TEAM_MEMBERS.map((member) => (
-                <div
-                  key={member}
-                  className="p-5 rounded-2xl bg-white border border-border-subtle shadow-card hover:shadow-photo transition-all duration-200"
-                >
-                  <div className="w-10 h-10 rounded-full bg-brand-amber-light flex items-center justify-center text-brand-orange font-bold text-sm mb-3">
-                    {member.charAt(0)}
-                  </div>
-                  <h3 className="font-display font-bold text-base text-charcoal-950 mb-1">
-                    {member}
-                  </h3>
-                </div>
-              ))}
-            </div>
+          <div className="mb-16 overflow-hidden rounded-3xl border border-border-subtle bg-black shadow-photo">
+            <Image
+              src="/images/community-panoramic.jpg"
+              alt="BacktoBase student community group photo"
+              width={1024}
+              height={229}
+              unoptimized
+              className="block w-full h-auto"
+            />
           </div>
+
+
+
+          {/* Member Journey & Searchable Organizing Roster */}
+          <CommunityRosterClient members={TEAM_MEMBERS} />
 
           {/* Community Values */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">

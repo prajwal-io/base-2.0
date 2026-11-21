@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Footer } from "@/components/layout/Footer";
 import { ArrowLeft, ArrowRight, Heart, Sparkles, Target } from "lucide-react";
 import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
+import { FOUNDER_PROFILE } from "@/data/founderData";
 
 export const metadata = {
   title: "About BacktoBase — Mission, Philosophy & Founder",
@@ -80,25 +81,48 @@ export default function AboutPage() {
           {/* Founder Section */}
           <section id="founder" className="rounded-3xl bg-canvas-dark text-white p-8 sm:p-12 lg:p-16 mb-16 overflow-hidden relative shadow-2xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              <CustomVisualSlot src="/images/founder-portrait.jpg" alt="Yashwanth Bondapalli, founder of BacktoBase" sizes="(max-width: 1024px) 80vw, 420px" className="aspect-square max-w-sm rounded-2xl border-2 border-brand-amber/40 shadow-photo lg:col-span-5" />
+              <CustomVisualSlot
+                src="/images/founder-portrait.jpg"
+                alt="Yashwanth Bondapalli, founder of BacktoBase"
+                sizes="(max-width: 1024px) 90vw, 520px"
+                quality={95}
+                className="aspect-square w-full max-w-md rounded-2xl border-2 border-brand-amber/40 shadow-photo lg:col-span-5"
+                imgClassName="object-cover object-top"
+              />
 
               <div className="lg:col-span-7 flex flex-col">
                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-amber mb-2">
-                  Founder & Community Architect
+                  Founder @ BacktoBase · GenAI Developer · 15X Speaker · 35X Mentor
                 </span>
                 <h2 className="font-display font-black text-3xl sm:text-4xl text-white uppercase tracking-tight mb-4">
-                  Yashwanth Bondapalli
+                  {FOUNDER_PROFILE.name}
                 </h2>
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {FOUNDER_PROFILE.highlights.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full bg-white/10 border border-white/15 px-3 py-1 text-[11px] font-semibold text-gray-200"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
                 <div className="space-y-4 text-sm sm:text-base text-gray-300 font-normal leading-relaxed">
-                  <p>
-                    Yashwanth created BacktoBase in Hyderabad to solve a chronic problem in tech education: students were graduating with degrees and certificates, but zero practical intuition for real-world enterprise architectures, networking, or how founders think.
-                  </p>
-                  <p>
-                    Over 9 consecutive editions, he brought together industry leaders from Microsoft, Amazon, Thoughtworks, Accenture, and EPAM with hungry student creators and young engineers, turning Hyderabad into a testing ground for accessible mentorship.
-                  </p>
+                  {FOUNDER_PROFILE.bioParagraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
                   <p className="text-brand-cyan font-medium italic pt-2 border-t border-charcoal-700">
-                    &ldquo;We don&apos;t just build audiences. We create opportunities for people to become voices in the community.&rdquo;
+                    &ldquo;{FOUNDER_PROFILE.quote}&rdquo;
                   </p>
+                </div>
+                <div className="mt-6">
+                  <Link
+                    href="/founder"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-amber hover:bg-amber-400 text-charcoal-950 font-display font-extrabold text-xs sm:text-sm tracking-wide transition-all"
+                  >
+                    <span>View Full Founder Bio</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
                 </div>
               </div>
             </div>

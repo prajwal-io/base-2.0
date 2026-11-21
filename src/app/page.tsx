@@ -23,9 +23,13 @@ export default function HomePage() {
         <EditorialLearnConnectGrow />
         <EventArchiveFolders
           archiveHref="/events"
-          events={EDITIONS.slice(-3).reverse().map((edition) => ({
+          events={EDITIONS.slice().reverse().map((edition) => ({
             edition: `Edition ${edition.editionNumber}`,
+            editionNumber: edition.editionNumber,
             title: edition.title,
+            date: edition.date,
+            venue: edition.venue,
+            speakerCount: edition.speakers.length,
             href: `/events#edition-${edition.editionNumber}`,
           }))}
         />

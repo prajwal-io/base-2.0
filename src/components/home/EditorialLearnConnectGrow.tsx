@@ -1,51 +1,591 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import {
+  AnimatePresence,
+  motion,
+  useInView,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+
+interface PillarStory {
+  word: string;
+  eyebrow: string;
+  heading: string;
+  copy: string;
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+const PILLARS: readonly PillarStory[] = [
+  {
+    word: "LEARN.",
+    eyebrow: "01 / Beyond the classroom",
+    heading: "Real-world insights from people who actually build.",
+    copy: "Move past textbook theory with live engineering teardowns, candid founder talks, and practical sessions led by active industry practitioners.",
+    ctaLabel: "Explore all editions",
+    ctaHref: "/events",
+  },
+  {
+    word: "CONNECT.",
+    eyebrow: "02 / High-trust rooms",
+    heading: "A student community that turns curiosity into opportunity.",
+    copy: "Work on real ideas, meet industry professionals, and build alongside ambitious peers, mentors, and future collaborators.",
+    ctaLabel: "Find your people",
+    ctaHref: "/community",
+  },
+  {
+    word: "GROW.",
+    eyebrow: "03 / From attendee to voice",
+    heading: "Step onto the stage and level up your craft together.",
+    copy: "Sharpen your skills, get direct feedback from builders and leaders, and grow from attending your first edition to shaping the next one.",
+    ctaLabel: "Join the community",
+    ctaHref: "/join",
+  },
+] as const;
+
+const EDITORIAL_EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
+const LCG_STYLES = `
+.lcg-section {
+  --lcg-orange: #f2490b;
+  --lcg-blue: #173bd4;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--lcg-blue);
+  color: #ffffff;
+  min-height: clamp(500px, 58vh, 580px);
+  display: flex;
+  align-items: center;
+}
+
+/* Orange left plane stops cleanly before the right column so blue copy never crosses the seam */
+.lcg-wash {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  left: -36px;
+  right: 45%;
+  background-color: var(--lcg-orange);
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.lcg-arrow {
+  position: absolute;
+  z-index: 2;
+  top: clamp(24px, 3.6vw, 40px);
+  right: clamp(24px, 4vw, 48px);
+  width: clamp(42px, 3.8vw, 54px);
+  height: clamp(42px, 3.8vw, 54px);
+  color: #ffffff;
+  pointer-events: none;
+}
+
+.lcg-inner {
+  position: relative;
+  z-index: 1;
+  width: min(1280px, 100%);
+  margin: 0 auto;
+  padding: clamp(72px, 7.5vw, 108px) clamp(24px, 5vw, 72px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(48px, 6.5vw, 104px);
+}
+
+.lcg-headline {
+  position: relative;
+  min-width: 0;
+  padding-right: clamp(12px, 2vw, 32px);
+}
+
+.lcg-eyebrow {
+  margin: 0 0 22px;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.lcg-title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.045em;
+  font-family: var(--font-display), "Inter Tight", system-ui, sans-serif;
+  font-size: clamp(50px, 6.4vw, 96px);
+  font-weight: 900;
+  line-height: 0.89;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  transform: rotate(-2.5deg);
+  transform-origin: left center;
+}
+
+.lcg-line-mask {
+  display: block;
+  overflow-y: clip;
+  overflow-x: visible;
+  padding: 0.05em 0;
+  margin: -0.05em 0;
+}
+
+.lcg-line-stride {
+  display: block;
+  will-change: transform;
+}
+
+.lcg-line-word {
+  display: inline-block;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  border-radius: 6px;
+  white-space: nowrap;
+  text-align: left;
+  will-change: transform, opacity;
+}
+
+.lcg-line-word:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.95);
+  outline-offset: 6px;
+}
+
+/* Right blue story column padded cleanly inside the royal blue half */
+.lcg-story {
+  min-width: 0;
+  max-width: 510px;
+  padding: 8px 0 8px clamp(28px, 4.2vw, 64px);
+}
+
+.lcg-story-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.lcg-story-dot {
+  height: 3px;
+  width: 24px;
+  border-radius: 999px;
+  border: 0;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.28);
+  cursor: pointer;
+  transition: width 280ms cubic-bezier(0.16, 1, 0.3, 1), background-color 240ms ease;
+}
+
+.lcg-story-dot[data-active="true"] {
+  width: 44px;
+  background: #ffffff;
+}
+
+.lcg-story-dot:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
+.lcg-story-stage {
+  min-height: 270px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lcg-eyebrow--story {
+  margin: 0 0 16px;
+}
+
+.lcg-story-heading {
+  margin: 0 0 18px;
+  font-family: var(--font-display), "Inter Tight", system-ui, sans-serif;
+  font-size: clamp(24px, 2.55vw, 36px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.028em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.lcg-copy {
+  max-width: 430px;
+  margin: 0;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-size: clamp(15px, 1.1vw, 16.5px);
+  font-weight: 500;
+  line-height: 1.64;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.lcg-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+  padding: 0 0 10px;
+  align-self: flex-start;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.42);
+}
+
+.lcg-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background-color: #ffffff;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lcg-link:hover::after,
+.lcg-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.lcg-link-arrow {
+  font-size: 17px;
+  line-height: 1;
+  transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lcg-link:hover .lcg-link-arrow,
+.lcg-link:focus-visible .lcg-link-arrow {
+  transform: translate(4px, -4px);
+}
+
+.lcg-link:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+
+@media (max-width: 900px) {
+  .lcg-section {
+    min-height: unset;
+  }
+
+  .lcg-wash {
+    left: -24px;
+    right: -24px;
+    top: 0;
+    bottom: 50%;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  }
+
+  .lcg-inner {
+    grid-template-columns: 1fr;
+    gap: 56px;
+    padding: 68px 24px 60px;
+  }
+
+  .lcg-headline {
+    padding-right: 0;
+  }
+
+  .lcg-title {
+    font-size: clamp(50px, 13.8vw, 80px);
+  }
+
+  .lcg-arrow {
+    width: 36px;
+    height: 36px;
+    top: 22px;
+    right: 22px;
+  }
+
+  .lcg-story {
+    max-width: 100%;
+    padding: 12px 0 0;
+  }
+
+  .lcg-story-stage {
+    min-height: 235px;
+    justify-content: flex-start;
+  }
+
+  .lcg-story-heading {
+    font-size: clamp(23px, 6vw, 32px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lcg-link::after,
+  .lcg-link-arrow,
+  .lcg-story-dot {
+    transition: none;
+  }
+}
+`;
 
 export default function EditorialLearnConnectGrow() {
-    const reduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const reduceMotion = useReducedMotion();
 
-    return (
-        <section className="lcg" aria-labelledby="lcg-title">
-            <div className="lcg__wash" aria-hidden="true" />
-            <div className="lcg__inner">
-                <motion.div
-                    className="lcg__headline"
-                    initial={reduceMotion ? false : { opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.35 }}
-                    transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                >
-                    <p className="lcg__eyebrow">A community in motion</p>
-                    <h2 id="lcg-title">LEARN.<br />CONNECT.<br />GROW.</h2>
-                    <svg className="lcg__arrow" viewBox="0 0 80 80" aria-hidden="true">
-                        <path d="M12 66 66 12M30 12h36v36" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="square" />
-                    </svg>
-                </motion.div>
-                <motion.div
-                    className="lcg__story"
-                    initial={reduceMotion ? false : { opacity: 0, x: 28 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.35 }}
-                    transition={{ duration: 0.7, delay: reduceMotion ? 0 : 0.12, ease: [0.22, 1, 0.36, 1] }}
-                >
-                    <p className="lcg__eyebrow">Beyond the campus</p>
-                    <h3>A student community that turns curiosity into opportunity.</h3>
-                    <p className="lcg__copy">Work on real ideas, meet industry professionals, and build alongside ambitious peers. Take your learning beyond the classroom.</p>
-                    <a className="lcg__link" href="/community">Find your people <span aria-hidden="true">↗</span></a>
-                </motion.div>
-            </div>
-            <style jsx>{`
-        .lcg{--orange:#f2490b;--blue:#173bd4;position:relative;isolation:isolate;overflow:hidden;background:var(--blue);color:#fff;min-height:390px}
-        .lcg__wash{position:absolute;z-index:-1;inset:0 44% 0 0;background:var(--orange);clip-path:polygon(0 0,100% 0,86% 100%,0 100%)}
-        .lcg__inner{width:min(1240px,100%);min-height:390px;margin:auto;padding:54px clamp(24px,6vw,84px);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(36px,7vw,112px)}
-        .lcg__headline{position:relative}.lcg__eyebrow{margin:0 0 18px;font:700 11px/1.2 Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;opacity:.78}
-        h2{margin:0;font:950 clamp(56px,8.3vw,112px)/.79 Arial,sans-serif;letter-spacing:-.075em;transform:rotate(-3deg);text-wrap:nowrap}
-        .lcg__arrow{position:absolute;width:58px;right:2%;top:2%;transform:rotate(7deg)}
-        .lcg__story{max-width:490px;padding:16px 0 12px}.lcg__story h3{max-width:510px;margin:0 0 20px;font:850 clamp(26px,3.2vw,43px)/.98 Arial,sans-serif;letter-spacing:-.04em;text-transform:uppercase}.lcg__copy{max-width:420px;margin:0;color:rgba(255,255,255,.82);font:500 16px/1.55 Arial,sans-serif}.lcg__link{display:inline-flex;gap:18px;align-items:center;margin-top:25px;color:#fff;text-decoration:none;font:700 13px/1 Arial,sans-serif;border-bottom:1px solid rgba(255,255,255,.55);padding:0 0 8px}.lcg__link span{font-size:18px;transition:transform .2s}.lcg__link:hover span{transform:translate(3px,-3px)}.lcg__link:focus-visible{outline:3px solid #fff;outline-offset:5px}
-        @media(max-width:760px){.lcg,.lcg__inner{min-height:unset}.lcg__wash{inset:0 0 48% 0;clip-path:polygon(0 0,100% 0,100% 82%,0 100%)}.lcg__inner{grid-template-columns:1fr;gap:42px;padding:54px 24px 44px}.lcg__headline h2{font-size:clamp(58px,16vw,90px)}.lcg__arrow{width:44px;right:3%;top:0}.lcg__story{padding:0}.lcg__story h3{max-width:560px}.lcg__copy{font-size:15px}}
-        @media(prefers-reduced-motion:reduce){.lcg__link span{transition:none}}
-      `}</style>
-        </section>
-    );
+  const hasEntered = useInView(sectionRef, { once: true, amount: 0.2 });
+  const isLiveInView = useInView(sectionRef, { amount: 0.15 });
+
+  const [hoveredWord, setHoveredWord] = useState<number | null>(null);
+  const [selectedWord, setSelectedWord] = useState<number | null>(null);
+  const [idleWord, setIdleWord] = useState<number>(0);
+
+  const lockedWord = hoveredWord ?? selectedWord;
+  const activeIndex = lockedWord ?? idleWord;
+  const activePillar = PILLARS[activeIndex];
+  const isUserInteracting = lockedWord !== null;
+
+  // Restrained idle cadence cycling LEARN -> CONNECT -> GROW when visible and not hovered/clicked
+  useEffect(() => {
+    if (reduceMotion || !isLiveInView || isUserInteracting) return;
+    const id = setInterval(() => {
+      setIdleWord((prev) => (prev + 1) % PILLARS.length);
+    }, 4200);
+    return () => clearInterval(id);
+  }, [reduceMotion, isLiveInView, isUserInteracting]);
+
+  // Smooth spring-damped scroll progress for subtle diagonal & word stride parallax
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 26,
+    mass: 0.4,
+  });
+
+  const washX = useTransform(smoothProgress, [0, 1], [-12, 12]);
+  const line0X = useTransform(smoothProgress, [0, 1], [-8, 8]);
+  const line1X = useTransform(smoothProgress, [0, 1], [-2, 4]);
+  const line2X = useTransform(smoothProgress, [0, 1], [8, -8]);
+  const arrowParallaxY = useTransform(smoothProgress, [0, 1], [8, -8]);
+
+  const lineParallax = [line0X, line1X, line2X];
+
+  return (
+    <section
+      ref={sectionRef}
+      className="lcg-section"
+      aria-labelledby="lcg-title"
+      onMouseLeave={() => setHoveredWord(null)}
+    >
+      <style>{LCG_STYLES}</style>
+
+      {/* Diagonal orange plane with left bleed so scroll parallax never exposes a gap */}
+      <motion.div
+        className="lcg-wash"
+        aria-hidden="true"
+        style={reduceMotion ? undefined : { x: washX }}
+      />
+
+      {/* Oversized kinetic arrow anchored cleanly in upper-right corner */}
+      <motion.svg
+        className="lcg-arrow"
+        viewBox="0 0 80 80"
+        aria-hidden="true"
+        style={reduceMotion ? undefined : { y: arrowParallaxY }}
+        animate={
+          reduceMotion
+            ? undefined
+            : {
+                x: isUserInteracting ? 6 : 0,
+                scale: isUserInteracting ? 1.06 : 1,
+                opacity: isUserInteracting ? 1 : 0.9,
+              }
+        }
+        transition={{ type: "spring", stiffness: 280, damping: 24 }}
+      >
+        <motion.path
+          d="M14 66 L66 14"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="4.5"
+          strokeLinecap="square"
+          initial={reduceMotion ? false : { pathLength: 0, opacity: 0 }}
+          animate={hasEntered || reduceMotion ? { pathLength: 1, opacity: 1 } : undefined}
+          transition={{ duration: 0.7, delay: 0.22, ease: EDITORIAL_EASE }}
+        />
+        <motion.path
+          d="M32 14 H66 V48"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="4.5"
+          strokeLinecap="square"
+          initial={reduceMotion ? false : { pathLength: 0, opacity: 0 }}
+          animate={hasEntered || reduceMotion ? { pathLength: 1, opacity: 1 } : undefined}
+          transition={{ duration: 0.65, delay: 0.34, ease: EDITORIAL_EASE }}
+        />
+      </motion.svg>
+
+      <div className="lcg-inner">
+        {/* Left Column: Interactive Kinetic LEARN. CONNECT. GROW. */}
+        <div className="lcg-headline">
+          <motion.p
+            className="lcg-eyebrow"
+            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+            animate={hasEntered || reduceMotion ? { opacity: 0.88, y: 0 } : undefined}
+            transition={{ duration: 0.55, ease: EDITORIAL_EASE }}
+          >
+            A community in motion
+          </motion.p>
+
+          <h2 id="lcg-title" className="lcg-title">
+            {PILLARS.map((pillar, idx) => {
+              const isActive = activeIndex === idx;
+
+              const targetOpacity = reduceMotion
+                ? isActive
+                  ? 1
+                  : 0.65
+                : isActive
+                  ? 1
+                  : isUserInteracting
+                    ? 0.44
+                    : 0.68;
+
+              const targetX = reduceMotion
+                ? 0
+                : isActive
+                  ? isUserInteracting
+                    ? 14
+                    : 6
+                  : 0;
+
+              return (
+                <span key={pillar.word} className="lcg-line-mask">
+                  <motion.span
+                    className="lcg-line-stride"
+                    style={reduceMotion ? undefined : { x: lineParallax[idx] }}
+                  >
+                    <motion.button
+                      type="button"
+                      className="lcg-line-word"
+                      aria-pressed={isActive}
+                      onMouseEnter={() => {
+                        setHoveredWord(idx);
+                        setSelectedWord(null);
+                      }}
+                      onFocus={() => setHoveredWord(idx)}
+                      onBlur={() => setHoveredWord((cur) => (cur === idx ? null : cur))}
+                      onClick={() => setSelectedWord(idx)}
+                      initial={reduceMotion ? false : { y: "108%", skewY: 4, opacity: 0 }}
+                      animate={
+                        hasEntered || reduceMotion
+                          ? {
+                              y: "0%",
+                              skewY: 0,
+                              opacity: targetOpacity,
+                              x: targetX,
+                            }
+                          : undefined
+                      }
+                      transition={
+                        hasEntered
+                          ? {
+                              y: {
+                                duration: 0.72,
+                                delay: idx * 0.11,
+                                ease: EDITORIAL_EASE,
+                              },
+                              skewY: {
+                                duration: 0.72,
+                                delay: idx * 0.11,
+                                ease: EDITORIAL_EASE,
+                              },
+                              opacity: { duration: 0.3, ease: "easeOut" },
+                              x: { type: "spring", stiffness: 320, damping: 28 },
+                            }
+                          : undefined
+                      }
+                    >
+                      {pillar.word}
+                    </motion.button>
+                  </motion.span>
+                </span>
+              );
+            })}
+          </h2>
+        </div>
+
+        {/* Right Column: Synced Pillar Story cleanly inside the royal blue half */}
+        <motion.div
+          className="lcg-story"
+          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+          animate={hasEntered || reduceMotion ? { opacity: 1, y: 0 } : undefined}
+          transition={{ duration: 0.7, delay: reduceMotion ? 0 : 0.18, ease: EDITORIAL_EASE }}
+        >
+          {/* Interactive Pillar Indicator Bars */}
+          <div className="lcg-story-dots" role="tablist" aria-label="Community pillars">
+            {PILLARS.map((pillar, idx) => (
+              <button
+                key={pillar.word}
+                type="button"
+                role="tab"
+                aria-selected={activeIndex === idx}
+                aria-label={`Show ${pillar.word.replace(".", "")} story`}
+                data-active={activeIndex === idx ? "true" : "false"}
+                className="lcg-story-dot"
+                onMouseEnter={() => {
+                  setHoveredWord(idx);
+                  setSelectedWord(null);
+                }}
+                onClick={() => setSelectedWord(idx)}
+              />
+            ))}
+          </div>
+
+          <div className="lcg-story-stage" aria-live="polite">
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={activePillar.word}
+                initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={reduceMotion ? undefined : { opacity: 0, y: -10 }}
+                transition={{ duration: 0.28, ease: EDITORIAL_EASE }}
+              >
+                <p className="lcg-eyebrow lcg-eyebrow--story">{activePillar.eyebrow}</p>
+                <h3 className="lcg-story-heading">{activePillar.heading}</h3>
+                <p className="lcg-copy">{activePillar.copy}</p>
+                <Link className="lcg-link" href={activePillar.ctaHref}>
+                  <span>{activePillar.ctaLabel}</span>
+                  <span className="lcg-link-arrow" aria-hidden="true">
+                    ↗
+                  </span>
+                </Link>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
 }

@@ -49,19 +49,8 @@ export function MemberStories() {
                   </Link>
                 </h2>
 
-                <div className="mb-3.5 flex flex-wrap gap-1.5">
-                  {FOUNDER_PROFILE.spotlightHighlights.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full bg-canvas-subtle border border-border-subtle px-2.5 py-0.5 text-[11px] font-semibold text-charcoal-800"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-
                 <p className="mb-5 text-sm sm:text-base leading-relaxed text-charcoal-700">
-                  {FOUNDER_PROFILE.shortSummary}
+                  Meet the person behind BacktoBase and see how a community for curious students grew from its first gathering.
                 </p>
 
                 <Link

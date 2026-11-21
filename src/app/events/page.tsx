@@ -14,7 +14,7 @@ export default function EventsPage() {
   return (
     <div className="flex flex-1 flex-col bg-canvas-base">
       <main className="flex-grow py-10 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative isolate max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="max-w-3xl mb-10">
             <Link

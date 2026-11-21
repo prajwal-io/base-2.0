@@ -46,7 +46,7 @@ export function TeamSection() {
     <section className="py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+        <div className="relative isolate mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
             <span className="text-[11px] sm:text-xs font-bold tracking-[0.18em] uppercase text-charcoal-700 block mb-1.5">
               The Team

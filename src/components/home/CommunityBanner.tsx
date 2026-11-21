@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { PixelField } from "@/components/ui/PixelField";
 
 export function CommunityBanner() {
   return (
@@ -6,7 +7,8 @@ export function CommunityBanner() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl bg-canvas-dark text-white overflow-hidden shadow-2xl border border-charcoal-800">
           {/* Header text inside dark banner */}
-          <div className="p-6 sm:p-8 md:p-10 text-center flex flex-col items-center">
+          <div className="relative isolate flex flex-col items-center p-6 pt-9 text-center sm:p-8 md:p-10">
+            <PixelField variant="drift" className="absolute left-1 top-1 -z-10 w-28 -scale-x-100 opacity-80 sm:left-3 sm:w-40 lg:w-52" />
             <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-2">
               The Community
             </span>

@@ -61,7 +61,7 @@ const NIMBUS_CSS = `
 .nimbus-nav[data-gl="off"] .nimbus-drop{display:block}.nimbus-item{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border:0;border-radius:999px;background:none;color:var(--n-fg-soft);font-family:inherit;font-weight:600;font-size:12px;line-height:1;letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:color 120ms cubic-bezier(.2,0,0,1),background-color 120ms cubic-bezier(.2,0,0,1)}
 .nimbus-item[aria-current="page"]{color:var(--n-fg);background:rgba(234,88,12,.08)}.nimbus-item:focus-visible{outline:2px solid #EA580C;outline-offset:2px}
 .nv-ico{position:relative;display:inline-flex;flex:none}.nv-ico svg{transition:transform 120ms cubic-bezier(.2,0,0,1)}.nimbus-item[aria-current="page"] .nv-ico{color:#EA580C}.nimbus-item[aria-current="page"] .nv-ico svg{transform:translateY(-1px) scale(1.06)}.nv-door{fill:transparent}
-.nv-ico[data-fx="pop"] svg{animation:nvPop .5s cubic-bezier(.3,1.6,.5,1) both}@keyframes nvPop{0%{transform:scale(.72)}60%{transform:scale(1.2)}100%{transform:translateY(-1px) scale(1.08)}}
+.nv-ico[data-fx="pop"] svg{animation:nvPop .3s cubic-bezier(.2,.8,.2,1) both}@keyframes nvPop{0%{transform:scale(.84)}55%{transform:scale(1.12)}100%{transform:translateY(-1px) scale(1.06)}}
 .nv-ico[data-fx="plane"] svg{animation:nvPlane 1.15s cubic-bezier(.55,0,.3,1) both}@keyframes nvPlane{0%{transform:none}12%{transform:translate(-3px,2px) rotate(7deg)}42%{transform:translate(64px,-26px) rotate(-24deg) scale(.9);opacity:0}43%{transform:translate(-60px,16px) rotate(-12deg) scale(.9);opacity:0}58%{opacity:1}80%{transform:translate(3px,-1px) rotate(2deg)}100%{transform:translateY(-1px) scale(1.08)}}
 .nv-ico[data-fx="plane"]::after{content:"";position:absolute;left:55%;top:48%;height:2px;width:46px;border-radius:2px;transform-origin:0 50%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95));animation:nvTrail 1.15s ease-out both;pointer-events:none}@keyframes nvTrail{0%,8%{opacity:0;transform:rotate(-22deg) scaleX(0)}30%{opacity:.9;transform:rotate(-22deg) scaleX(1)}55%,100%{opacity:0;transform:rotate(-22deg) translateX(30px) scaleX(.2)}}
 .nv-ico[data-fx="drop"] svg{animation:nvDrop .95s cubic-bezier(.4,0,.3,1) both;transform-origin:50% 100%}@keyframes nvDrop{0%{transform:translateY(-1px)}26%{transform:translateY(-13px) scale(.88,1.12)}46%{transform:translateY(3px) scale(1.3,.68)}62%{transform:translateY(-3px) scale(.92,1.08)}80%{transform:translateY(0) scale(1.04,.97)}100%{transform:translateY(-1px) scale(1.08)}}
@@ -134,6 +134,9 @@ export function LiquidNavbar({ items = DEFAULT_ITEMS, defaultActive = 0, active,
   const iconRefs = React.useRef<(HTMLSpanElement | null)[]>([])
   const audio = React.useRef<AudioContext | null>(null)
   const st = React.useRef(makeState())
+  const blobs = React.useRef(new Float32Array(24))
+  const sy = React.useRef(new Float32Array(6).fill(1))
+  const rips = React.useRef(new Float32Array(24))
   const [gl, setGl] = React.useState<"on" | "off">("on")
   const [refract, setRefract] = React.useState(false)
   const [fx, setFx] = React.useState({ i: -1, n: 0 })
@@ -142,13 +145,16 @@ export function LiquidNavbar({ items = DEFAULT_ITEMS, defaultActive = 0, active,
     const s = st.current, T = s.t, sep = Math.abs(s.a.x - s.b.x)
     const thin = Math.min(sep / (2 * (s.q + T.r) || 1), 1), r = T.r * (1 - 0.3 * thin)
     if (s.glc) {
-      const { gl: g, u } = s.glc, dpr = Math.min(window.devicePixelRatio || 1, 2)
+      const { gl: g, u } = s.glc, dpr = Math.min(window.devicePixelRatio || 1, 1.25)
       g.viewport(0, 0, g.drawingBufferWidth, g.drawingBufferHeight)
       g.uniform2f(u.uRes, s.w + PAD * 2, s.h + PAD * 2); g.uniform1f(u.uDpr, dpr); g.uniform1f(u.uTime, s.time); g.uniform4f(u.uPill, PAD, PAD, s.w, s.h)
-      const blobs = new Float32Array(24), sy = new Float32Array(6).fill(1), head = s.lead === 0 ? s.a : s.b, tail = s.lead === 0 ? s.b : s.a
-      blobs.set([head.x, T.cy, s.q * (1 - 0.25 * thin), T.r * (1 - 0.12 * thin), tail.x, T.cy, s.q * (1 - 0.8 * thin), T.r * (1 - 0.5 * thin)])
-      sy[0] = sy[1] = s.sy.s; s.sats.slice(0, 4).forEach((d, i) => blobs.set([d.x, d.y, 0, d.r], 8 + i * 4)); g.uniform4fv(u.uBlob, blobs); g.uniform1fv(u.uSy, sy)
-      const rips = new Float32Array(24); s.rips.slice(-6).forEach((p, i) => rips.set([p.x, p.y, p.age, p.amp], i * 4)); g.uniform4fv(u.uRip, rips)
+      const blobData = blobs.current, syData = sy.current, ripData = rips.current, head = s.lead === 0 ? s.a : s.b, tail = s.lead === 0 ? s.b : s.a
+      blobData.fill(0); syData.fill(1); ripData.fill(0)
+      blobData.set([head.x, T.cy, s.q * (1 - 0.25 * thin), T.r * (1 - 0.12 * thin), tail.x, T.cy, s.q * (1 - 0.8 * thin), T.r * (1 - 0.5 * thin)])
+      syData[0] = syData[1] = s.sy.s
+      for (let i = 0; i < Math.min(s.sats.length, 4); i++) { const d = s.sats[i]; blobData.set([d.x, d.y, 0, d.r], 8 + i * 4) }
+      for (let i = Math.max(0, s.rips.length - 6); i < s.rips.length; i++) { const p = s.rips[i]; ripData.set([p.x, p.y, p.age, p.amp], (i - Math.max(0, s.rips.length - 6)) * 4) }
+      g.uniform4fv(u.uBlob, blobData); g.uniform1fv(u.uSy, syData); g.uniform4fv(u.uRip, ripData)
       g.uniform3f(u.uMouse, s.mouse.x, s.mouse.y, s.mouse.s); g.uniform1f(u.uDark, tone === "dark" ? 1 : 0); g.uniform1f(u.uAmb, s.reduce ? 0 : 0.22); g.clearColor(0, 0, 0, 0); g.clear(g.COLOR_BUFFER_BIT); g.drawArrays(g.TRIANGLES, 0, 3)
     } else if (dropRef.current) {
       dropRef.current.style.width = `${sep + 2 * (s.q + r)}px`
@@ -163,7 +169,7 @@ export function LiquidNavbar({ items = DEFAULT_ITEMS, defaultActive = 0, active,
     if (s.reduce) { s.a.x = s.b.x = T.x; s.a.v = s.b.v = 0; s.sy.s = 1; s.sats = [] }
     else {
       bodies.forEach((B, i) => {
-        const lead = i === s.lead, k = lead ? 1500 : 1000, c = lead ? 70 : 58
+        const lead = i === s.lead, k = lead ? 1900 : 1400, c = lead ? 88 : 74
         B.v += (k * (T.x - B.x) - c * B.v) * dt; B.x += B.v * dt
         const lo = PAD + 6 + s.q + T.r - 3, hi = PAD + s.w - 6 - s.q - T.r + 3
         if (B.x < lo || B.x > hi) { s.sy.v -= Math.min(Math.abs(B.v), 900) * 0.0007; B.x = Math.max(lo, Math.min(hi, B.x)); B.v *= -0.25 }
@@ -208,7 +214,7 @@ export function LiquidNavbar({ items = DEFAULT_ITEMS, defaultActive = 0, active,
     else if (Math.abs(nx - T.x) > 0.5) { s.lead = Math.abs(nx - s.a.x) <= Math.abs(nx - s.b.x) ? 0 : 1; s.moving = true; s.split = true }
     T.x = nx
     const canvas = canvasRef.current
-    if (canvas) { const dpr = Math.min(window.devicePixelRatio || 1, 2), width = s.w + PAD * 2, height = s.h + PAD * 2; if (canvas.width !== Math.round(width * dpr) || canvas.height !== Math.round(height * dpr)) { canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr); canvas.style.width = `${width}px`; canvas.style.height = `${height}px` } }
+    if (canvas) { const dpr = Math.min(window.devicePixelRatio || 1, 1.25), width = s.w + PAD * 2, height = s.h + PAD * 2; if (canvas.width !== Math.round(width * dpr) || canvas.height !== Math.round(height * dpr)) { canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr); canvas.style.width = `${width}px`; canvas.style.height = `${height}px` } }
     loop()
   }, [current, loop])
 

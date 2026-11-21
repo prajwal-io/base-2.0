@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Building2 } from "lucide-react";
 
 interface VenueLogo {
   name: string;
@@ -69,9 +70,9 @@ export function VenueStrip() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-7 border-b border-border-subtle">
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
               <div className="inline-flex items-center gap-2.5">
-                <span
+                <Building2
                   aria-hidden="true"
-                  className="h-2.5 w-2.5 rounded-full bg-brand-orange shrink-0"
+                  className="size-5 shrink-0 text-brand-orange"
                 />
                 <h2
                   id="our-venues-heading"

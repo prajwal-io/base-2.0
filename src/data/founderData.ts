@@ -1,93 +1,33 @@
-export interface FounderMetric {
-  value: string;
-  label: string;
-}
-
-export interface FounderTrack {
-  category: string;
-  accent: "orange" | "cyan" | "amber";
-  summary: string;
-  roles: string[];
-}
-
 export const FOUNDER_PROFILE = {
   name: "Yashwanth Bondapalli",
-  title: "Founder @ BacktoBase",
-  headline:
-    "Founder @ BacktoBase | GenAI Developer | 15X Speaker · 35X Mentor | Sakshi TV Featured | Microsoft Speaker | 13+ Institutions | Software Engineer | App & Web Dev | Robotics | Author | Video Editor | Choreographer",
-  shortSummary:
-    "Founder of BacktoBase, GenAI Developer, Software Engineer, 15X Speaker (including Microsoft), 35X Mentor across 13+ institutions, Sakshi TV Featured, and multidisciplinary creator spanning robotics, authoring, video editing, and choreography.",
-  quote:
-    "We don't just build audiences. We create opportunities for people to become voices in the community.",
+  title: "Founder of BacktoBase",
   portrait: "/images/founder-portrait.jpg",
   avatar: "/images/founder-avatar.jpg",
-  metrics: [
-    { value: "15X", label: "Speaker" },
-    { value: "35X", label: "Mentor" },
-    { value: "13+", label: "Institutions" },
-    { value: "09", label: "BacktoBase Editions" },
-  ] as FounderMetric[],
+  quote: "We don't just build audiences. We create opportunities for people to become voices in the community.",
   highlights: [
-    "Founder @ BacktoBase",
-    "GenAI Developer",
-    "15X Speaker",
-    "35X Mentor",
-    "Sakshi TV Featured",
-    "Microsoft Speaker",
-    "13+ Institutions",
-    "Software Engineer",
-    "App & Web Dev",
+    "15 speaking engagements, including Microsoft",
+    "35+ mentoring sessions and cohorts across 13+ institutions",
+    "Featured on Sakshi TV",
+    "Generative AI and software engineering",
+    "App and web development",
     "Robotics",
-    "Author",
-    "Video Editor",
-    "Choreographer",
+    "Writing, video editing, and choreography",
   ],
-  spotlightHighlights: [
-    "GenAI Developer",
-    "15X Speaker",
-    "35X Mentor",
-    "Microsoft Speaker",
-    "Sakshi TV Featured",
-    "13+ Institutions",
-  ],
-  bioParagraphs: [
-    "Yashwanth Bondapalli founded BacktoBase in Hyderabad to solve a real gap between classrooms and industry: students were graduating with degrees and certificates, yet lacked direct exposure to real-world engineering, practical AI systems, high-trust networking, and how builders and founders operate.",
-    "As a GenAI Developer, Software Engineer, and App & Web Developer with hands-on roots in Robotics, Yashwanth combines deep technical execution with community leadership. He has spoken 15 times on stages including Microsoft, mentored 35+ sessions and cohorts across 13+ institutions, and been featured on Sakshi TV for his work empowering student talent.",
-    "Beyond engineering and community building, Yashwanth brings a multidisciplinary creative edge as an Author, Video Editor, and Choreographer—shaping BacktoBase into a space where technical depth and creative expression thrive side by side.",
-  ],
-  tracks: [
+  journey: [
     {
-      category: "Leadership, Speaking & Recognition",
-      accent: "orange",
-      summary:
-        "Building student-first communities, sharing practical insights on stage, and mentoring emerging builders across campuses.",
-      roles: [
-        "Founder @ BacktoBase",
-        "15X Speaker",
-        "35X Mentor",
-        "Microsoft Speaker",
-        "Sakshi TV Featured",
-        "13+ Institutions",
-      ],
+      title: "Start with the gap",
+      description:
+        "Yashwanth founded BacktoBase in Hyderabad after seeing how much students still had to figure out beyond the classroom. A course could teach a concept, but students rarely got to ask how a practitioner decides when to use it. He wanted to bring those conversations into the same room.",
     },
     {
-      category: "Engineering & Technology",
-      accent: "cyan",
-      summary:
-        "Designing and shipping practical software across generative AI, full-stack web & mobile apps, and robotics.",
-      roles: [
-        "GenAI Developer",
-        "Software Engineer",
-        "App & Web Dev",
-        "Robotics",
-      ],
+      title: "Put the idea into practice",
+      description:
+        "The first edition at Health Catalyst brought students, professionals, and founders together to discuss when, why, and where AI makes sense at work. By the fifth edition at EPAM Systems, students were giving talks themselves. The shift from asking questions to sharing what they knew gave the community a different kind of stage.",
     },
     {
-      category: "Creative & Storytelling",
-      accent: "amber",
-      summary:
-        "Combining engineering clarity with visual storytelling, writing, and stage artistry.",
-      roles: ["Author", "Video Editor", "Choreographer"],
+      title: "Make space for different kinds of builders",
+      description:
+        "Yashwanth brings technical and creative work together in one community. Someone can explain how they built a prototype, show how they told its story, or share an unfinished idea and get feedback. Each is a way to contribute before you have a polished portfolio.",
     },
-  ] as FounderTrack[],
+  ],
 } as const;

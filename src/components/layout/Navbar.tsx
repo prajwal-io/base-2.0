@@ -10,11 +10,11 @@ import { LiquidNavbar, NimbusIcons, type LiquidNavItem } from "@/components/ui/l
 import { FlowButton } from "@/components/ui/flow-button";
 
 const NAV_ITEMS: (LiquidNavItem & { href: string })[] = [
-  { label: "Home", href: "/", icon: NimbusIcons.home, fx: "none" },
-  { label: "Events", href: "/events", icon: <CalendarDays aria-hidden="true" />, fx: "none" },
-  { label: "Community", href: "/community", icon: <Users aria-hidden="true" />, fx: "none" },
-  { label: "About", href: "/about", icon: <Info aria-hidden="true" />, fx: "none" },
-  { label: "FAQs", href: "/#faqs", icon: <CircleHelp aria-hidden="true" />, fx: "none" },
+  { label: "Home", href: "/", icon: NimbusIcons.home, fx: "pop" },
+  { label: "Events", href: "/events", icon: <CalendarDays aria-hidden="true" />, fx: "pop" },
+  { label: "Community", href: "/community", icon: <Users aria-hidden="true" />, fx: "pop" },
+  { label: "About", href: "/about", icon: <Info aria-hidden="true" />, fx: "pop" },
+  { label: "FAQs", href: "/#faqs", icon: <CircleHelp aria-hidden="true" />, fx: "pop" },
 ];
 
 export function Navbar() {
@@ -55,7 +55,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full pt-3 pb-2 px-4 sm:px-6 lg:px-8 pointer-events-none">
-      <div className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
+      <div className="relative max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
         {/* Mobile-only logo pill (on desktop the logo lives inside the nav pill) */}
         <Link
           href="/"
@@ -94,12 +94,12 @@ export function Navbar() {
               />
             </Link>
           }
-          className="hidden md:inline-flex"
+          className="hidden md:inline-flex md:absolute md:left-1/2 md:-translate-x-1/2"
         />
 
         {/* Right CTA Button */}
         <div className="flex items-center gap-3">
-          <FlowButton text="Join the Community" className="hidden sm:flex px-5 py-2.5" />
+          <FlowButton text="Join the Community" className="hidden xl:flex px-5 py-2.5" />
 
           {/* Mobile Menu Toggle Button */}
           <button

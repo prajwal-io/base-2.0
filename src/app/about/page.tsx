@@ -13,8 +13,7 @@ export default function AboutPage() {
   return (
     <div className="flex flex-1 flex-col bg-canvas-base">
       <main className="flex-grow py-10 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+        <div className="relative isolate max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="max-w-3xl mb-12">
             <Link
@@ -92,35 +91,20 @@ export default function AboutPage() {
 
               <div className="lg:col-span-7 flex flex-col">
                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-amber mb-2">
-                  Founder @ BacktoBase · GenAI Developer · 15X Speaker · 35X Mentor
+                  Why BacktoBase began
                 </span>
                 <h2 className="font-display font-black text-3xl sm:text-4xl text-white uppercase tracking-tight mb-4">
                   {FOUNDER_PROFILE.name}
                 </h2>
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {FOUNDER_PROFILE.highlights.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full bg-white/10 border border-white/15 px-3 py-1 text-[11px] font-semibold text-gray-200"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-                <div className="space-y-4 text-sm sm:text-base text-gray-300 font-normal leading-relaxed">
-                  {FOUNDER_PROFILE.bioParagraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
-                  <p className="text-brand-cyan font-medium italic pt-2 border-t border-charcoal-700">
-                    &ldquo;{FOUNDER_PROFILE.quote}&rdquo;
-                  </p>
-                </div>
+                <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                  Yashwanth started BacktoBase in Hyderabad to give students more ways to learn alongside people doing the work. The idea was simple: put students, practitioners, and founders in the same room, then give students a chance to ask questions, share their work, and take the stage themselves.
+                </p>
                 <div className="mt-6">
                   <Link
                     href="/founder"
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-amber hover:bg-amber-400 text-charcoal-950 font-display font-extrabold text-xs sm:text-sm tracking-wide transition-all"
                   >
-                    <span>View Full Founder Bio</span>
+                    <span>Read Yashwanth’s story</span>
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>

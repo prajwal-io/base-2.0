@@ -38,6 +38,18 @@
     color: #111215;
     overflow-x: hidden;
     min-height: 100vh;
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-kerning: normal;
+    text-wrap: balance;
+    hyphens: none;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   ::selection {

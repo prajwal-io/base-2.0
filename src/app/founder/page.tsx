@@ -1,41 +1,13 @@
 import Link from "next/link";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Award,
-  Code2,
-  Mic,
-  Palette,
-  Sparkles,
-  Tv,
-  Users,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Footer } from "@/components/layout/Footer";
 import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 import { FOUNDER_PROFILE } from "@/data/founderData";
 
 export const metadata = {
   title: "Yashwanth Bondapalli — Founder @ BacktoBase",
-  description: FOUNDER_PROFILE.headline,
+  description: "The story of how Yashwanth Bondapalli started BacktoBase and helped students become speakers, collaborators, and builders.",
 };
-
-const TRACK_STYLES = {
-  orange: {
-    iconWrap: "bg-brand-amber-light text-brand-orange",
-    badge: "bg-orange-50 text-brand-orange border-orange-200/80",
-    Icon: Award,
-  },
-  cyan: {
-    iconWrap: "bg-cyan-50 text-brand-teal",
-    badge: "bg-cyan-50 text-brand-teal border-cyan-200/80",
-    Icon: Code2,
-  },
-  amber: {
-    iconWrap: "bg-amber-50 text-brand-amber-dark",
-    badge: "bg-amber-50 text-amber-800 border-amber-200/80",
-    Icon: Palette,
-  },
-} as const;
 
 export default function FounderPage() {
   return (
@@ -75,10 +47,9 @@ export default function FounderPage() {
                 />
               </div>
 
-              {/* Bio Header & Verified Metrics */}
+              {/* Founder introduction */}
               <div className="lg:col-span-7 flex flex-col">
                 <div className="inline-flex items-center gap-2 self-start rounded-full bg-white/10 border border-white/15 px-3.5 py-1.5 mb-4">
-                  <Sparkles className="w-3.5 h-3.5 text-brand-amber" />
                   <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-amber">
                     {FOUNDER_PROFILE.title}
                   </span>
@@ -88,44 +59,41 @@ export default function FounderPage() {
                   {FOUNDER_PROFILE.name}
                 </h1>
 
-                {/* Featured Highlights Row */}
-                <div className="flex flex-wrap items-center gap-2 mb-6">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-orange/20 border border-brand-orange/40 px-3 py-1 text-xs font-semibold text-amber-200">
-                    <Mic className="w-3.5 h-3.5 text-brand-amber" />
-                    Microsoft Speaker
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-cyan/15 border border-brand-cyan/35 px-3 py-1 text-xs font-semibold text-cyan-200">
-                    <Tv className="w-3.5 h-3.5 text-brand-cyan" />
-                    Sakshi TV Featured
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/15 px-3 py-1 text-xs font-semibold text-gray-200">
-                    <Users className="w-3.5 h-3.5 text-brand-amber" />
-                    GenAI Developer &amp; Software Engineer
-                  </span>
-                </div>
-
-                <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-7">
-                  {FOUNDER_PROFILE.shortSummary}
+                <p className="max-w-xl text-sm leading-relaxed text-gray-300 sm:text-base">
+                  How a gathering in Hyderabad became a place for students to share what they know and build alongside others.
                 </p>
-
-                {/* Key Verified Impact Metrics */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-                  {FOUNDER_PROFILE.metrics.map((metric) => (
-                    <div
-                      key={metric.label}
-                      className="rounded-2xl bg-white/5 border border-white/10 px-4 py-3.5"
-                    >
-                      <div className="font-display font-black text-2xl sm:text-3xl text-brand-amber leading-none mb-1">
-                        {metric.value}
-                      </div>
-                      <div className="text-[11px] font-semibold uppercase tracking-wider text-gray-300">
-                        {metric.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
+          </section>
+
+          {/* Full Story & Founder Quote */}
+          <section
+            aria-labelledby="story-heading"
+            className="relative isolate overflow-hidden rounded-3xl bg-white border border-border-subtle shadow-card p-7 sm:p-10 mb-12"
+          >
+            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-orange block mb-1">
+              The Journey
+            </span>
+            <h2
+              id="story-heading"
+              className="font-display font-black text-2xl sm:text-3xl text-charcoal-950 uppercase tracking-tight mb-5"
+            >
+              From the first gathering to the student stage
+            </h2>
+
+            <ol className="max-w-4xl space-y-7 border-l border-[#d9ba9f] pl-5 sm:pl-7">
+              {FOUNDER_PROFILE.journey.map(({ title, description }) => (
+                <li key={title} className="relative">
+                  <span aria-hidden="true" className="absolute -left-[24px] top-2 size-2 bg-brand-orange sm:-left-[32px]" />
+                  <h3 className="mb-1 font-display text-base font-bold text-charcoal-950 sm:text-lg">{title}</h3>
+                  <p className="text-sm leading-relaxed text-charcoal-700 sm:text-base">{description}</p>
+                </li>
+              ))}
+            </ol>
+
+            <blockquote className="mt-7 pt-6 border-t border-border-subtle text-base sm:text-lg font-display font-bold italic text-charcoal-950">
+              &ldquo;{FOUNDER_PROFILE.quote}&rdquo;
+            </blockquote>
           </section>
 
           {/* Complete Verified Credentials Strip */}
@@ -157,82 +125,6 @@ export default function FounderPage() {
                 </li>
               ))}
             </ul>
-          </section>
-
-          {/* Three Multidisciplinary Pillars */}
-          <section aria-labelledby="pillars-heading" className="mb-12">
-            <div className="mb-6">
-              <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-charcoal-600 block mb-1">
-                Multidisciplinary Builder
-              </span>
-              <h2
-                id="pillars-heading"
-                className="font-display font-black text-3xl sm:text-4xl text-charcoal-950 uppercase tracking-tight"
-              >
-                Tech, Community &amp; <span className="text-brand-orange">Craft.</span>
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {FOUNDER_PROFILE.tracks.map((track) => {
-                const style = TRACK_STYLES[track.accent];
-                const Icon = style.Icon;
-                return (
-                  <div
-                    key={track.category}
-                    className="rounded-3xl bg-white border border-border-subtle shadow-card p-6 sm:p-7 flex flex-col"
-                  >
-                    <div
-                      className={`w-11 h-11 rounded-2xl flex items-center justify-center mb-4 ${style.iconWrap}`}
-                    >
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <h3 className="font-display font-bold text-lg text-charcoal-950 mb-2">
-                      {track.category}
-                    </h3>
-                    <p className="text-sm text-charcoal-700 leading-relaxed mb-5">
-                      {track.summary}
-                    </p>
-                    <div className="mt-auto flex flex-wrap gap-2">
-                      {track.roles.map((role) => (
-                        <span
-                          key={role}
-                          className={`rounded-full border px-3 py-1 text-xs font-semibold ${style.badge}`}
-                        >
-                          {role}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-
-          {/* Full Story & Founder Quote */}
-          <section
-            aria-labelledby="story-heading"
-            className="rounded-3xl bg-white border border-border-subtle shadow-card p-7 sm:p-10 mb-14"
-          >
-            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-orange block mb-1">
-              The Journey
-            </span>
-            <h2
-              id="story-heading"
-              className="font-display font-black text-2xl sm:text-3xl text-charcoal-950 uppercase tracking-tight mb-5"
-            >
-              About {FOUNDER_PROFILE.name}
-            </h2>
-
-            <div className="space-y-4 text-sm sm:text-base text-charcoal-700 leading-relaxed max-w-4xl">
-              {FOUNDER_PROFILE.bioParagraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-
-            <blockquote className="mt-7 pt-6 border-t border-border-subtle text-base sm:text-lg font-display font-bold italic text-charcoal-950">
-              &ldquo;{FOUNDER_PROFILE.quote}&rdquo;
-            </blockquote>
           </section>
 
           {/* Bottom Actions */}

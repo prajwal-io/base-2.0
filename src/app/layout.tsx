@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { MotionConfig } from "framer-motion";
 import { Navbar } from "@/components/layout/Navbar";
-import { inter, displayFont, footerDisplayFont, footerSerifFont } from "./fonts";
+import { inter, displayFont, footerSerifFont } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -42,7 +42,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${inter.variable} ${displayFont.variable} ${footerDisplayFont.variable} ${footerSerifFont.variable}`}
+      className={`${inter.variable} ${displayFont.variable} ${footerSerifFont.variable}`}
     >
       <body className="paper-bg text-charcoal-900 font-sans antialiased selection:bg-brand-amber-light selection:text-amber-900">
         <MotionConfig reducedMotion="user">

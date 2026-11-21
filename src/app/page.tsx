@@ -1,7 +1,7 @@
 import { HeroSection } from "@/components/home/HeroSection";
+import { HeroCommunityStage } from "@/components/home/HeroCommunityStage";
 import { StatsBar } from "@/components/home/StatsBar";
 import { VenueStrip } from "@/components/home/VenueStrip";
-import { NextChapterBanner } from "@/components/home/NextChapterBanner";
 import EditorialLearnConnectGrow from "@/components/home/EditorialLearnConnectGrow";
 import EventArchiveFolders from "@/components/home/EventArchiveFolders";
 import { CommunityBanner } from "@/components/home/CommunityBanner";
@@ -16,10 +16,9 @@ export default function HomePage() {
   return (
     <div className="flex flex-1 flex-col bg-canvas-base selection:bg-brand-amber-light selection:text-amber-900">
       <main className="flex-grow">
-        <HeroSection />
+        <HeroSection communityStage={<HeroCommunityStage variant="floor" />} />
         <StatsBar />
         <VenueStrip />
-        <NextChapterBanner />
         <EditorialLearnConnectGrow />
         <EventArchiveFolders
           archiveHref="/events"

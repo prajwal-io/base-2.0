@@ -2,17 +2,18 @@
 
 import DoodleCrewFooter, {
   type CrewMember,
-  type DoodleKind,
+  type FooterNavLink,
   type FooterSocial,
 } from "@/components/ui/doodle-crew-footer";
-import { footerDisplayFont, footerSerifFont } from "@/app/fonts";
+import { displayFont, footerSerifFont } from "@/app/fonts";
+import { backtoBaseCrewArtwork } from "@/data/crewArtwork";
 
 const backtoBaseCrew: CrewMember[] = [
   {
     kind: "founder",
     letter: 0,
     seat: "top",
-    offset: 0.08,
+    offset: -0.14,
     scale: 1,
     name: "Founder",
     says: "Every idea starts somewhere.",
@@ -28,9 +29,9 @@ const backtoBaseCrew: CrewMember[] = [
   },
   {
     kind: "builder",
-    letter: 4,
-    seat: "front",
-    offset: -0.14,
+    letter: 8,
+    seat: "top",
+    offset: -0.08,
     scale: 0.96,
     name: "Builder",
     says: "Let's build it together.",
@@ -47,24 +48,12 @@ const backtoBaseCrew: CrewMember[] = [
   {
     kind: "community",
     letter: 9,
-    seat: "front",
+    seat: "top",
     offset: 0.58,
     scale: 1,
     name: "Community",
     says: "Find your people.",
   },
-];
-
-const backtoBaseDoodles: DoodleKind[] = [
-  "rocket",
-  "bulb",
-  "laptop",
-  "base",
-  "star",
-  "sparkle",
-  "bolt",
-  "plane",
-  "sprout",
 ];
 
 const backtoBaseSocials: FooterSocial[] = [
@@ -85,26 +74,37 @@ const backtoBaseSocials: FooterSocial[] = [
   },
 ];
 
+const backtoBaseFooterLinks: FooterNavLink[] = [
+  { label: "Home", href: "/" },
+  { label: "Events", href: "/events" },
+  { label: "Community", href: "/community" },
+  { label: "About", href: "/about" },
+  { label: "Join", href: "/join", emphasis: true },
+];
+
 export function Footer() {
   return (
     <DoodleCrewFooter
+      id="footer"
       className="backtobase-footer"
       wordmark="BACKTOBASE"
       tagline="Learn. Connect. Grow."
       crew={backtoBaseCrew}
-      doodles={backtoBaseDoodles}
-      doodleCount={9}
+      crewArtwork={backtoBaseCrewArtwork}
+      doodleCount={0}
+      crewShower
       preset="paper"
       palette={{
         background: "#FFF8F0",
         ink: "#171717",
         accent: "#F4511E",
       }}
-      fontFamily={`${footerDisplayFont.style.fontFamily}, "Arial Black", sans-serif`}
+      fontFamily={`${displayFont.style.fontFamily}, "Arial Black", sans-serif`}
       serifFamily={`${footerSerifFont.style.fontFamily}, "Iowan Old Style", Georgia, serif`}
-      tracking={-0.026}
+      tracking={-0.022}
       interactive={true}
       height="auto"
+      links={backtoBaseFooterLinks}
       socials={backtoBaseSocials}
       showCredit={true}
     />

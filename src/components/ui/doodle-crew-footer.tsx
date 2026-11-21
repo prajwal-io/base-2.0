@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { useEffect, useId, useMemo, useRef, useState, useSyncExternalStore } from "react";
 
 /* -------------------------------------------------------------------------- */
@@ -46,13 +47,27 @@ export interface FooterSocial {
   href: string;
 }
 
+export interface FooterNavLink {
+  label: string;
+  href: string;
+  emphasis?: boolean;
+}
+
 export interface DoodleCrewFooterProps {
+  id?: string;
   className?: string;
   wordmark?: string;
   tagline?: string;
   crew?: CrewMember[];
+  crewArtwork?: {
+    src: string;
+    width: number;
+    height: number;
+    crops: Record<CrewKind, { x: number; width: number }>;
+  };
   doodles?: DoodleKind[];
   doodleCount?: number;
+  crewShower?: boolean;
   preset?: FooterPreset;
   palette?: FooterPalette;
   fontFamily?: string;
@@ -60,6 +75,7 @@ export interface DoodleCrewFooterProps {
   tracking?: number;
   interactive?: boolean;
   height?: string | number;
+  links?: FooterNavLink[];
   socials?: FooterSocial[];
   showCredit?: boolean;
 }
@@ -119,6 +135,52 @@ const SCENE_MARGIN_X = 86;
 const BASE_FONT_SIZE = 204;
 const BASELINE_Y = 342;
 const CAP_RATIO = 0.72;
+
+const SHOWER_MARKS = [
+  { x: 102, y: 22, mark: "spark", delay: 200 },
+  { x: 193, y: 48, mark: "dot", delay: 450 },
+  { x: 287, y: 18, mark: "dash", delay: 0 },
+  { x: 347, y: 58, mark: "link", delay: 320 },
+  { x: 417, y: 29, mark: "dot", delay: 510 },
+  { x: 510, y: 47, mark: "spark", delay: 160 },
+  { x: 597, y: 13, mark: "dash", delay: 610 },
+  { x: 655, y: 32, mark: "link", delay: 370 },
+  { x: 790, y: 37, mark: "dot", delay: 260, front: true },
+  { x: 827, y: 21, mark: "spark", delay: 80 },
+  { x: 866, y: 61, mark: "dash", delay: 530 },
+  { x: 950, y: 51, mark: "spark", delay: 420, front: true },
+  { x: 985, y: 27, mark: "link", delay: 180 },
+  { x: 1102, y: 44, mark: "dot", delay: 660 },
+];
+
+function CrewShower({ capTop, front = false }: { capTop: number; front?: boolean }) {
+  return (
+    <g aria-hidden="true" className="dcf-shower">
+      {SHOWER_MARKS.map(({ x, y, mark, delay, front: inFront }, index) =>
+        Boolean(inFront) === front && (
+          <g key={x} transform={`translate(${x} ${y})`}>
+            <g
+              className="dcf-rain-mark"
+              data-extra={index % 2 !== 0}
+              data-static={index % 4 === 0}
+              data-mark={mark}
+              style={{
+                "--rain-drop": `${capTop - (front ? 53 : 25) - y}px`,
+                "--rain-delay": `${320 + delay}ms`,
+                "--rain-drift": `${index % 2 === 0 ? 12 : -9}px`,
+              } as React.CSSProperties}
+            >
+              {mark === "spark" && <path d="M0-7 Q0-1 6 0 Q0 1 0 7 Q0 1-6 0 Q0-1 0-7Z" />}
+              {mark === "dot" && <circle r="2.8" />}
+              {mark === "dash" && <path d="M2-5 Q0-1-2 4" />}
+              {mark === "link" && <path d="M-2 1 2-1 M-2 2a2 2 0 1 1-4 0 2 2 0 0 1 4 0 M6-2a2 2 0 1 1-4 0 2 2 0 0 1 4 0" />}
+            </g>
+          </g>
+        ),
+      )}
+    </g>
+  );
+}
 
 const PRESET_PALETTES: Record<FooterPreset, Required<FooterPalette>> = {
   paper: {
@@ -1591,6 +1653,52 @@ const DCF_CSS = `
   stroke: var(--dcf-accent);
 }
 
+.dcf-shower {
+  pointer-events: none;
+}
+
+.dcf-rain-mark {
+  opacity: 0;
+  fill: none;
+  stroke: var(--dcf-ink);
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dcf-rain-mark[data-mark="spark"] {
+  stroke: var(--dcf-accent);
+}
+
+.dcf-rain-mark[data-mark="dot"] {
+  fill: var(--dcf-accent);
+  stroke: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dcf-root[data-revealed="true"] .dcf-rain-mark {
+    animation: dcf-rain-fall 1280ms linear var(--rain-delay) both;
+  }
+}
+
+@keyframes dcf-rain-fall {
+  0% { opacity: 0; transform: translate(0, 0); }
+  20%, 62% { opacity: 0.72; }
+  100% { opacity: 0; transform: translate(var(--rain-drift), var(--rain-drop)); }
+}
+
+@media (max-width: 640px) {
+  .dcf-rain-mark[data-extra="true"] { display: none; }
+  .dcf-rain-mark { stroke-width: 2.5; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dcf-rain-mark[data-static="true"] {
+    opacity: 0.48;
+    transform: translateY(calc(var(--rain-drop) * 0.45));
+  }
+}
+
 /* Storyboard entrance */
 .dcf-letter {
   opacity: 0;
@@ -1765,14 +1873,14 @@ const DCF_CSS = `
 
 /* Tagline */
 .dcf-tagline {
-  margin: clamp(12px, 2vw, 22px) 0 0;
+  margin: clamp(8px, 1.6vw, 16px) 0 0;
   max-width: 30ch;
   text-align: center;
   font-family: var(--dcf-serif);
-  font-size: clamp(1.12rem, 2.3vw, 1.56rem);
+  font-size: clamp(1.2rem, 2.5vw, 1.68rem);
   font-weight: 600;
-  line-height: 1.35;
-  letter-spacing: -0.015em;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
   color: var(--dcf-ink);
 }
 
@@ -1811,15 +1919,77 @@ const DCF_CSS = `
   max-width: 1200px;
   margin-top: clamp(28px, 4vw, 44px);
   padding-top: 20px;
-  border-top: 1px dashed rgba(23, 23, 23, 0.16);
+  border-top: 1px solid rgba(23, 23, 23, 0.16);
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 16px;
+  gap: 18px 16px;
+}
+
+.dcf-footer-nav {
+  grid-column: 1 / -1;
+  justify-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 2vw, 24px);
+}
+
+.dcf-footer-nav a {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  padding: 0 4px;
+  color: rgba(23, 23, 23, 0.74);
+  font-family: var(--dcf-font);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.055em;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-transform: uppercase;
+  transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+
+.dcf-footer-nav .dcf-footer-nav-emphasis {
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: #C2410C;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.dcf-footer-nav a:not(.dcf-footer-nav-emphasis):hover {
+  color: #C2410C;
+  text-decoration-color: currentColor;
+}
+
+.dcf-footer-nav .dcf-footer-nav-emphasis:hover {
+  background: #9A3412;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.dcf-footer-nav a:not(.dcf-footer-nav-emphasis):focus-visible {
+  color: var(--dcf-accent);
+  outline: 2px solid var(--dcf-accent);
+  outline-offset: 4px;
+}
+
+.dcf-footer-nav .dcf-footer-nav-emphasis:focus-visible {
+  background: #9A3412;
+  color: #fff;
+  outline: 2px solid var(--dcf-ink);
+  outline-offset: 4px;
 }
 
 .dcf-credit {
-  grid-column: 2;
+  grid-column: 1;
+  justify-self: start;
   margin: 0;
   display: inline-flex;
   align-items: center;
@@ -1839,7 +2009,7 @@ const DCF_CSS = `
 }
 
 .dcf-socials {
-  grid-column: 3;
+  grid-column: 2;
   justify-self: end;
   display: inline-flex;
   align-items: center;
@@ -1881,7 +2051,8 @@ const DCF_CSS = `
   }
 
   .dcf-credit,
-  .dcf-socials {
+  .dcf-socials,
+  .dcf-footer-nav {
     grid-column: 1;
     justify-self: center;
   }
@@ -1943,12 +2114,15 @@ function SocialIcon({ kind }: { kind: SocialKind }) {
 /* -------------------------------------------------------------------------- */
 
 export default function DoodleCrewFooter({
+  id,
   className,
   wordmark = "BACKTOBASE",
   tagline = "Learn. Connect. Grow.",
   crew = DEFAULT_CREW,
+  crewArtwork,
   doodles = DEFAULT_DOODLES,
   doodleCount = 8,
+  crewShower = false,
   preset = "paper",
   palette,
   fontFamily = '"Bricolage Grotesque", "Inter Tight", sans-serif',
@@ -1956,6 +2130,7 @@ export default function DoodleCrewFooter({
   tracking = -0.026,
   interactive = true,
   height = "auto",
+  links = [],
   socials = [],
   showCredit = false,
 }: DoodleCrewFooterProps) {
@@ -2074,7 +2249,7 @@ export default function DoodleCrewFooter({
 
   // Periodic natural eye blinking staggered across crew
   useEffect(() => {
-    if (!inView || reducedMotion || crew.length === 0) return;
+    if (!inView || reducedMotion || crewArtwork || crew.length === 0) return;
     let cursor = 0;
     let resetTimer: ReturnType<typeof setTimeout> | null = null;
     const intervalId = setInterval(() => {
@@ -2088,7 +2263,7 @@ export default function DoodleCrewFooter({
       clearInterval(intervalId);
       if (resetTimer) clearTimeout(resetTimer);
     };
-  }, [inView, reducedMotion, crew.length]);
+  }, [inView, reducedMotion, crewArtwork, crew.length]);
 
   // Floating doodles physics loop (paused off-screen or under reduced motion)
   useEffect(() => {
@@ -2179,7 +2354,7 @@ export default function DoodleCrewFooter({
       y: ((e.clientY - rect.top) / rect.height) * SCENE_HEIGHT,
     };
     pointerRef.current = pt;
-    setPointerSvg(pt);
+    if (!crewArtwork) setPointerSvg(pt);
   };
 
   const handlePointerLeave = () => {
@@ -2231,15 +2406,20 @@ export default function DoodleCrewFooter({
     const eyeOriginX = member.anchor.x;
     const eyeOriginY = member.anchor.y - eyeHeight * member.scale;
     const rawEye =
-      interactive && !reducedMotion && pointerSvg
+      !crewArtwork && interactive && !reducedMotion && pointerSvg
         ? lookAt(eyeOriginX, eyeOriginY, pointerSvg.x, pointerSvg.y, 1.9)
         : { dx: 0, dy: 0 };
     const eyeOffset = member.flip ? { dx: -rawEye.dx, dy: rawEye.dy } : rawEye;
     const isBlinking = blinkingIndex === member.index;
     const isHopping = Boolean(hoppingCrew[member.index]);
     const flipX = member.flip ? -1 : 1;
-    const hitTop = member.kind === "community" ? -136 : -108;
-    const hitHeight = member.kind === "community" ? 142 : 132;
+    const hitTop = crewArtwork ? -168 : member.kind === "community" ? -136 : -108;
+    const hitHeight = crewArtwork ? 172 : member.kind === "community" ? 142 : 132;
+    const crop = crewArtwork?.crops[member.kind];
+    const artworkHeight = 158;
+    const artworkWidth = crop && crewArtwork
+      ? (crop.width / crewArtwork.height) * artworkHeight
+      : 0;
 
     return (
       <g
@@ -2270,11 +2450,11 @@ export default function DoodleCrewFooter({
               }
             }}
           >
-            <rect x="-38" y={hitTop} width="76" height={hitHeight} fill="transparent" />
+            <rect x={crewArtwork ? "-56" : "-38"} y={hitTop} width={crewArtwork ? "112" : "76"} height={hitHeight} fill="transparent" />
             <circle
               cx="0"
               cy={member.kind === "community" ? -64 : -48}
-              r="44"
+              r={crewArtwork ? "54" : "44"}
               className="dcf-focus-ring"
             />
             <g className="dcf-crew-hop">
@@ -2282,11 +2462,30 @@ export default function DoodleCrewFooter({
                 transform={`scale(${(flipX * member.scale).toFixed(3)}, ${member.scale.toFixed(3)})`}
                 filter={reducedMotion ? undefined : `url(#${boilFilterId})`}
               >
-                <CrewCharacterSvg
-                  kind={member.kind}
-                  eyeOffset={eyeOffset}
-                  blinking={isBlinking}
-                />
+                {crewArtwork && crop ? (
+                  <svg
+                    x={-artworkWidth / 2}
+                    y={-artworkHeight}
+                    width={artworkWidth}
+                    height={artworkHeight}
+                    viewBox={`${crop.x} 0 ${crop.width} ${crewArtwork.height}`}
+                    overflow="hidden"
+                    aria-hidden="true"
+                  >
+                    <image
+                      href={crewArtwork.src}
+                      width={crewArtwork.width}
+                      height={crewArtwork.height}
+                      preserveAspectRatio="none"
+                    />
+                  </svg>
+                ) : (
+                  <CrewCharacterSvg
+                    kind={member.kind}
+                    eyeOffset={eyeOffset}
+                    blinking={isBlinking}
+                  />
+                )}
               </g>
             </g>
           </g>
@@ -2297,6 +2496,7 @@ export default function DoodleCrewFooter({
 
   return (
     <footer
+      id={id}
       ref={rootRef}
       className={className ? `dcf-root ${className}` : "dcf-root"}
       data-revealed={isRevealed ? "true" : "false"}
@@ -2381,6 +2581,7 @@ export default function DoodleCrewFooter({
             </g>
 
             {/* Layer 2: Behind Crew */}
+            {crewShower && <CrewShower capTop={wordLayout.capTopY} />}
             <g>{behindCrew.map(renderCrewNode)}</g>
 
             {/* Layer 3a: Editorial Offset Print Depth Shadow behind BACKTOBASE */}
@@ -2475,6 +2676,7 @@ export default function DoodleCrewFooter({
 
             {/* Layer 5: Human Crew Seated on Top & Ground */}
             <g>{foregroundCrew.map(renderCrewNode)}</g>
+            {crewShower && <CrewShower capTop={wordLayout.capTopY} front />}
           </svg>
 
           {/* Accessible viewport-clamped Speech Bubble Overlay */}
@@ -2527,6 +2729,20 @@ export default function DoodleCrewFooter({
         {/* Footer Ending Bar: Centered Credit + Right Social Links */}
         {(showCredit || socials.length > 0) && (
           <div className="dcf-bottom">
+            {links.length > 0 && (
+              <nav className="dcf-footer-nav" aria-label="Footer navigation">
+                {links.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={item.emphasis ? "dcf-footer-nav-emphasis" : undefined}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+            )}
+
             {showCredit && (
               <p className="dcf-credit">
                 <span>Made with</span>

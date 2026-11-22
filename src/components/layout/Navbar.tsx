@@ -93,7 +93,7 @@ export function Navbar() {
       ref={headerRef}
       className="sticky top-0 z-50 w-full pt-3 pb-2 px-4 sm:px-6 lg:px-8 pointer-events-none"
     >
-      <div className="relative max-w-7xl mx-auto flex min-h-[54px] items-center justify-between pointer-events-auto">
+      <div className="relative mx-auto grid min-h-[54px] max-w-7xl grid-cols-[auto_minmax(0,1fr)] items-center pointer-events-auto md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
         {/* Mobile-only logo pill (on desktop the logo lives inside the nav pill) */}
         <Link
           href="/"
@@ -106,7 +106,7 @@ export function Navbar() {
             width={977}
             height={178}
             unoptimized
-            className="block h-auto w-[138px] sm:w-[154px]"
+            className="block h-auto w-[126px] sm:w-[154px]"
             priority
           />
         </Link>
@@ -131,12 +131,12 @@ export function Navbar() {
               />
             </Link>
           }
-          className="!hidden md:!inline-flex md:!absolute md:left-1/2 md:top-1/2 md:!-translate-x-1/2 md:!-translate-y-1/2"
+          className="!hidden md:!inline-flex md:col-start-2 md:row-start-1 md:justify-self-center"
         />
 
         {/* Right CTA Button */}
-        <div className="ml-auto flex items-center gap-2 sm:gap-3">
-          <FlowButton text="Partner with us" compactText="Partner" className="!px-2.5 sm:!px-3 xl:!px-5 !text-xs py-2.5" />
+        <div className="col-start-2 flex items-center gap-2 justify-self-end sm:gap-3 md:col-start-3 md:row-start-1">
+          <FlowButton text="Partner with us" compactText="Partner" className="!pl-3 !pr-7 sm:!px-3 xl:!px-5 !text-xs py-2.5" />
 
           {/* Mobile Menu Toggle Button */}
           <button

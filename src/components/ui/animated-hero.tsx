@@ -34,7 +34,7 @@ export function AnimatedHero({ editionCount }: { editionCount: number }) {
         A Student-Driven Community
       </motion.p>
 
-      <h1 className="mb-6 font-display text-4xl font-extrabold uppercase leading-[0.94] tracking-tight text-charcoal-950 sm:text-5xl xl:text-6xl">
+      <h1 className="mb-6 font-display text-[clamp(1.9rem,8.8vw,2.25rem)] font-extrabold uppercase leading-[0.94] tracking-tight text-charcoal-950 sm:text-5xl xl:text-6xl">
         <span className="block overflow-hidden py-[0.02em]">Find your people.</span>
         <span className="block overflow-hidden py-[0.02em]">
           <span className="sr-only">{ACTIONS[actionNumber]} together.</span>
@@ -48,7 +48,7 @@ export function AnimatedHero({ editionCount }: { editionCount: number }) {
                   animate={
                     actionNumber === index
                       ? { y: 0, opacity: 1 }
-                      : { y: actionNumber > index ? -42 : 42, opacity: 0 }
+                      : { y: actionNumber > index ? "-110%" : "110%", opacity: 0 }
                   }
                   transition={{ type: "spring", stiffness: 50, damping: 16 }}
                 >

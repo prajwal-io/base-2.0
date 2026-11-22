@@ -17,10 +17,11 @@ function NumberTicker({
   const ref = useRef<HTMLSpanElement | null>(null);
   const inView = useInView(ref, { once: true, amount: 0.4 });
   const reduceMotion = useReducedMotion();
-  const [value, setValue] = useState(target);
+  const [value, setValue] = useState(0);
 
   useEffect(() => {
     if (!inView || reduceMotion) return;
+
     let rafId = 0;
     const duration = 900;
     const start = performance.now();
@@ -39,7 +40,8 @@ function NumberTicker({
     return () => cancelAnimationFrame(rafId);
   }, [inView, reduceMotion, target]);
 
-  const formatted = padTwo ? String(value).padStart(2, "0") : String(value);
+  const displayValue = reduceMotion ? target : value;
+  const formatted = padTwo ? String(displayValue).padStart(2, "0") : String(displayValue);
 
   return (
     <span

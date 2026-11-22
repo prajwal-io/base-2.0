@@ -1,9 +1,43 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Calendar, MapPin, Mic, RotateCcw, Users } from "lucide-react";
 import { normalizeVenue, type Edition } from "@/data/communityData";
+import { getEditionPhoto } from "@/data/editionPhotos";
+
+function EditionPhoto({ editionNumber }: { editionNumber: string }) {
+  const photo = getEditionPhoto(editionNumber);
+  if (!photo) return null;
+
+  return (
+    <figure className="rounded-2xl border border-border-subtle bg-canvas-subtle p-3 sm:p-4">
+      <figcaption className="mb-3 px-1 text-xs font-bold uppercase tracking-wider text-charcoal-800">
+        Edition {editionNumber} photo
+      </figcaption>
+      <a
+        href={photo.src}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Open original photo for Edition ${editionNumber} in a new tab`}
+        className="block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
+      >
+        <Image
+          src={photo.src}
+          alt={photo.alt}
+          width={photo.width}
+          height={photo.height}
+          unoptimized
+          className="mx-auto h-auto max-w-full"
+        />
+        <span className="mt-3 flex items-center gap-1 px-1 text-xs font-semibold text-charcoal-800">
+          View original photo <ArrowUpRight className="size-4" aria-hidden="true" />
+        </span>
+      </a>
+    </figure>
+  );
+}
 
 type ThemeFilter = "All" | "AI & GenAI" | "Careers & HR" | "Founders & Startups" | "Community & Creators";
 
@@ -301,7 +335,7 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
                   </div>
                 </div>
 
-                {/* Right Column: Key Highlights */}
+                {/* Right Column: Key Highlights and event photo */}
                 <div className="lg:col-span-5 flex flex-col gap-4">
                   {edition.highlights && (
                     <div className="p-5 rounded-2xl bg-canvas-subtle border border-border-subtle">
@@ -318,6 +352,7 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
                       </ul>
                     </div>
                   )}
+                  <EditionPhoto editionNumber={edition.editionNumber} />
                 </div>
               </div>
             </motion.article>

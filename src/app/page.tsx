@@ -10,6 +10,7 @@ import { FaqSection } from "@/components/home/FaqSection";
 import { FinalCta } from "@/components/home/FinalCta";
 import { Footer } from "@/components/layout/Footer";
 import { EDITIONS, EDITION_COUNT, VENUE_COUNT } from "@/data/communityData";
+import { getEditionPhoto } from "@/data/editionPhotos";
 
 export default function HomePage() {
   return (
@@ -29,6 +30,7 @@ export default function HomePage() {
             venue: edition.venue,
             speakerCount: edition.speakers.length,
             href: `/events#edition-${edition.editionNumber}`,
+            image: getEditionPhoto(edition.editionNumber)?.src,
           }))}
         />
         <CommunityBanner />

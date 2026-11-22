@@ -16,6 +16,8 @@ type Scene = keyof typeof artwork.crops;
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const FLOAT_EASE = [0.77, 0, 0.175, 1] as const;
+// The hero shows the characters at a larger size than the shared footer treatment.
+const HERO_CREW_SRC = "/images/footer-community-crew-v3.png";
 
 function CrewScene({ scene, brandedLaptop = false }: { scene: Scene; brandedLaptop?: boolean }) {
   const crop = artwork.crops[scene];
@@ -28,7 +30,7 @@ function CrewScene({ scene, brandedLaptop = false }: { scene: Scene; brandedLapt
       viewBox={`${crop.x} 0 ${crop.width} ${artwork.height}`}
       overflow="hidden"
     >
-      <image href={artwork.src} width={artwork.width} height={artwork.height} preserveAspectRatio="none" />
+      <image href={HERO_CREW_SRC} width={artwork.width} height={artwork.height} preserveAspectRatio="none" />
       {brandedLaptop && (
         <g transform="matrix(1 -.08 -.24 1 1133 363)">
           <rect width="75" height="53" rx="7" fill="#f8efe2" stroke="#e2cdb4" strokeWidth="2" />
@@ -121,24 +123,24 @@ export function HeroCommunityStage({ variant }: { variant: CommunityStage }) {
 
 function TakeTheFloor({ reduced }: { reduced: boolean }) {
   return (
-    <figure className="relative mx-auto mt-8 w-full max-w-5xl px-3 sm:px-4">
-      <div aria-hidden="true" className="relative isolate px-2 pt-6 sm:px-10">
+    <figure className="relative mx-auto mt-5 w-full max-w-4xl px-3 sm:mt-6 sm:px-8">
+      <div aria-hidden="true" className="relative isolate px-1 sm:px-4">
         <motion.div
-          className="absolute inset-x-[18%] inset-y-0 -z-10 origin-bottom bg-[radial-gradient(ellipse_at_bottom,#f0bb79_0%,#f6dfbb_37%,transparent_73%)]"
+          className="absolute inset-x-[12%] inset-y-0 -z-10 origin-bottom bg-[radial-gradient(ellipse_at_bottom,#efbf86_0%,#f6e2c5_32%,transparent_71%)]"
           initial={reduced ? false : { opacity: 0, scaleX: 0.38 }}
           animate={{ opacity: 0.9, scaleX: 1 }}
           transition={{ duration: reduced ? 0 : 0.9, delay: reduced ? 0 : 0.52, ease: EASE }}
         />
 
-        <div className="relative grid grid-cols-[1fr_1.5fr_1fr] items-end border-b border-[#956040]/35">
+        <div className="relative grid grid-cols-[1fr_1.16fr_0.9fr] items-end border-b border-[#956040]/30">
           <motion.div
-            className="relative flex h-24 justify-center sm:h-40 lg:h-44"
-            initial={reduced ? false : { opacity: 0, y: 14 }}
-            animate={{ opacity: 0.94, y: 0 }}
+            className="relative flex h-[clamp(7.5rem,29vw,10rem)] min-w-0 justify-center sm:h-52 lg:h-64"
+            initial={reduced ? false : { opacity: 0.45, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: reduced ? 0 : 0.64, delay: reduced ? 0 : 0.28, ease: EASE }}
           >
             <motion.div
-              className="h-full"
+              className="h-full min-w-0"
               animate={reduced ? undefined : { transform: ["translateY(0px) rotate(0deg)", "translateY(-2px) rotate(0.25deg)", "translateY(0px) rotate(0deg)"] }}
               transition={reduced ? undefined : { duration: 5.8, delay: 0.4, repeat: Infinity, ease: FLOAT_EASE }}
             >
@@ -146,7 +148,7 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
             </motion.div>
           </motion.div>
 
-          <div className="relative flex h-40 justify-center sm:h-60 lg:h-72">
+          <div className="relative flex h-[clamp(11.5rem,46vw,15rem)] min-w-0 justify-center sm:h-[18rem] lg:h-[22rem]">
             <motion.div
               className="absolute bottom-0 left-1/2 h-3 w-5/6 -translate-x-1/2 rounded-[50%] bg-[#b46528]/20"
               initial={reduced ? false : { opacity: 0 }}
@@ -160,7 +162,7 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
               transition={{ duration: reduced ? 0 : 0.68, delay: reduced ? 0 : 0.46, ease: EASE }}
             >
               <motion.div
-                className="h-full"
+                className="h-full min-w-0"
                 animate={reduced ? undefined : { transform: ["translateY(0px) rotate(0deg)", "translateY(-3px) rotate(-0.2deg)", "translateY(0px) rotate(0deg)"] }}
                 transition={reduced ? undefined : { duration: 6.2, delay: 0.8, repeat: Infinity, ease: FLOAT_EASE }}
               >
@@ -170,8 +172,8 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
           </div>
 
           <motion.div
-            className="flex h-28 justify-center sm:h-44 lg:h-48"
-            initial={reduced ? false : { opacity: 0, y: 14 }}
+            className="flex h-[clamp(8.5rem,33vw,11rem)] min-w-0 justify-center sm:h-56 lg:h-[17rem]"
+            initial={reduced ? false : { opacity: 0.45, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: reduced ? 0 : 0.62, delay: reduced ? 0 : 0.64, ease: EASE }}
           >

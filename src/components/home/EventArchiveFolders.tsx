@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Calendar, MapPin, Users } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Calendar, Users } from "lucide-react";
 
 export type ArchiveEvent = {
   edition: string;
@@ -41,7 +41,6 @@ const DECK_VARIANTS = {
 
 const EAF_STYLES = `
 .eaf-section {
-  --eaf-paper: #f6ecd9;
   --eaf-orange: #ef4b13;
   position: relative;
   overflow: hidden;
@@ -50,6 +49,7 @@ const EAF_STYLES = `
   background-size: 16px 16px;
   color: #f8f4eb;
   padding: clamp(68px, 8vw, 112px) clamp(20px, 4vw, 32px);
+  scroll-margin-top: 76px;
 }
 
 .eaf-inner {
@@ -213,178 +213,122 @@ const EAF_STYLES = `
 .eaf-stage {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  perspective: 1100px;
+  gap: 16px;
+  align-items: stretch;
 }
 
 .eaf-folder {
-  position: relative;
-  display: block;
-  height: 332px;
-  color: #171716;
-  text-decoration: none;
-  transform-style: preserve-3d;
-  filter: drop-shadow(0 18px 18px rgba(0, 0, 0, 0.34));
-  transition: filter 240ms ease;
-}
-
-.eaf-folder:hover {
-  filter: drop-shadow(0 28px 24px rgba(0, 0, 0, 0.48));
-}
-
-.eaf-folder-back {
-  position: absolute;
-  top: 0;
-  left: 6%;
-  right: 6%;
-  height: 54%;
-  overflow: hidden;
-  border: 3px solid var(--eaf-paper);
-  border-radius: 18px 18px 8px 8px;
-  background: #3d3932;
-  transition: transform 340ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.eaf-folder:hover .eaf-folder-back {
-  transform: translateY(-14px) scale(1.03);
-}
-
-.eaf-folder-art {
-  position: relative;
+  --folder-paper: #f6ecd9;
+  --folder-ink: #242722;
+  --folder-edge: #d5c5a8;
   display: flex;
+  min-width: 0;
   flex-direction: column;
-  justify-content: flex-start;
-  padding: 14px 16px;
-  width: 100%;
-  height: 100%;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--folder-ink);
+  text-decoration: none;
 }
 
-.eaf-art-0 {
-  background: radial-gradient(ellipse at 50% 90%, rgba(255, 255, 255, 0.25), transparent 45%),
-    linear-gradient(140deg, #df6820, #2b2932 62%, #194d69);
-}
-
-.eaf-art-1 {
-  background: radial-gradient(ellipse at 30% 85%, rgba(255, 255, 255, 0.24), transparent 42%),
-    linear-gradient(145deg, #0d8ea8, #2b2530 60%, #d96b24);
-}
-
-.eaf-art-2 {
-  background: radial-gradient(ellipse at 70% 85%, rgba(255, 255, 255, 0.24), transparent 40%),
-    linear-gradient(145deg, #c9813a, #282328 60%, #243b4d);
-}
-
-.eaf-back-meta {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-family: var(--font-sans), system-ui, sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: rgba(17, 18, 21, 0.45);
-  backdrop-filter: blur(4px);
-  padding: 5px 9px;
-  border-radius: 999px;
+.eaf-folder-tab {
   align-self: flex-start;
   max-width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.eaf-folder-front {
-  position: absolute;
-  inset: 28% 0 0;
-  padding: 32px 20px 18px;
-  border: 1px solid rgba(255, 255, 255, 0.78);
-  border-radius: 18px 18px 12px 12px;
-  background: linear-gradient(165deg, #fff9ec, #e9d8ba 96%);
-  box-shadow: inset 0 2px 0 #ffffff;
-  clip-path: polygon(0 8%, 27% 8%, 34% 0, 60% 0, 67% 8%, 100% 8%, 100% 100%, 0 100%);
-  display: flex;
-  flex-direction: column;
-  transform-origin: bottom center;
-  transition: transform 340ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.eaf-folder:hover .eaf-folder-front {
-  transform: rotateX(-9deg);
-}
-
-.eaf-edition-pill {
-  display: inline-block;
-  align-self: flex-start;
-  padding: 5px 10px;
-  border-radius: 999px;
-  background: var(--eaf-orange);
-  color: #ffffff;
-  font-family: var(--font-sans), system-ui, sans-serif;
+  padding: 8px 24px 7px 13px;
+  border-radius: 6px 12px 0 0;
+  background: var(--folder-paper);
+  color: #79441f;
   font-size: 10px;
   font-weight: 800;
-  line-height: 1;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.eaf-folder-sheet {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 0 8px 8px 8px;
+  background: var(--folder-paper);
+}
+
+.eaf-folder-photo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  max-height: 260px;
+  border: 1px solid var(--folder-edge);
+  background: #e9dcc4;
+  color: #5b4332;
+  font-size: 12px;
+}
+
+.eaf-folder-photo-fallback {
+  padding: 12px;
+  text-align: center;
+}
+
+.eaf-folder-photo img {
+  object-fit: contain;
+}
+
+.eaf-folder-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 12px 4px 3px;
 }
 
 .eaf-folder-title {
-  margin: 12px 0 8px;
+  margin: 0 0 12px;
   font-family: var(--font-display), "Inter Tight", system-ui, sans-serif;
-  font-size: clamp(18px, 1.75vw, 22px);
-  font-weight: 900;
-  line-height: 1.02;
+  font-size: clamp(17px, 1.55vw, 21px);
+  font-weight: 800;
+  line-height: 1.1;
   letter-spacing: -0.025em;
-  text-transform: uppercase;
-  color: #171716;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  overflow-wrap: anywhere;
 }
 
 .eaf-folder-foot {
-  margin-top: auto;
-  padding-top: 10px;
-  padding-right: 44px;
-  border-top: 1px solid rgba(23, 23, 22, 0.12);
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-family: var(--font-sans), system-ui, sans-serif;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  margin-top: auto;
+  padding-top: 9px;
+  border-top: 1px solid var(--folder-edge);
+  color: #5b4332;
   font-size: 11px;
   font-weight: 600;
-  color: rgba(23, 23, 22, 0.72);
+}
+
+.eaf-folder-meta {
+  display: grid;
+  gap: 4px;
 }
 
 .eaf-folder-foot-row {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 5px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .eaf-folder-open {
-  position: absolute;
-  right: 16px;
-  bottom: 16px;
   display: grid;
+  flex: none;
+  width: 28px;
+  height: 28px;
   place-items: center;
-  width: 36px;
-  height: 36px;
+  border: 1px solid var(--folder-edge);
   border-radius: 50%;
-  background: #171716;
-  color: #ffffff;
-  font-size: 16px;
-  transition: background-color 200ms ease, transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--folder-ink);
+  transition: background-color 160ms ease, color 160ms ease;
 }
 
-.eaf-folder:hover .eaf-folder-open {
-  background: var(--eaf-orange);
-  transform: rotate(45deg);
+.eaf-folder:hover .eaf-folder-open,
+.eaf-folder:focus-visible .eaf-folder-open {
+  background: var(--folder-ink);
+  color: var(--folder-paper);
 }
 
 @media (max-width: 980px) {
@@ -418,25 +362,14 @@ const EAF_STYLES = `
   .eaf-stage {
     grid-template-columns: 1fr;
     gap: 16px;
-    perspective: none;
   }
 
-  .eaf-folder {
-    height: 290px;
-  }
-
-  .eaf-folder:hover .eaf-folder-front {
-    transform: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .eaf-all-link,
   .eaf-nav-btn,
   .eaf-dot,
-  .eaf-folder,
-  .eaf-folder-back,
-  .eaf-folder-front,
   .eaf-folder-open {
     transition: none;
   }
@@ -462,7 +395,7 @@ export default function EventArchiveFolders({ events, archiveHref }: EventArchiv
     });
 
   return (
-    <section className="eaf-section" aria-labelledby="archive-title">
+    <section id="event-archive" className="eaf-section" aria-labelledby="archive-title">
       <style>{EAF_STYLES}</style>
 
       <div className="eaf-inner">
@@ -529,7 +462,7 @@ export default function EventArchiveFolders({ events, archiveHref }: EventArchiv
           )}
         </div>
 
-        {/* Right Column: Interactive 3D Folder Deck */}
+        {/* Right Column: Event folders */}
         <div className="eaf-stage-wrap" aria-label="Featured event editions">
           <AnimatePresence mode="wait" initial={false} custom={direction}>
             <motion.div
@@ -541,57 +474,47 @@ export default function EventArchiveFolders({ events, archiveHref }: EventArchiv
               animate={reduceMotion ? undefined : "visible"}
               exit={reduceMotion ? undefined : "exit"}
             >
-              {visibleEvents.map((event, index) => (
-                <div key={`${event.edition}-${event.title}`}>
-                  <Link href={event.href} className="eaf-folder">
-                    <div className="eaf-folder-back">
+              {visibleEvents.map((event) => (
+                <Link key={event.href} href={event.href} className="eaf-folder">
+                  <span className="eaf-folder-tab">{event.edition}</span>
+                  <div className="eaf-folder-sheet">
+                    <div className="eaf-folder-photo">
                       {event.image ? (
-                        <Image
-                          src={event.image}
-                          alt=""
-                          fill
-                          sizes="(max-width: 680px) 92vw, 28vw"
-                          className="object-cover"
-                        />
+                        <Image src={event.image} alt="" fill unoptimized />
                       ) : (
-                        <div className={`eaf-folder-art eaf-art-${(safePage * PAGE_SIZE + index) % 3}`}>
-                          {event.venue && (
-                            <span className="eaf-back-meta">
-                              <MapPin className="w-3 h-3 shrink-0" aria-hidden="true" />
-                              <span>{event.venue}</span>
-                            </span>
-                          )}
-                        </div>
+                        <span className="eaf-folder-photo-fallback">
+                          {event.venue ?? "Photo unavailable"}
+                        </span>
                       )}
                     </div>
 
-                    <div className="eaf-folder-front">
-                      <span className="eaf-edition-pill">{event.edition}</span>
+                    <div className="eaf-folder-info">
                       <h3 className="eaf-folder-title">{event.title}</h3>
 
                       <div className="eaf-folder-foot">
-                        {event.date && (
-                          <span className="eaf-folder-foot-row">
-                            <Calendar className="w-3 h-3 shrink-0" aria-hidden="true" />
-                            <span>{event.date}</span>
-                          </span>
-                        )}
-                        {typeof event.speakerCount === "number" && (
-                          <span className="eaf-folder-foot-row">
-                            <Users className="w-3 h-3 shrink-0" aria-hidden="true" />
-                            <span>
-                              {event.speakerCount} {event.speakerCount === 1 ? "Speaker" : "Speakers"}
+                        <div className="eaf-folder-meta">
+                          {event.date && (
+                            <span className="eaf-folder-foot-row">
+                              <Calendar className="size-3 shrink-0" aria-hidden="true" />
+                              <span>{event.date}</span>
                             </span>
-                          </span>
-                        )}
+                          )}
+                          {typeof event.speakerCount === "number" && (
+                            <span className="eaf-folder-foot-row">
+                              <Users className="size-3 shrink-0" aria-hidden="true" />
+                              <span>
+                                {event.speakerCount} {event.speakerCount === 1 ? "Speaker" : "Speakers"}
+                              </span>
+                            </span>
+                          )}
+                        </div>
+                        <span className="eaf-folder-open" aria-hidden="true">
+                          <ArrowUpRight className="size-3.5" />
+                        </span>
                       </div>
-
-                      <span className="eaf-folder-open" aria-hidden="true">
-                        ↗
-                      </span>
                     </div>
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               ))}
             </motion.div>
           </AnimatePresence>

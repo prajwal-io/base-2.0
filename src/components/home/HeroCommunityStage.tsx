@@ -15,6 +15,7 @@ export type CommunityStage = (typeof COMMUNITY_STAGES)[number]["id"];
 type Scene = keyof typeof artwork.crops;
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+const FLOAT_EASE = [0.77, 0, 0.175, 1] as const;
 
 function CrewScene({ scene, brandedLaptop = false }: { scene: Scene; brandedLaptop?: boolean }) {
   const crop = artwork.crops[scene];
@@ -120,7 +121,7 @@ export function HeroCommunityStage({ variant }: { variant: CommunityStage }) {
 
 function TakeTheFloor({ reduced }: { reduced: boolean }) {
   return (
-    <figure className="relative mx-auto mt-8 w-full max-w-4xl px-4">
+    <figure className="relative mx-auto mt-8 w-full max-w-5xl px-3 sm:px-4">
       <div aria-hidden="true" className="relative isolate px-2 pt-6 sm:px-10">
         <motion.div
           className="absolute inset-x-[18%] inset-y-0 -z-10 origin-bottom bg-[radial-gradient(ellipse_at_bottom,#f0bb79_0%,#f6dfbb_37%,transparent_73%)]"
@@ -131,15 +132,21 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
 
         <div className="relative grid grid-cols-[1fr_1.5fr_1fr] items-end border-b border-[#956040]/35">
           <motion.div
-            className="relative flex h-20 justify-center sm:h-36 lg:h-40"
-            initial={reduced ? false : { opacity: 1 }}
-            animate={{ opacity: 0.72 }}
-            transition={{ duration: reduced ? 0 : 0.55, delay: reduced ? 0 : 0.52, ease: EASE }}
+            className="relative flex h-24 justify-center sm:h-40 lg:h-44"
+            initial={reduced ? false : { opacity: 0, y: 14 }}
+            animate={{ opacity: 0.94, y: 0 }}
+            transition={{ duration: reduced ? 0 : 0.64, delay: reduced ? 0 : 0.28, ease: EASE }}
           >
-            <CrewScene scene="founder" />
+            <motion.div
+              className="h-full"
+              animate={reduced ? undefined : { transform: ["translateY(0px) rotate(0deg)", "translateY(-2px) rotate(0.25deg)", "translateY(0px) rotate(0deg)"] }}
+              transition={reduced ? undefined : { duration: 5.8, delay: 0.4, repeat: Infinity, ease: FLOAT_EASE }}
+            >
+              <CrewScene scene="founder" />
+            </motion.div>
           </motion.div>
 
-          <div className="relative flex h-36 justify-center sm:h-52 lg:h-60">
+          <div className="relative flex h-40 justify-center sm:h-60 lg:h-72">
             <motion.div
               className="absolute bottom-0 left-1/2 h-3 w-5/6 -translate-x-1/2 rounded-[50%] bg-[#b46528]/20"
               initial={reduced ? false : { opacity: 0 }}
@@ -148,31 +155,46 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
             />
             <motion.div
               className="relative h-full min-w-0"
-              initial={reduced ? false : { opacity: 0.42 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: reduced ? 0 : 0.65, delay: reduced ? 0 : 0.57, ease: EASE }}
+              initial={reduced ? false : { opacity: 0.45, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: reduced ? 0 : 0.68, delay: reduced ? 0 : 0.46, ease: EASE }}
             >
-              <CrewScene scene="builder" brandedLaptop />
+              <motion.div
+                className="h-full"
+                animate={reduced ? undefined : { transform: ["translateY(0px) rotate(0deg)", "translateY(-3px) rotate(-0.2deg)", "translateY(0px) rotate(0deg)"] }}
+                transition={reduced ? undefined : { duration: 6.2, delay: 0.8, repeat: Infinity, ease: FLOAT_EASE }}
+              >
+                <CrewScene scene="builder" brandedLaptop />
+              </motion.div>
             </motion.div>
           </div>
 
-          <div className="flex h-24 justify-center sm:h-40 lg:h-44">
-            <div className="relative h-full min-w-0">
+          <motion.div
+            className="flex h-28 justify-center sm:h-44 lg:h-48"
+            initial={reduced ? false : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: reduced ? 0 : 0.62, delay: reduced ? 0 : 0.64, ease: EASE }}
+          >
+            <motion.div
+              className="relative h-full min-w-0"
+              animate={reduced ? undefined : { transform: ["translateY(0px) rotate(0deg)", "translateY(-2.5px) rotate(0.25deg)", "translateY(0px) rotate(0deg)"] }}
+              transition={reduced ? undefined : { duration: 5.4, delay: 1.1, repeat: Infinity, ease: FLOAT_EASE }}
+            >
               <CrewScene scene="creator" />
               <motion.span
-                className="absolute right-[12%] top-[13%] size-3 bg-[#fff5da] shadow-[0_0_7px_2px_rgba(245,184,84,0.7)] [clip-path:polygon(50%_0,62%_37%,100%_50%,62%_63%,50%_100%,38%_63%,0_50%,38%_37%)]"
+                className="absolute right-[12%] top-[13%] size-3 bg-[#fff5da] shadow-[0_0_6px_1px_rgba(245,184,84,0.56)] [clip-path:polygon(50%_0,62%_37%,100%_50%,62%_63%,50%_100%,38%_63%,0_50%,38%_37%)]"
                 initial={reduced ? false : { opacity: 0.45, scale: 0.82 }}
                 animate={reduced ? { opacity: 1, scale: 1 } : { opacity: [0.42, 0.95, 0.42], scale: [0.82, 1.08, 0.82] }}
-                transition={reduced ? { duration: 0 } : { duration: 3.2, delay: 1.2, repeat: Infinity, ease: "easeInOut" }}
+                transition={reduced ? { duration: 0 } : { duration: 3.2, delay: 1.2, repeat: Infinity, ease: FLOAT_EASE }}
               />
               <motion.span
-                className="absolute right-[27%] top-[7%] size-2 bg-[#fff5da] shadow-[0_0_5px_1px_rgba(245,184,84,0.55)] [clip-path:polygon(50%_0,62%_37%,100%_50%,62%_63%,50%_100%,38%_63%,0_50%,38%_37%)]"
+                className="absolute right-[27%] top-[7%] size-2 bg-[#fff5da] shadow-[0_0_4px_1px_rgba(245,184,84,0.48)] [clip-path:polygon(50%_0,62%_37%,100%_50%,62%_63%,50%_100%,38%_63%,0_50%,38%_37%)]"
                 initial={reduced ? false : { opacity: 0.4, scale: 0.8 }}
                 animate={reduced ? { opacity: 0.8, scale: 1 } : { opacity: [0.35, 0.82, 0.35], scale: [0.8, 1.12, 0.8] }}
-                transition={reduced ? { duration: 0 } : { duration: 3.8, delay: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                transition={reduced ? { duration: 0 } : { duration: 3.8, delay: 1.8, repeat: Infinity, ease: FLOAT_EASE }}
               />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
 

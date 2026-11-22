@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { PARTNER_CONTACT_URL } from "@/data/contact";
 import {
   AnimatePresence,
   motion,
@@ -43,8 +44,8 @@ const PILLARS: readonly PillarStory[] = [
     eyebrow: "03 / From attendee to voice",
     heading: "Step onto the stage and level up your craft together.",
     copy: "Sharpen your skills, get direct feedback from builders and leaders, and grow from attending your first edition to shaping the next one.",
-    ctaLabel: "Join the community",
-    ctaHref: "/join",
+    ctaLabel: "Partner with us",
+    ctaHref: PARTNER_CONTACT_URL,
   },
 ] as const;
 
@@ -52,12 +53,12 @@ const EDITORIAL_EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 const LCG_STYLES = `
 .lcg-section {
-  --lcg-orange: #f2490b;
-  --lcg-blue: #173bd4;
+  --lcg-orange: #EA580C;
+  --lcg-ink: var(--color-canvas-dark);
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background-color: var(--lcg-blue);
+  background-color: var(--lcg-ink);
   color: #ffffff;
   min-height: clamp(500px, 58vh, 580px);
   display: flex;
@@ -358,6 +359,11 @@ export default function EditorialLearnConnectGrow() {
   const [selectedWord, setSelectedWord] = useState<number | null>(null);
   const [idleWord, setIdleWord] = useState<number>(0);
 
+  const selectStory = (index: number) => {
+    setHoveredWord(null);
+    setSelectedWord(index);
+  };
+
   const lockedWord = hoveredWord ?? selectedWord;
   const activeIndex = lockedWord ?? idleWord;
   const activePillar = PILLARS[activeIndex];
@@ -490,13 +496,10 @@ export default function EditorialLearnConnectGrow() {
                       type="button"
                       className="lcg-line-word"
                       aria-pressed={isActive}
-                      onMouseEnter={() => {
-                        setHoveredWord(idx);
-                        setSelectedWord(null);
-                      }}
+                      onMouseEnter={() => setHoveredWord(idx)}
                       onFocus={() => setHoveredWord(idx)}
                       onBlur={() => setHoveredWord((cur) => (cur === idx ? null : cur))}
-                      onClick={() => setSelectedWord(idx)}
+                      onClick={() => selectStory(idx)}
                       initial={reduceMotion ? false : { y: "108%", skewY: 4, opacity: 0 }}
                       animate={
                         hasEntered || reduceMotion
@@ -544,26 +547,25 @@ export default function EditorialLearnConnectGrow() {
           transition={{ duration: 0.7, delay: reduceMotion ? 0 : 0.18, ease: EDITORIAL_EASE }}
         >
           {/* Interactive Pillar Indicator Bars */}
-          <div className="lcg-story-dots" role="tablist" aria-label="Community pillars">
+          <div className="lcg-story-dots" role="group" aria-label="Community pillars">
             {PILLARS.map((pillar, idx) => (
               <button
                 key={pillar.word}
                 type="button"
-                role="tab"
-                aria-selected={activeIndex === idx}
+                aria-pressed={activeIndex === idx}
                 aria-label={`Show ${pillar.word.replace(".", "")} story`}
                 data-active={activeIndex === idx ? "true" : "false"}
                 className="lcg-story-dot"
-                onMouseEnter={() => {
-                  setHoveredWord(idx);
-                  setSelectedWord(null);
-                }}
-                onClick={() => setSelectedWord(idx)}
+                onMouseEnter={() => setHoveredWord(idx)}
+                onClick={() => selectStory(idx)}
               />
             ))}
           </div>
 
-          <div className="lcg-story-stage" aria-live="polite">
+          <p className="sr-only" role="status">
+            {selectedWord === null ? "" : `Showing ${PILLARS[selectedWord].word.replace(".", "").toLowerCase()} story.`}
+          </p>
+          <div className="lcg-story-stage">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={activePillar.word}
@@ -575,7 +577,12 @@ export default function EditorialLearnConnectGrow() {
                 <p className="lcg-eyebrow lcg-eyebrow--story">{activePillar.eyebrow}</p>
                 <h3 className="lcg-story-heading">{activePillar.heading}</h3>
                 <p className="lcg-copy">{activePillar.copy}</p>
-                <Link className="lcg-link" href={activePillar.ctaHref}>
+                <Link
+                  className="lcg-link"
+                  href={activePillar.ctaHref}
+                  target={activePillar.ctaHref.startsWith("https://mail.google.com/") ? "_blank" : undefined}
+                  rel={activePillar.ctaHref.startsWith("https://mail.google.com/") ? "noopener noreferrer" : undefined}
+                >
                   <span>{activePillar.ctaLabel}</span>
                   <span className="lcg-link-arrow" aria-hidden="true">
                     ↗

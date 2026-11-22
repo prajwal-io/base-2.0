@@ -31,8 +31,8 @@ export default function CommunityPage() {
               <div className="h-[1px] w-12 bg-charcoal-300" />
             </div>
             <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-charcoal-950 mb-4">
-              Built By Students.<br />
-              <span className="text-brand-cyan">Powered By Community.</span>
+              Built by students.<br />
+              <span className="text-brand-cyan">Open to everyone.</span>
             </h1>
             <p className="text-base sm:text-lg text-charcoal-700 leading-relaxed font-normal">
               Behind every edition is a dedicated crew of students, anchors, photographers, and coordinators who believe in creating inclusive, high-signal spaces.
@@ -57,7 +57,9 @@ export default function CommunityPage() {
           {/* Community Values */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             <div className="p-6 rounded-3xl bg-white border border-border-subtle shadow-card">
-              <ShieldCheck className="w-8 h-8 text-brand-cyan mb-3" />
+              <div className="site-icon-mark mb-4">
+                <ShieldCheck aria-hidden="true" />
+              </div>
               <h3 className="font-display font-bold text-lg text-charcoal-950 mb-2">
                 Psychological Safety
               </h3>
@@ -67,7 +69,9 @@ export default function CommunityPage() {
             </div>
 
             <div className="p-6 rounded-3xl bg-white border border-border-subtle shadow-card">
-              <Users className="w-8 h-8 text-brand-orange mb-3" />
+              <div className="site-icon-mark mb-4">
+                <Users aria-hidden="true" />
+              </div>
               <h3 className="font-display font-bold text-lg text-charcoal-950 mb-2">
                 No Paywalls to Speak
               </h3>
@@ -77,7 +81,9 @@ export default function CommunityPage() {
             </div>
 
             <div className="p-6 rounded-3xl bg-white border border-border-subtle shadow-card">
-              <HeartHandshake className="w-8 h-8 text-brand-amber mb-3" />
+              <div className="site-icon-mark mb-4">
+                <HeartHandshake aria-hidden="true" />
+              </div>
               <h3 className="font-display font-bold text-lg text-charcoal-950 mb-2">
                 Pay It Forward
               </h3>

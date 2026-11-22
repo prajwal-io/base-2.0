@@ -118,8 +118,8 @@
   - Pagination arrows `←` `→`.
   - 3 Testimonial cards:
     - Sriya Reddy (Student Builder): "BacktoBase gave me the right people, the right conversations, and the nudge to actually build."
-    - Aditya Varma (Product at Microsoft): "What I love most is the community — it's open, helpful, and genuinely rooted in learning."
-    - Meghana K. (Developer & Creator): "I'm attending my first edition to speaking at a later one — the journey has been incredible."
+    - Aditya Varma (Product at Microsoft): "What I love most is the community — it's open, helpful, and rooted in learning."
+    - Meghana K. (Developer & Creator): "I went from attending my first edition to speaking at a later one — the journey has been incredible."
 - Right Column:
   - Eyebrow: `FOUNDER SPOTLIGHT`
   - Portrait of Yashwanth Bondapalli.

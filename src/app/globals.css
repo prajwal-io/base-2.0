@@ -6,12 +6,31 @@
   --color-canvas-base: #FAF7F2;
   --color-canvas-subtle: #F4EFE6;
   --color-canvas-card: #FFFFFF;
-  --color-canvas-dark: #12161A;
+  --color-canvas-dark: #1C353B;
   --color-charcoal-950: #111215;
   --color-brand-orange: #EA580C;
   --color-brand-amber: #F59E0B;
-  --color-brand-cyan: #00C0E8;
+  --color-brand-cyan: #087986;
   --color-border-subtle: #E8E3DA;
+}
+
+@layer components {
+  .site-icon-mark {
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    flex: none;
+    place-items: center;
+    border-radius: 1rem;
+    background: #E4F5F7;
+    color: #087986;
+  }
+
+  .site-icon-mark svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    stroke-width: 1.9;
+  }
 }
 
 @layer base {
@@ -58,11 +77,78 @@
   }
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) and (animation-range: entry 0% cover 40%) {
+    .community-photo-frame {
+      view-timeline-name: --community-photo;
+    }
+
+    .community-scroll-photo {
+      animation: community-photo-settle 1s ease-in-out both;
+      animation-timeline: --community-photo;
+      animation-range: entry 0% cover 48%;
+    }
+
+    .final-cta-frame {
+      view-timeline-name: --final-cta;
+    }
+
+    .cta-scroll-photo {
+      animation: cta-photo-drift 1s linear both;
+      animation-timeline: --final-cta;
+      animation-range: cover;
+    }
+  }
+}
+
+@keyframes community-photo-settle {
+  from { transform: scale(1.09); }
+  to { transform: scale(1); }
+}
+
+@keyframes cta-photo-drift {
+  from { transform: translateY(4%) scale(1.1); }
+  to { transform: translateY(-4%) scale(1.1); }
+}
+
 /* Subtle organic paper texture grain */
 .paper-bg {
   background-color: #FAF7F2;
   background-image: radial-gradient(#E8E2D5 0.75px, transparent 0.75px);
   background-size: 24px 24px;
+}
+
+.testimonials-marquee-track {
+  animation: testimonials-marquee 38s linear infinite;
+}
+
+.testimonials-marquee-window:hover .testimonials-marquee-track,
+.testimonials-marquee-window:focus-within .testimonials-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes testimonials-marquee {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials-marquee-track {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: none;
+  }
+
+  .testimonials-marquee-group[aria-hidden="true"] {
+    display: none;
+  }
+
+  .testimonials-marquee-group:not([aria-hidden="true"]) {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 1rem;
+  }
 }
 
 /* Custom scrollbar */

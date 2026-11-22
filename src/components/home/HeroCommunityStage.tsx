@@ -31,7 +31,7 @@ function CrewScene({ scene, brandedLaptop = false }: { scene: Scene; brandedLapt
       {brandedLaptop && (
         <g transform="matrix(1 -.08 -.24 1 1133 363)">
           <rect width="75" height="53" rx="7" fill="#f8efe2" stroke="#e2cdb4" strokeWidth="2" />
-          <image href="/images/backtobase-logo.png" x="4" y="18" width="67" height="15" />
+          <image href="/images/backtobase-logo-full-transparent.png" x="4" y="18" width="67" height="15" preserveAspectRatio="xMidYMid meet" />
         </g>
       )}
     </svg>
@@ -159,14 +159,18 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
           <div className="flex h-24 justify-center sm:h-40 lg:h-44">
             <div className="relative h-full min-w-0">
               <CrewScene scene="creator" />
-              {!reduced && (
-                <motion.span
-                  className="absolute right-[12%] top-[13%] size-3 rounded-full bg-[#fff5da] shadow-[0_0_11px_3px_#f5b854]"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: [0, 0.85, 0], scale: [0.8, 1.15, 1] }}
-                  transition={{ duration: 0.3, delay: 1.65, times: [0, 0.32, 1] }}
-                />
-              )}
+              <motion.span
+                className="absolute right-[12%] top-[13%] size-3 bg-[#fff5da] shadow-[0_0_7px_2px_rgba(245,184,84,0.7)] [clip-path:polygon(50%_0,62%_37%,100%_50%,62%_63%,50%_100%,38%_63%,0_50%,38%_37%)]"
+                initial={reduced ? false : { opacity: 0.45, scale: 0.82 }}
+                animate={reduced ? { opacity: 1, scale: 1 } : { opacity: [0.42, 0.95, 0.42], scale: [0.82, 1.08, 0.82] }}
+                transition={reduced ? { duration: 0 } : { duration: 3.2, delay: 1.2, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.span
+                className="absolute right-[27%] top-[7%] size-2 bg-[#fff5da] shadow-[0_0_5px_1px_rgba(245,184,84,0.55)] [clip-path:polygon(50%_0,62%_37%,100%_50%,62%_63%,50%_100%,38%_63%,0_50%,38%_37%)]"
+                initial={reduced ? false : { opacity: 0.4, scale: 0.8 }}
+                animate={reduced ? { opacity: 0.8, scale: 1 } : { opacity: [0.35, 0.82, 0.35], scale: [0.8, 1.12, 0.8] }}
+                transition={reduced ? { duration: 0 } : { duration: 3.8, delay: 1.8, repeat: Infinity, ease: "easeInOut" }}
+              />
             </div>
           </div>
         </div>

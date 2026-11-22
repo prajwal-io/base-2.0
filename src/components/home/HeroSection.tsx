@@ -6,6 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { FlowButton } from "@/components/ui/flow-button";
 import { PixelField } from "@/components/ui/PixelField";
+import { AnimatedHero } from "@/components/ui/animated-hero";
 import { FEATURED_HERO, HeroBackground, type HeroDirection } from "./HeroBackground";
 import { HeroCrew, type HeroCrewDirection, type RollCallCut } from "./HeroCrew";
 
@@ -26,12 +27,14 @@ export function HeroSection({
   rollCallCut,
   rehearsal,
   communityStage,
+  editionCount,
 }: {
   variant?: HeroDirection;
   crew?: HeroCrewDirection;
   rollCallCut?: RollCallCut;
   rehearsal?: ReactNode;
   communityStage?: ReactNode;
+  editionCount: number;
 }) {
   const reduceMotion = useReducedMotion();
 
@@ -42,7 +45,10 @@ export function HeroSection({
         <PixelField className="absolute right-2 top-0 w-24 opacity-75 sm:right-5 sm:w-40 lg:right-[4%] lg:top-3 lg:w-[min(27vw,23rem)] lg:opacity-90" />
       )}
       <div className={rehearsal ? "mx-auto grid max-w-7xl items-center gap-10 px-5 lg:grid-cols-2 lg:px-8" : "px-4 sm:px-6 lg:px-8"}>
-      <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
+      {communityStage ? (
+        <AnimatedHero editionCount={editionCount} />
+      ) : (
+        <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
         <motion.div
           className="mb-4"
           initial={reduceMotion ? false : { opacity: 0, y: 12 }}
@@ -91,20 +97,21 @@ export function HeroSection({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: reduceMotion ? 0 : 0.44, ease: EDITORIAL_EASE }}
         >
-          <FlowButton text="Join the Community" href="/join" />
+          <FlowButton text="Partner with us" />
 
           <Link
             href="/events"
             className="group inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/85 hover:bg-white border border-border-strong text-charcoal-900 text-sm font-semibold shadow-sm hover:shadow-card transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
           >
-            <span>Explore 9 Editions</span>
+            <span>Explore {editionCount} Editions</span>
             <ArrowUpRight
               className="w-4 h-4 text-brand-orange transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               aria-hidden="true"
             />
           </Link>
         </motion.div>
-      </div>
+        </div>
+      )}
       {rehearsal}
       </div>
       {crew && <HeroCrew variant={crew} cut={rollCallCut} />}

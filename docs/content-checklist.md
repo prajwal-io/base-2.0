@@ -12,7 +12,7 @@ All factual community details must derive from verified source PDFs or be marked
 | **04** | What If Founders Use AI? – The Power of AI with Security | Mar 15, 2026 | EPAM Systems, 15th Floor, Hyderabad | Ramachandra Vikas Chamarthi (Vector Guard), Mythrisri Kurra, Om Ashish Mishra; Host: Sai Sreekar Tangirala | ✅ Verified via Archive PDF |
 | **05** | Where Students Become Speakers! (Special Edition) | Mar 21, 2026 | EPAM Systems, Hyderabad | Host: Ujwala Golla; Speakers: Goutham Sai (16-yr-old speaker), Deepthi | ✅ Verified via Archive PDF |
 | **06** | Learning, Networking & Community Building | May 23, 2026 | Thoughtworks Technologies, Rajapushpa Summit, Hyderabad | Bhasker Puppala (Patel), Venkata Sriram, Subbarao Anaparthi, Neeraja Nagarjuna | ✅ Verified via Archive PDF |
-| **07** | Resume Review & HR Insights | Sep 5, 2026 | DEVX, Hitech City, Hyderabad | Yarlagadda Phani Deepthi, Sachin Agarwal, Hari Pavan, Venkata Triveni Kothapalli, Bhargavi M | ✅ Verified via Archive PDF |
+| **07** | Resume Review & HR Insights | Sep 5, 2026 | DEVX, HITEC City, Hyderabad | Yarlagadda Phani Deepthi, Sachin Agarwal, Hari Pavan, Venkata Triveni Kothapalli, Bhargavi M | ✅ Verified via Archive PDF |
 | **08** | Founder & Investors Connect | Oct 10, 2026 | Nanospace, Hyderabad | Gowtham Ambadi, Vamshi Yadav, Raghu Charan Kancharla, CA Yashwanth, Janardhana Chary Vinukonda, Susmitha, Chandini; Special Guest: Anitha Chowdhary Gogeneni; Anchors: Sahasrika Gowrishetty, Nidhii Shukla | ✅ Verified via Archive PDF |
 | **09** | Meet the Creators | Nov 1, 2026 | Medicover Blue Planet Auditorium, Hyderabad | Om Ashish Mishra, Bhargavi M, Sachin Agarwal; Anchors: Dileep Sajja, Divya Prudhvi; Partners: HealthNavig, Medicover Hospitals | ✅ Verified via Archive PDF |
 
@@ -30,14 +30,14 @@ All factual community details must derive from verified source PDFs or be marked
 - Microsoft, Hyderabad
 - EPAM Systems, Hyderabad
 - Thoughtworks Technologies, Rajapushpa Summit, Hyderabad
-- DEVX, Hitech City, Hyderabad
+- DEVX, HITEC City, Hyderabad
 - Nanospace, Hyderabad
 - Medicover Hospitals / HealthNavig, Hyderabad
 
 ## 4. Content Tracking & Placeholders
 - **Member Stories**:
   - Sriya Reddy (Student Builder) — Quote from approved homepage design: "BacktoBase gave me the right people, the right conversations, and the nudge to actually build."
-  - Aditya Varma (Product at Microsoft) — Quote from approved homepage design: "What I love most is the community — it's open, helpful, and genuinely rooted in learning."
-  - Meghana K. (Developer & Creator) — Quote from approved homepage design: "I'm attending my first edition to speaking at a later one — the journey has been incredible."
+  - Aditya Varma (Product at Microsoft) — Quote from approved homepage design: "What I love most is the community — it's open, helpful, and rooted in learning."
+  - Meghana K. (Developer & Creator) — Quote from approved homepage design: "I went from attending my first edition to speaking at a later one — the journey has been incredible."
 - **Founder Statement**: Approved bio from homepage design.
 - **Video Highlight**: Homepage shows a "Coming Soon" notice until an approved video source is supplied.

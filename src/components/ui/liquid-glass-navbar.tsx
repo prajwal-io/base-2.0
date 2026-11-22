@@ -3,6 +3,7 @@
 /** Nimbus UI Waterline liquid navbar, adapted for BacktoBase. Original by guglielmogiannattasio.it. */
 import * as React from "react"
 import Link from "next/link"
+import { motion, useReducedMotion } from "framer-motion"
 
 export type NimbusFx = "plane" | "drop" | "spin" | "glow" | "wave" | "pop" | "none"
 
@@ -19,6 +20,8 @@ export type LiquidNavbarProps = {
   active?: number
   onChange?: (index: number, item: LiquidNavItem) => void
   tone?: "light" | "dark"
+  /** Disable the liquid glass, glow, and icon motion while keeping navigation interactive. */
+  effects?: boolean
   compact?: boolean
   /** Optional brand/logo rendered inside the pill, before the nav items */
   brand?: React.ReactNode
@@ -52,15 +55,24 @@ const DEFAULT_ITEMS: LiquidNavItem[] = [
 const PAD = 14
 
 const NIMBUS_CSS = `
-.nimbus-nav{--n-tint:rgba(255,255,255,.85);--n-fg:#111215;--n-fg-soft:#5D626D;--n-rim:rgba(232,227,218,.92);position:relative;display:inline-flex;align-items:center;gap:2px;padding:6px;border-radius:999px;isolation:isolate;font-family:inherit;-webkit-font-smoothing:antialiased;user-select:none;-webkit-tap-highlight-color:transparent}
+.nimbus-nav{--n-tint:rgba(255,255,255,.92);--n-fg:#111215;--n-fg-soft:#4A4E57;--n-rim:rgba(232,227,218,.92);position:relative;display:inline-flex;width:max-content;max-width:none;flex:none;align-items:center;gap:2px;padding:6px;border-radius:999px;isolation:isolate;font-family:inherit;-webkit-font-smoothing:antialiased;user-select:none;-webkit-tap-highlight-color:transparent}
 .nimbus-nav[data-tone="dark"]{--n-tint:rgba(18,22,26,.88);--n-fg:#FAF7F2;--n-fg-soft:rgba(250,247,242,.68);--n-rim:rgba(255,255,255,.18)}
+.nimbus-nav[data-effects="off"]{--n-tint:rgba(255,255,255,.96);--n-fg:#171717;--n-fg-soft:#4A4E57;--n-rim:#E8E3DA;background:rgba(255,255,255,.96);border:1px solid #E8E3DA;box-shadow:0 3px 14px rgba(31,24,17,.06)}
+.nimbus-nav[data-effects="off"] .nimbus-glass{background:rgba(255,255,255,.96);backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:inset 0 1px 1px rgba(255,255,255,.9)}
+.nimbus-nav[data-effects="off"] .nimbus-water,.nimbus-nav[data-effects="off"] .nimbus-drop,.nimbus-nav[data-effects="off"]>svg{display:none}
+.nimbus-nav[data-effects="off"] .nimbus-item[aria-current="page"]{background:transparent;color:#171717}
+.nimbus-nav[data-effects="off"] .nv-ico,.nimbus-nav[data-effects="off"] .nimbus-item[aria-current="page"] .nv-ico{background:transparent;color:#53616A}
+.nimbus-nav[data-effects="off"] .nv-ico svg,.nimbus-nav[data-effects="off"] .nimbus-brand{transition:none}
+.nimbus-active-pill{position:absolute;inset:0;z-index:0;border-radius:999px;background:rgba(234,88,12,.09);pointer-events:none}
+.nimbus-item-content{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px}
+.nimbus-nav[data-effects="off"] .nimbus-brand::after{background:#34363B}
 .nimbus-glass{position:absolute;inset:0;border-radius:inherit;z-index:-2;overflow:hidden;background:var(--n-tint);-webkit-backdrop-filter:blur(12px) saturate(1.08);backdrop-filter:blur(12px) saturate(1.08);box-shadow:inset 0 1px 1px rgba(255,255,255,.8),inset 0 0 0 1px var(--n-rim),0 4px 20px -2px rgba(0,0,0,.06),0 2px 6px -1px rgba(0,0,0,.04)}
 .nimbus-nav[data-refract="on"] .nimbus-glass{-webkit-backdrop-filter:url(#nimbus-refract) blur(2px) saturate(1.2) brightness(1.08);backdrop-filter:url(#nimbus-refract) blur(2px) saturate(1.2) brightness(1.08)}
 .nimbus-water{position:absolute;left:-14px;top:-14px;z-index:-1;pointer-events:none}.nimbus-nav[data-gl="off"] .nimbus-water{display:none}
 .nimbus-drop{display:none;position:absolute;top:6px;bottom:6px;left:0;border-radius:999px;z-index:-1;pointer-events:none;will-change:transform;background:radial-gradient(120% 140% at 30% 0%,rgba(255,255,255,.92),rgba(255,255,255,0) 55%),linear-gradient(120deg,rgba(245,158,11,.18),rgba(0,192,232,.12));box-shadow:inset 0 1px 1px rgba(255,255,255,.92),inset 0 -2px 6px rgba(234,88,12,.14),inset 0 0 0 1px rgba(234,88,12,.2),0 4px 12px -6px rgba(17,18,21,.16)}
 .nimbus-nav[data-gl="off"] .nimbus-drop{display:block}.nimbus-item{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border:0;border-radius:999px;background:none;color:var(--n-fg-soft);font-family:inherit;font-weight:600;font-size:12px;line-height:1;letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:color 120ms cubic-bezier(.2,0,0,1),background-color 120ms cubic-bezier(.2,0,0,1)}
-.nimbus-item[aria-current="page"]{color:var(--n-fg);background:rgba(234,88,12,.08)}.nimbus-item:focus-visible{outline:2px solid #EA580C;outline-offset:2px}
-.nv-ico{position:relative;display:inline-flex;flex:none}.nv-ico svg{transition:transform 120ms cubic-bezier(.2,0,0,1)}.nimbus-item[aria-current="page"] .nv-ico{color:#EA580C}.nimbus-item[aria-current="page"] .nv-ico svg{transform:translateY(-1px) scale(1.06)}.nv-door{fill:transparent}
+.nimbus-item[aria-current="page"]{color:var(--n-fg);background:transparent}.nimbus-item:focus-visible{outline:2px solid #EA580C;outline-offset:2px}
+.nv-ico{position:relative;display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;flex:none;border-radius:50%;background:#E4F5F7;color:#087986;transition:background-color 120ms cubic-bezier(.2,0,0,1),color 120ms cubic-bezier(.2,0,0,1)}.nv-ico svg{transition:transform 120ms cubic-bezier(.2,0,0,1)}.nimbus-item[aria-current="page"] .nv-ico{color:#fff;background:#B94706}.nimbus-item[aria-current="page"] .nv-ico svg{transform:translateY(-1px) scale(1.06)}.nv-door{fill:transparent}
 .nv-ico[data-fx="pop"] svg{animation:nvPop .3s cubic-bezier(.2,.8,.2,1) both}@keyframes nvPop{0%{transform:scale(.84)}55%{transform:scale(1.12)}100%{transform:translateY(-1px) scale(1.06)}}
 .nv-ico[data-fx="plane"] svg{animation:nvPlane 1.15s cubic-bezier(.55,0,.3,1) both}@keyframes nvPlane{0%{transform:none}12%{transform:translate(-3px,2px) rotate(7deg)}42%{transform:translate(64px,-26px) rotate(-24deg) scale(.9);opacity:0}43%{transform:translate(-60px,16px) rotate(-12deg) scale(.9);opacity:0}58%{opacity:1}80%{transform:translate(3px,-1px) rotate(2deg)}100%{transform:translateY(-1px) scale(1.08)}}
 .nv-ico[data-fx="plane"]::after{content:"";position:absolute;left:55%;top:48%;height:2px;width:46px;border-radius:2px;transform-origin:0 50%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95));animation:nvTrail 1.15s ease-out both;pointer-events:none}@keyframes nvTrail{0%,8%{opacity:0;transform:rotate(-22deg) scaleX(0)}30%{opacity:.9;transform:rotate(-22deg) scaleX(1)}55%,100%{opacity:0;transform:rotate(-22deg) translateX(30px) scaleX(.2)}}
@@ -72,7 +84,11 @@ const NIMBUS_CSS = `
 .nimbus-nav[data-compact="true"] .nimbus-item{padding:0 13px}.nimbus-nav[data-compact="true"] .nimbus-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:520px){.nimbus-nav:not([data-compact="false"]) .nimbus-item{padding:0 13px}.nimbus-nav:not([data-compact="false"]) .nimbus-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
 .nimbus-brand{position:relative;z-index:1;display:inline-flex;align-items:center;height:42px;padding:0 16px 0 12px;margin-right:8px;border-radius:999px;text-decoration:none;transition:transform 120ms cubic-bezier(.2,0,0,1)}.nimbus-brand:hover{transform:scale(1.03)}.nimbus-brand:active{transform:scale(.97)}.nimbus-brand:focus-visible{outline:2px solid #EA580C;outline-offset:2px}.nimbus-brand::after{content:"";position:absolute;right:-5px;top:11px;bottom:11px;width:1px;background:var(--n-rim)}
-@media (min-width:768px) and (max-width:1023px){.nimbus-nav[data-brand="true"] .nimbus-item{padding:0 13px}.nimbus-nav[data-brand="true"] .nimbus-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+.nimbus-nav .nv-ico{width:20px;height:20px;border-radius:0;background:transparent;color:#53616A;box-shadow:none;filter:none;transition:none}
+.nimbus-nav .nimbus-item[aria-current="page"] .nv-ico{background:transparent;color:#B94706}
+.nimbus-nav .nv-ico svg,.nimbus-nav .nimbus-item[aria-current="page"] .nv-ico svg{transform:none;transition:none;filter:none;animation:none}
+.nimbus-nav .nv-ico::before,.nimbus-nav .nv-ico::after{display:none;content:none}
+@media (min-width:768px) and (max-width:1279px){.nimbus-nav[data-brand="true"] .nimbus-brand{padding-inline:8px;margin-right:2px}.nimbus-nav[data-brand="true"] .nimbus-brand img{width:116px}.nimbus-nav[data-brand="true"] .nimbus-item{gap:0;padding:0 7px}.nimbus-nav[data-brand="true"] .nimbus-item .nimbus-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.nimbus-nav[data-brand="true"] .nimbus-item .nv-ico{width:24px;height:24px}.nimbus-nav[data-brand="true"] .nimbus-item .nv-ico svg{width:16px;height:16px}}
 @media (prefers-reduced-motion:reduce){.nv-ico svg,.nv-ico::before,.nv-ico::after,.nv-door{animation:none!important;transition:none}.nimbus-brand{transition:none}}
 `
 
@@ -124,9 +140,11 @@ function supportsRefraction() {
   return /Chrome\/|Chromium\/|Edg\//.test(navigator.userAgent) && !/Firefox\//.test(navigator.userAgent) && CSS.supports("backdrop-filter", "url(#a)")
 }
 
-export function LiquidNavbar({ items = DEFAULT_ITEMS, defaultActive = 0, active, onChange, tone = "light", compact, brand, sound = false, className, style }: LiquidNavbarProps) {
+export function LiquidNavbar({ items = DEFAULT_ITEMS, defaultActive = 0, active, onChange, tone = "light", effects = true, compact, brand, sound = false, className, style }: LiquidNavbarProps) {
   const [inner, setInner] = React.useState(defaultActive)
   const current = active ?? inner
+  const activePillId = React.useId()
+  const reducedMotion = useReducedMotion()
   const navRef = React.useRef<HTMLElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const dropRef = React.useRef<HTMLSpanElement>(null)
@@ -192,6 +210,7 @@ export function LiquidNavbar({ items = DEFAULT_ITEMS, defaultActive = 0, active,
   }, [])
 
   const loop = React.useCallback(() => {
+    if (!effects) return
     const s = st.current
     if (s.raf) return
     s.last = performance.now()
@@ -202,7 +221,7 @@ export function LiquidNavbar({ items = DEFAULT_ITEMS, defaultActive = 0, active,
       else s.raf = 0
     }
     s.raf = requestAnimationFrame(tick)
-  }, [draw, step])
+  }, [draw, effects, step])
 
   const measure = React.useCallback(() => {
     const nav = navRef.current, el = itemRefs.current[current]
@@ -215,34 +234,41 @@ export function LiquidNavbar({ items = DEFAULT_ITEMS, defaultActive = 0, active,
     T.x = nx
     const canvas = canvasRef.current
     if (canvas) { const dpr = Math.min(window.devicePixelRatio || 1, 1.25), width = s.w + PAD * 2, height = s.h + PAD * 2; if (canvas.width !== Math.round(width * dpr) || canvas.height !== Math.round(height * dpr)) { canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr); canvas.style.width = `${width}px`; canvas.style.height = `${height}px` } }
-    loop()
-  }, [current, loop])
+    if (effects) loop()
+  }, [current, effects, loop])
 
   React.useEffect(() => {
+    if (!effects) return
     const refractionCheck = requestAnimationFrame(() => setRefract(supportsRefraction()))
     const s = st.current; s.reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false
     const canvas = canvasRef.current; s.glc = canvas ? initGL(canvas) : null
     if (!s.glc) setGl("off")
     const lost = (event: Event) => { event.preventDefault(); s.glc = null; setGl("off") }
     canvas?.addEventListener("webglcontextlost", lost)
-    const observer = new IntersectionObserver(([entry]) => { s.visible = entry.isIntersecting; if (s.visible) loop() })
-    if (navRef.current) observer.observe(navRef.current)
+    const observer = typeof IntersectionObserver === "undefined"
+      ? null
+      : new IntersectionObserver(([entry]) => { s.visible = entry.isIntersecting; if (s.visible) loop() })
+    if (navRef.current) observer?.observe(navRef.current)
     const visibility = () => { s.visible = document.visibilityState === "visible"; if (s.visible) loop() }
     document.addEventListener("visibilitychange", visibility)
-    return () => { cancelAnimationFrame(refractionCheck); canvas?.removeEventListener("webglcontextlost", lost); observer.disconnect(); document.removeEventListener("visibilitychange", visibility); cancelAnimationFrame(s.raf); s.raf = 0 }
-  }, [loop])
+    return () => { cancelAnimationFrame(refractionCheck); canvas?.removeEventListener("webglcontextlost", lost); observer?.disconnect(); document.removeEventListener("visibilitychange", visibility); cancelAnimationFrame(s.raf); s.raf = 0 }
+  }, [effects, loop])
 
   React.useLayoutEffect(() => { measure() }, [measure, items.length, compact])
   React.useEffect(() => {
+    if (typeof ResizeObserver === "undefined") {
+      window.addEventListener("resize", measure)
+      return () => window.removeEventListener("resize", measure)
+    }
     let lastWidth = -1
     const observer = new ResizeObserver(() => { const width = navRef.current?.offsetWidth ?? 0; if (width !== lastWidth) { lastWidth = width; st.current.ready = false; measure() } })
     if (navRef.current) observer.observe(navRef.current)
     return () => observer.disconnect()
   }, [measure])
-  React.useEffect(() => { loop() }, [tone, loop])
+  React.useEffect(() => { if (effects) loop() }, [effects, tone, loop])
 
   const local = (clientX: number, clientY: number) => { const rect = navRef.current!.getBoundingClientRect(); return { x: clientX - rect.left + PAD, y: clientY - rect.top + PAD } }
-  const ripple = (x: number, y: number, amp: number) => { const s = st.current; if (s.reduce) return; s.rips.push({ x, y, age: 0, amp }); loop() }
+  const ripple = (x: number, y: number, amp: number) => { const s = st.current; if (!effects || s.reduce) return; s.rips.push({ x, y, age: 0, amp }); loop() }
   const iconCenter = (i: number) => { const el = iconRefs.current[i]; if (!el) return null; const rect = el.getBoundingClientRect(); return local(rect.left + rect.width / 2, rect.top + rect.height / 2) }
   const plip = () => {
     if (!sound) return
@@ -257,7 +283,7 @@ export function LiquidNavbar({ items = DEFAULT_ITEMS, defaultActive = 0, active,
   }
   const select = (i: number) => {
     const kind = items[i]?.fx ?? (items[i]?.icon ? "pop" : "none")
-    setFx((f) => ({ i, n: f.n + 1 })); plip()
+    if (effects) { setFx((f) => ({ i, n: f.n + 1 })); plip() }
     const center = iconCenter(i)
     if (center && kind === "drop") window.setTimeout(() => ripple(center.x, st.current.t.cy, 1.4), 260)
     if (center && kind === "plane") ripple(center.x, center.y, 0.6)
@@ -269,19 +295,20 @@ export function LiquidNavbar({ items = DEFAULT_ITEMS, defaultActive = 0, active,
     const next = (current + (event.key === "ArrowRight" ? 1 : -1) + items.length) % items.length
     select(next); itemRefs.current[next]?.focus()
   }
-  const onMove = (event: React.PointerEvent) => { if (event.pointerType !== "mouse") return; const point = local(event.clientX, event.clientY); st.current.mouse.x = point.x; st.current.mouse.y = point.y; st.current.mouse.on = true; loop() }
+  const onMove = (event: React.PointerEvent) => { if (!effects || event.pointerType !== "mouse") return; const point = local(event.clientX, event.clientY); st.current.mouse.x = point.x; st.current.mouse.y = point.y; st.current.mouse.on = true; loop() }
 
   return (
-    <nav ref={navRef} className={["nimbus-nav", className].filter(Boolean).join(" ")} data-tone={tone} data-gl={gl} data-compact={compact === undefined ? undefined : String(compact)} data-refract={refract ? "on" : "off"} data-brand={brand ? "true" : undefined} aria-label="Main navigation" onKeyDown={onKeyDown} onPointerMove={onMove} onPointerLeave={() => { st.current.mouse.on = false; loop() }} onPointerDown={(event) => { const point = local(event.clientX, event.clientY); ripple(point.x, point.y, 0.8) }} style={style}>
+    <nav ref={navRef} className={["nimbus-nav", className].filter(Boolean).join(" ")} data-tone={tone} data-effects={effects ? "on" : "off"} data-gl={gl} data-compact={compact === undefined ? undefined : String(compact)} data-refract={refract ? "on" : "off"} data-brand={brand ? "true" : undefined} aria-label="Main navigation" onKeyDown={onKeyDown} onPointerMove={onMove} onPointerLeave={() => { st.current.mouse.on = false; if (effects) loop() }} onPointerDown={(event) => { if (!effects) return; const point = local(event.clientX, event.clientY); ripple(point.x, point.y, 0.8) }} style={style}>
       <style dangerouslySetInnerHTML={{ __html: NIMBUS_CSS }} />
       <svg width="0" height="0" style={{ position: "absolute" }} aria-hidden="true"><filter id="nimbus-refract" x="0" y="0" width="100%" height="100%" colorInterpolationFilters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.006 0.02" numOctaves="2" seed="7" result="noise" /><feGaussianBlur in="noise" stdDeviation="2" result="soft" /><feDisplacementMap in="SourceGraphic" in2="soft" scale="60" xChannelSelector="R" yChannelSelector="G" /></filter></svg>
       <span className="nimbus-glass" aria-hidden="true" /><canvas className="nimbus-water" ref={canvasRef} aria-hidden="true" /><span className="nimbus-drop" ref={dropRef} aria-hidden="true" />
       {brand}
       {items.map((item, i) => {
         const kind = item.fx ?? "pop", playing = fx.i === i && kind !== "none"
-        const content = <>{item.icon && <span className="nv-ico" key={playing ? fx.n : 0} data-fx={playing ? kind : undefined} ref={(el) => { iconRefs.current[i] = el }}>{item.icon}</span>}<span className="nimbus-label">{item.label}</span></>
+        const content = <span className="nimbus-item-content">{item.icon && <span className="nv-ico" key={playing ? fx.n : 0} data-fx={playing ? kind : undefined} ref={(el) => { iconRefs.current[i] = el }}>{item.icon}</span>}<span className="nimbus-label">{item.label}</span></span>
         const common = { ref: (el: HTMLElement | null) => { itemRefs.current[i] = el }, className: "nimbus-item", "aria-current": i === current ? ("page" as const) : undefined, onClick: () => select(i), "aria-label": item.label }
-        return item.href ? <Link key={item.label + i} {...common} href={item.href}>{content}</Link> : <button key={item.label + i} {...common} type="button">{content}</button>
+        const children = <>{i === current && <motion.span className="nimbus-active-pill" layoutId={`nimbus-active-pill-${activePillId}`} transition={reducedMotion ? { duration: 0 } : { type: "spring", stiffness: 520, damping: 42, mass: 0.55 }} aria-hidden="true" />}{content}</>
+        return item.href ? <Link key={item.label + i} {...common} href={item.href}>{children}</Link> : <button key={item.label + i} {...common} type="button">{children}</button>
       })}
     </nav>
   )

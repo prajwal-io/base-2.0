@@ -15,59 +15,59 @@ const VENUE_LOGOS: VenueLogo[] = [
     src: "/images/venues/health-catalyst.svg",
     width: 224,
     height: 41,
-    sizeClass: "h-8 sm:h-9 max-w-[195px]",
+    sizeClass: "h-8 sm:h-9",
   },
   {
     name: "Microsoft",
     src: "/images/venues/microsoft.svg",
     width: 338,
     height: 72,
-    sizeClass: "h-8 sm:h-9 max-w-[175px]",
+    sizeClass: "h-8 sm:h-9",
   },
   {
     name: "EPAM Systems",
     src: "/images/venues/epam.svg",
     width: 108,
     height: 42,
-    sizeClass: "h-9 sm:h-10 max-w-[138px]",
+    sizeClass: "h-9 sm:h-10",
   },
   {
     name: "Thoughtworks",
     src: "/images/venues/thoughtworks.svg",
     width: 409,
     height: 65,
-    sizeClass: "h-7 sm:h-8 max-w-[198px]",
+    sizeClass: "h-7 sm:h-8",
   },
   {
     name: "DEVX",
     src: "/images/venues/devx.svg",
     width: 519,
     height: 158,
-    sizeClass: "h-8 sm:h-9 max-w-[148px]",
+    sizeClass: "h-8 sm:h-9",
   },
   {
     name: "Nanospace",
     src: "/images/venues/nanospace.png",
     width: 565,
     height: 248,
-    sizeClass: "h-12 sm:h-14 max-w-[168px]",
+    sizeClass: "h-12 sm:h-14",
   },
   {
     name: "Medicover Hospitals",
     src: "/images/venues/medicover.svg",
     width: 265,
     height: 166,
-    sizeClass: "h-14 sm:h-16 max-w-[146px]",
+    sizeClass: "h-14 sm:h-16",
   },
 ];
 
 export function VenueStrip() {
   return (
-    <section aria-labelledby="our-venues-heading" className="py-12 sm:py-16">
+    <section aria-labelledby="our-venues-heading" className="py-10 sm:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-white/95 backdrop-blur-sm border border-[#E5DED2] shadow-[0_14px_40px_-14px_rgba(17,18,21,0.09)] px-6 py-8 sm:px-10 sm:py-11">
+        <div className="rounded-3xl bg-white/95 border border-border-subtle px-6 py-7 sm:px-10 sm:py-8">
           {/* Header Row */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-7 border-b border-border-subtle">
+          <div className="flex flex-col gap-3 border-b border-border-subtle pb-5 sm:flex-row sm:items-center sm:gap-4">
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
               <div className="inline-flex items-center gap-2.5">
                 <Building2
@@ -89,29 +89,25 @@ export function VenueStrip() {
                 Hosted across leading tech campuses, innovation hubs &amp; auditoriums in Hyderabad
               </p>
             </div>
-
-            <span className="inline-flex items-center self-start sm:self-auto rounded-full bg-canvas-subtle border border-border-subtle px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-charcoal-800 shrink-0">
-              7+ Host Venues
-            </span>
           </div>
 
-          {/* Official Venue Logos Showcase (4 + 3 centered on desktop, responsive below) */}
+          {/* Official venue logos in one responsive strip */}
           <ul
             aria-label="BacktoBase host venues"
-            className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-5"
+            className="mt-5 grid grid-cols-2 items-center gap-x-6 gap-y-5 sm:grid-cols-4 sm:gap-y-6 lg:grid-cols-7"
           >
             {VENUE_LOGOS.map((venue) => (
               <li
                 key={venue.name}
                 title={venue.name}
-                className="group flex items-center justify-center w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.85rem)] lg:w-[calc(25%-0.95rem)] h-24 sm:h-28 px-5 sm:px-6 rounded-2xl bg-canvas-base/80 hover:bg-white border border-border-subtle/80 hover:border-border-strong shadow-[0_2px_10px_-4px_rgba(17,18,21,0.06)] hover:shadow-card transition-all duration-200"
+                className="group flex min-h-14 items-center justify-center px-2 sm:min-h-16"
               >
                 <Image
                   src={venue.src}
                   alt={venue.name}
                   width={venue.width}
                   height={venue.height}
-                  className={`${venue.sizeClass} w-auto object-contain transition-transform duration-200 group-hover:scale-[1.05]`}
+                  className={`${venue.sizeClass} w-auto max-w-full object-contain transition-transform duration-200 group-hover:scale-[1.04]`}
                 />
               </li>
             ))}

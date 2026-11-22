@@ -3,6 +3,8 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Footer } from "@/components/layout/Footer";
 import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 import { FOUNDER_PROFILE } from "@/data/founderData";
+import { EDITION_COUNT } from "@/data/communityData";
+import { CONTACT_US_URL } from "@/data/contact";
 
 export const metadata = {
   title: "Yashwanth Bondapalli — Founder @ BacktoBase",
@@ -133,14 +135,16 @@ export default function FounderPage() {
               href="/events"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-dark-pill hover:bg-brand-dark-pill-hover text-white text-sm font-semibold tracking-wide transition-all shadow-md"
             >
-              <span>Explore All 9 Editions</span>
+              <span>Explore All {EDITION_COUNT} Editions</span>
               <ArrowRight className="w-4 h-4 text-brand-cyan" />
             </Link>
             <Link
-              href="/join"
+              href={CONTACT_US_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-orange hover:bg-brand-orange-hover text-white text-sm font-semibold tracking-wide transition-all shadow-md"
             >
-              <span>Connect with BacktoBase</span>
+              <span>Contact us</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

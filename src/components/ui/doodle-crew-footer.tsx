@@ -51,6 +51,8 @@ export interface FooterNavLink {
   label: string;
   href: string;
   emphasis?: boolean;
+  target?: "_blank" | "_self";
+  rel?: string;
 }
 
 export interface DoodleCrewFooterProps {
@@ -78,6 +80,7 @@ export interface DoodleCrewFooterProps {
   links?: FooterNavLink[];
   socials?: FooterSocial[];
   showCredit?: boolean;
+  closingMarquee?: string;
 }
 
 export interface GlyphBox {
@@ -175,6 +178,7 @@ function CrewShower({ capTop, front = false }: { capTop: number; front?: boolean
               {mark === "dash" && <path d="M2-5 Q0-1-2 4" />}
               {mark === "link" && <path d="M-2 1 2-1 M-2 2a2 2 0 1 1-4 0 2 2 0 0 1 4 0 M6-2a2 2 0 1 1-4 0 2 2 0 0 1 4 0" />}
             </g>
+
           </g>
         ),
       )}
@@ -1926,6 +1930,52 @@ const DCF_CSS = `
   gap: 18px 16px;
 }
 
+.dcf-marquee {
+  width: 100%;
+  margin-top: clamp(24px, 3.5vw, 38px);
+  overflow: hidden;
+  border-top: 1px solid rgba(23, 23, 23, 0.16);
+  border-bottom: 1px solid rgba(23, 23, 23, 0.16);
+  padding: 13px 0 12px;
+  color: var(--dcf-ink);
+}
+
+.dcf-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: dcf-marquee-scroll 30s linear infinite;
+  will-change: transform;
+}
+
+.dcf-marquee:hover .dcf-marquee-track {
+  animation-play-state: paused;
+}
+
+.dcf-marquee-group {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: clamp(22px, 4vw, 56px);
+  padding-right: clamp(22px, 4vw, 56px);
+  font-family: var(--dcf-font);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.dcf-marquee-divider {
+  color: var(--dcf-accent);
+  font-size: 14px;
+  line-height: 0;
+}
+
+@keyframes dcf-marquee-scroll {
+  to { transform: translateX(-50%); }
+}
+
 .dcf-footer-nav {
   grid-column: 1 / -1;
   justify-self: center;
@@ -2056,6 +2106,8 @@ const DCF_CSS = `
     grid-column: 1;
     justify-self: center;
   }
+
+  .dcf-marquee { margin-top: 24px; }
 }
 
 /* Reduced motion */
@@ -2076,6 +2128,11 @@ const DCF_CSS = `
     opacity: 1 !important;
     transform: none !important;
     stroke-dashoffset: 0 !important;
+  }
+
+  .dcf-marquee-track {
+    animation: none !important;
+    transform: none !important;
   }
 
   .dcf-bubble {
@@ -2133,6 +2190,7 @@ export default function DoodleCrewFooter({
   links = [],
   socials = [],
   showCredit = false,
+  closingMarquee,
 }: DoodleCrewFooterProps) {
   const uid = useId().replace(/:/g, "");
   const brushFilterId = `dcf-brush-${uid}`;
@@ -2580,6 +2638,14 @@ export default function DoodleCrewFooter({
               })}
             </g>
 
+            {/* Small star accents frame the wordmark artwork. */}
+            <g aria-hidden="true" className="dcf-brand-stars" fill="var(--dcf-accent)">
+              <path d="M 38 276 C 39.5 270 41 268.5 47 267 C 41 265.5 39.5 264 38 258 C 36.5 264 35 265.5 29 267 C 35 268.5 36.5 270 38 276 Z" />
+              <path d="M 1162 276 C 1163.5 270 1165 268.5 1171 267 C 1165 265.5 1163.5 264 1162 258 C 1160.5 264 1159 265.5 1153 267 C 1159 268.5 1160.5 270 1162 276 Z" />
+              <path d="M 600 204 C 601.5 198 603 196.5 609 195 C 603 193.5 601.5 192 600 186 C 598.5 192 597 193.5 591 195 C 597 196.5 598.5 198 600 204 Z" />
+              <path d="M 600 388 C 601.2 383 602.5 381.2 607.5 380 C 602.5 378.8 601.2 377 600 372 C 598.8 377 597.5 378.8 592.5 380 C 597.5 381.2 598.8 383 600 388 Z" />
+            </g>
+
             {/* Layer 2: Behind Crew */}
             {crewShower && <CrewShower capTop={wordLayout.capTopY} />}
             <g>{behindCrew.map(renderCrewNode)}</g>
@@ -2735,6 +2801,8 @@ export default function DoodleCrewFooter({
                   <Link
                     key={item.href}
                     href={item.href}
+                    target={item.target}
+                    rel={item.rel}
                     className={item.emphasis ? "dcf-footer-nav-emphasis" : undefined}
                   >
                     {item.label}
@@ -2772,6 +2840,27 @@ export default function DoodleCrewFooter({
                 ))}
               </nav>
             )}
+          </div>
+        )}
+
+        {closingMarquee && (
+          <div className="dcf-marquee" aria-hidden="true">
+            <div className="dcf-marquee-track">
+              {[0, 1].map((copy) => (
+                <div className="dcf-marquee-group" key={copy}>
+                  {Array.from({ length: 2 }, (_, index) => (
+                    <React.Fragment key={`${copy}-${index}`}>
+                      {closingMarquee.split(" · ").map((word, wordIndex) => (
+                        <React.Fragment key={`${word}-${wordIndex}`}>
+                          <span>{word}</span>
+                          <span className="dcf-marquee-divider">·</span>
+                        </React.Fragment>
+                      ))}
+                    </React.Fragment>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </div>

@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Footer } from "@/components/layout/Footer";
-import { createJoinEmailHref } from "@/data/joinEmail";
-import { ArrowLeft, Mail, Send, Sparkles } from "lucide-react";
+import { ArrowLeft, Send, Sparkles } from "lucide-react";
+import { CONTACT_EMAIL, createApplicationGmailUrl } from "@/data/contact";
 
 export default function JoinPage() {
   const [formData, setFormData] = useState({
@@ -16,13 +16,9 @@ export default function JoinPage() {
     message: "",
   });
 
-  const [emailDraftHref, setEmailDraftHref] = useState<string | null>(null);
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const href = createJoinEmailHref(formData);
-    setEmailDraftHref(href);
-    window.location.href = href;
+    window.location.assign(createApplicationGmailUrl(formData));
   };
 
   return (
@@ -37,49 +33,16 @@ export default function JoinPage() {
             <span>Back to Home</span>
           </Link>
 
-          {emailDraftHref ? (
-            <div className="rounded-3xl bg-white border border-border-subtle p-8 sm:p-12 text-center shadow-photo">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-5 shadow-sm">
-                <Mail className="w-9 h-9" />
-              </div>
-              <h2 className="font-display font-black text-3xl text-charcoal-950 uppercase tracking-tight mb-2">
-                Email Draft Ready
-              </h2>
-              <p role="status" aria-live="polite" className="text-base text-charcoal-700 max-w-md mx-auto mb-6">
-                Your email app should open with your application details filled in. Send the draft to complete your request; BacktoBase has not received it yet.
-              </p>
-              <div className="flex justify-center gap-4">
-                <a
-                  href={emailDraftHref}
-                  className="px-6 py-2.5 rounded-full bg-brand-orange text-white text-xs font-semibold hover:bg-brand-orange-hover transition-colors"
-                >
-                  Open Email Draft
-                </a>
-                <Link
-                  href="/events"
-                  className="px-6 py-2.5 rounded-full bg-brand-dark-pill text-white text-xs font-semibold hover:bg-brand-dark-pill-hover transition-colors"
-                >
-                  Explore Editions
-                </Link>
-                <Link
-                  href="/"
-                  className="px-6 py-2.5 rounded-full bg-canvas-subtle border border-border-strong text-charcoal-900 text-xs font-semibold hover:bg-[#ECE4D8] transition-colors"
-                >
-                  Return Home
-                </Link>
-              </div>
-            </div>
-          ) : (
             <div className="rounded-3xl bg-white border border-border-subtle p-8 sm:p-12 shadow-card">
               <div className="flex items-center gap-2 text-brand-orange text-xs font-bold uppercase tracking-wider mb-2">
                 <Sparkles className="w-4 h-4" />
-                <span>Join The Hyderabad Cohort</span>
+                <span>Join the Hyderabad community</span>
               </div>
               <h1 className="font-display font-black text-3xl sm:text-4xl text-charcoal-950 uppercase tracking-tight mb-3">
-                Be A Part Of What&apos;s Next.
+                Be a part of what&apos;s next.
               </h1>
               <p className="text-sm text-charcoal-700 mb-8 font-normal leading-relaxed">
-                Whether you want to attend upcoming editions, volunteer as an organizer, speak on stage, or mentor student talent — we welcome you!
+                Join us to attend an edition, volunteer, speak, or mentor. BacktoBase brings students, builders, creators, founders, and professionals together to learn and share what they know.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-5">
@@ -92,6 +55,7 @@ export default function JoinPage() {
                       id="join-name"
                       type="text"
                       required
+                      maxLength={120}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Yashwanth Bondapalli"
@@ -107,6 +71,7 @@ export default function JoinPage() {
                       id="join-email"
                       type="email"
                       required
+                      maxLength={254}
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="you@domain.com"
@@ -118,7 +83,7 @@ export default function JoinPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label htmlFor="join-role" className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
-                      I am a...
+                      What best describes you?
                     </label>
                     <select
                       id="join-role"
@@ -141,6 +106,7 @@ export default function JoinPage() {
                     <input
                       id="join-institution"
                       type="text"
+                      maxLength={160}
                       value={formData.institution}
                       onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
                       placeholder="e.g. CBIT, EPAM, Microsoft"
@@ -173,6 +139,7 @@ export default function JoinPage() {
                   <textarea
                     id="join-message"
                     rows={3}
+                    maxLength={3000}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Tell us what you're building or hoping to learn..."
@@ -182,14 +149,16 @@ export default function JoinPage() {
 
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-full bg-brand-orange hover:bg-brand-orange-hover text-white font-display font-extrabold text-sm tracking-wide shadow-glow transition-all flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.99]"
+                  className="w-full py-3.5 rounded-full bg-brand-orange text-white font-display font-extrabold text-sm tracking-wide transition-colors hover:bg-brand-orange-hover flex items-center justify-center gap-2"
                 >
-                  <span>Email Application</span>
-                  <Send className="w-4 h-4" />
+                  <span>Continue in Gmail</span>
+                  <Send className="w-4 h-4" aria-hidden="true" />
                 </button>
+                <p className="text-center text-xs leading-relaxed text-charcoal-600">
+                  This opens a Gmail draft addressed to <a className="font-semibold text-charcoal-800 underline underline-offset-2" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Review the details and send the email to reach the BacktoBase team.
+                </p>
               </form>
             </div>
-          )}
 
         </div>
       </main>

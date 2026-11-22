@@ -3,9 +3,9 @@ import { PixelField } from "@/components/ui/PixelField";
 
 export function CommunityBanner() {
   return (
-    <section className="py-8 sm:py-12">
+    <section id="community-photo" className="scroll-mt-24 py-8 sm:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl bg-canvas-dark text-white overflow-hidden shadow-2xl border border-charcoal-800">
+        <div className="relative rounded-3xl bg-canvas-dark text-white overflow-clip shadow-2xl border border-charcoal-800">
           {/* Header text inside dark banner */}
           <div className="relative isolate flex flex-col items-center p-6 pt-9 text-center sm:p-8 md:p-10">
             <PixelField variant="drift" className="absolute left-1 top-1 -z-10 w-28 -scale-x-100 opacity-80 sm:left-3 sm:w-40 lg:w-52" />
@@ -13,18 +13,18 @@ export function CommunityBanner() {
               The Community
             </span>
             <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase tracking-tight">
-              A Community Built By Students, <span className="text-brand-cyan">For Students.</span>
+              Built by students. <span className="text-brand-cyan">Open to everyone.</span>
             </h2>
           </div>
 
-          <div className="w-full bg-black">
+          <div className="community-photo-frame w-full overflow-clip bg-black">
             <Image
               src="/images/community-panoramic.jpg"
               alt="BacktoBase student community group photo"
               width={1024}
               height={229}
               unoptimized
-              className="block w-full h-auto"
+              className="community-scroll-photo block w-full h-auto"
             />
           </div>
         </div>

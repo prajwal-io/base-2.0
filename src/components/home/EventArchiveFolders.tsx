@@ -24,6 +24,20 @@ type EventArchiveProps = {
 
 const PAGE_SIZE = 3;
 const EDITORIAL_EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
+const DECK_VARIANTS = {
+  enter: (direction: number) => ({ opacity: 0, transform: `translateX(${direction * 32}px)` }),
+  visible: {
+    opacity: 1,
+    transform: "translateX(0px)",
+    transition: { duration: 0.18, ease: EDITORIAL_EASE },
+    transitionEnd: { transform: "none" },
+  },
+  exit: (direction: number) => ({
+    opacity: 0,
+    transform: `translateX(${direction * -32}px)`,
+    transition: { duration: 0.12, ease: EDITORIAL_EASE },
+  }),
+};
 
 const EAF_STYLES = `
 .eaf-section {
@@ -31,7 +45,7 @@ const EAF_STYLES = `
   --eaf-orange: #ef4b13;
   position: relative;
   overflow: hidden;
-  background-color: #161615;
+  background-color: var(--color-canvas-dark);
   background-image: radial-gradient(rgba(255, 255, 255, 0.12) 0.85px, transparent 0.85px);
   background-size: 16px 16px;
   color: #f8f4eb;
@@ -385,6 +399,22 @@ const EAF_STYLES = `
 }
 
 @media (max-width: 680px) {
+  .eaf-nav-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .eaf-dots {
+    margin-top: 8px;
+  }
+
+  .eaf-dot {
+    height: 44px;
+    min-width: 44px;
+    border-block: 19px solid transparent;
+    background-clip: padding-box;
+  }
+
   .eaf-stage {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -415,14 +445,21 @@ const EAF_STYLES = `
 
 export default function EventArchiveFolders({ events, archiveHref }: EventArchiveProps) {
   const reduceMotion = useReducedMotion();
-  const [page, setPage] = useState(0);
+  const [{ page, direction }, setDeck] = useState({ page: 0, direction: 1 });
 
   const totalPages = Math.max(1, Math.ceil(events.length / PAGE_SIZE));
   const safePage = page % totalPages;
   const visibleEvents = events.slice(safePage * PAGE_SIZE, safePage * PAGE_SIZE + PAGE_SIZE);
 
-  const goPrev = () => setPage((p) => (p - 1 + totalPages) % totalPages);
-  const goNext = () => setPage((p) => (p + 1) % totalPages);
+  const step = (direction: number) =>
+    setDeck(({ page }) => ({ page: (page % totalPages + direction + totalPages) % totalPages, direction }));
+
+  const selectPage = (target: number) =>
+    setDeck((current) => {
+      const active = current.page % totalPages;
+      if (target === active) return current;
+      return { page: target, direction: target > active ? 1 : -1 };
+    });
 
   return (
     <section className="eaf-section" aria-labelledby="archive-title">
@@ -439,8 +476,8 @@ export default function EventArchiveFolders({ events, archiveHref }: EventArchiv
             Explore the journey so far.
           </h2>
           <p className="eaf-copy">
-            Browse all {events.length} verified BacktoBase editions across Hyderabad — from AI
-            clarity sessions and resume teardowns to founder connects and creator summits.
+            Browse all {events.length} BacktoBase editions across Hyderabad, from AI clarity
+            sessions and resume reviews to founder meetups and creator summits.
           </p>
 
           <div className="eaf-actions">
@@ -454,7 +491,7 @@ export default function EventArchiveFolders({ events, archiveHref }: EventArchiv
                 <button
                   type="button"
                   className="eaf-nav-btn"
-                  onClick={goPrev}
+                  onClick={() => step(-1)}
                   aria-label="Show previous editions"
                 >
                   <ArrowLeft className="w-4 h-4" aria-hidden="true" />
@@ -462,7 +499,7 @@ export default function EventArchiveFolders({ events, archiveHref }: EventArchiv
                 <button
                   type="button"
                   className="eaf-nav-btn"
-                  onClick={goNext}
+                  onClick={() => step(1)}
                   aria-label="Show next editions"
                 >
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -472,17 +509,16 @@ export default function EventArchiveFolders({ events, archiveHref }: EventArchiv
           </div>
 
           {totalPages > 1 && (
-            <div className="eaf-dots" role="tablist" aria-label="Archive deck pages">
+            <div className="eaf-dots" role="group" aria-label="Archive deck pages">
               {Array.from({ length: totalPages }).map((_, idx) => (
                 <button
                   key={idx}
                   type="button"
-                  role="tab"
-                  aria-selected={safePage === idx}
+                  aria-pressed={safePage === idx}
                   aria-label={`View archive set ${idx + 1} of ${totalPages}`}
                   data-active={safePage === idx ? "true" : "false"}
                   className="eaf-dot"
-                  onClick={() => setPage(idx)}
+                  onClick={() => selectPage(idx)}
                 />
               ))}
               <span className="eaf-page-label">
@@ -495,26 +531,18 @@ export default function EventArchiveFolders({ events, archiveHref }: EventArchiv
 
         {/* Right Column: Interactive 3D Folder Deck */}
         <div className="eaf-stage-wrap" aria-label="Featured event editions">
-          <AnimatePresence mode="wait" initial={false}>
+          <AnimatePresence mode="wait" initial={false} custom={direction}>
             <motion.div
               key={safePage}
               className="eaf-stage"
-              initial={reduceMotion ? false : { opacity: 0, x: 22 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={reduceMotion ? undefined : { opacity: 0, x: -22 }}
-              transition={{ duration: 0.32, ease: EDITORIAL_EASE }}
+              custom={direction}
+              variants={reduceMotion ? undefined : DECK_VARIANTS}
+              initial={reduceMotion ? false : "enter"}
+              animate={reduceMotion ? undefined : "visible"}
+              exit={reduceMotion ? undefined : "exit"}
             >
               {visibleEvents.map((event, index) => (
-                <motion.div
-                  key={`${event.edition}-${event.title}`}
-                  initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.42,
-                    delay: reduceMotion ? 0 : index * 0.07,
-                    ease: EDITORIAL_EASE,
-                  }}
-                >
+                <div key={`${event.edition}-${event.title}`}>
                   <Link href={event.href} className="eaf-folder">
                     <div className="eaf-folder-back">
                       {event.image ? (
@@ -563,7 +591,7 @@ export default function EventArchiveFolders({ events, archiveHref }: EventArchiv
                       </span>
                     </div>
                   </Link>
-                </motion.div>
+                </div>
               ))}
             </motion.div>
           </AnimatePresence>

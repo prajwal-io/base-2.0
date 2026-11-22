@@ -7,6 +7,7 @@ import DoodleCrewFooter, {
 } from "@/components/ui/doodle-crew-footer";
 import { displayFont, footerSerifFont } from "@/app/fonts";
 import { backtoBaseCrewArtwork } from "@/data/crewArtwork";
+import { CONTACT_US_URL } from "@/data/contact";
 
 const backtoBaseCrew: CrewMember[] = [
   {
@@ -80,6 +81,7 @@ const backtoBaseFooterLinks: FooterNavLink[] = [
   { label: "Community", href: "/community" },
   { label: "About", href: "/about" },
   { label: "Join", href: "/join", emphasis: true },
+  { label: "Contact us", href: CONTACT_US_URL, target: "_blank", rel: "noopener noreferrer" },
 ];
 
 export function Footer() {
@@ -107,6 +109,7 @@ export function Footer() {
       links={backtoBaseFooterLinks}
       socials={backtoBaseSocials}
       showCredit={true}
+      closingMarquee="Learn · Connect · Build · Grow · BacktoBase"
     />
   );
 }

@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Calendar, MapPin, Mic, RotateCcw, Users } from "lucide-react";
-import type { Edition } from "@/data/communityData";
+import { normalizeVenue, type Edition } from "@/data/communityData";
 
 type ThemeFilter = "All" | "AI & GenAI" | "Careers & HR" | "Founders & Startups" | "Community & Creators";
 
@@ -28,18 +28,6 @@ function matchesTheme(edition: Edition, filter: ThemeFilter): boolean {
   return THEME_PATTERNS[filter].test(blob);
 }
 
-function normalizeVenue(venue: string): string {
-  const lower = venue.toLowerCase();
-  if (lower.includes("health catalyst")) return "Health Catalyst";
-  if (lower.includes("microsoft")) return "Microsoft";
-  if (lower.includes("epam")) return "EPAM Systems";
-  if (lower.includes("thoughtworks")) return "Thoughtworks";
-  if (lower.includes("devx")) return "DEVX";
-  if (lower.includes("nanospace")) return "Nanospace";
-  if (lower.includes("medicover")) return "Medicover";
-  return venue;
-}
-
 interface UniqueSpeaker {
   name: string;
   role: string;
@@ -51,6 +39,7 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
   const reduceMotion = useReducedMotion();
   const [theme, setTheme] = useState<ThemeFilter>("All");
   const [venue, setVenue] = useState<string>("All Venues");
+  const [pendingEdition, setPendingEdition] = useState<string | null>(null);
 
   const ordered = useMemo(() => editions.slice().reverse(), [editions]);
 
@@ -70,7 +59,7 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
     [ordered, theme, venue],
   );
 
-  // Deduplicated verified speakers across all 9 editions
+  // Deduplicated verified speakers across all editions
   const speakerDirectory = useMemo<UniqueSpeaker[]>(() => {
     const map = new Map<string, UniqueSpeaker>();
     editions.forEach((ed) => {
@@ -98,6 +87,20 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
   }, [editions]);
 
   const isFiltered = theme !== "All" || venue !== "All Venues";
+
+  useEffect(() => {
+    if (pendingEdition === null || isFiltered) return;
+    const frame = window.requestAnimationFrame(() => {
+      const id = `edition-${pendingEdition}`;
+      document.getElementById(id)?.scrollIntoView({
+        behavior: reduceMotion ? "auto" : "smooth",
+        block: "start",
+      });
+      window.history.replaceState(null, "", `#${id}`);
+      setPendingEdition(null);
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [isFiltered, pendingEdition, reduceMotion]);
 
   return (
     <>
@@ -190,7 +193,7 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
             No editions match that theme and venue combination.
           </p>
           <p className="text-sm text-charcoal-600 mb-5">
-            Reset the filters to browse all 9 BacktoBase editions.
+            Reset the filters to browse all {editions.length} BacktoBase editions.
           </p>
           <button
             type="button"
@@ -200,7 +203,7 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
             }}
             className="px-5 py-2.5 rounded-full bg-brand-dark-pill text-white text-xs font-bold uppercase tracking-wider"
           >
-            Show All 9 Editions
+            Show All {editions.length} Editions
           </button>
         </div>
       ) : (
@@ -322,7 +325,7 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
         </div>
       )}
 
-      {/* Verified Speaker Wall (Across All 9 Editions) */}
+      {/* Verified speaker wall across all editions */}
       <section
         id="speakers"
         aria-labelledby="speaker-wall-heading"
@@ -375,7 +378,9 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
                   <a
                     key={edNum}
                     href={`#edition-${edNum}`}
-                    onClick={() => {
+                    onClick={(event) => {
+                      event.preventDefault();
+                      setPendingEdition(edNum);
                       setTheme("All");
                       setVenue("All Venues");
                     }}

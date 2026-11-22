@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import { HeroSection } from "@/components/home/HeroSection";
+import { EDITION_COUNT } from "@/data/communityData";
 
 const FRAMES = [
   { name: "Bring an idea", x: 151, y: 0, at: 0 },
@@ -82,7 +83,7 @@ function SketchHandoff() {
 export default function SketchPreviewPage() {
   return (
     <main className="flex-1 bg-canvas-base">
-      <HeroSection rehearsal={<SketchHandoff />} />
+      <HeroSection rehearsal={<SketchHandoff />} editionCount={EDITION_COUNT} />
     </main>
   );
 }

@@ -11,7 +11,6 @@ const JOURNEY_STEPS = [
     description:
       "Walk into any Hyderabad edition as a student, fresher, or builder — zero gatekeeping, zero paywalls.",
     Icon: Sparkles,
-    badgeClass: "bg-brand-amber-light text-brand-orange",
   },
   {
     step: "02",
@@ -19,7 +18,6 @@ const JOURNEY_STEPS = [
     description:
       "Meet engineers, founders, mentors, and peers in high-trust conversations that keep going after the event.",
     Icon: Users,
-    badgeClass: "bg-cyan-50 text-brand-teal",
   },
   {
     step: "03",
@@ -27,7 +25,6 @@ const JOURNEY_STEPS = [
     description:
       "Grow from attendee to lightning speaker, event host, or core organizer helping shape the next edition.",
     Icon: Mic,
-    badgeClass: "bg-amber-50 text-amber-800",
   },
 ] as const;
 
@@ -58,7 +55,7 @@ export function CommunityRosterClient({ members }: { members: string[] }) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {JOURNEY_STEPS.map(({ step, title, description, Icon, badgeClass }, idx) => (
+          {JOURNEY_STEPS.map(({ step, title, description, Icon }, idx) => (
             <motion.div
               key={step}
               initial={reduceMotion ? false : { opacity: 0, y: 18 }}
@@ -68,7 +65,7 @@ export function CommunityRosterClient({ members }: { members: string[] }) {
               className="rounded-3xl bg-white border border-border-subtle p-6 sm:p-7 shadow-card flex flex-col"
             >
               <div className="flex items-center justify-between mb-5">
-                <div className={`w-10 h-10 rounded-2xl flex items-center justify-center ${badgeClass}`}>
+                <div className="site-icon-mark">
                   <Icon className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <span className="font-display font-black text-3xl text-charcoal-200 tabular-nums">

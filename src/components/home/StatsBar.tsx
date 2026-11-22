@@ -52,14 +52,14 @@ function NumberTicker({
   );
 }
 
-export function StatsBar() {
+export function StatsBar({ editionCount, venueCount }: { editionCount: number; venueCount: number }) {
   return (
     <section className="py-6 sm:py-8 border-y border-border-subtle bg-white/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center divide-y md:divide-y-0 md:divide-x divide-border-subtle">
-          {/* Stat 1: 09 Editions */}
+          {/* Stat 1: editions in the shared event catalogue */}
           <div className="flex items-center gap-4 justify-start md:justify-center pt-2 md:pt-0">
-            <NumberTicker target={9} padTwo />
+            <NumberTicker target={editionCount} padTwo />
             <div className="flex flex-col">
               <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-charcoal-900 leading-tight">
                 Editions
@@ -70,15 +70,15 @@ export function StatsBar() {
             </div>
           </div>
 
-          {/* Stat 2: 7+ Venues */}
+          {/* Stat 2: unique venue brands in the shared event catalogue */}
           <div className="flex items-center gap-4 justify-start md:justify-center pt-4 md:pt-0 md:pl-8">
-            <NumberTicker target={7} suffix="+" />
+            <NumberTicker target={venueCount} />
             <div className="flex flex-col">
               <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-charcoal-900 leading-tight">
-                Venues
+                Host Venues
               </span>
               <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-charcoal-500 leading-tight">
-                Across Cities
+                Across Editions
               </span>
             </div>
           </div>

@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ArrowLeft, ArrowRight, Heart, Sparkles, Target } from "lucide-react";
 import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 import { FOUNDER_PROFILE } from "@/data/founderData";
+import { CONTACT_US_URL } from "@/data/contact";
 
 export const metadata = {
   title: "About BacktoBase — Mission, Philosophy & Founder",
@@ -34,14 +35,14 @@ export default function AboutPage() {
               <span className="text-brand-cyan">To The Real World.</span>
             </h1>
             <p className="text-base sm:text-lg text-charcoal-700 leading-relaxed font-normal">
-              BacktoBase was founded on a simple conviction: classroom theory only becomes career momentum when students step out, speak up, and build alongside actual industry practitioners.
+              BacktoBase was founded on a simple idea: students build confidence and career momentum when they learn alongside people working in the industry.
             </p>
           </div>
 
           {/* Philosophy Pillars */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             <div className="p-6 rounded-3xl bg-white border border-border-subtle shadow-card">
-              <div className="w-10 h-10 rounded-2xl bg-brand-amber-light flex items-center justify-center text-brand-orange mb-4">
+              <div className="site-icon-mark mb-4">
                 <Target className="w-5 h-5" />
               </div>
               <h3 className="font-display font-bold text-lg text-charcoal-950 mb-2">
@@ -53,19 +54,19 @@ export default function AboutPage() {
             </div>
 
             <div className="p-6 rounded-3xl bg-white border border-border-subtle shadow-card">
-              <div className="w-10 h-10 rounded-2xl bg-cyan-50 flex items-center justify-center text-brand-cyan mb-4">
+              <div className="site-icon-mark mb-4">
                 <Sparkles className="w-5 h-5" />
               </div>
               <h3 className="font-display font-bold text-lg text-charcoal-950 mb-2">
                 Students as Speakers
               </h3>
               <p className="text-sm text-charcoal-700 leading-relaxed">
-                You don&apos;t need to wait until you graduate to have a voice. In Edition 5, 16-year-old builders took the stage at EPAM Systems.
+                You don&apos;t need to wait until you graduate to have a voice. In Edition 05, 16-year-old builders took the stage at EPAM Systems.
               </p>
             </div>
 
             <div className="p-6 rounded-3xl bg-white border border-border-subtle shadow-card">
-              <div className="w-10 h-10 rounded-2xl bg-amber-50 flex items-center justify-center text-brand-amber mb-4">
+              <div className="site-icon-mark mb-4">
                 <Heart className="w-5 h-5" />
               </div>
               <h3 className="font-display font-bold text-lg text-charcoal-950 mb-2">
@@ -97,7 +98,7 @@ export default function AboutPage() {
                   {FOUNDER_PROFILE.name}
                 </h2>
                 <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                  Yashwanth started BacktoBase in Hyderabad to give students more ways to learn alongside people doing the work. The idea was simple: put students, practitioners, and founders in the same room, then give students a chance to ask questions, share their work, and take the stage themselves.
+                  Yashwanth started BacktoBase in Hyderabad to give students more ways to learn alongside people doing the work. The idea was simple: bring students, practitioners, and founders together, then give students a chance to ask questions, share their work, and take the stage themselves.
                 </p>
                 <div className="mt-6">
                   <Link
@@ -118,10 +119,12 @@ export default function AboutPage() {
               Want to speak, volunteer, or partner with us?
             </h3>
             <Link
-              href="/join"
+              href={CONTACT_US_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-orange hover:bg-brand-orange-hover text-white text-sm font-semibold tracking-wide transition-all shadow-md"
             >
-              <span>Get in Touch with the Team</span>
+              <span>Contact us</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

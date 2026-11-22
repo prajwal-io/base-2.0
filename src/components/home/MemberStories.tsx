@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import CommunityTestimonials from "@/components/home/CommunityTestimonials";
+import { TestimonialsSection } from "@/components/ui/testimonials-with-marquee";
 import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 import { TESTIMONIALS } from "@/data/communityData";
 import { FOUNDER_PROFILE } from "@/data/founderData";
@@ -8,12 +8,17 @@ import { FOUNDER_PROFILE } from "@/data/founderData";
 export function MemberStories() {
   return (
     <>
-      <CommunityTestimonials
+      <TestimonialsSection
         title="Real People. Real Impact."
-        testimonials={TESTIMONIALS.map(({ quote, author, role }) => ({
-          quote,
-          name: author,
-          role,
+        description="A few words from the people learning, building, and growing with BacktoBase."
+        testimonials={TESTIMONIALS.map(({ quote, author, role, slug, avatar }) => ({
+          text: quote,
+          href: `/testimonials/${slug}`,
+          author: {
+            name: author,
+            handle: role,
+            avatar,
+          },
         }))}
       />
 

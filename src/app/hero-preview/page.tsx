@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { HeroSection } from "@/components/home/HeroSection";
 import { COMMUNITY_STAGES, HeroCommunityStage, type CommunityStage } from "@/components/home/HeroCommunityStage";
+import { EDITION_COUNT } from "@/data/communityData";
 
 export default function HeroPreviewPage() {
   const [variant, setVariant] = useState<CommunityStage>("floor");
@@ -36,7 +37,7 @@ export default function HeroPreviewPage() {
       <p aria-live="polite" className="mx-auto mt-3 max-w-lg px-4 text-center text-sm text-charcoal-700">
         {COMMUNITY_STAGES.find(({ id }) => id === variant)?.note}
       </p>
-      <HeroSection communityStage={<HeroCommunityStage key={replay} variant={variant} />} />
+      <HeroSection communityStage={<HeroCommunityStage key={replay} variant={variant} />} editionCount={EDITION_COUNT} />
     </main>
   );
 }

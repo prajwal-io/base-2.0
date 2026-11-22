@@ -415,7 +415,7 @@ export function LiquidAccordion({
       step(dt, now)
       draw()
       const busy = s.moving || s.rips.length || s.sats.length || s.mouse.s > 0.01
-      if (s.visible && (!s.reduce || busy)) s.raf = requestAnimationFrame(tick)
+      if (s.visible && !document.hidden && (!s.reduce || busy)) s.raf = requestAnimationFrame(tick)
       else s.raf = 0
     }
     s.raf = requestAnimationFrame(tick)
@@ -462,7 +462,7 @@ export function LiquidAccordion({
     cv?.addEventListener("webglcontextlost", lost)
     const io = new IntersectionObserver(([e]) => { s.visible = e.isIntersecting; if (s.visible) loop() })
     if (rootRef.current) io.observe(rootRef.current)
-    const vis = () => { s.visible = document.visibilityState === "visible"; if (s.visible) loop() }
+    const vis = () => { if (s.visible && !document.hidden) loop() }
     document.addEventListener("visibilitychange", vis)
     const ro = new ResizeObserver(() => resize())
     if (rootRef.current) ro.observe(rootRef.current)

@@ -25,7 +25,7 @@ type EventArchiveProps = {
 const PAGE_SIZE = 3;
 const EDITORIAL_EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 const DECK_VARIANTS = {
-  enter: (direction: number) => ({ opacity: 0, transform: `translateX(${direction * 32}px)` }),
+  enter: (direction: number) => ({ opacity: 0, transform: `translateX(${direction * 12}px)` }),
   visible: {
     opacity: 1,
     transform: "translateX(0px)",
@@ -34,8 +34,8 @@ const DECK_VARIANTS = {
   },
   exit: (direction: number) => ({
     opacity: 0,
-    transform: `translateX(${direction * -32}px)`,
-    transition: { duration: 0.12, ease: EDITORIAL_EASE },
+    transform: `translateX(${direction * -8}px)`,
+    transition: { duration: 0.08, ease: EDITORIAL_EASE },
   }),
 };
 

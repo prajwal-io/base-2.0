@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { PARTNER_CONTACT_URL } from "@/data/contact";
 import {
@@ -353,11 +353,9 @@ export default function EditorialLearnConnectGrow() {
   const reduceMotion = useReducedMotion();
 
   const hasEntered = useInView(sectionRef, { once: true, amount: 0.2 });
-  const isLiveInView = useInView(sectionRef, { amount: 0.15 });
 
   const [hoveredWord, setHoveredWord] = useState<number | null>(null);
   const [selectedWord, setSelectedWord] = useState<number | null>(null);
-  const [idleWord, setIdleWord] = useState<number>(0);
 
   const selectStory = (index: number) => {
     setHoveredWord(null);
@@ -365,18 +363,9 @@ export default function EditorialLearnConnectGrow() {
   };
 
   const lockedWord = hoveredWord ?? selectedWord;
-  const activeIndex = lockedWord ?? idleWord;
+  const activeIndex = lockedWord ?? 0;
   const activePillar = PILLARS[activeIndex];
   const isUserInteracting = lockedWord !== null;
-
-  // Restrained idle cadence cycling LEARN -> CONNECT -> GROW when visible and not hovered/clicked
-  useEffect(() => {
-    if (reduceMotion || !isLiveInView || isUserInteracting) return;
-    const id = setInterval(() => {
-      setIdleWord((prev) => (prev + 1) % PILLARS.length);
-    }, 4200);
-    return () => clearInterval(id);
-  }, [reduceMotion, isLiveInView, isUserInteracting]);
 
   // Smooth spring-damped scroll progress for subtle diagonal & word stride parallax
   const { scrollYProgress } = useScroll({
@@ -496,7 +485,9 @@ export default function EditorialLearnConnectGrow() {
                       type="button"
                       className="lcg-line-word"
                       aria-pressed={isActive}
-                      onMouseEnter={() => setHoveredWord(idx)}
+                      onPointerEnter={(event) => {
+                        if (event.pointerType === "mouse") setHoveredWord(idx);
+                      }}
                       onFocus={() => setHoveredWord(idx)}
                       onBlur={() => setHoveredWord((cur) => (cur === idx ? null : cur))}
                       onClick={() => selectStory(idx)}
@@ -556,7 +547,9 @@ export default function EditorialLearnConnectGrow() {
                 aria-label={`Show ${pillar.word.replace(".", "")} story`}
                 data-active={activeIndex === idx ? "true" : "false"}
                 className="lcg-story-dot"
-                onMouseEnter={() => setHoveredWord(idx)}
+                onPointerEnter={(event) => {
+                  if (event.pointerType === "mouse") setHoveredWord(idx);
+                }}
                 onClick={() => selectStory(idx)}
               />
             ))}
@@ -569,10 +562,10 @@ export default function EditorialLearnConnectGrow() {
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={activePillar.word}
-                initial={reduceMotion ? false : { opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={reduceMotion ? undefined : { opacity: 0, y: -10 }}
-                transition={{ duration: 0.28, ease: EDITORIAL_EASE }}
+                initial={reduceMotion ? false : { opacity: 0, transform: "translateY(4px)" }}
+                animate={{ opacity: 1, transform: "translateY(0px)" }}
+                exit={reduceMotion ? undefined : { opacity: 0, transition: { duration: 0.08 } }}
+                transition={{ duration: reduceMotion ? 0 : 0.18, ease: EDITORIAL_EASE }}
               >
                 <p className="lcg-eyebrow lcg-eyebrow--story">{activePillar.eyebrow}</p>
                 <h3 className="lcg-story-heading">{activePillar.heading}</h3>

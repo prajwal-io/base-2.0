@@ -1,7 +1,7 @@
 "use client";
 
-import { useId } from "react";
-import { useReducedMotion } from "framer-motion";
+import { useId, useRef } from "react";
+import { useInView } from "framer-motion";
 import { backtoBaseCrewArtwork } from "@/data/crewArtwork";
 
 const CREW = [
@@ -12,11 +12,12 @@ const CREW = [
 ] as const;
 
 export function FaqGlobeScene() {
-  const reducedMotion = useReducedMotion();
+  const sceneRef = useRef<HTMLElement>(null);
+  const inView = useInView(sceneRef);
   const clipId = `faq-globe-${useId().replace(/:/g, "")}`;
 
   return (
-    <figure className="faq-globe-scene" data-reduced-motion={reducedMotion ? "true" : "false"}>
+    <figure ref={sceneRef} className="faq-globe-scene" data-in-view={inView}>
       <svg
         className="faq-globe-art"
         viewBox="0 0 420 360"
@@ -89,11 +90,12 @@ export function FaqGlobeScene() {
         .faq-globe-star { fill: #E85B2A; transform-origin: center; animation: faq-star-twinkle 3.6s ease-in-out infinite; }
         .faq-globe-star--small { animation-delay: -1.8s; opacity: .68; }
         .faq-globe-caption { padding-top: 3px; color: #7A6251; font-size: 10px; font-weight: 700; letter-spacing: .12em; line-height: 1.5; text-align: center; text-transform: uppercase; }
-        @keyframes faq-globe-turn { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(.16); } }
+        @keyframes faq-globe-turn { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(.42); } }
         @keyframes faq-globe-breathe { 0%, 100% { transform: scaleY(.96); } 50% { transform: scaleY(1.04); } }
         @keyframes faq-person-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -3px; } }
-        @keyframes faq-star-twinkle { 0%, 100% { opacity: .48; scale: .82; filter: drop-shadow(0 0 1px #E85B2A); } 50% { opacity: 1; scale: 1.12; filter: drop-shadow(0 0 5px #E85B2A); } }
-        @media (prefers-reduced-motion: reduce) { .faq-globe-scene[data-reduced-motion="true"] .faq-globe-meridians, .faq-globe-scene[data-reduced-motion="true"] .faq-globe-latitudes, .faq-globe-scene[data-reduced-motion="true"] .faq-globe-person, .faq-globe-scene[data-reduced-motion="true"] .faq-globe-star { animation: none; } }
+        @keyframes faq-star-twinkle { 0%, 100% { opacity: .48; scale: .82; } 50% { opacity: 1; scale: 1.12; } }
+        .faq-globe-scene[data-in-view="false"] :is(.faq-globe-meridians, .faq-globe-latitudes, .faq-globe-person, .faq-globe-star) { animation-play-state: paused; }
+        @media (prefers-reduced-motion: reduce) { .faq-globe-scene :is(.faq-globe-meridians, .faq-globe-latitudes, .faq-globe-person, .faq-globe-star) { animation: none; } }
       `}</style>
     </figure>
   );

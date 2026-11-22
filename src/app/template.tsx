@@ -1,18 +1,20 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 /**
- * Quick, crisp page-to-page transition: a short fade with a tiny lift.
+ * A short cross-route fade that keeps the page in its final position.
  * Re-mounts on every route change (Next.js template behaviour).
  */
 export default function Template({ children }: { children: React.ReactNode }) {
+  const reduceMotion = useReducedMotion();
+
   return (
     <motion.div
       className="flex flex-1 flex-col"
-      initial={{ opacity: 0.35, y: 6 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.16, ease: [0.2, 0, 0, 1] }}
+      initial={reduceMotion ? false : { opacity: 0.85 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: reduceMotion ? 0 : 0.16, ease: [0.23, 1, 0.32, 1] }}
     >
       {children}
     </motion.div>

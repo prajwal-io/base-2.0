@@ -1951,6 +1951,10 @@ const DCF_CSS = `
   animation-play-state: paused;
 }
 
+.dcf-root[data-in-view="false"] .dcf-marquee-track {
+  animation-play-state: paused;
+}
+
 .dcf-marquee-group {
   display: flex;
   flex: none;
@@ -2558,6 +2562,7 @@ export default function DoodleCrewFooter({
       ref={rootRef}
       className={className ? `dcf-root ${className}` : "dcf-root"}
       data-revealed={isRevealed ? "true" : "false"}
+      data-in-view={inView}
       style={rootStyle}
     >
       <style>{DCF_CSS}</style>

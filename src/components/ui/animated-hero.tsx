@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { FlowButton } from "@/components/ui/flow-button";
 
@@ -12,16 +12,18 @@ const EDITORIAL_EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 export function AnimatedHero({ editionCount }: { editionCount: number }) {
   const [actionNumber, setActionNumber] = useState(0);
   const reduceMotion = useReducedMotion();
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const headingInView = useInView(headingRef);
 
   useEffect(() => {
-    if (reduceMotion) return;
+    if (reduceMotion || !headingInView) return;
 
     const intervalId = window.setInterval(() => {
-      setActionNumber((current) => (current + 1) % ACTIONS.length);
-    }, 2600);
+      if (!document.hidden) setActionNumber((current) => (current + 1) % ACTIONS.length);
+    }, 3200);
 
     return () => window.clearInterval(intervalId);
-  }, [reduceMotion]);
+  }, [headingInView, reduceMotion]);
 
   return (
     <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
@@ -34,12 +36,12 @@ export function AnimatedHero({ editionCount }: { editionCount: number }) {
         A Student-Driven Community
       </motion.p>
 
-      <h1 className="mb-6 font-display text-[clamp(1.9rem,8.8vw,2.25rem)] font-extrabold uppercase leading-[0.94] tracking-tight text-charcoal-950 sm:text-5xl xl:text-6xl">
+      <h1 ref={headingRef} className="mb-6 font-display text-[clamp(1.9rem,8.8vw,2.25rem)] font-extrabold uppercase leading-[0.94] tracking-tight text-charcoal-950 sm:text-5xl xl:text-6xl">
         <span className="block overflow-hidden py-[0.02em]">Find your people.</span>
-        <span className="block overflow-hidden py-[0.02em]">
-          <span className="sr-only">{ACTIONS[actionNumber]} together.</span>
+        <span className="block py-[0.02em]">
+          <span className="sr-only">Learn together.</span>
           <span aria-hidden="true" className="inline-flex items-baseline gap-[0.22em]">
-            <span className="relative inline-grid">
+            <span className="relative inline-grid overflow-hidden">
               {ACTIONS.map((action, index) => (
                 <motion.span
                   key={action}
@@ -47,10 +49,10 @@ export function AnimatedHero({ editionCount }: { editionCount: number }) {
                   initial={false}
                   animate={
                     actionNumber === index
-                      ? { y: 0, opacity: 1 }
-                      : { y: actionNumber > index ? "-110%" : "110%", opacity: 0 }
+                      ? { transform: "translateY(0%)", opacity: 1 }
+                      : { transform: actionNumber > index ? "translateY(-106%)" : "translateY(106%)", opacity: 0 }
                   }
-                  transition={{ type: "spring", stiffness: 50, damping: 16 }}
+                  transition={{ duration: reduceMotion ? 0 : 0.32, ease: EDITORIAL_EASE }}
                 >
                   {action}
                 </motion.span>

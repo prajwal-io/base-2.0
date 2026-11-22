@@ -37,7 +37,7 @@ export function FinalCta() {
                 href={PARTNER_CONTACT_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-brand-amber hover:bg-amber-400 text-charcoal-950 font-display font-extrabold text-sm tracking-wide shadow-glow transition-all duration-200 hover:scale-[1.03] active:scale-[0.98]"
+                className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-brand-amber hover:bg-amber-400 text-charcoal-950 font-display font-extrabold text-sm tracking-wide shadow-glow transition-[background-color,transform] duration-150 motion-safe:active:scale-[0.98]"
               >
                 <span>Partner with us</span>
                 <ArrowRight className="w-4 h-4 text-charcoal-950" />

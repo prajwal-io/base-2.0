@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CalendarDays, CircleHelp, Info, Users, Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { LiquidNavbar, NimbusIcons, type LiquidNavItem } from "@/components/ui/liquid-glass-navbar";
 import { FlowButton } from "@/components/ui/flow-button";
 
@@ -19,6 +19,7 @@ const NAV_ITEMS: (LiquidNavItem & { href: string })[] = [
 
 export function Navbar() {
   const pathname = usePathname();
+  const reduceMotion = useReducedMotion();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const mobileMenuButton = useRef<HTMLButtonElement>(null);
@@ -157,11 +158,11 @@ export function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.14, ease: [0.2, 0, 0, 1] }}
-            className="md:hidden pointer-events-auto mt-2 mx-auto max-w-sm max-h-[calc(100dvh-5.5rem)] overflow-y-auto overscroll-contain rounded-3xl border border-[#E8E3DA] bg-white p-4 shadow-xl"
+            initial={reduceMotion ? false : { opacity: 0, transform: "translateY(-6px)" }}
+            animate={{ opacity: 1, transform: "translateY(0px)" }}
+            exit={reduceMotion ? undefined : { opacity: 0, transform: "translateY(-6px)" }}
+            transition={{ duration: reduceMotion ? 0 : 0.18, ease: [0.23, 1, 0.32, 1] }}
+            className="pointer-events-auto absolute inset-x-4 top-full mx-auto max-h-[calc(100dvh-5.5rem)] max-w-sm overflow-y-auto overscroll-contain rounded-3xl border border-[#E8E3DA] bg-white p-4 shadow-xl md:hidden"
           >
             <nav id="mobile-navigation" aria-label="Mobile navigation" className="flex flex-col gap-1">
               {NAV_ITEMS.map((item, index) => {

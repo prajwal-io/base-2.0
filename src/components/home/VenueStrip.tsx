@@ -107,7 +107,7 @@ export function VenueStrip() {
                   alt={venue.name}
                   width={venue.width}
                   height={venue.height}
-                  className={`${venue.sizeClass} w-auto max-w-full object-contain transition-transform duration-200 group-hover:scale-[1.04]`}
+                  className={`${venue.sizeClass} w-auto max-w-full object-contain`}
                 />
               </li>
             ))}

@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { backtoBaseCrewArtwork as artwork } from "@/data/crewArtwork";
 
 export const COMMUNITY_STAGES = [
@@ -15,7 +16,6 @@ export type CommunityStage = (typeof COMMUNITY_STAGES)[number]["id"];
 type Scene = keyof typeof artwork.crops;
 
 const EASE = [0.22, 1, 0.36, 1] as const;
-const FLOAT_EASE = [0.77, 0, 0.175, 1] as const;
 // The hero shows the characters at a larger size than the shared footer treatment.
 const HERO_CREW_SRC = "/images/footer-community-crew-v3.png";
 
@@ -122,8 +122,11 @@ export function HeroCommunityStage({ variant }: { variant: CommunityStage }) {
 }
 
 function TakeTheFloor({ reduced }: { reduced: boolean }) {
+  const stageRef = useRef<HTMLElement>(null);
+  const inView = useInView(stageRef);
+
   return (
-    <figure className="relative mx-auto mt-5 w-full max-w-4xl px-3 sm:mt-6 sm:px-8">
+    <figure ref={stageRef} data-in-view={inView} className="hero-crew-stage relative mx-auto mt-5 w-full max-w-4xl px-3 sm:mt-6 sm:px-8">
       <div aria-hidden="true" className="relative isolate px-1 sm:px-4">
         <motion.div
           className="absolute inset-x-[12%] inset-y-0 -z-10 origin-bottom bg-[radial-gradient(ellipse_at_bottom,#efbf86_0%,#f6e2c5_32%,transparent_71%)]"
@@ -139,13 +142,9 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: reduced ? 0 : 0.64, delay: reduced ? 0 : 0.28, ease: EASE }}
           >
-            <motion.div
-              className="h-full min-w-0"
-              animate={reduced ? undefined : { transform: ["translateY(0px) rotate(0deg)", "translateY(-2px) rotate(0.25deg)", "translateY(0px) rotate(0deg)"] }}
-              transition={reduced ? undefined : { duration: 5.8, delay: 0.4, repeat: Infinity, ease: FLOAT_EASE }}
-            >
+            <div className="hero-crew-float h-full min-w-0">
               <CrewScene scene="founder" />
-            </motion.div>
+            </div>
           </motion.div>
 
           <div className="relative flex h-[clamp(11.5rem,46vw,15rem)] min-w-0 justify-center sm:h-[18rem] lg:h-[22rem]">
@@ -161,13 +160,9 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: reduced ? 0 : 0.68, delay: reduced ? 0 : 0.46, ease: EASE }}
             >
-              <motion.div
-                className="h-full min-w-0"
-                animate={reduced ? undefined : { transform: ["translateY(0px) rotate(0deg)", "translateY(-3px) rotate(-0.2deg)", "translateY(0px) rotate(0deg)"] }}
-                transition={reduced ? undefined : { duration: 6.2, delay: 0.8, repeat: Infinity, ease: FLOAT_EASE }}
-              >
+              <div className="hero-crew-float h-full min-w-0 [--crew-delay:-2s]">
                 <CrewScene scene="builder" brandedLaptop />
-              </motion.div>
+              </div>
             </motion.div>
           </div>
 
@@ -177,25 +172,15 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: reduced ? 0 : 0.62, delay: reduced ? 0 : 0.64, ease: EASE }}
           >
-            <motion.div
-              className="relative h-full min-w-0"
-              animate={reduced ? undefined : { transform: ["translateY(0px) rotate(0deg)", "translateY(-2.5px) rotate(0.25deg)", "translateY(0px) rotate(0deg)"] }}
-              transition={reduced ? undefined : { duration: 5.4, delay: 1.1, repeat: Infinity, ease: FLOAT_EASE }}
-            >
+            <div className="hero-crew-float relative h-full min-w-0 [--crew-delay:-4s]">
               <CrewScene scene="creator" />
-              <motion.span
-                className="absolute right-[12%] top-[13%] size-3 bg-[#fff5da] shadow-[0_0_6px_1px_rgba(245,184,84,0.56)] [clip-path:polygon(50%_0,62%_37%,100%_50%,62%_63%,50%_100%,38%_63%,0_50%,38%_37%)]"
-                initial={reduced ? false : { opacity: 0.45, scale: 0.82 }}
-                animate={reduced ? { opacity: 1, scale: 1 } : { opacity: [0.42, 0.95, 0.42], scale: [0.82, 1.08, 0.82] }}
-                transition={reduced ? { duration: 0 } : { duration: 3.2, delay: 1.2, repeat: Infinity, ease: FLOAT_EASE }}
+              <span
+                className="hero-crew-star absolute right-[12%] top-[13%] size-3 bg-[#fff5da] [--crew-delay:-0.8s] [clip-path:polygon(50%_0,62%_37%,100%_50%,62%_63%,50%_100%,38%_63%,0_50%,38%_37%)]"
               />
-              <motion.span
-                className="absolute right-[27%] top-[7%] size-2 bg-[#fff5da] shadow-[0_0_4px_1px_rgba(245,184,84,0.48)] [clip-path:polygon(50%_0,62%_37%,100%_50%,62%_63%,50%_100%,38%_63%,0_50%,38%_37%)]"
-                initial={reduced ? false : { opacity: 0.4, scale: 0.8 }}
-                animate={reduced ? { opacity: 0.8, scale: 1 } : { opacity: [0.35, 0.82, 0.35], scale: [0.8, 1.12, 0.8] }}
-                transition={reduced ? { duration: 0 } : { duration: 3.8, delay: 1.8, repeat: Infinity, ease: FLOAT_EASE }}
+              <span
+                className="hero-crew-star absolute right-[27%] top-[7%] size-2 bg-[#fff5da] [--crew-delay:-2.7s] [clip-path:polygon(50%_0,62%_37%,100%_50%,62%_63%,50%_100%,38%_63%,0_50%,38%_37%)]"
               />
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -212,7 +197,7 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
               className="absolute inset-x-0 -bottom-1 h-px origin-left bg-[#c88866]"
               initial={reduced ? false : { scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ duration: reduced ? 0 : 0.4, delay: reduced ? 0 : 1.94, ease: EASE }}
+              transition={{ duration: reduced ? 0 : 0.32, delay: reduced ? 0 : 0.75, ease: EASE }}
             />
           </span>
           <ArrowUpRight aria-hidden="true" className="size-4" />

@@ -1,3 +1,7 @@
+"use client";
+
+import { useRef } from "react";
+import { useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { TestimonialCard, type TestimonialAuthor } from "@/components/ui/testimonial-card";
 
@@ -18,6 +22,9 @@ export function TestimonialsSection({
   testimonials,
   className,
 }: TestimonialsSectionProps) {
+  const marqueeRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(marqueeRef);
+
   if (testimonials.length === 0) return null;
 
   return (
@@ -43,9 +50,11 @@ export function TestimonialsSection({
         </div>
 
         <div
+          ref={marqueeRef}
+          data-in-view={inView}
           className="testimonials-marquee-window w-full overflow-hidden"
           role="region"
-          aria-label="Community testimonials. Focus or hover a card to pause the marquee."
+          aria-label="Community testimonials"
         >
           <div className="testimonials-marquee-track flex w-max">
             <div className="testimonials-marquee-group flex shrink-0 gap-4 pr-4">

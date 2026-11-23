@@ -103,12 +103,15 @@ export function FaqGlobeScene() {
         .faq-globe-art { display: block; width: 100%; height: auto; overflow: visible; }
         .faq-globe-grid ellipse, .faq-globe-grid path { fill: none; stroke: #BD9B7E; stroke-width: 1; opacity: .72; }
         .faq-globe-grid .faq-globe-land { fill: #8ca69a; stroke: #78978a; stroke-width: 1; opacity: .58; }
-        .faq-globe-meridians { transform-origin: 210px 192px; animation: faq-globe-turn 18s ease-in-out infinite; }
+        .faq-globe-meridians { transform-box: fill-box; transform-origin: 210px 192px; transform-style: preserve-3d; animation: faq-globe-turn 24s cubic-bezier(.45,0,.55,1) infinite alternate; }
         .faq-globe-glint { fill: #fffaf3; opacity: .25; filter: blur(5px); pointer-events: none; }
         .faq-globe-star { fill: #E85B2A; transform-origin: center; animation: faq-star-twinkle 3.6s ease-in-out infinite; }
         .faq-globe-star--small { animation-delay: -1.8s; opacity: .68; }
         .faq-globe-caption { padding-top: 3px; color: #7A6251; font-size: 10px; font-weight: 700; letter-spacing: .12em; line-height: 1.5; text-align: center; text-transform: uppercase; }
-        @keyframes faq-globe-turn { 0%, 100% { transform: scaleX(.94); } 50% { transform: scaleX(.79); } }
+        @keyframes faq-globe-turn {
+          from { transform: perspective(900px) rotateY(-16deg) scaleX(.92); }
+          to { transform: perspective(900px) rotateY(16deg) scaleX(.92); }
+        }
         @keyframes faq-star-twinkle { 0%, 100% { opacity: .48; scale: .82; } 50% { opacity: 1; scale: 1.12; } }
         .faq-globe-scene[data-in-view="false"] :is(.faq-globe-meridians, .faq-globe-star) { animation-play-state: paused; }
         @media (max-width: 1023px) {

@@ -12,27 +12,27 @@ export function HyderabadSkyline() {
   return (
     <motion.div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-x-0 -bottom-px z-0 h-[clamp(7rem,19vw,12rem)] overflow-hidden"
+      className="pointer-events-none absolute inset-x-0 -bottom-px z-0 h-[clamp(8rem,18vw,12rem)] overflow-hidden"
       initial={reduced ? false : { opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: reduced ? 0 : 0.8, delay: reduced ? 0 : 0.35, ease: EASE }}
     >
-      <div className="absolute bottom-0 left-0 h-[88%] w-[34%] overflow-hidden sm:h-full sm:w-[31%]">
+      <div className="absolute bottom-0 left-0 h-[92%] w-[22%] overflow-hidden sm:h-full sm:w-[22%]">
         <Image
           src="/images/hyderabad-skyline-v1.png"
           alt=""
           fill
-          sizes="(max-width: 640px) 34vw, 31vw"
+          sizes="22vw"
           className="object-cover object-left-bottom opacity-100"
           priority
         />
       </div>
-      <div className="absolute bottom-0 right-0 h-[82%] w-[34%] overflow-hidden sm:h-[94%] sm:w-[31%]">
+      <div className="absolute bottom-0 right-0 h-[88%] w-[22%] overflow-hidden sm:h-[94%] sm:w-[22%]">
         <Image
           src="/images/hyderabad-skyline-v1.png"
           alt=""
           fill
-          sizes="(max-width: 640px) 34vw, 31vw"
+          sizes="22vw"
           className="object-cover object-right-bottom opacity-100"
         />
       </div>

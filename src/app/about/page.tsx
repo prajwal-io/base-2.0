@@ -40,42 +40,36 @@ export default function AboutPage() {
           </div>
 
           {/* Philosophy Pillars */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            <div className="p-6 rounded-3xl bg-white border border-border-subtle shadow-card">
-              <div className="site-icon-mark mb-4">
-                <Hammer aria-hidden="true" className="w-5 h-5" />
-              </div>
-              <h3 className="font-display font-bold text-lg text-charcoal-950 mb-2">
+          <div className="mb-16 grid grid-cols-1 gap-7 border-y border-[#d5c8b9] py-7 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-3 lg:gap-0 lg:py-8">
+            <article className="lg:pr-7">
+              <Hammer aria-hidden="true" className="mb-4 size-5 text-brand-orange" />
+              <h3 className="font-display text-lg font-bold text-charcoal-950">
                 Show Up & Build
               </h3>
-              <p className="text-sm text-charcoal-700 leading-relaxed">
+              <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
                 The best growth happens when we step out of passive attendance into active building and direct conversations.
               </p>
-            </div>
+            </article>
 
-            <div className="p-6 rounded-3xl bg-white border border-border-subtle shadow-card">
-              <div className="site-icon-mark mb-4">
-                <Mic2 aria-hidden="true" className="w-5 h-5" />
-              </div>
-              <h3 className="font-display font-bold text-lg text-charcoal-950 mb-2">
+            <article className="sm:border-l sm:border-[#d5c8b9] sm:pl-7 lg:px-7">
+              <Mic2 aria-hidden="true" className="mb-4 size-5 text-brand-orange" />
+              <h3 className="font-display text-lg font-bold text-charcoal-950">
                 Students as Speakers
               </h3>
-              <p className="text-sm text-charcoal-700 leading-relaxed">
+              <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
                 You don&apos;t need to wait until you graduate to have a voice. In Edition 05, 16-year-old builders took the stage at EPAM Systems.
               </p>
-            </div>
+            </article>
 
-            <div className="p-6 rounded-3xl bg-white border border-border-subtle shadow-card">
-              <div className="site-icon-mark mb-4">
-                <MessagesSquare aria-hidden="true" className="w-5 h-5" />
-              </div>
-              <h3 className="font-display font-bold text-lg text-charcoal-950 mb-2">
+            <article className="sm:col-span-2 sm:border-t sm:border-[#d5c8b9] sm:pt-7 lg:col-span-1 lg:border-l lg:border-t-0 lg:pl-7 lg:pt-0">
+              <MessagesSquare aria-hidden="true" className="mb-4 size-5 text-brand-orange" />
+              <h3 className="font-display text-lg font-bold text-charcoal-950">
                 High Signal, Zero Fluff
               </h3>
-              <p className="text-sm text-charcoal-700 leading-relaxed">
+              <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
                 One event. One connection. One insight at a time. Every edition is crafted around actionable skills, recruitment truth, and genuine mentorship.
               </p>
-            </div>
+            </article>
           </div>
 
           {/* Founder Section */}

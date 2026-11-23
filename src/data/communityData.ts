@@ -97,6 +97,8 @@ export const FAQS = [
   },
 ];
 
+// Retained as verified data for integrity checks and future community references.
+// The community page intentionally does not render a team roster.
 export const TEAM_MEMBERS = [
   "Sai Venkata Midhilesh Teki",
   "Janardhana Chary Vinukonda",

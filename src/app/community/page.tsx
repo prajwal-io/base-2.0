@@ -1,13 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/layout/Footer";
-import { CommunityRosterClient } from "@/components/community/CommunityRosterClient";
-import { TEAM_MEMBERS } from "@/data/communityData";
+import { CommunityJourney } from "@/components/community/CommunityJourney";
 import { ArrowLeft, ArrowRight, Users, ShieldCheck, HeartHandshake } from "lucide-react";
 
 export const metadata = {
   title: "The Community — BacktoBase Hyderabad",
-  description: "Meet the people, volunteers, hosts, and anchors who make BacktoBase happen.",
+  description: "See how BacktoBase brings students, builders, and industry professionals together to learn, share, and grow.",
 };
 
 export default function CommunityPage() {
@@ -35,10 +34,10 @@ export default function CommunityPage() {
               <span className="text-brand-cyan">Open to everyone.</span>
             </h1>
             <p className="text-base sm:text-lg text-charcoal-700 leading-relaxed font-normal">
-              Behind every edition is a dedicated crew of students, anchors, photographers, and coordinators who believe in creating inclusive, high-signal spaces.
+              Every edition brings students, builders, and industry professionals together to learn, share, and grow alongside one another.
             </p>
           </div>
-          <div className="mb-16 overflow-hidden rounded-3xl border border-border-subtle bg-black shadow-photo">
+          <div className="mb-16 overflow-hidden rounded-2xl border border-border-subtle bg-black">
             <Image
               src="/images/community-panoramic.jpg"
               alt="BacktoBase student community group photo"
@@ -51,61 +50,62 @@ export default function CommunityPage() {
 
 
 
-          {/* Member Journey & Searchable Organizing Roster */}
-          <CommunityRosterClient members={TEAM_MEMBERS} />
+          <CommunityJourney />
 
           {/* Community Values */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            <div className="p-6 rounded-3xl bg-white border border-border-subtle shadow-card">
-              <div className="site-icon-mark mb-4">
-                <ShieldCheck aria-hidden="true" />
-              </div>
-              <h3 className="font-display font-bold text-lg text-charcoal-950 mb-2">
+          <section aria-labelledby="community-values-heading" className="mb-16">
+            <div className="mb-7 max-w-2xl">
+              <span className="mb-2 block text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
+                What guides us
+              </span>
+              <h2 id="community-values-heading" className="font-display text-3xl font-black uppercase leading-tight tracking-tight text-charcoal-950 sm:text-4xl">
+                Room to learn. <span className="text-brand-cyan">Space to share.</span>
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 gap-7 border-y border-[#d5c8b9] py-7 md:grid-cols-3 md:gap-0 md:py-8">
+              <article className="md:pr-7">
+                <ShieldCheck aria-hidden="true" className="mb-4 size-5 text-brand-orange" />
+                <h3 className="font-display text-lg font-bold text-charcoal-950">
                 Psychological Safety
-              </h3>
-              <p className="text-xs sm:text-sm text-charcoal-700 leading-relaxed">
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
                 Whether you are a 1st-year fresher or an AWS architect, every question is treated with respect and genuine encouragement.
-              </p>
-            </div>
+                </p>
+              </article>
 
-            <div className="p-6 rounded-3xl bg-white border border-border-subtle shadow-card">
-              <div className="site-icon-mark mb-4">
-                <Users aria-hidden="true" />
-              </div>
-              <h3 className="font-display font-bold text-lg text-charcoal-950 mb-2">
-                No Paywalls to Speak
-              </h3>
-              <p className="text-xs sm:text-sm text-charcoal-700 leading-relaxed">
+              <article className="md:border-l md:border-[#d5c8b9] md:px-7">
+                <Users aria-hidden="true" className="mb-4 size-5 text-brand-orange" />
+                <h3 className="font-display text-lg font-bold text-charcoal-950">No paywalls to speak</h3>
+                <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
                 Our stages belong to those with genuine ideas and practical experience — not pay-to-play corporate sponsorships.
-              </p>
-            </div>
+                </p>
+              </article>
 
-            <div className="p-6 rounded-3xl bg-white border border-border-subtle shadow-card">
-              <div className="site-icon-mark mb-4">
-                <HeartHandshake aria-hidden="true" />
-              </div>
-              <h3 className="font-display font-bold text-lg text-charcoal-950 mb-2">
-                Pay It Forward
-              </h3>
-              <p className="text-xs sm:text-sm text-charcoal-700 leading-relaxed">
+              <article className="md:border-l md:border-[#d5c8b9] md:pl-7">
+                <HeartHandshake aria-hidden="true" className="mb-4 size-5 text-brand-orange" />
+                <h3 className="font-display text-lg font-bold text-charcoal-950">Pay it forward</h3>
+                <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
                 Attendees become speakers, speakers become mentors, and learners become the organizers of future editions.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          {/* A community-first next step */}
+          <div className="flex flex-col gap-5 border-t border-[#d5c8b9] py-8 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 className="font-display text-2xl font-black uppercase tracking-tight text-charcoal-950 sm:text-3xl">
+                Find your next conversation.
+            </h2>
+              <p className="mt-2 max-w-xl text-sm leading-relaxed text-charcoal-700 sm:text-base">
+                Browse the editions and find a topic, speaker, or idea that makes you curious.
               </p>
             </div>
-          </div>
-
-          {/* Bottom Join CTA */}
-          <div className="rounded-3xl bg-canvas-dark text-white p-8 sm:p-12 text-center shadow-xl border border-charcoal-800">
-            <h2 className="font-display font-black text-2xl sm:text-3xl uppercase tracking-tight mb-3">
-              Want to join the organizing crew?
-            </h2>
-            <p className="text-sm sm:text-base text-gray-300 max-w-xl mx-auto mb-6">
-              We are always looking for student anchors, designers, social media strategists, and event coordinators.
-            </p>
             <Link
-              href="/join"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-orange hover:bg-brand-orange-hover text-white text-sm font-semibold tracking-wide transition-all shadow-glow"
+              href="/events"
+              className="inline-flex min-h-11 shrink-0 items-center gap-2 self-start rounded-full bg-brand-orange px-6 text-sm font-semibold text-white transition-colors hover:bg-brand-orange-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2 sm:self-center"
             >
-              <span>Apply to Join or Volunteer</span>
+              <span>Explore the editions</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

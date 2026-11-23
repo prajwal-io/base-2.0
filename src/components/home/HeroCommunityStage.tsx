@@ -137,7 +137,7 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
           transition={{ duration: reduced ? 0 : 0.7, delay: reduced ? 0 : 0.3, ease: EASE }}
         />
 
-        <div className="relative z-10 grid grid-cols-[1fr_1.16fr_0.9fr] items-end border-b border-[#956040]/30">
+        <div className="relative z-10 mx-auto grid w-[min(74%,48rem)] grid-cols-[1fr_1.3fr_1fr] items-end border-b border-[#956040]/30">
           <motion.div
             className="relative flex h-[clamp(7.5rem,29vw,10rem)] min-w-0 justify-center sm:h-52 lg:h-[17rem]"
             initial={reduced ? false : { y: 6 }}

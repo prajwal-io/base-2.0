@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { backtoBaseCrewArtwork as artwork } from "@/data/crewArtwork";
+import { HyderabadSkyline } from "./HyderabadSkyline";
 
 export const COMMUNITY_STAGES = [
   { id: "room", label: "Make Room", note: "The crew gathers, then opens a place for you in the middle." },
@@ -126,28 +127,29 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
   const inView = useInView(stageRef);
 
   return (
-    <figure ref={stageRef} data-in-view={inView} className="hero-crew-stage relative mx-auto mt-5 w-full max-w-4xl px-3 sm:mt-6 sm:px-8">
+    <figure ref={stageRef} data-in-view={inView} className="hero-crew-stage relative mx-auto mt-5 w-full max-w-5xl px-3 sm:mt-6 sm:px-8">
       <div aria-hidden="true" className="relative isolate px-1 sm:px-4">
+        <HyderabadSkyline />
         <motion.div
           className="absolute inset-x-[12%] inset-y-0 -z-10 origin-bottom bg-[radial-gradient(ellipse_at_bottom,#efbf86_0%,#f6e2c5_32%,transparent_71%)]"
-          initial={reduced ? false : { opacity: 0, scaleX: 0.38 }}
-          animate={{ opacity: 0.9, scaleX: 1 }}
-          transition={{ duration: reduced ? 0 : 0.9, delay: reduced ? 0 : 0.52, ease: EASE }}
+          initial={reduced ? false : { opacity: 0.42, scaleX: 0.82 }}
+          animate={{ opacity: 0.58, scaleX: 1 }}
+          transition={{ duration: reduced ? 0 : 0.7, delay: reduced ? 0 : 0.3, ease: EASE }}
         />
 
-        <div className="relative grid grid-cols-[1fr_1.16fr_0.9fr] items-end border-b border-[#956040]/30">
+        <div className="relative z-10 grid grid-cols-[1fr_1.16fr_0.9fr] items-end border-b border-[#956040]/30">
           <motion.div
-            className="relative flex h-[clamp(7.5rem,29vw,10rem)] min-w-0 justify-center sm:h-52 lg:h-64"
-            initial={reduced ? false : { opacity: 0.45, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: reduced ? 0 : 0.64, delay: reduced ? 0 : 0.28, ease: EASE }}
+            className="relative flex h-[clamp(7.5rem,29vw,10rem)] min-w-0 justify-center sm:h-52 lg:h-[17rem]"
+            initial={reduced ? false : { y: 6 }}
+            animate={{ y: 0 }}
+            transition={{ duration: reduced ? 0 : 0.48, delay: reduced ? 0 : 0.12, ease: EASE }}
           >
-            <div className="hero-crew-float h-full min-w-0">
+            <div className="h-full min-w-0">
               <CrewScene scene="founder" />
             </div>
           </motion.div>
 
-          <div className="relative flex h-[clamp(11.5rem,46vw,15rem)] min-w-0 justify-center sm:h-[18rem] lg:h-[22rem]">
+          <div className="relative flex h-[clamp(11.5rem,46vw,15rem)] min-w-0 justify-center sm:h-[18rem] lg:h-[23rem]">
             <motion.div
               className="absolute bottom-0 left-1/2 h-3 w-5/6 -translate-x-1/2 rounded-[50%] bg-[#b46528]/20"
               initial={reduced ? false : { opacity: 0 }}
@@ -156,23 +158,23 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
             />
             <motion.div
               className="relative h-full min-w-0"
-              initial={reduced ? false : { opacity: 0.45, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: reduced ? 0 : 0.68, delay: reduced ? 0 : 0.46, ease: EASE }}
+              initial={reduced ? false : { y: 8 }}
+              animate={{ y: 0 }}
+              transition={{ duration: reduced ? 0 : 0.52, delay: reduced ? 0 : 0.2, ease: EASE }}
             >
-              <div className="hero-crew-float h-full min-w-0 [--crew-delay:-2s]">
+              <div className="h-full min-w-0">
                 <CrewScene scene="builder" brandedLaptop />
               </div>
             </motion.div>
           </div>
 
           <motion.div
-            className="flex h-[clamp(8.5rem,33vw,11rem)] min-w-0 justify-center sm:h-56 lg:h-[17rem]"
-            initial={reduced ? false : { opacity: 0.45, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: reduced ? 0 : 0.62, delay: reduced ? 0 : 0.64, ease: EASE }}
+            className="flex h-[clamp(8.5rem,33vw,11rem)] min-w-0 justify-center sm:h-56 lg:h-[17.5rem]"
+            initial={reduced ? false : { y: 6 }}
+            animate={{ y: 0 }}
+            transition={{ duration: reduced ? 0 : 0.48, delay: reduced ? 0 : 0.28, ease: EASE }}
           >
-            <div className="hero-crew-float relative h-full min-w-0 [--crew-delay:-4s]">
+            <div className="relative h-full min-w-0">
               <CrewScene scene="creator" />
               <span
                 className="hero-crew-star absolute right-[12%] top-[13%] size-3 bg-[#fff5da] [--crew-delay:-0.8s] [clip-path:polygon(50%_0,62%_37%,100%_50%,62%_63%,50%_100%,38%_63%,0_50%,38%_37%)]"

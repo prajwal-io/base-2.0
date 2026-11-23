@@ -1,0 +1,5239 @@
+{
+ "url": "http://localhost:3000",
+ "at": "2026-11-22T06:14:58.494Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 8,
+   "filled": [
+    0.17,
+    0.81,
+    0.94,
+    0.52,
+    0.5,
+    0.38,
+    0.72,
+    0.89
+   ],
+   "motion": {
+    "elements": 78,
+    "css": 24,
+    "transitions": 30,
+    "scripted": 24,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 6641,
+     "screens": 7.4,
+     "words": 593,
+     "img": 23,
+     "video": 0,
+     "canvas": 2,
+     "svg": 52,
+     "sections": 11,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 7,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "community-panoramic.jpg",
+      "image?url=%2Fimages%2Ffounder-portrait.jpg&w=384",
+      "image?url=%2Fimages%2Fteam-1.jpg&w=640&q=75",
+      "image?url=%2Fimages%2Fteam-2.jpg&w=640&q=75",
+      "image?url=%2Fimages%2Fteam-3.jpg&w=384&q=75",
+      "image?url=%2Fimages%2Fteam-4.jpg&w=384&q=75",
+      "image?url=%2Fimages%2Ffinal-cta-bg.jpg&w=1920&q="
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "FIND YOUR PEOPLE. BUILD SOMETHING TOGETHER. LEARN BUILD SHARE GROW TOGETHER.",
+     "words": 11,
+     "chars": 76,
+     "lines": 2,
+     "size": 60,
+     "vw": 4.2,
+     "font": "Bricolage Grotesque",
+     "weight": 800,
+     "tracking": -0.025,
+     "leading": 1,
+     "upper": true,
+     "italic": false,
+     "mono": false,
+     "align": "center",
+     "position": "center",
+     "widthRatio": 0.38,
+     "top": 162,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "FIND YOUR PEOPLE. BUILD SOMETHING TOGETHER. LEARN BUILD SHARE GROW TOGETHER.",
+     "words": 11,
+     "lines": 2,
+     "size": 60,
+     "font": "Bricolage Grotesque"
+    },
+    "headings": [
+     {
+      "text": "FIND YOUR PEOPLE. BUILD SOMETHING TOGETHER. LEARN BUILD SHARE GROW TOGETHER.",
+      "words": 11,
+      "chars": 76,
+      "lines": 2,
+      "size": 60,
+      "vw": 4.2,
+      "font": "Bricolage Grotesque",
+      "weight": 800,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.38,
+      "top": 162,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "09",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 60,
+      "vw": 4.2,
+      "font": "Bricolage Grotesque",
+      "weight": 800,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.05,
+      "top": 917,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "7",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 60,
+      "vw": 4.2,
+      "font": "Bricolage Grotesque",
+      "weight": 800,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.03,
+      "top": 917,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "LEARN. CONNECT. GROW.",
+      "words": 3,
+      "chars": 21,
+      "lines": 3,
+      "size": 92.2,
+      "vw": 6.4,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.045,
+      "leading": 0.89,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.35,
+      "top": 1445,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "REAL-WORLD INSIGHTS FROM PEOPLE WHO ACTUALLY BUILD.",
+      "words": 7,
+      "chars": 51,
+      "lines": 3,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 800,
+      "tracking": -0.028,
+      "leading": 1.08,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.31,
+      "top": 1466,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "EXPLORE THE JOURNEY SO FAR.",
+      "words": 5,
+      "chars": 27,
+      "lines": 3,
+      "size": 60,
+      "vw": 4.2,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.28,
+      "top": 2006,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "A COMMUNITY BUILT BY STUDENTS, FOR STUDENTS.",
+      "words": 7,
+      "chars": 44,
+      "lines": 2,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 2617,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "REAL PEOPLE. REAL IMPACT.",
+      "words": 4,
+      "chars": 25,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.44,
+      "top": 3202,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.01,
+      "top": 3366,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.01,
+      "top": 3366,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.01,
+      "top": 3366,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.01,
+      "top": 3366,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.01,
+      "top": 3366,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.01,
+      "top": 3366,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Yashwanth Bondapalli",
+      "words": 2,
+      "chars": 20,
+      "lines": 1,
+      "size": 30,
+      "vw": 2.1,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.41,
+      "top": 3864,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "PEOPLE WHO MAKE IT HAPPEN.",
+      "words": 5,
+      "chars": 26,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1.11,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.37,
+      "top": 4197,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "QUESTIONS? WE'VE GOT YOU.",
+      "words": 4,
+      "chars": 25,
+      "lines": 2,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.26,
+      "top": 5111,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "BE A PART OF WHAT'S NEXT.",
+      "words": 6,
+      "chars": 25,
+      "lines": 2,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.4,
+      "top": 5623,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 18,
+     "maxLines": 3,
+     "over2Lines": 3,
+     "statements": 0,
+     "centered": 3,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.66,
+       "mono": false
+      },
+      {
+       "family": "Bricolage Grotesque",
+       "share": 0.17,
+       "mono": false
+      },
+      {
+       "family": "ui-serif",
+       "share": 0.16,
+       "mono": false
+      },
+      {
+       "family": "Fraunces",
+       "share": 0.02,
+       "mono": false
+      }
+     ],
+     "familyCount": 4,
+     "sizes": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      22,
+      27,
+      30,
+      36,
+      48,
+      60,
+      92
+     ],
+     "sizeCount": 16,
+     "notLoaded": [],
+     "body": {
+      "font": "ui-serif",
+      "size": 18,
+      "leading": 1.56,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 16.7
+     },
+     "measureChars": 106,
+     "max": {
+      "size": 92.2,
+      "vw": 6.4,
+      "font": "Bricolage Grotesque",
+      "text": "LEARN."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 20,
+     "microLabelShare": 0.082,
+     "microSamples": [
+      "A Student-Driven Community",
+      "Editions",
+      "So Far",
+      "Host Venues",
+      "Across Editions",
+      "Our Venues"
+     ],
+     "upperShare": 0.24,
+     "centerShare": 0.13,
+     "smallText": 34
+    },
+    "eyebrows": [
+     {
+      "text": "A Student-Driven Community",
+      "above": "FIND YOUR PEOPLE. BUILD SOMETHING TOGETH",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 130
+     },
+     {
+      "text": "A community in motion",
+      "above": "LEARN. CONNECT. GROW.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 1431
+     },
+     {
+      "text": "01 / Beyond the classroom",
+      "above": "REAL-WORLD INSIGHTS FROM PEOPLE WHO ACTU",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 1436
+     },
+     {
+      "text": "Our event archive",
+      "above": "EXPLORE THE JOURNEY SO FAR.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 1977
+     },
+     {
+      "text": "The Community",
+      "above": "A COMMUNITY BUILT BY STUDENTS, FOR STUDE",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 2593
+     },
+     {
+      "text": "Voices of the community",
+      "above": "REAL PEOPLE. REAL IMPACT.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 3170
+     },
+     {
+      "text": "Founder Spotlight",
+      "above": "Yashwanth Bondapalli",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 3840
+     },
+     {
+      "text": "The Team",
+      "above": "PEOPLE WHO MAKE IT HAPPEN.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 4175
+     },
+     {
+      "text": "FAQ",
+      "above": "QUESTIONS? WE'VE GOT YOU.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 5087
+     }
+    ],
+    "numbered": [
+     {
+      "text": "09",
+      "size": 60,
+      "top": 917
+     },
+     {
+      "text": "01 / Beyond the classroom",
+      "size": 11,
+      "top": 1436
+     }
+    ],
+    "color": {
+     "bodyBg": "#faf7f2",
+     "bodyBgHsl": {
+      "h": 38,
+      "s": 0.44,
+      "l": 0.96
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#faf7f2",
+       "top": 74,
+       "hsl": {
+        "h": 38,
+        "s": 0.44,
+        "l": 0.96
+       }
+      },
+      {
+       "color": "#1c353b",
+       "top": 1299,
+       "hsl": {
+        "h": 192,
+        "s": 0.36,
+        "l": 0.17
+       }
+      },
+      {
+       "color": "#ea580c",
+       "top": 1299,
+       "hsl": {
+        "h": 21,
+        "s": 0.9,
+        "l": 0.48
+       }
+      },
+      {
+       "color": "#fff8f0",
+       "top": 5896,
+       "hsl": {
+        "h": 32,
+        "s": 1,
+        "l": 0.97
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#4a4e57",
+       "share": 0.19
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.17
+      },
+      {
+       "color": "#1c1e22",
+       "share": 0.17
+      },
+      {
+       "color": "#111215",
+       "share": 0.14
+      },
+      {
+       "color": "#5d626d",
+       "share": 0.05
+      }
+     ],
+     "button": {
+      "bg": "#ffffff",
+      "hsl": {
+       "h": 0,
+       "s": 0,
+       "l": 1
+      },
+      "fg": "#1c1e22"
+     },
+     "lowContrast": [
+      {
+       "text": "For Students.",
+       "ratio": 2.5,
+       "need": 3,
+       "size": 48,
+       "fg": "#087986",
+       "bg": "#1c353b"
+      },
+      {
+       "text": "Voices of the community",
+       "ratio": 3.3,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#ea580c",
+       "bg": "#faf7f2"
+      },
+      {
+       "text": "Read review",
+       "ratio": 3.6,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#ea580c",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Read review",
+       "ratio": 3.6,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#ea580c",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Read review",
+       "ratio": 3.6,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#ea580c",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Read review",
+       "ratio": 3.6,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#ea580c",
+       "bg": "#ffffff"
+      }
+     ]
+    },
+    "buttons": {
+     "count": 5,
+     "inHero": 3,
+     "radius": "pill",
+     "height": 42,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 1,
+     "heroLabels": [
+      "Join the Community",
+      "Join the Community",
+      "Explore 9 Editions"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 18,
+     "shadowOverlay": 1,
+     "shadowSamples": [
+      "div.relative.overflow-hidden → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.rounded-3xl → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "a.group.flex → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(28, 25,",
+      "a.group.flex → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(28, 25,"
+     ],
+     "gradients": 7,
+     "scrims": 5,
+     "gradientSamples": [
+      "div.absolute.inset-x-[18%] → radial-gradient(at 50% 100%, rgb(240, 187, 121) 0%, rgb(246, 223, 187) 37%, rgba(0, 0, 0, 0) 73%)",
+      "div.eaf-folder-art.eaf-art-0 → radial-gradient(at 50% 90%, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0) 45%), linear-gradient(140deg, rgb(223,",
+      "div.eaf-folder-front → linear-gradient(165deg, rgb(255, 249, 236), rgb(233, 216, 186) 96%)",
+      "div.eaf-folder-art.eaf-art-1 → radial-gradient(at 30% 85%, rgba(255, 255, 255, 0.24), rgba(0, 0, 0, 0) 42%), linear-gradient(145deg, rgb(13, "
+     ],
+     "gradientText": 0,
+     "hairlines": 12,
+     "hairlineSamples": [
+      "div.relative.grid 784px",
+      "section.py-6.sm:py-8 1440px",
+      "div.flex.flex-col 1134px",
+      "div.mt-6.flex 286px",
+      "div.mt-6.flex 286px"
+     ],
+     "outlinedBoxes": 19,
+     "dashed": 0,
+     "blurred": 5,
+     "roundedBoxes": 23,
+     "boxRadius": 16,
+     "squareMedia": 1,
+     "roundedMedia": 7,
+     "mediaRadius": 16,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": true,
+       "rounded": true,
+       "top": 3346
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 7,
+     "fixed": true,
+     "height": 74,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter",
+     "inter fallback",
+     "bricolage grotesque",
+     "fraunces",
+     "__nextjs-geist"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 6641,
+    "margins": {
+     "left": 90,
+     "right": 58
+    },
+    "sections": [
+     {
+      "sel": "section.relative.isolate",
+      "tag": "section",
+      "top": 74,
+      "height": 808,
+      "words": 33,
+      "media": 2,
+      "middle": 0,
+      "heading": {
+       "text": "Find your people.",
+       "size": 60,
+       "tag": "h1"
+      },
+      "left": 388,
+      "right": 58,
+      "textLeft": 443,
+      "textRight": 443,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-6.sm:py-8",
+      "tag": "section",
+      "top": 882,
+      "height": 130,
+      "words": 12,
+      "media": 0,
+      "middle": 309,
+      "heading": {
+       "text": "09",
+       "size": 60,
+       "tag": "span"
+      },
+      "left": 224,
+      "right": 142,
+      "textLeft": 224,
+      "textRight": 142,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-10.sm:py-12",
+      "tag": "section",
+      "top": 1012,
+      "height": 287,
+      "words": 14,
+      "media": 0,
+      "middle": 52,
+      "heading": {
+       "text": "Our Venues",
+       "size": 14,
+       "tag": "h2"
+      },
+      "left": 161,
+      "right": 173,
+      "textLeft": 183,
+      "textRight": 547,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.lcg-section",
+      "tag": "section",
+      "top": 1299,
+      "height": 554,
+      "words": 45,
+      "media": 0,
+      "middle": 241,
+      "heading": {
+       "text": "LEARN.",
+       "size": 92,
+       "tag": "h2"
+      },
+      "left": 146,
+      "right": 48,
+      "textLeft": 146,
+      "textRight": 191,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.eaf-section",
+      "tag": "section",
+      "top": 1853,
+      "height": 652,
+      "words": 73,
+      "media": 0,
+      "middle": 145,
+      "heading": {
+       "text": "Explore the journey so far.",
+       "size": 60,
+       "tag": "h2"
+      },
+      "left": 90,
+      "right": 131,
+      "textLeft": 90,
+      "textRight": 131,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#community-photo.scroll-mt-24.py-8",
+      "tag": "section",
+      "top": 2504,
+      "height": 569,
+      "words": 9,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "A Community Built By Students,",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 58,
+      "right": 58,
+      "textLeft": 408,
+      "textRight": 408,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#community-stories.bg-canvas-base.py-16",
+      "tag": "section",
+      "top": 3074,
+      "height": 651,
+      "words": 163,
+      "media": 0,
+      "middle": 336,
+      "heading": {
+       "text": "Real People. Real Impact.",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 0,
+      "right": 0,
+      "textLeft": -178,
+      "textRight": -408,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-10.sm:py-14",
+      "tag": "section",
+      "top": 3725,
+      "height": 386,
+      "words": 31,
+      "media": 1,
+      "middle": 34,
+      "heading": {
+       "text": "Yashwanth Bondapalli",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 147,
+      "right": 492,
+      "textLeft": 385,
+      "textRight": 492,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-12.sm:py-16",
+      "tag": "section",
+      "top": 4111,
+      "height": 896,
+      "words": 36,
+      "media": 4,
+      "middle": 14,
+      "heading": {
+       "text": "People Who Make It",
+       "size": 36,
+       "tag": "h3"
+      },
+      "left": 112,
+      "right": 113,
+      "textLeft": 112,
+      "textRight": 139,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#faqs.py-12.sm:py-16",
+      "tag": "section",
+      "top": 5007,
+      "height": 503,
+      "words": 81,
+      "media": 1,
+      "middle": 42,
+      "heading": {
+       "text": "Questions?",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 112,
+      "right": 133,
+      "textLeft": 112,
+      "textRight": 262,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-10.sm:py-14",
+      "tag": "section",
+      "top": 5510,
+      "height": 386,
+      "words": 33,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Be A Part Of",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 52,
+      "right": 52,
+      "textLeft": 169,
+      "textRight": 223,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer#footer.dcf-root.backtobase-footer",
+      "tag": "footer",
+      "top": 5896,
+      "height": 744,
+      "words": 14,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Learn.",
+       "size": 27,
+       "tag": "span"
+      },
+      "left": 120,
+      "right": 120,
+      "textLeft": 120,
+      "textRight": 532,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "FIND YOUR PEOPLE. BUILD SOMETHING TOGETHER. LEARN BUILD SHARE GROW TOGETHER.",
+      "size": 60,
+      "top": 162,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 112,
+      "n": 4
+     },
+     {
+      "x": 159,
+      "n": 4
+     },
+     {
+      "x": 565,
+      "n": 4
+     },
+     {
+      "x": 90,
+      "n": 2
+     },
+     {
+      "x": 146,
+      "n": 2
+     },
+     {
+      "x": 174,
+      "n": 2
+     },
+     {
+      "x": 385,
+      "n": 2
+     },
+     {
+      "x": 827,
+      "n": 2
+     },
+     {
+      "x": 870,
+      "n": 2
+     },
+     {
+      "x": 335,
+      "n": 1
+     },
+     {
+      "x": 491,
+      "n": 1
+     },
+     {
+      "x": 526,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 31,
+    "bodySize": 18,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.22,
+    "voidBox": {
+     "x": 0,
+     "y": 120,
+     "w": 360,
+     "h": 780
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 7,
+   "filled": [
+    0.5,
+    0.96,
+    0.96,
+    0.54,
+    0.59,
+    0.47,
+    0.81
+   ],
+   "motion": {
+    "elements": 77,
+    "css": 23,
+    "transitions": 30,
+    "scripted": 24,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 6697,
+     "screens": 6.5,
+     "words": 593,
+     "img": 23,
+     "video": 0,
+     "canvas": 2,
+     "svg": 52,
+     "sections": 11,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 7,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "community-panoramic.jpg",
+      "image?url=%2Fimages%2Ffounder-portrait.jpg&w=384",
+      "image?url=%2Fimages%2Fteam-1.jpg&w=750&q=75",
+      "image?url=%2Fimages%2Fteam-2.jpg&w=750&q=75",
+      "image?url=%2Fimages%2Fteam-3.jpg&w=384&q=75",
+      "image?url=%2Fimages%2Fteam-4.jpg&w=384&q=75",
+      "image?url=%2Fimages%2Ffinal-cta-bg.jpg&w=750&q=7"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "09",
+     "words": 1,
+     "chars": 2,
+     "lines": 1,
+     "size": 60,
+     "vw": 7.8,
+     "font": "Bricolage Grotesque",
+     "weight": 800,
+     "tracking": -0.025,
+     "leading": 1,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.09,
+     "top": 828,
+     "tag": "span",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "FIND YOUR PEOPLE. BUILD SOMETHING TOGETHER. LEARN BUILD SHARE GROW TOGETHER.",
+     "words": 11,
+     "lines": 3,
+     "size": 48,
+     "font": "Bricolage Grotesque"
+    },
+    "headings": [
+     {
+      "text": "FIND YOUR PEOPLE. BUILD SOMETHING TOGETHER. LEARN BUILD SHARE GROW TOGETHER.",
+      "words": 11,
+      "chars": 76,
+      "lines": 3,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Bricolage Grotesque",
+      "weight": 800,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.58,
+      "top": 146,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "09",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 60,
+      "vw": 7.8,
+      "font": "Bricolage Grotesque",
+      "weight": 800,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.09,
+      "top": 828,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "7",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 60,
+      "vw": 7.8,
+      "font": "Bricolage Grotesque",
+      "weight": 800,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.05,
+      "top": 828,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "LEARN. CONNECT. GROW.",
+      "words": 3,
+      "chars": 21,
+      "lines": 3,
+      "size": 80,
+      "vw": 10.4,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.045,
+      "leading": 0.89,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 1391,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "REAL-WORLD INSIGHTS FROM PEOPLE WHO ACTUALLY BUILD.",
+      "words": 7,
+      "chars": 51,
+      "lines": 2,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Bricolage Grotesque",
+      "weight": 800,
+      "tracking": -0.028,
+      "leading": 1.08,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.94,
+      "top": 1762,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "EXPLORE THE JOURNEY SO FAR.",
+      "words": 5,
+      "chars": 27,
+      "lines": 2,
+      "size": 38,
+      "vw": 4.9,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.52,
+      "top": 2150,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "A COMMUNITY BUILT BY STUDENTS, FOR STUDENTS.",
+      "words": 7,
+      "chars": 44,
+      "lines": 2,
+      "size": 36,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1.11,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.83,
+      "top": 2966,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "REAL PEOPLE. REAL IMPACT.",
+      "words": 4,
+      "chars": 25,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.82,
+      "top": 3424,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.03,
+      "top": 3588,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.03,
+      "top": 3588,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.03,
+      "top": 3588,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.03,
+      "top": 3588,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.03,
+      "top": 3588,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.03,
+      "top": 3588,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Yashwanth Bondapalli",
+      "words": 2,
+      "chars": 20,
+      "lines": 1,
+      "size": 30,
+      "vw": 3.9,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.54,
+      "top": 4074,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "PEOPLE WHO MAKE IT HAPPEN.",
+      "words": 5,
+      "chars": 26,
+      "lines": 2,
+      "size": 36,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1.11,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.64,
+      "top": 4419,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "QUESTIONS? WE'VE GOT YOU.",
+      "words": 4,
+      "chars": 25,
+      "lines": 2,
+      "size": 36,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1.11,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.94,
+      "top": 5170,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "BE A PART OF WHAT'S NEXT.",
+      "words": 6,
+      "chars": 25,
+      "lines": 2,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.75,
+      "top": 5851,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 18,
+     "maxLines": 3,
+     "over2Lines": 2,
+     "statements": 0,
+     "centered": 3,
+     "medianWords": 4,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.66,
+       "mono": false
+      },
+      {
+       "family": "Bricolage Grotesque",
+       "share": 0.17,
+       "mono": false
+      },
+      {
+       "family": "ui-serif",
+       "share": 0.16,
+       "mono": false
+      },
+      {
+       "family": "Fraunces",
+       "share": 0.02,
+       "mono": false
+      }
+     ],
+     "familyCount": 4,
+     "sizes": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      30,
+      32,
+      36,
+      38,
+      48,
+      60,
+      80
+     ],
+     "sizeCount": 17,
+     "notLoaded": [],
+     "body": {
+      "font": "ui-serif",
+      "size": 18,
+      "leading": 1.56,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 16.7
+     },
+     "measureChars": 100,
+     "max": {
+      "size": 80,
+      "vw": 10.4,
+      "font": "Bricolage Grotesque",
+      "text": "LEARN."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 20,
+     "microLabelShare": 0.083,
+     "microSamples": [
+      "A Student-Driven Community",
+      "Editions",
+      "So Far",
+      "Host Venues",
+      "Across Editions",
+      "Our Venues"
+     ],
+     "upperShare": 0.24,
+     "centerShare": 0.13,
+     "smallText": 34
+    },
+    "eyebrows": [
+     {
+      "text": "A Student-Driven Community",
+      "above": "FIND YOUR PEOPLE. BUILD SOMETHING TOGETH",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 114
+     },
+     {
+      "text": "01 / Beyond the classroom",
+      "above": "REAL-WORLD INSIGHTS FROM PEOPLE WHO ACTU",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 1732
+     },
+     {
+      "text": "Our event archive",
+      "above": "EXPLORE THE JOURNEY SO FAR.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 2121
+     },
+     {
+      "text": "The Community",
+      "above": "A COMMUNITY BUILT BY STUDENTS, FOR STUDE",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 2942
+     },
+     {
+      "text": "Voices of the community",
+      "above": "REAL PEOPLE. REAL IMPACT.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 3392
+     },
+     {
+      "text": "Founder Spotlight",
+      "above": "Yashwanth Bondapalli",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 4050
+     },
+     {
+      "text": "The Team",
+      "above": "PEOPLE WHO MAKE IT HAPPEN.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 4397
+     },
+     {
+      "text": "FAQ",
+      "above": "QUESTIONS? WE'VE GOT YOU.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 5146
+     }
+    ],
+    "numbered": [
+     {
+      "text": "09",
+      "size": 60,
+      "top": 828
+     },
+     {
+      "text": "01 / Beyond the classroom",
+      "size": 11,
+      "top": 1732
+     }
+    ],
+    "color": {
+     "bodyBg": "#faf7f2",
+     "bodyBgHsl": {
+      "h": 38,
+      "s": 0.44,
+      "l": 0.96
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#faf7f2",
+       "top": 74,
+       "hsl": {
+        "h": 38,
+        "s": 0.44,
+        "l": 0.96
+       }
+      },
+      {
+       "color": "#1c353b",
+       "top": 1318,
+       "hsl": {
+        "h": 192,
+        "s": 0.36,
+        "l": 0.17
+       }
+      },
+      {
+       "color": "#ea580c",
+       "top": 1318,
+       "hsl": {
+        "h": 21,
+        "s": 0.9,
+        "l": 0.48
+       }
+      },
+      {
+       "color": "#f4efe6",
+       "top": 5803,
+       "hsl": {
+        "h": 39,
+        "s": 0.39,
+        "l": 0.93
+       }
+      },
+      {
+       "color": "#fff8f0",
+       "top": 6196,
+       "hsl": {
+        "h": 32,
+        "s": 1,
+        "l": 0.97
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#4a4e57",
+       "share": 0.18
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.17
+      },
+      {
+       "color": "#1c1e22",
+       "share": 0.17
+      },
+      {
+       "color": "#111215",
+       "share": 0.14
+      },
+      {
+       "color": "#5d626d",
+       "share": 0.05
+      }
+     ],
+     "button": {
+      "bg": "#ffffff",
+      "hsl": {
+       "h": 0,
+       "s": 0,
+       "l": 1
+      },
+      "fg": "#1c1e22"
+     },
+     "lowContrast": [
+      {
+       "text": "For Students.",
+       "ratio": 2.5,
+       "need": 3,
+       "size": 36,
+       "fg": "#087986",
+       "bg": "#1c353b"
+      },
+      {
+       "text": "Voices of the community",
+       "ratio": 3.3,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#ea580c",
+       "bg": "#faf7f2"
+      },
+      {
+       "text": "Read review",
+       "ratio": 3.6,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#ea580c",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Read review",
+       "ratio": 3.6,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#ea580c",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Read review",
+       "ratio": 3.6,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#ea580c",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Read review",
+       "ratio": 3.6,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#ea580c",
+       "bg": "#ffffff"
+      }
+     ]
+    },
+    "buttons": {
+     "count": 5,
+     "inHero": 3,
+     "radius": "pill",
+     "height": 42,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 1,
+     "heroLabels": [
+      "Join the Community",
+      "Join the Community",
+      "Explore 9 Editions"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 18,
+     "shadowOverlay": 1,
+     "shadowSamples": [
+      "div.relative.overflow-hidden → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.rounded-3xl → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "a.group.flex → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(28, 25,",
+      "a.group.flex → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(28, 25,"
+     ],
+     "gradients": 7,
+     "scrims": 5,
+     "gradientSamples": [
+      "div.absolute.inset-x-[18%] → radial-gradient(at 50% 100%, rgb(240, 187, 121) 0%, rgb(246, 223, 187) 37%, rgba(0, 0, 0, 0) 73%)",
+      "div.eaf-folder-art.eaf-art-0 → radial-gradient(at 50% 90%, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0) 45%), linear-gradient(140deg, rgb(223,",
+      "div.eaf-folder-front → linear-gradient(165deg, rgb(255, 249, 236), rgb(233, 216, 186) 96%)",
+      "div.eaf-folder-art.eaf-art-1 → radial-gradient(at 30% 85%, rgba(255, 255, 255, 0.24), rgba(0, 0, 0, 0) 42%), linear-gradient(145deg, rgb(13, "
+     ],
+     "gradientText": 0,
+     "hairlines": 12,
+     "hairlineSamples": [
+      "div.relative.grid 656px",
+      "section.py-6.sm:py-8 768px",
+      "div.flex.flex-col 638px",
+      "div.mt-6.flex 286px",
+      "div.mt-6.flex 286px"
+     ],
+     "outlinedBoxes": 19,
+     "dashed": 0,
+     "blurred": 5,
+     "roundedBoxes": 23,
+     "boxRadius": 16,
+     "squareMedia": 1,
+     "roundedMedia": 5,
+     "mediaRadius": 16,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": true,
+       "rounded": true,
+       "top": 3568
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 7,
+     "fixed": true,
+     "height": 74,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter",
+     "inter fallback",
+     "bricolage grotesque",
+     "fraunces",
+     "__nextjs-geist"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 6697,
+    "margins": {
+     "left": 21,
+     "right": 25
+    },
+    "sections": [
+     {
+      "sel": "section.relative.isolate",
+      "tag": "section",
+      "top": 74,
+      "height": 719,
+      "words": 34,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Find your people.",
+       "size": 48,
+       "tag": "h1"
+      },
+      "left": 103,
+      "right": 20,
+      "textLeft": 121,
+      "textRight": 121,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-6.sm:py-8",
+      "tag": "section",
+      "top": 793,
+      "height": 131,
+      "words": 12,
+      "media": 0,
+      "middle": 146,
+      "heading": {
+       "text": "09",
+       "size": 60,
+       "tag": "span"
+      },
+      "left": 53,
+      "right": 25,
+      "textLeft": 53,
+      "textRight": 25,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-10.sm:py-12",
+      "tag": "section",
+      "top": 923,
+      "height": 395,
+      "words": 14,
+      "media": 0,
+      "middle": 27,
+      "heading": {
+       "text": "Our Venues",
+       "size": 14,
+       "tag": "h2"
+      },
+      "left": 73,
+      "right": 73,
+      "textLeft": 95,
+      "textRight": 78,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.lcg-section",
+      "tag": "section",
+      "top": 1318,
+      "height": 723,
+      "words": 45,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "LEARN.",
+       "size": 80,
+       "tag": "h2"
+      },
+      "left": 19,
+      "right": 286,
+      "textLeft": 19,
+      "textRight": 286,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.eaf-section",
+      "tag": "section",
+      "top": 2041,
+      "height": 812,
+      "words": 73,
+      "media": 0,
+      "middle": 22,
+      "heading": {
+       "text": "Explore the journey so far.",
+       "size": 38,
+       "tag": "h2"
+      },
+      "left": 31,
+      "right": 84,
+      "textLeft": 31,
+      "textRight": 84,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#community-photo.scroll-mt-24.py-8",
+      "tag": "section",
+      "top": 2853,
+      "height": 443,
+      "words": 9,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "A Community Built By Students,",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 37,
+      "right": 150,
+      "textLeft": 150,
+      "textRight": 150,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#community-stories.bg-canvas-base.py-16",
+      "tag": "section",
+      "top": 3296,
+      "height": 651,
+      "words": 163,
+      "media": 0,
+      "middle": 971,
+      "heading": {
+       "text": "Real People. Real Impact.",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 0,
+      "right": 0,
+      "textLeft": -215,
+      "textRight": -1043,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-10.sm:py-14",
+      "tag": "section",
+      "top": 3947,
+      "height": 386,
+      "words": 31,
+      "media": 1,
+      "middle": 34,
+      "heading": {
+       "text": "Yashwanth Bondapalli",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 59,
+      "right": 96,
+      "textLeft": 297,
+      "textRight": 96,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-12.sm:py-16",
+      "tag": "section",
+      "top": 4333,
+      "height": 750,
+      "words": 36,
+      "media": 4,
+      "middle": 0,
+      "heading": {
+       "text": "People Who Make It",
+       "size": 36,
+       "tag": "h3"
+      },
+      "left": 24,
+      "right": 25,
+      "textLeft": 24,
+      "textRight": 56,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#faqs.py-12.sm:py-16",
+      "tag": "section",
+      "top": 5082,
+      "height": 663,
+      "words": 81,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Questions?",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 34,
+      "textLeft": 24,
+      "textRight": 100,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-10.sm:py-14",
+      "tag": "section",
+      "top": 5746,
+      "height": 450,
+      "words": 33,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Be A Part Of",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 73,
+      "right": 121,
+      "textLeft": 73,
+      "textRight": 121,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer#footer.dcf-root.backtobase-footer",
+      "tag": "footer",
+      "top": 6196,
+      "height": 501,
+      "words": 14,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 23,
+      "right": 23,
+      "textLeft": 23,
+      "textRight": 214,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "FIND YOUR PEOPLE. BUILD SOMETHING TOGETHER. LEARN BUILD SHARE GROW TOGETHER.",
+      "size": 48,
+      "top": 146,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 19,
+      "n": 8
+     },
+     {
+      "x": 52,
+      "n": 5
+     },
+     {
+      "x": 31,
+      "n": 3
+     },
+     {
+      "x": 73,
+      "n": 3
+     },
+     {
+      "x": 293,
+      "n": 3
+     },
+     {
+      "x": 95,
+      "n": 1
+     },
+     {
+      "x": 137,
+      "n": 1
+     },
+     {
+      "x": 172,
+      "n": 1
+     },
+     {
+      "x": 225,
+      "n": 1
+     },
+     {
+      "x": 489,
+      "n": 1
+     },
+     {
+      "x": 535,
+      "n": 1
+     },
+     {
+      "x": 841,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 31,
+    "bodySize": 18,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 10,
+   "filled": [
+    0.45,
+    0.86,
+    0.98,
+    0.97,
+    0.58,
+    0.78,
+    0.74,
+    0.68,
+    0.64,
+    0.8
+   ],
+   "motion": {
+    "elements": 71,
+    "css": 17,
+    "transitions": 30,
+    "scripted": 24,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 8114,
+     "screens": 9.6,
+     "words": 586,
+     "img": 23,
+     "video": 0,
+     "canvas": 2,
+     "svg": 52,
+     "sections": 11,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 6,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fimages%2Ffounder-portrait.jpg&w=256",
+      "image?url=%2Fimages%2Fteam-1.jpg&w=640&q=75",
+      "image?url=%2Fimages%2Fteam-2.jpg&w=640&q=75",
+      "image?url=%2Fimages%2Fteam-3.jpg&w=384&q=75",
+      "image?url=%2Fimages%2Fteam-4.jpg&w=384&q=75",
+      "image?url=%2Fimages%2Ffinal-cta-bg.jpg&w=640&q=7"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "09",
+     "words": 1,
+     "chars": 2,
+     "lines": 1,
+     "size": 48,
+     "vw": 12.3,
+     "font": "Bricolage Grotesque",
+     "weight": 800,
+     "tracking": -0.025,
+     "leading": 1,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.15,
+     "top": 753,
+     "tag": "span",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "FIND YOUR PEOPLE. BUILD SOMETHING TOGETHER. LEARN BUILD SHARE GROW TOGETHER.",
+     "words": 11,
+     "lines": 2,
+     "size": 36,
+     "font": "Bricolage Grotesque"
+    },
+    "headings": [
+     {
+      "text": "FIND YOUR PEOPLE. BUILD SOMETHING TOGETHER. LEARN BUILD SHARE GROW TOGETHER.",
+      "words": 11,
+      "chars": 76,
+      "lines": 2,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Bricolage Grotesque",
+      "weight": 800,
+      "tracking": -0.025,
+      "leading": 0.94,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 131,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "09",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 48,
+      "vw": 12.3,
+      "font": "Bricolage Grotesque",
+      "weight": 800,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.15,
+      "top": 753,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "7",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 12.3,
+      "font": "Bricolage Grotesque",
+      "weight": 800,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.07,
+      "top": 842,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "LEARN. CONNECT. GROW.",
+      "words": 3,
+      "chars": 21,
+      "lines": 3,
+      "size": 53.8,
+      "vw": 13.8,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.045,
+      "leading": 0.89,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 1624,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "REAL-WORLD INSIGHTS FROM PEOPLE WHO ACTUALLY BUILD.",
+      "words": 7,
+      "chars": 51,
+      "lines": 2,
+      "size": 23.4,
+      "vw": 6,
+      "font": "Bricolage Grotesque",
+      "weight": 800,
+      "tracking": -0.028,
+      "leading": 1.08,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 1906,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "EXPLORE THE JOURNEY SO FAR.",
+      "words": 5,
+      "chars": 27,
+      "lines": 2,
+      "size": 38,
+      "vw": 9.7,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 2300,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "A COMMUNITY BUILT BY STUDENTS, FOR STUDENTS.",
+      "words": 7,
+      "chars": 44,
+      "lines": 3,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1.33,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 3707,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "REAL PEOPLE. REAL IMPACT.",
+      "words": 4,
+      "chars": 25,
+      "lines": 2,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 0.98,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 4036,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 12.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.05,
+      "top": 4212,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 12.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.05,
+      "top": 4212,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 12.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.05,
+      "top": 4212,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 12.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.05,
+      "top": 4212,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 12.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.05,
+      "top": 4212,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 12.3,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.05,
+      "top": 4212,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Yashwanth Bondapalli",
+      "words": 2,
+      "chars": 20,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 4951,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "PEOPLE WHO MAKE IT HAPPEN.",
+      "words": 5,
+      "chars": 26,
+      "lines": 2,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1.2,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 5230,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "QUESTIONS? WE'VE GOT YOU.",
+      "words": 4,
+      "chars": 25,
+      "lines": 2,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 6721,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "BE A PART OF WHAT'S NEXT.",
+      "words": 6,
+      "chars": 25,
+      "lines": 2,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.75,
+      "top": 7401,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 18,
+     "maxLines": 3,
+     "over2Lines": 2,
+     "statements": 0,
+     "centered": 3,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.66,
+       "mono": false
+      },
+      {
+       "family": "Bricolage Grotesque",
+       "share": 0.17,
+       "mono": false
+      },
+      {
+       "family": "ui-serif",
+       "share": 0.16,
+       "mono": false
+      },
+      {
+       "family": "Fraunces",
+       "share": 0.02,
+       "mono": false
+      }
+     ],
+     "familyCount": 4,
+     "sizes": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      23,
+      24,
+      30,
+      36,
+      38,
+      48,
+      54
+     ],
+     "sizeCount": 17,
+     "notLoaded": [],
+     "body": {
+      "font": "ui-serif",
+      "size": 16,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 16.7
+     },
+     "measureChars": 48,
+     "max": {
+      "size": 53.8,
+      "vw": 13.8,
+      "font": "Bricolage Grotesque",
+      "text": "LEARN."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 20,
+     "microLabelShare": 0.083,
+     "microSamples": [
+      "A Student-Driven Community",
+      "Editions",
+      "So Far",
+      "Host Venues",
+      "Across Editions",
+      "Our Venues"
+     ],
+     "upperShare": 0.24,
+     "centerShare": 0.13,
+     "smallText": 38
+    },
+    "eyebrows": [
+     {
+      "text": "A Student-Driven Community",
+      "above": "FIND YOUR PEOPLE. BUILD SOMETHING TOGETH",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 98
+     },
+     {
+      "text": "A community in motion",
+      "above": "LEARN. CONNECT. GROW.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 1603
+     },
+     {
+      "text": "01 / Beyond the classroom",
+      "above": "REAL-WORLD INSIGHTS FROM PEOPLE WHO ACTU",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 1876
+     },
+     {
+      "text": "Our event archive",
+      "above": "EXPLORE THE JOURNEY SO FAR.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 2271
+     },
+     {
+      "text": "The Community",
+      "above": "A COMMUNITY BUILT BY STUDENTS, FOR STUDE",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 3682
+     },
+     {
+      "text": "Voices of the community",
+      "above": "REAL PEOPLE. REAL IMPACT.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 4003
+     },
+     {
+      "text": "Founder Spotlight",
+      "above": "Yashwanth Bondapalli",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 4926
+     },
+     {
+      "text": "The Team",
+      "above": "PEOPLE WHO MAKE IT HAPPEN.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 5208
+     },
+     {
+      "text": "FAQ",
+      "above": "QUESTIONS? WE'VE GOT YOU.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 6697
+     }
+    ],
+    "numbered": [
+     {
+      "text": "09",
+      "size": 48,
+      "top": 753
+     },
+     {
+      "text": "01 / Beyond the classroom",
+      "size": 11,
+      "top": 1876
+     }
+    ],
+    "color": {
+     "bodyBg": "#faf7f2",
+     "bodyBgHsl": {
+      "h": 38,
+      "s": 0.44,
+      "l": 0.96
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#faf7f2",
+       "top": 74,
+       "hsl": {
+        "h": 38,
+        "s": 0.44,
+        "l": 0.96
+       }
+      },
+      {
+       "color": "#ffffff",
+       "top": 1052,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#1c353b",
+       "top": 1535,
+       "hsl": {
+        "h": 192,
+        "s": 0.36,
+        "l": 0.17
+       }
+      },
+      {
+       "color": "#ea580c",
+       "top": 1535,
+       "hsl": {
+        "h": 21,
+        "s": 0.9,
+        "l": 0.48
+       }
+      },
+      {
+       "color": "#f4efe6",
+       "top": 7369,
+       "hsl": {
+        "h": 39,
+        "s": 0.39,
+        "l": 0.93
+       }
+      },
+      {
+       "color": "#fff8f0",
+       "top": 7721,
+       "hsl": {
+        "h": 32,
+        "s": 1,
+        "l": 0.97
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#4a4e57",
+       "share": 0.18
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.17
+      },
+      {
+       "color": "#1c1e22",
+       "share": 0.17
+      },
+      {
+       "color": "#111215",
+       "share": 0.13
+      },
+      {
+       "color": "#5d626d",
+       "share": 0.05
+      }
+     ],
+     "button": {
+      "bg": "#ffffff",
+      "hsl": {
+       "h": 0,
+       "s": 0,
+       "l": 1
+      },
+      "fg": "#1c1e22"
+     },
+     "lowContrast": [
+      {
+       "text": "For Students.",
+       "ratio": 2.5,
+       "need": 3,
+       "size": 24,
+       "fg": "#087986",
+       "bg": "#1c353b"
+      },
+      {
+       "text": "Voices of the community",
+       "ratio": 3.3,
+       "need": 4.5,
+       "size": 11,
+       "fg": "#ea580c",
+       "bg": "#faf7f2"
+      },
+      {
+       "text": "Read review",
+       "ratio": 3.6,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#ea580c",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Read review",
+       "ratio": 3.6,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#ea580c",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Read review",
+       "ratio": 3.6,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#ea580c",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Read review",
+       "ratio": 3.6,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#ea580c",
+       "bg": "#ffffff"
+      }
+     ]
+    },
+    "buttons": {
+     "count": 6,
+     "inHero": 3,
+     "radius": "pill",
+     "height": 43,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 1,
+     "heroLabels": [
+      "Join the Community",
+      "Explore 9 Editions"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 18,
+     "shadowOverlay": 2,
+     "shadowSamples": [
+      "div.relative.overflow-hidden → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.rounded-3xl → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "a.group.flex → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(28, 25,",
+      "a.group.flex → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(28, 25,"
+     ],
+     "gradients": 7,
+     "scrims": 5,
+     "gradientSamples": [
+      "div.absolute.inset-x-[18%] → radial-gradient(at 50% 100%, rgb(240, 187, 121) 0%, rgb(246, 223, 187) 37%, rgba(0, 0, 0, 0) 73%)",
+      "div.eaf-folder-art.eaf-art-0 → radial-gradient(at 50% 90%, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0) 45%), linear-gradient(140deg, rgb(223,",
+      "div.eaf-folder-front → linear-gradient(165deg, rgb(255, 249, 236), rgb(233, 216, 186) 96%)",
+      "div.eaf-folder-art.eaf-art-1 → radial-gradient(at 30% 85%, rgba(255, 255, 255, 0.24), rgba(0, 0, 0, 0) 42%), linear-gradient(145deg, rgb(13, "
+     ],
+     "gradientText": 0,
+     "hairlines": 17,
+     "hairlineSamples": [
+      "div.relative.grid 342px",
+      "section.py-6.sm:py-8 390px",
+      "div.flex.items-center 358px",
+      "a.flex.items-center 358px",
+      "div.flex.flex-col 308px"
+     ],
+     "outlinedBoxes": 19,
+     "dashed": 0,
+     "blurred": 5,
+     "roundedBoxes": 23,
+     "boxRadius": 16,
+     "squareMedia": 1,
+     "roundedMedia": 6,
+     "mediaRadius": 16,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": true,
+       "rounded": true,
+       "top": 4196
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 2,
+     "fixed": true,
+     "height": 74,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter",
+     "inter fallback",
+     "bricolage grotesque",
+     "fraunces",
+     "__nextjs-geist"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 8114,
+    "margins": {
+     "left": 16,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "section.relative.isolate",
+      "tag": "section",
+      "top": 74,
+      "height": 646,
+      "words": 34,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Find your people.",
+       "size": 36,
+       "tag": "h1"
+      },
+      "left": 26,
+      "right": 8,
+      "textLeft": 26,
+      "textRight": 26,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-6.sm:py-8",
+      "tag": "section",
+      "top": 720,
+      "height": 292,
+      "words": 12,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "09",
+       "size": 48,
+       "tag": "span"
+      },
+      "left": 16,
+      "right": 117,
+      "textLeft": 16,
+      "textRight": 117,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-10.sm:py-12",
+      "tag": "section",
+      "top": 1012,
+      "height": 523,
+      "words": 14,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Our Venues",
+       "size": 12,
+       "tag": "h2"
+      },
+      "left": 41,
+      "right": 49,
+      "textLeft": 41,
+      "textRight": 64,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.lcg-section",
+      "tag": "section",
+      "top": 1535,
+      "height": 656,
+      "words": 45,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "LEARN.",
+       "size": 54,
+       "tag": "h2"
+      },
+      "left": 21,
+      "right": 31,
+      "textLeft": 21,
+      "textRight": 31,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.eaf-section",
+      "tag": "section",
+      "top": 2191,
+      "height": 1422,
+      "words": 73,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Explore the journey so far.",
+       "size": 38,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 27,
+      "textLeft": 20,
+      "textRight": 27,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#community-photo.scroll-mt-24.py-8",
+      "tag": "section",
+      "top": 3613,
+      "height": 326,
+      "words": 9,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "A Community Built By Students,",
+       "size": 24,
+       "tag": "h2"
+      },
+      "left": 21,
+      "right": 80,
+      "textLeft": 80,
+      "textRight": 80,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#community-stories.bg-canvas-base.py-16",
+      "tag": "section",
+      "top": 3939,
+      "height": 590,
+      "words": 163,
+      "media": 0,
+      "middle": 1205,
+      "heading": {
+       "text": "Real People. Real Impact.",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 0,
+      "right": 0,
+      "textLeft": -270,
+      "textRight": -1279,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-10.sm:py-14",
+      "tag": "section",
+      "top": 4529,
+      "height": 631,
+      "words": 31,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Yashwanth Bondapalli",
+       "size": 24,
+       "tag": "h2"
+      },
+      "left": 41,
+      "right": 43,
+      "textLeft": 41,
+      "textRight": 53,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-12.sm:py-16",
+      "tag": "section",
+      "top": 5160,
+      "height": 1489,
+      "words": 66,
+      "media": 4,
+      "middle": 0,
+      "heading": {
+       "text": "People Who Make It",
+       "size": 30,
+       "tag": "h3"
+      },
+      "left": 16,
+      "right": 17,
+      "textLeft": 16,
+      "textRight": 85,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#faqs.py-12.sm:py-16",
+      "tag": "section",
+      "top": 6649,
+      "height": 679,
+      "words": 81,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Questions?",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 26,
+      "textLeft": 16,
+      "textRight": 52,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-10.sm:py-14",
+      "tag": "section",
+      "top": 7328,
+      "height": 393,
+      "words": 33,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Be A Part Of",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 49,
+      "right": 84,
+      "textLeft": 49,
+      "textRight": 84,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer#footer.dcf-root.backtobase-footer",
+      "tag": "footer",
+      "top": 7721,
+      "height": 393,
+      "words": 14,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 12,
+      "right": 12,
+      "textLeft": 17,
+      "textRight": 27,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "FIND YOUR PEOPLE. BUILD SOMETHING TOGETHER. LEARN BUILD SHARE GROW TOGETHER.",
+      "size": 36,
+      "top": 131,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 41,
+      "n": 12
+     },
+     {
+      "x": 16,
+      "n": 9
+     },
+     {
+      "x": 30,
+      "n": 1
+     },
+     {
+      "x": 66,
+      "n": 1
+     },
+     {
+      "x": 140,
+      "n": 1
+     },
+     {
+      "x": 401,
+      "n": 1
+     },
+     {
+      "x": 737,
+      "n": 1
+     },
+     {
+      "x": 1073,
+      "n": 1
+     },
+     {
+      "x": 1409,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 28,
+    "bodySize": 16,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 320,
+   "height": 200,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    0.53,
+    0.61,
+    0.38,
+    0.43,
+    0.9,
+    0.67,
+    0.8,
+    0.68,
+    0.84,
+    0.93,
+    0.96,
+    0.88
+   ],
+   "motion": {
+    "elements": 30,
+    "css": 10,
+    "transitions": 0,
+    "scripted": 20,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 320,
+     "h": 200
+    },
+    "page": {
+     "height": 8352,
+     "screens": 41.8,
+     "words": 586,
+     "img": 23,
+     "video": 0,
+     "canvas": 2,
+     "svg": 52,
+     "sections": 11,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "FIND YOUR PEOPLE. BUILD SOMETHING TOGETHER. LEARN BUILD SHARE GROW TOGETHER.",
+     "words": 11,
+     "chars": 76,
+     "lines": 4,
+     "size": 36,
+     "vw": 11.3,
+     "font": "Bricolage Grotesque",
+     "weight": 800,
+     "tracking": -0.025,
+     "leading": 0.94,
+     "upper": true,
+     "italic": false,
+     "mono": false,
+     "align": "center",
+     "position": "center",
+     "widthRatio": 0.99,
+     "top": 131,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "FIND YOUR PEOPLE. BUILD SOMETHING TOGETHER. LEARN BUILD SHARE GROW TOGETHER.",
+     "words": 11,
+     "lines": 4,
+     "size": 36,
+     "font": "Bricolage Grotesque"
+    },
+    "headings": [
+     {
+      "text": "FIND YOUR PEOPLE. BUILD SOMETHING TOGETHER. LEARN BUILD SHARE GROW TOGETHER.",
+      "words": 11,
+      "chars": 76,
+      "lines": 4,
+      "size": 36,
+      "vw": 11.3,
+      "font": "Bricolage Grotesque",
+      "weight": 800,
+      "tracking": -0.025,
+      "leading": 0.94,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.99,
+      "top": 131,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "09",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 48,
+      "vw": 15,
+      "font": "Bricolage Grotesque",
+      "weight": 800,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.18,
+      "top": 813,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "7",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 15,
+      "font": "Bricolage Grotesque",
+      "weight": 800,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.09,
+      "top": 902,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "LEARN. CONNECT. GROW.",
+      "words": 3,
+      "chars": 21,
+      "lines": 3,
+      "size": 50,
+      "vw": 15.6,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.045,
+      "leading": 0.89,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.87,
+      "top": 1703,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "REAL-WORLD INSIGHTS FROM PEOPLE WHO ACTUALLY BUILD.",
+      "words": 7,
+      "chars": 51,
+      "lines": 3,
+      "size": 23,
+      "vw": 7.2,
+      "font": "Bricolage Grotesque",
+      "weight": 800,
+      "tracking": -0.028,
+      "leading": 1.08,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 1971,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "EXPLORE THE JOURNEY SO FAR.",
+      "words": 5,
+      "chars": 27,
+      "lines": 3,
+      "size": 38,
+      "vw": 11.9,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 2390,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "A COMMUNITY BUILT BY STUDENTS, FOR STUDENTS.",
+      "words": 7,
+      "chars": 44,
+      "lines": 3,
+      "size": 24,
+      "vw": 7.5,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1.33,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.74,
+      "top": 3911,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "REAL PEOPLE. REAL IMPACT.",
+      "words": 4,
+      "chars": 25,
+      "lines": 2,
+      "size": 30,
+      "vw": 9.4,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 0.98,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 4224,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 15,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.06,
+      "top": 4400,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 15,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.06,
+      "top": 4400,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 15,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.06,
+      "top": 4400,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 15,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.06,
+      "top": 4400,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 15,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.06,
+      "top": 4400,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "“",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 15,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.06,
+      "top": 4400,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Yashwanth Bondapalli",
+      "words": 2,
+      "chars": 20,
+      "lines": 2,
+      "size": 24,
+      "vw": 7.5,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.74,
+      "top": 5095,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "PEOPLE WHO MAKE IT HAPPEN.",
+      "words": 5,
+      "chars": 26,
+      "lines": 2,
+      "size": 30,
+      "vw": 9.4,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1.2,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 5429,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "QUESTIONS? WE'VE GOT YOU.",
+      "words": 4,
+      "chars": 25,
+      "lines": 2,
+      "size": 30,
+      "vw": 9.4,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 6769,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "BE A PART OF WHAT'S NEXT.",
+      "words": 6,
+      "chars": 25,
+      "lines": 2,
+      "size": 30,
+      "vw": 9.4,
+      "font": "Bricolage Grotesque",
+      "weight": 900,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.69,
+      "top": 7532,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 18,
+     "maxLines": 4,
+     "over2Lines": 5,
+     "statements": 0,
+     "centered": 3,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.66,
+       "mono": false
+      },
+      {
+       "family": "Bricolage Grotesque",
+       "share": 0.17,
+       "mono": false
+      },
+      {
+       "family": "ui-serif",
+       "share": 0.16,
+       "mono": false
+      },
+      {
+       "family": "Fraunces",
+       "share": 0.02,
+       "mono": false
+      }
+     ],
+     "familyCount": 4,
+     "sizes": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      23,
+      24,
+      30,
+      36,
+      38,
+      48,
+      50
+     ],
+     "sizeCount": 17,
+     "notLoaded": [],
+     "body": {
+      "font": "ui-serif",
+      "size": 16,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 16.7
+     },
+     "measureChars": 38,
+     "max": {
+      "size": 50,
+      "vw": 15.6,
+      "font": "Bricolage Grotesque",
+      "text": "LEARN."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 20,
+     "microLabelShare": 0.083,
+     "microSamples": [
+      "A Student-Driven Community",
+      "Editions",
+      "So Far",
+      "Host Venues",
+      "Across Editions",
+      "Our Venues"
+     ],
+     "upperShare": 0.24,
+     "centerShare": 0.13,
+     "smallText": 38
+    },
+    "eyebrows": [
+     {
+      "text": "A Student-Driven Community",
+      "above": "FIND YOUR PEOPLE. BUILD SOMETHING TOGETH",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 98
+     },
+     {
+      "text": "A community in motion",
+      "above": "LEARN. CONNECT. GROW.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 1679
+     },
+     {
+      "text": "01 / Beyond the classroom",
+      "above": "REAL-WORLD INSIGHTS FROM PEOPLE WHO ACTU",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 1942
+     },
+     {
+      "text": "Our event archive",
+      "above": "EXPLORE THE JOURNEY SO FAR.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 2361
+     },
+     {
+      "text": "The Community",
+      "above": "A COMMUNITY BUILT BY STUDENTS, FOR STUDE",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 3886
+     },
+     {
+      "text": "Voices of the community",
+      "above": "REAL PEOPLE. REAL IMPACT.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 4191
+     },
+     {
+      "text": "Founder Spotlight",
+      "above": "Yashwanth Bondapalli",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 5070
+     },
+     {
+      "text": "The Team",
+      "above": "PEOPLE WHO MAKE IT HAPPEN.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 5407
+     },
+     {
+      "text": "FAQ",
+      "above": "QUESTIONS? WE'VE GOT YOU.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 6744
+     }
+    ],
+    "numbered": [
+     {
+      "text": "09",
+      "size": 48,
+      "top": 813
+     },
+     {
+      "text": "01 / Beyond the classroom",
+      "size": 11,
+      "top": 1942
+     }
+    ],
+    "color": {
+     "bodyBg": "#faf7f2",
+     "bodyBgHsl": {
+      "h": 38,
+      "s": 0.44,
+      "l": 0.96
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#faf7f2",
+       "top": 74,
+       "hsl": {
+        "h": 38,
+        "s": 0.44,
+        "l": 0.96
+       }
+      },
+      {
+       "color": "#ffffff",
+       "top": 1112,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#1c353b",
+       "top": 1611,
+       "hsl": {
+        "h": 192,
+        "s": 0.36,
+        "l": 0.17
+       }
+      },
+      {
+       "color": "#ea580c",
+       "top": 1611,
+       "hsl": {
+        "h": 21,
+        "s": 0.9,
+        "l": 0.48
+       }
+      },
+      {
+       "color": "#3d3932",
+       "top": 2847,
+       "hsl": {
+        "h": 38,
+        "s": 0.1,
+        "l": 0.22
+       }
+      },
+      {
+       "color": "#f4efe6",
+       "top": 4808,
+       "hsl": {
+        "h": 39,
+        "s": 0.39,
+        "l": 0.93
+       }
+      },
+      {
+       "color": "#fff8f0",
+       "top": 7918,
+       "hsl": {
+        "h": 32,
+        "s": 1,
+        "l": 0.97
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#4a4e57",
+       "share": 0.18
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.17
+      },
+      {
+       "color": "#1c1e22",
+       "share": 0.17
+      },
+      {
+       "color": "#111215",
+       "share": 0.13
+      },
+      {
+       "color": "#5d626d",
+       "share": 0.05
+      }
+     ],
+     "button": {
+      "bg": "#ffffff",
+      "hsl": {
+       "h": 0,
+       "s": 0,
+       "l": 1
+      },
+      "fg": "#1c1e22"
+     },
+     "lowContrast": [
+      {
+       "text": "So Far",
+       "ratio": 4.3,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#717682",
+       "bg": "#faf7f2"
+      },
+      {
+       "text": "Across Editions",
+       "ratio": 4.3,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#717682",
+       "bg": "#faf7f2"
+      },
+      {
+       "text": "Founded By",
+       "ratio": 4.3,
+       "need": 4.5,
+       "size": 11,
+       "fg": "#717682",
+       "bg": "#faf7f2"
+      }
+     ]
+    },
+    "buttons": {
+     "count": 6,
+     "inHero": 1,
+     "radius": "pill",
+     "height": 43,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 1,
+     "heroLabels": []
+    },
+    "surfaces": {
+     "shadowStatic": 18,
+     "shadowOverlay": 2,
+     "shadowSamples": [
+      "div.relative.overflow-hidden → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.rounded-3xl → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "a.group.flex → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(28, 25,",
+      "a.group.flex → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(28, 25,"
+     ],
+     "gradients": 7,
+     "scrims": 5,
+     "gradientSamples": [
+      "div.absolute.inset-x-[18%] → radial-gradient(at 50% 100%, rgb(240, 187, 121) 0%, rgb(246, 223, 187) 37%, rgba(0, 0, 0, 0) 73%)",
+      "div.eaf-folder-art.eaf-art-0 → radial-gradient(at 50% 90%, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0) 45%), linear-gradient(140deg, rgb(223,",
+      "div.eaf-folder-front → linear-gradient(165deg, rgb(255, 249, 236), rgb(233, 216, 186) 96%)",
+      "div.eaf-folder-art.eaf-art-1 → radial-gradient(at 30% 85%, rgba(255, 255, 255, 0.24), rgba(0, 0, 0, 0) 42%), linear-gradient(145deg, rgb(13, "
+     ],
+     "gradientText": 0,
+     "hairlines": 7,
+     "hairlineSamples": [
+      "div.relative.grid 272px",
+      "section.py-6.sm:py-8 320px",
+      "div.flex.items-center 288px",
+      "a.flex.items-center 288px",
+      "footer#footer.dcf-root.backtobase-footer 320px"
+     ],
+     "outlinedBoxes": 19,
+     "dashed": 0,
+     "blurred": 5,
+     "roundedBoxes": 23,
+     "boxRadius": 16,
+     "squareMedia": 1,
+     "roundedMedia": 6,
+     "mediaRadius": 16,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": true,
+       "rounded": true,
+       "top": 4384
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 2,
+     "fixed": true,
+     "height": 74,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter",
+     "inter fallback",
+     "bricolage grotesque",
+     "fraunces",
+     "__nextjs-geist"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 320,
+     "h": 200
+    },
+    "pageH": 8352,
+    "margins": {
+     "left": 16,
+     "right": 15
+    },
+    "sections": [
+     {
+      "sel": "div.px-4.sm:px-6",
+      "tag": "div",
+      "top": 98,
+      "height": 373,
+      "words": 28,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Find your people.",
+       "size": 36,
+       "tag": "h1"
+      },
+      "left": 3,
+      "right": 1,
+      "textLeft": 3,
+      "textRight": 1,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "figure.relative.mx-auto",
+      "tag": "figure",
+      "top": 503,
+      "height": 229,
+      "words": 5,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 37,
+      "right": 43,
+      "textLeft": 54,
+      "textRight": 78,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-6.sm:py-8",
+      "tag": "section",
+      "top": 780,
+      "height": 292,
+      "words": 12,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "09",
+       "size": 48,
+       "tag": "span"
+      },
+      "left": 16,
+      "right": 47,
+      "textLeft": 16,
+      "textRight": 47,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-10.sm:py-12",
+      "tag": "section",
+      "top": 1072,
+      "height": 539,
+      "words": 14,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Our Venues",
+       "size": 12,
+       "tag": "h2"
+      },
+      "left": 41,
+      "right": 49,
+      "textLeft": 41,
+      "textRight": 57,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.lcg-wash",
+      "tag": "div",
+      "top": 1611,
+      "height": 335,
+      "words": 0,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": null,
+      "right": null,
+      "textLeft": null,
+      "textRight": null,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.lcg-inner",
+      "tag": "div",
+      "top": 1611,
+      "height": 670,
+      "words": 45,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "LEARN.",
+       "size": 50,
+       "tag": "h2"
+      },
+      "left": 21,
+      "right": 33,
+      "textLeft": 21,
+      "textRight": 33,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.eaf-section",
+      "tag": "section",
+      "top": 2281,
+      "height": 1536,
+      "words": 73,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Explore the journey so far.",
+       "size": 38,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 15,
+      "textLeft": 20,
+      "textRight": 15,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#community-photo.scroll-mt-24.py-8",
+      "tag": "section",
+      "top": 3817,
+      "height": 310,
+      "words": 9,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "A Community Built By Students,",
+       "size": 24,
+       "tag": "h2"
+      },
+      "left": 21,
+      "right": 45,
+      "textLeft": 45,
+      "textRight": 45,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#community-stories.bg-canvas-base.py-16",
+      "tag": "section",
+      "top": 4127,
+      "height": 616,
+      "words": 163,
+      "media": 0,
+      "middle": 950,
+      "heading": {
+       "text": "Real People. Real Impact.",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 0,
+      "right": 0,
+      "textLeft": -251,
+      "textRight": -1041,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-10.sm:py-14",
+      "tag": "section",
+      "top": 4743,
+      "height": 616,
+      "words": 31,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Yashwanth Bondapalli",
+       "size": 24,
+       "tag": "h2"
+      },
+      "left": 41,
+      "right": 43,
+      "textLeft": 41,
+      "textRight": 69,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-12.sm:py-16",
+      "tag": "section",
+      "top": 5359,
+      "height": 1338,
+      "words": 36,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "People Who Make It",
+       "size": 30,
+       "tag": "h3"
+      },
+      "left": 16,
+      "right": 53,
+      "textLeft": 16,
+      "textRight": 53,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#faqs.py-12.sm:py-16",
+      "tag": "section",
+      "top": 6696,
+      "height": 763,
+      "words": 81,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Questions?",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 26,
+      "textLeft": 16,
+      "textRight": 33,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-10.sm:py-14",
+      "tag": "section",
+      "top": 7459,
+      "height": 459,
+      "words": 33,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Be A Part Of",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 49,
+      "right": 58,
+      "textLeft": 49,
+      "textRight": 58,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer#footer.dcf-root.backtobase-footer",
+      "tag": "footer",
+      "top": 7918,
+      "height": 435,
+      "words": 11,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 12,
+      "right": 12,
+      "textLeft": 12,
+      "textRight": 18,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "FIND YOUR PEOPLE. BUILD SOMETHING TOGETHER. LEARN BUILD SHARE GROW TOGETHER.",
+      "size": 36,
+      "top": 131,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [
+     {
+      "text": "Learn",
+      "side": "left",
+      "px": 3
+     },
+     {
+      "text": "together.",
+      "side": "right",
+      "px": 1
+     },
+     {
+      "text": "Medicover Blue Planet Auditorium",
+      "side": "right",
+      "px": 15
+     },
+     {
+      "text": "Made with",
+      "side": "left",
+      "px": 12
+     }
+    ],
+    "edges": [
+     {
+      "x": 41,
+      "n": 12
+     },
+     {
+      "x": 16,
+      "n": 9
+     },
+     {
+      "x": 27,
+      "n": 2
+     },
+     {
+      "x": 140,
+      "n": 1
+     },
+     {
+      "x": 306,
+      "n": 1
+     },
+     {
+      "x": 584,
+      "n": 1
+     },
+     {
+      "x": 862,
+      "n": 1
+     },
+     {
+      "x": 1141,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 28,
+    "bodySize": 16,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 1440,
+   "message": "3 headline(s) wrap past two lines at 1440px: \"LEARN. CONNECT. GROW.\" → 3 lines (3 words, 92.2px); \"REAL-WORLD INSIGHTS FROM PEOPLE WHO ACTUALLY BUI\" → 3 lines (7 words, 36px); \"EXPLORE THE JOURNEY SO FAR.\" → 3 lines (5 words, 60px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 36px or less."
+  },
+  {
+   "level": "WARN",
+   "id": "hero-words",
+   "width": 1440,
+   "message": "Hero headline is 11 words (\"FIND YOUR PEOPLE. BUILD SOMETHING TOGETHER. LEARN BUILD SHAR\"). Gallery median is 5.",
+   "fix": "Say the one thing. Move the rest to the supporting line.",
+   "alsoAt": [
+    320
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "eyebrow",
+   "width": 1440,
+   "message": "9 eyebrow/kicker label(s) above headings: \"A Student-Driven Community\" above \"FIND YOUR PEOPLE. BUILD SOMETHING TOGETH\"; \"A community in motion\" above \"LEARN. CONNECT. GROW.\"; \"01 / Beyond the classroom\" above \"REAL-WORLD INSIGHTS FROM PEOPLE WHO ACTU\"; \"Our event archive\" above \"EXPLORE THE JOURNEY SO FAR.\"; \"The Community\" above \"A COMMUNITY BUILT BY STUDENTS, FOR STUDE\"",
+   "fix": "Delete them. If the label carried real information, fold it into the headline or the supporting sentence.",
+   "alsoAt": [
+    768,
+    390,
+    320
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "numbering",
+   "width": 1440,
+   "message": "Decorative index numbers: \"09\", \"01 / Beyond the classroom\"",
+   "fix": "Remove them. If order truly matters, write it into the words (\"First, …\") or use a real <ol>.",
+   "alsoAt": [
+    768,
+    390,
+    320
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "micro-label",
+   "width": 1440,
+   "message": "20 tiny uppercase letter-spaced labels (e.g. \"A Student-Driven Community\", \"Editions\", \"So Far\", \"Host Venues\").",
+   "fix": "Use sentence-case text at a readable size, or delete the label.",
+   "alsoAt": [
+    768,
+    390,
+    320
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "gradient",
+   "width": 1440,
+   "message": "7 gradient fill(s): div.absolute.inset-x-[18%] → radial-gradient(at 50% 100%, rgb(240, 187, 121) 0%, rgb(246, 223, 187) 37%, rgba(0, 0, 0, 0) 73%) | div.eaf-folder-art.eaf-art-0 → radial-gradient(at 50% 90%, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0) 45%), linear-gradient(140deg, rgb(223, | div.eaf-folder-front → linear-gradient(165deg, rgb(255, 249, 236), rgb(233, 216, 186) 96%)",
+   "fix": "Use a flat colour or a real image. The only gradient allowed by default is a neutral scrim over a photo for legibility.",
+   "alsoAt": [
+    768,
+    390,
+    320
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "shadow",
+   "width": 1440,
+   "message": "18 box-shadow(s) on elements at rest: div.relative.overflow-hidden → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0 | div.relative.rounded-3xl → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0 | a.group.flex → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(28, 25,",
+   "fix": "Remove. Separate surfaces with a tone step or space. Shadows are for things that really float (menus, dialogs, sticky bars).",
+   "alsoAt": [
+    768,
+    390,
+    320
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "hairline",
+   "width": 1440,
+   "message": "12 thin rule(s)/divider line(s): div.relative.grid 784px | section.py-6.sm:py-8 1440px | div.flex.flex-col 1134px | div.mt-6.flex 286px",
+   "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields.",
+   "alsoAt": [
+    768,
+    390,
+    320
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "outlined-box",
+   "width": 1440,
+   "message": "19 boxes drawn with a 1px outline.",
+   "fix": "Define a surface by its fill (one tone step from the page) or leave the content unboxed.",
+   "alsoAt": [
+    768,
+    390,
+    320
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "glass",
+   "width": 1440,
+   "message": "5 backdrop-blur surfaces.",
+   "fix": "One blurred sticky bar at most; glass cards are a tell.",
+   "alsoAt": [
+    768,
+    390,
+    320
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "icon-cards",
+   "width": 1440,
+   "message": "1 row(s) of identical cards each topped with a small icon (3 cards).",
+   "fix": "Replace with one composed section from the direction: a narrative split, a list set in large type, or real imagery per item.",
+   "alsoAt": [
+    768,
+    390,
+    320
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "palette-cream",
+   "width": 1440,
+   "message": "Yellow-cream background (page background #faf7f2, section #faf7f2, section #fff8f0).",
+   "fix": "Use the drawn palette. If you want warmth, take a low-chroma stone or bone, not a yellow cream.",
+   "alsoAt": [
+    768,
+    390,
+    320
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "contrast",
+   "width": 1440,
+   "message": "Unreadable text: \"For Students.\" 2.5:1 (#087986 on #1c353b)",
+   "fix": "Raise contrast to at least 4.5:1 for text, 3:1 for large display.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "font-count",
+   "width": 1440,
+   "message": "4 typefaces in use (Inter, Bricolage Grotesque, ui-serif, Fraunces).",
+   "fix": "Two at most: one display, one text. Often one is enough.",
+   "alsoAt": [
+    768,
+    390,
+    320
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "16 different font sizes (10, 11, 12, 13, 14, 15, 16, 17, 18, 22, 27, 30, 36, 48, 60, 92).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    768,
+    390,
+    320
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "WARN",
+   "id": "measure",
+   "width": 1440,
+   "message": "Longest paragraph runs about 106 characters per line.",
+   "fix": "Cap paragraphs at 45–75 characters (max-width: 60ch).",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "small-text",
+   "width": 1440,
+   "message": "34 text blocks under 13px.",
+   "fix": "Nothing meant to be read goes below 13px.",
+   "alsoAt": [
+    768,
+    390,
+    320
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "focal-point",
+   "width": 1440,
+   "message": "The first screen has no dominant element: the largest type is 60px (4.2vw) and no single picture holds a third of the viewport.",
+   "fix": "Make one thing lead: the headline at display size, or one large picture. A grid of many small pictures is not one thing; in blind tests jurors marked a first screen without a headline down every time. On the strongest studied sites the largest type has a median of 8.4vw."
+  },
+  {
+   "level": "FAIL",
+   "id": "late-title",
+   "width": 1440,
+   "message": "The title is not readable 1.2s after the page loaded (it is at 35% opacity).",
+   "fix": "Put the headline in the HTML, painted on the first frame; the load sequence only adds arrival and is settled by 1.2s (references/motion.md, \"Load sequence in 1.2 seconds\"). No preloader, no gate, no waiting for the load event."
+  },
+  {
+   "level": "WARN",
+   "id": "off-centre",
+   "width": 1440,
+   "message": "The margins differ: 90px on the left, 58px on the right, at 1440px.",
+   "fix": "Put the navigation and the content on one pair of margins; check for padding on one side only, a scrollbar gutter, or a header on another inset than the page."
+  },
+  {
+   "level": "WARN",
+   "id": "ragged-edges",
+   "width": 1440,
+   "message": "Left-aligned text starts at 12 different lines (112px, 159px, 565px, 90px, 146px, 174px, 385px); the three most used hold only 39% of it.",
+   "fix": "Pick two or three anchor lines from the grid and start every heading and paragraph on one of them.",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 768,
+   "message": "2 headline(s) wrap past two lines at 768px: \"FIND YOUR PEOPLE. BUILD SOMETHING TOGETHER. LEAR\" → 3 lines (11 words, 48px); \"LEARN. CONNECT. GROW.\" → 3 lines (3 words, 80px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 32px or less."
+  },
+  {
+   "level": "WARN",
+   "id": "empty-middle",
+   "width": 768,
+   "message": "1 section(s) have content at both edges and 971px of nothing between: \"Real People. Real Impact.\"",
+   "fix": "Bring the two parts together on the grid, or put the picture or figure of the section in the middle. An empty middle third reads as a hole, the same as an empty half."
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 390,
+   "message": "2 headline(s) wrap past two lines at 390px: \"LEARN. CONNECT. GROW.\" → 3 lines (3 words, 53.8px); \"A COMMUNITY BUILT BY STUDENTS, FOR STUDENTS.\" → 3 lines (7 words, 24px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less."
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 320,
+   "message": "5 headline(s) wrap past two lines at 320px: \"FIND YOUR PEOPLE. BUILD SOMETHING TOGETHER. LEAR\" → 4 lines (11 words, 36px); \"LEARN. CONNECT. GROW.\" → 3 lines (3 words, 50px); \"REAL-WORLD INSIGHTS FROM PEOPLE WHO ACTUALLY BUI\" → 3 lines (7 words, 23px); \"EXPLORE THE JOURNEY SO FAR.\" → 3 lines (5 words, 38px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less."
+  },
+  {
+   "level": "WARN",
+   "id": "contrast",
+   "width": 320,
+   "message": "Low-contrast text: \"So Far\" 4.3:1 needs 4.5:1; \"Across Editions\" 4.3:1 needs 4.5:1; \"Founded By\" 4.3:1 needs 4.5:1",
+   "fix": "Darken or lighten the text colour."
+  },
+  {
+   "level": "FAIL",
+   "id": "edge-text",
+   "width": 320,
+   "message": "2 text block(s) sit within 12px of the screen edge: \"Learn\" (3px from the left); \"together.\" (1px from the right)",
+   "fix": "Keep text inside the page margin (16–20px). Only display type deliberately bled past the edge may touch it."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\Users\\Prajwal.k\\Base 2.0\\base-2.0\\.taste-skill\\final\\desktop-fold.jpg",
+   "pages": [
+    "C:\\Users\\Prajwal.k\\Base 2.0\\base-2.0\\.taste-skill\\final\\desktop-page-01.jpg",
+    "C:\\Users\\Prajwal.k\\Base 2.0\\base-2.0\\.taste-skill\\final\\desktop-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\Users\\Prajwal.k\\Base 2.0\\base-2.0\\.taste-skill\\final\\tablet-fold.jpg",
+   "pages": [
+    "C:\\Users\\Prajwal.k\\Base 2.0\\base-2.0\\.taste-skill\\final\\tablet-page-01.jpg",
+    "C:\\Users\\Prajwal.k\\Base 2.0\\base-2.0\\.taste-skill\\final\\tablet-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\Users\\Prajwal.k\\Base 2.0\\base-2.0\\.taste-skill\\final\\mobile-fold.jpg",
+   "pages": [
+    "C:\\Users\\Prajwal.k\\Base 2.0\\base-2.0\\.taste-skill\\final\\mobile-page-01.jpg",
+    "C:\\Users\\Prajwal.k\\Base 2.0\\base-2.0\\.taste-skill\\final\\mobile-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 320,
+   "fold": "C:\\Users\\Prajwal.k\\Base 2.0\\base-2.0\\.taste-skill\\final\\mobile-fold.jpg",
+   "pages": [
+    "C:\\Users\\Prajwal.k\\Base 2.0\\base-2.0\\.taste-skill\\final\\mobile-page-01.jpg",
+    "C:\\Users\\Prajwal.k\\Base 2.0\\base-2.0\\.taste-skill\\final\\mobile-page-02.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

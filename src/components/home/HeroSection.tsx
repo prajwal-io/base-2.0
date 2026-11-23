@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { FlowButton } from "@/components/ui/flow-button";
-import { PixelField } from "@/components/ui/PixelField";
 import { AnimatedHero } from "@/components/ui/animated-hero";
 import { FEATURED_HERO, HeroBackground, type HeroDirection } from "./HeroBackground";
 import { HeroCrew, type HeroCrewDirection, type RollCallCut } from "./HeroCrew";
@@ -41,9 +40,6 @@ export function HeroSection({
   return (
     <section className="relative isolate overflow-hidden pb-12 pt-6 sm:pb-16 sm:pt-10 lg:pb-20 lg:pt-14">
       {!crew && !rehearsal && !communityStage && <HeroBackground variant={variant} />}
-      {communityStage && (
-        <PixelField className="absolute right-2 top-0 w-24 opacity-75 sm:right-5 sm:w-40 lg:right-[4%] lg:top-3 lg:w-[min(27vw,23rem)] lg:opacity-90" />
-      )}
       <div className={rehearsal ? "mx-auto grid max-w-7xl items-center gap-10 px-5 lg:grid-cols-2 lg:px-8" : "px-4 sm:px-6 lg:px-8"}>
       {communityStage ? (
         <AnimatedHero editionCount={editionCount} />

@@ -45,7 +45,7 @@ export function AnimatedHero({ editionCount }: { editionCount: number }) {
               {ACTIONS.map((action, index) => (
                 <motion.span
                   key={action}
-                  className="col-start-1 row-start-1"
+                  className="col-start-1 row-start-1 text-[#a45131]"
                   initial={false}
                   animate={
                     actionNumber === index

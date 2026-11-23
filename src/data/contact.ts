@@ -1,6 +1,6 @@
 export const CONTACT_EMAIL = "backtobase2025@gmail.com";
 
-function createGmailComposeUrl(subject: string, body = ""): string {
+export function createGmailComposeUrl(subject: string, body = ""): string {
   const params = new URLSearchParams({
     view: "cm",
     fs: "1",

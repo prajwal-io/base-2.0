@@ -57,13 +57,13 @@ const PAD = 14
 const NIMBUS_CSS = `
 .nimbus-nav{--n-tint:rgba(255,255,255,.92);--n-fg:#111215;--n-fg-soft:#4A4E57;--n-rim:rgba(232,227,218,.92);position:relative;display:inline-flex;width:max-content;max-width:none;flex:none;align-items:center;gap:2px;padding:6px;border-radius:999px;isolation:isolate;font-family:inherit;-webkit-font-smoothing:antialiased;user-select:none;-webkit-tap-highlight-color:transparent}
 .nimbus-nav[data-tone="dark"]{--n-tint:rgba(18,22,26,.88);--n-fg:#FAF7F2;--n-fg-soft:rgba(250,247,242,.68);--n-rim:rgba(255,255,255,.18)}
-.nimbus-nav[data-effects="off"]{--n-tint:rgba(255,255,255,.96);--n-fg:#171717;--n-fg-soft:#4A4E57;--n-rim:#E8E3DA;background:rgba(255,255,255,.96);border:1px solid #E8E3DA;box-shadow:0 3px 14px rgba(31,24,17,.06)}
-.nimbus-nav[data-effects="off"] .nimbus-glass{background:rgba(255,255,255,.96);backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:inset 0 1px 1px rgba(255,255,255,.9)}
+.nimbus-nav[data-effects="off"]{--n-tint:rgba(255,252,247,.91);--n-fg:#171717;--n-fg-soft:#4A4E57;--n-rim:#E8E3DA;background:var(--n-tint);border:1px solid #E8E3DA;box-shadow:0 3px 14px rgba(31,24,17,.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.nimbus-nav[data-effects="off"] .nimbus-glass{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:inset 0 1px 1px rgba(255,255,255,.9)}
 .nimbus-nav[data-effects="off"] .nimbus-water,.nimbus-nav[data-effects="off"] .nimbus-drop,.nimbus-nav[data-effects="off"]>svg{display:none}
 .nimbus-nav[data-effects="off"] .nimbus-item[aria-current="page"]{background:transparent;color:#171717}
 .nimbus-nav[data-effects="off"] .nv-ico,.nimbus-nav[data-effects="off"] .nimbus-item[aria-current="page"] .nv-ico{background:transparent;color:#53616A}
 .nimbus-nav[data-effects="off"] .nv-ico svg,.nimbus-nav[data-effects="off"] .nimbus-brand{transition:none}
-.nimbus-active-pill{position:absolute;inset:0;z-index:0;border-radius:999px;background:rgba(234,88,12,.09);pointer-events:none}
+.nimbus-active-pill{position:absolute;inset:2px 0;z-index:0;border:1px solid rgba(162,88,50,.16);border-radius:999px;background:linear-gradient(180deg,rgba(255,244,227,.95),rgba(248,220,192,.75));pointer-events:none}
 .nimbus-item-content{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px}
 .nimbus-nav[data-effects="off"] .nimbus-brand::after{background:#34363B}
 .nimbus-glass{position:absolute;inset:0;border-radius:inherit;z-index:-2;overflow:hidden;background:var(--n-tint);-webkit-backdrop-filter:blur(12px) saturate(1.08);backdrop-filter:blur(12px) saturate(1.08);box-shadow:inset 0 1px 1px rgba(255,255,255,.8),inset 0 0 0 1px var(--n-rim),0 4px 20px -2px rgba(0,0,0,.06),0 2px 6px -1px rgba(0,0,0,.04)}
@@ -307,7 +307,7 @@ export function LiquidNavbar({ items = DEFAULT_ITEMS, defaultActive = 0, active,
         const kind = item.fx ?? "pop", playing = fx.i === i && kind !== "none"
         const content = <span className="nimbus-item-content">{item.icon && <span className="nv-ico" key={playing ? fx.n : 0} data-fx={playing ? kind : undefined} ref={(el) => { iconRefs.current[i] = el }}>{item.icon}</span>}<span className="nimbus-label">{item.label}</span></span>
         const common = { ref: (el: HTMLElement | null) => { itemRefs.current[i] = el }, className: "nimbus-item", "aria-current": i === current ? ("page" as const) : undefined, onClick: () => select(i), "aria-label": item.label }
-        const children = <>{i === current && <motion.span className="nimbus-active-pill" layoutId={`nimbus-active-pill-${activePillId}`} transition={reducedMotion ? { duration: 0 } : { type: "spring", stiffness: 520, damping: 42, mass: 0.55 }} aria-hidden="true" />}{content}</>
+        const children = <>{i === current && <motion.span className="nimbus-active-pill" layoutId={`nimbus-active-pill-${activePillId}`} transition={reducedMotion ? { duration: 0 } : { type: "spring", duration: 0.28, bounce: 0.12 }} aria-hidden="true" />}{content}</>
         return item.href ? <Link key={item.label + i} {...common} href={item.href}>{children}</Link> : <button key={item.label + i} {...common} type="button">{children}</button>
       })}
     </nav>

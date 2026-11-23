@@ -37,7 +37,7 @@ export function FaqSection() {
 
           {/* Right Column: category filters and expandable answers */}
           <div className="flex w-full flex-col gap-3 lg:col-span-8">
-            <div className="flex flex-wrap gap-2" aria-label="Filter questions by category">
+            <div className="flex flex-wrap gap-2" role="group" aria-label="Filter questions by category">
               {FAQ_CATEGORIES.map((category) => {
                 const selected = activeCategory === category;
                 return (

@@ -31,7 +31,7 @@ export function TestimonialsSection({
     <section
       id="community-stories"
       aria-labelledby="community-stories-title"
-      className={cn("bg-canvas-base py-16 sm:py-24", className)}
+      className={cn("border-y border-border-subtle bg-canvas-subtle py-16 sm:py-24", className)}
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-10 sm:gap-14">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 px-4 text-center sm:px-6">

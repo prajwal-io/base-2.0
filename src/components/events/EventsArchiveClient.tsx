@@ -28,8 +28,9 @@ function EditionPhoto({ editionNumber }: { editionNumber: string }) {
           alt={photo.alt}
           width={photo.width}
           height={photo.height}
-          unoptimized
-          className="mx-auto h-auto max-w-full"
+          sizes="(max-width: 640px) 85vw, (max-width: 1024px) 42vw, 38vw"
+          quality={95}
+          className="mx-auto h-auto max-h-[420px] w-full rounded-xl bg-white object-contain"
         />
         <span className="mt-3 flex items-center gap-1 px-1 text-xs font-semibold text-charcoal-800">
           View original photo <ArrowUpRight className="size-4" aria-hidden="true" />
@@ -337,6 +338,7 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
 
                 {/* Right Column: Key Highlights and event photo */}
                 <div className="lg:col-span-5 flex flex-col gap-4">
+                  <EditionPhoto editionNumber={edition.editionNumber} />
                   {edition.highlights && (
                     <div className="p-5 rounded-2xl bg-canvas-subtle border border-border-subtle">
                       <h4 className="text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-3">
@@ -352,7 +354,6 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
                       </ul>
                     </div>
                   )}
-                  <EditionPhoto editionNumber={edition.editionNumber} />
                 </div>
               </div>
             </motion.article>

@@ -52,7 +52,7 @@ export function PixelField({
       fill="none"
     >
       {[36, 68, 100, 132, 164, 196, 228].map((x) => (
-        <path key={x} d={`M${x} 4v80`} stroke="#2469dc" strokeOpacity=".18" strokeWidth=".6" />
+          <path key={x} d={`M${x} 4v80`} stroke="#2469dc" strokeOpacity=".18" strokeWidth=".6" />
       ))}
       {PATTERNS[variant].flatMap((row, y) =>
         [...row].map((cell, x) =>

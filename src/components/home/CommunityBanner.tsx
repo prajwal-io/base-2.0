@@ -23,7 +23,8 @@ export function CommunityBanner() {
               alt="BacktoBase student community group photo"
               width={1024}
               height={229}
-              unoptimized
+              quality={100}
+              sizes="(max-width: 640px) 100vw, (max-width: 1280px) 92vw, 1280px"
               className="community-scroll-photo block w-full h-auto"
             />
           </div>

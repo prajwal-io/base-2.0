@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Footer } from "@/components/layout/Footer";
-import { ArrowLeft, ArrowRight, Heart, Sparkles, Target } from "lucide-react";
+import { ArrowLeft, ArrowRight, Hammer, Mic2, MessagesSquare } from "lucide-react";
 import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 import { FOUNDER_PROFILE } from "@/data/founderData";
 import { CONTACT_US_URL } from "@/data/contact";
@@ -40,10 +40,10 @@ export default function AboutPage() {
           </div>
 
           {/* Philosophy Pillars */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             <div className="p-6 rounded-3xl bg-white border border-border-subtle shadow-card">
               <div className="site-icon-mark mb-4">
-                <Target className="w-5 h-5" />
+                <Hammer aria-hidden="true" className="w-5 h-5" />
               </div>
               <h3 className="font-display font-bold text-lg text-charcoal-950 mb-2">
                 Show Up & Build
@@ -55,7 +55,7 @@ export default function AboutPage() {
 
             <div className="p-6 rounded-3xl bg-white border border-border-subtle shadow-card">
               <div className="site-icon-mark mb-4">
-                <Sparkles className="w-5 h-5" />
+                <Mic2 aria-hidden="true" className="w-5 h-5" />
               </div>
               <h3 className="font-display font-bold text-lg text-charcoal-950 mb-2">
                 Students as Speakers
@@ -67,7 +67,7 @@ export default function AboutPage() {
 
             <div className="p-6 rounded-3xl bg-white border border-border-subtle shadow-card">
               <div className="site-icon-mark mb-4">
-                <Heart className="w-5 h-5" />
+                <MessagesSquare aria-hidden="true" className="w-5 h-5" />
               </div>
               <h3 className="font-display font-bold text-lg text-charcoal-950 mb-2">
                 High Signal, Zero Fluff

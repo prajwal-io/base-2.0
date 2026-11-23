@@ -7,7 +7,7 @@ import EventArchiveFolders from "@/components/home/EventArchiveFolders";
 import { CommunityBanner } from "@/components/home/CommunityBanner";
 import { MemberStories } from "@/components/home/MemberStories";
 import { FaqSection } from "@/components/home/FaqSection";
-import { FinalCta } from "@/components/home/FinalCta";
+import { ContactSection } from "@/components/home/ContactSection";
 import { Footer } from "@/components/layout/Footer";
 import { EDITIONS, EDITION_COUNT, VENUE_COUNT } from "@/data/communityData";
 import { getEditionPhoto } from "@/data/editionPhotos";
@@ -36,7 +36,7 @@ export default function HomePage() {
         <CommunityBanner />
         <MemberStories />
         <FaqSection />
-        <FinalCta />
+        <ContactSection />
       </main>
       <Footer />
     </div>

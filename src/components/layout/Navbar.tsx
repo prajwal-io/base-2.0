@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CalendarDays, CircleHelp, Info, Users, Menu, X } from "lucide-react";
+import { CalendarDays, CircleHelp, Info, Mail, Users, Menu, X } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { LiquidNavbar, NimbusIcons, type LiquidNavItem } from "@/components/ui/liquid-glass-navbar";
 import { FlowButton } from "@/components/ui/flow-button";
@@ -15,6 +15,7 @@ const NAV_ITEMS: (LiquidNavItem & { href: string })[] = [
   { label: "Community", href: "/community", icon: <Users aria-hidden="true" />, fx: "none" },
   { label: "About", href: "/about", icon: <Info aria-hidden="true" />, fx: "none" },
   { label: "FAQs", href: "/#faqs", icon: <CircleHelp aria-hidden="true" />, fx: "none" },
+  { label: "Contact Us", href: "/#contact-us", icon: <Mail aria-hidden="true" />, fx: "none" },
 ];
 
 export function Navbar() {
@@ -28,7 +29,10 @@ export function Navbar() {
   const pendingTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   // Keep the current section highlighted on the homepage and its related sub-pages.
   const routeNav = (() => {
-    if (pathname === "/" && hash === "#faqs") return 4;
+    if (pathname === "/" && hash) {
+      const section = NAV_ITEMS.findIndex((item) => item.href === `/${hash}`);
+      if (section !== -1) return section;
+    }
     if (pathname.startsWith("/founder")) return 3; // About
     const exact = NAV_ITEMS.findIndex((item) => item.href === pathname);
     return exact === -1 ? 0 : exact;
@@ -137,7 +141,7 @@ export function Navbar() {
 
         {/* Right CTA Button */}
         <div className="col-start-2 flex items-center gap-2 justify-self-end sm:gap-3 md:col-start-3 md:row-start-1">
-          <FlowButton text="Partner with us" compactText="Partner" className="!pl-3 !pr-7 sm:!px-3 xl:!px-5 !text-xs py-2.5" />
+          <FlowButton text="Partner with us" compactText="Partner" className="!pl-4 !pr-8 !text-xs py-2.5" />
 
           {/* Mobile Menu Toggle Button */}
           <button
@@ -162,7 +166,7 @@ export function Navbar() {
             animate={{ opacity: 1, transform: "translateY(0px)" }}
             exit={reduceMotion ? undefined : { opacity: 0, transform: "translateY(-6px)" }}
             transition={{ duration: reduceMotion ? 0 : 0.18, ease: [0.23, 1, 0.32, 1] }}
-            className="pointer-events-auto absolute inset-x-4 top-full mx-auto max-h-[calc(100dvh-5.5rem)] max-w-sm overflow-y-auto overscroll-contain rounded-3xl border border-[#E8E3DA] bg-white p-4 shadow-xl md:hidden"
+            className="pointer-events-auto absolute inset-x-4 top-full mx-auto max-h-[calc(100dvh-5.5rem)] max-w-sm overflow-y-auto overscroll-contain rounded-3xl border border-[#E8E3DA] bg-white/95 p-4 shadow-xl backdrop-blur-sm md:hidden"
           >
             <nav id="mobile-navigation" aria-label="Mobile navigation" className="flex flex-col gap-1">
               {NAV_ITEMS.map((item, index) => {

@@ -26,6 +26,15 @@ export interface Edition {
   status: "Completed" | "Upcoming";
 }
 
+export interface Testimonial {
+	slug: string;
+	quote: string;
+	longReview?: string;
+	author: string;
+	role: string;
+	avatar: string;
+}
+
 export const EDITIONS = EDITION_DATA as Edition[];
 
 const VENUE_BRANDS = {
@@ -46,7 +55,7 @@ export function normalizeVenue(venue: string): string {
 export const EDITION_COUNT = EDITIONS.length;
 export const VENUE_COUNT = new Set(EDITIONS.map(({ venue }) => normalizeVenue(venue))).size;
 
-export const TESTIMONIALS = [
+export const TESTIMONIALS: Testimonial[] = [
   {
     slug: "guruvani-binneth",
     quote: "BackToBase is the best student community in Hyderabad to turn classroom theory into real-world tech skills alongside approachable mentors and driven peers.",

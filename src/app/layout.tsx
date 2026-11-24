@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { MotionConfig } from "framer-motion";
 import { Agentation } from "agentation";
-import { Navbar } from "@/components/layout/Navbar";
+import { SiteShell } from "@/components/layout/SiteShell";
 import { inter, displayFont, footerSerifFont } from "./fonts";
 import "./globals.css";
 
@@ -43,15 +42,11 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
+      suppressHydrationWarning
       className={`${inter.variable} ${displayFont.variable} ${footerSerifFont.variable}`}
     >
       <body className="paper-bg text-charcoal-900 font-sans antialiased selection:bg-brand-amber-light selection:text-amber-900">
-        <MotionConfig reducedMotion="user">
-          <div className="flex min-h-screen flex-col">
-            <Navbar />
-            {children}
-          </div>
-        </MotionConfig>
+        <SiteShell>{children}</SiteShell>
         {process.env.NODE_ENV === "development" && (
           <Agentation endpoint="http://localhost:4747" />
         )}

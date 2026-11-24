@@ -15,6 +15,116 @@
 }
 
 @layer components {
+  .intro-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    background: #FAF7F2;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 560ms cubic-bezier(0.2, 0, 0, 1);
+    animation: intro-loader-fail-open 3.2s steps(1, end) forwards;
+    pointer-events: auto;
+  }
+
+  @keyframes intro-loader-fail-open {
+    0%, 99.9% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; }
+  }
+
+  .intro-loader[data-state="handoff"] {
+    animation: none;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .intro-loader__mark {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    width: min(72vw, 320px);
+    aspect-ratio: 1;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intro-loader__logo-shell {
+    display: block;
+    width: 72%;
+  }
+
+  .intro-loader__logo {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .intro-loader__ring {
+    position: absolute;
+    inset: 0;
+    border: 1px solid #E8E3DA;
+    border-top-color: #EA580C;
+    border-right-color: #087986;
+    border-radius: 50%;
+  }
+
+  .intro-loader__tagline {
+    color: #596168;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.19em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .intro-loader__logo {
+      animation: intro-logo-reveal 700ms cubic-bezier(0.2, 0, 0, 1) both;
+    }
+
+    .intro-loader__tagline {
+      animation: intro-tagline-reveal 500ms cubic-bezier(0.2, 0, 0, 1) 380ms both;
+    }
+
+    .intro-loader__ring {
+      animation: intro-loader-turn 1.2s linear infinite;
+    }
+
+    @keyframes intro-logo-reveal {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes intro-tagline-reveal {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes intro-loader-turn {
+      to { transform: rotate(360deg); }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .intro-loader {
+      transition: opacity 100ms linear;
+      animation-duration: 1.6s;
+    }
+
+    .intro-loader__logo,
+    .intro-loader__tagline {
+      animation: intro-reduced-fade 350ms linear both;
+    }
+
+    @keyframes intro-reduced-fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  }
+
   .site-icon-mark {
     display: grid;
     width: 2.75rem;

@@ -24,7 +24,7 @@ export function MemberStories() {
 
       <section className="py-10 sm:py-14" aria-labelledby="founder-spotlight-title">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <article className="max-w-4xl rounded-3xl border border-border-subtle bg-white p-6 shadow-card sm:p-8">
+          <article className="mx-auto max-w-4xl rounded-3xl border border-border-subtle bg-white p-6 shadow-card sm:p-8">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8">
               <Link
                 href="/founder"

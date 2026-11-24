@@ -78,7 +78,7 @@ export function AnimatedHero({ editionCount }: { editionCount: number }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: reduceMotion ? 0 : 0.28, ease: EDITORIAL_EASE }}
       >
-        <FlowButton text="Partner with us" />
+        <FlowButton href="/join" text="Join the Community" compactText="Join" />
         <Link
           href="/events"
           className="group inline-flex min-h-11 items-center gap-2 rounded-full border border-border-strong bg-white/85 px-5 text-sm font-semibold text-charcoal-900 transition-colors hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"

@@ -141,7 +141,7 @@ export function Navbar() {
 
         {/* Right CTA Button */}
         <div className="col-start-2 flex items-center gap-2 justify-self-end sm:gap-3 md:col-start-3 md:row-start-1">
-          <FlowButton text="Partner with us" compactText="Partner" className="!pl-4 !pr-8 !text-xs py-2.5" />
+          <FlowButton text="Partner with us" compactText="Partner" className="!pl-4 !pr-5 !text-sm !py-3" />
 
           {/* Mobile Menu Toggle Button */}
           <button

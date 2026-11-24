@@ -1,8 +1,4 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { useInView, useReducedMotion } from "framer-motion";
 import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 
 function NumberTicker({
@@ -14,42 +10,11 @@ function NumberTicker({
   padTwo?: boolean;
   suffix?: string;
 }) {
-  const ref = useRef<HTMLSpanElement | null>(null);
-  const inView = useInView(ref, { once: true, amount: 0.4 });
-  const reduceMotion = useReducedMotion();
-  const [value, setValue] = useState(0);
-
-  useEffect(() => {
-    if (!inView || reduceMotion) return;
-
-    let rafId = 0;
-    const duration = 900;
-    const start = performance.now();
-
-    const step = (now: number) => {
-      const progress = Math.min(1, (now - start) / duration);
-      // Cubic ease-out for crisp landing
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setValue(Math.round(eased * target));
-      if (progress < 1) {
-        rafId = requestAnimationFrame(step);
-      }
-    };
-
-    rafId = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(rafId);
-  }, [inView, reduceMotion, target]);
-
-  const displayValue = reduceMotion ? target : value;
-  const formatted = padTwo ? String(displayValue).padStart(2, "0") : String(displayValue);
+  const formatted = padTwo ? String(target).padStart(2, "0") : String(target);
 
   return (
-    <span
-      ref={ref}
-      className="font-display font-extrabold text-5xl sm:text-6xl tracking-tight text-charcoal-950 tabular-nums"
-    >
-      {formatted}
-      {suffix}
+    <span className="font-display font-extrabold text-5xl sm:text-6xl tracking-tight text-charcoal-950 tabular-nums">
+      {formatted}{suffix}
     </span>
   );
 }

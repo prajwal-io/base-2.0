@@ -44,10 +44,8 @@ const EAF_STYLES = `
   --eaf-orange: #ef4b13;
   position: relative;
   overflow: hidden;
-  background-color: var(--color-canvas-dark);
-  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 0.85px, transparent 0.85px);
-  background-size: 16px 16px;
-  color: #f8f4eb;
+  background-color: var(--color-canvas-subtle);
+  color: #111215;
   padding: clamp(68px, 8vw, 112px) clamp(20px, 4vw, 32px);
   scroll-margin-top: 76px;
 }
@@ -77,7 +75,7 @@ const EAF_STYLES = `
   line-height: 1;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(248, 244, 235, 0.72);
+  color: #8a4d2e;
 }
 
 .eaf-eyebrow-line {
@@ -95,7 +93,7 @@ const EAF_STYLES = `
   line-height: 0.92;
   letter-spacing: -0.04em;
   text-transform: uppercase;
-  color: #f8f4eb;
+  color: #111215;
 }
 
 .eaf-copy {
@@ -105,7 +103,7 @@ const EAF_STYLES = `
   font-size: 15px;
   font-weight: 400;
   line-height: 1.58;
-  color: rgba(248, 244, 235, 0.76);
+  color: #4a4e57;
 }
 
 .eaf-actions {
@@ -119,10 +117,10 @@ const EAF_STYLES = `
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  border: 1px solid rgba(248, 244, 235, 0.65);
+  border: 1px solid rgba(52, 41, 31, 0.42);
   border-radius: 999px;
   padding: 11px 18px;
-  color: #ffffff;
+  color: #34291f;
   text-decoration: none;
   font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 12px;
@@ -135,6 +133,7 @@ const EAF_STYLES = `
 .eaf-all-link:hover {
   background-color: var(--eaf-orange);
   border-color: var(--eaf-orange);
+  color: #111215;
   transform: translateY(-1px);
 }
 
@@ -142,7 +141,7 @@ const EAF_STYLES = `
 .eaf-nav-btn:focus-visible,
 .eaf-dot:focus-visible,
 .eaf-folder:focus-visible {
-  outline: 2px solid #ff6a35;
+  outline: 2px solid #9a3412;
   outline-offset: 4px;
 }
 
@@ -156,9 +155,9 @@ const EAF_STYLES = `
   width: 40px;
   height: 40px;
   border-radius: 999px;
-  border: 1px solid rgba(248, 244, 235, 0.28);
-  background: rgba(255, 255, 255, 0.05);
-  color: #f8f4eb;
+  border: 1px solid rgba(52, 41, 31, 0.24);
+  background: rgba(255, 255, 255, 0.72);
+  color: #34291f;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -169,6 +168,7 @@ const EAF_STYLES = `
 .eaf-nav-btn:hover {
   background-color: var(--eaf-orange);
   border-color: var(--eaf-orange);
+  color: #111215;
   transform: translateY(-1px);
 }
 
@@ -185,7 +185,7 @@ const EAF_STYLES = `
   border-radius: 999px;
   border: 0;
   padding: 0;
-  background: rgba(248, 244, 235, 0.22);
+  background: rgba(52, 41, 31, 0.24);
   cursor: pointer;
   transition: width 240ms cubic-bezier(0.16, 1, 0.3, 1), background-color 200ms ease;
 }
@@ -202,7 +202,7 @@ const EAF_STYLES = `
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(248, 244, 235, 0.56);
+  color: #5d626d;
 }
 
 .eaf-stage-wrap {
@@ -215,6 +215,7 @@ const EAF_STYLES = `
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   align-items: stretch;
+  perspective: 1100px;
 }
 
 .eaf-folder {
@@ -229,6 +230,7 @@ const EAF_STYLES = `
   padding: 12px 0 0 10px;
   color: var(--folder-ink);
   isolation: isolate;
+  transform-style: preserve-3d;
 }
 
 .eaf-folder-tab {
@@ -254,6 +256,7 @@ const EAF_STYLES = `
 
 .eaf-folder-button {
   position: relative;
+  transform-style: preserve-3d;
   display: flex;
   flex: 1;
   min-width: 0;
@@ -268,20 +271,17 @@ const EAF_STYLES = `
   color: inherit;
   cursor: pointer;
   text-align: left;
-  transition: transform 220ms cubic-bezier(.2,.8,.2,1), box-shadow 220ms ease;
+  transition: transform 240ms cubic-bezier(.16,1,.3,1), box-shadow 240ms ease;
 }
 
-.eaf-folder-button:hover {
-  transform: translateY(-3px) rotate(-.4deg);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), inset 3px 0 0 rgba(165,124,72,.1), 0 5px 0 #b59368, 0 12px 18px rgba(22, 17, 12, .2);
-}
-.eaf-folder-button:focus-visible, .eaf-folder-link:focus-visible { outline: 2px solid #ff8a58; outline-offset: 4px; }
+.eaf-folder-depth { position: absolute; z-index: -1; inset: 4px -4px -6px 4px; border: 1px solid #b99a70; border-radius: 5px 13px 10px 8px; background: linear-gradient(145deg, #f3e2c2, #ddc49d); box-shadow: 0 8px 14px rgba(22,17,12,.12); transform: translateZ(-8px); pointer-events: none; }
+.eaf-folder-button:focus-visible, .eaf-folder-link:focus-visible { outline: 2px solid #9a3412; outline-offset: 4px; }
 .eaf-folder-button[data-open="true"] { transform: translateY(-2px); }
 .eaf-folder-seam { position: absolute; inset: 8px; border: 1px dashed rgba(138, 99, 57, .25); border-radius: 4px 10px 8px 6px; pointer-events: none; }
 .eaf-folder-topline { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 3px 3px 12px; color: #805b39; font-size: 9px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
 .eaf-folder-stamp { display: grid; width: 26px; height: 26px; place-items: center; border: 1px solid #c5a77e; border-radius: 50%; background: #f9ecd7; }
 .eaf-folder-content { display: flex; flex: 1; min-width: 0; flex-direction: column; }
-.eaf-folder-photo-pop { position: relative; z-index: 3; width: 100%; overflow: hidden; aspect-ratio: 4 / 3; border: 4px solid #fffaf0; background: #e9dcc4; box-shadow: 0 5px 14px rgba(35, 25, 16, .24); transform-origin: center bottom; }
+.eaf-folder-photo-pop { position: relative; z-index: 3; width: 100%; overflow: hidden; aspect-ratio: 4 / 3; border: 4px solid #fffaf0; background: linear-gradient(145deg, #f3eadb, #dfcfb5); box-shadow: 0 5px 14px rgba(35, 25, 16, .24); transform-origin: center bottom; }
 .eaf-folder-photo-pop img { object-fit: contain; }
 .eaf-folder-photo-fallback { display: grid; height: 100%; padding: 12px; place-items: center; color: #5b4332; font-size: 12px; text-align: center; }
 .eaf-folder-title { margin: 2px 0 12px; font-family: var(--font-display), "Inter Tight", system-ui, sans-serif; font-size: clamp(17px, 1.55vw, 21px); font-weight: 800; line-height: 1.1; letter-spacing: -0.025em; overflow-wrap: anywhere; }
@@ -289,11 +289,19 @@ const EAF_STYLES = `
 .eaf-folder-meta { display: grid; gap: 4px; }
 .eaf-folder-foot-row { display: flex; align-items: center; gap: 5px; }
 .eaf-folder-pull { display: inline-flex; align-items: center; gap: 5px; padding: 4px 0 0; color: #84512d; font-size: 10px; font-weight: 700; }
-.eaf-folder-link { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; gap: 6px; margin: 9px 4px 0 0; border: 1px solid rgba(248,244,235,.3); border-radius: 999px; color: rgba(248,244,235,.9); font-size: 11px; font-weight: 700; text-decoration: none; transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease; }
-.eaf-folder-link:hover { border-color: #ef4b13; background: #ef4b13; color: white; }
+.eaf-folder-link { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; gap: 6px; margin: 9px 4px 0 0; border: 1px solid rgba(52,41,31,.26); border-radius: 999px; color: #5b4332; font-size: 11px; font-weight: 700; text-decoration: none; transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease; }
+.eaf-folder-link:hover { border-color: #ef4b13; background: #ef4b13; color: #111215; }
 .eaf-folder-reveal { position: relative; z-index: 2; margin: 4px 6px -10px 4px; }
 .eaf-folder-reveal[data-open="true"] { margin-bottom: 7px; }
-.eaf-folder-reveal-label { display: block; padding: 7px 2px 0; color: rgba(248,244,235,.72); font-size: 10px; font-weight: 700; letter-spacing: .04em; text-align: center; }
+.eaf-folder-reveal-label { display: block; padding: 7px 2px 0; color: #5b4332; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-align: center; }
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .eaf-folder-button:hover,
+  .eaf-folder[data-preview="true"] .eaf-folder-button {
+    transform: translateY(-4px) rotateX(1deg) rotateY(-1deg) translateZ(8px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.9), inset 3px 0 0 rgba(165,124,72,.1), 0 6px 0 #b59368, 0 16px 22px rgba(22, 17, 12, .2);
+  }
+}
 
 @media (max-width: 980px) {
   .eaf-inner {
@@ -338,6 +346,11 @@ const EAF_STYLES = `
   .eaf-folder-link {
     transition: none;
   }
+
+  .eaf-folder-button:hover,
+  .eaf-folder[data-preview="true"] .eaf-folder-button {
+    transform: none;
+  }
 }
 `;
 
@@ -345,6 +358,8 @@ export default function EventArchiveFolders({ events, archiveHref }: EventArchiv
   const reduceMotion = useReducedMotion();
   const [{ page, direction }, setDeck] = useState({ page: 0, direction: 1 });
   const [openFolder, setOpenFolder] = useState<string | null>(null);
+  const [previewFolder, setPreviewFolder] = useState<string | null>(null);
+  const [failedPhoto, setFailedPhoto] = useState<string | null>(null);
   const openPhotoRef = useRef<HTMLDivElement>(null);
 
   const totalPages = Math.max(1, Math.ceil(events.length / PAGE_SIZE));
@@ -451,36 +466,52 @@ export default function EventArchiveFolders({ events, archiveHref }: EventArchiv
             >
               {visibleEvents.map((event) => {
                 const isOpen = openFolder === event.href;
+                const isPreview = previewFolder === event.href && !isOpen;
+                const showPhoto = isOpen || isPreview;
                 const photoId = `archive-photo-${event.editionNumber ?? event.edition.replace(/\W+/g, "-")}`;
 
                 return (
-                  <article key={event.href} className="eaf-folder">
+                  <article
+                    key={event.href}
+                    className="eaf-folder"
+                    data-preview={isPreview}
+                    onPointerEnter={(pointerEvent) => {
+                      if (pointerEvent.pointerType !== "touch") setPreviewFolder(event.href);
+                    }}
+                    onPointerLeave={(pointerEvent) => {
+                      if (pointerEvent.pointerType !== "touch") setPreviewFolder(null);
+                    }}
+                  >
                     <span className="eaf-folder-tab" aria-hidden="true">{event.edition}</span>
                     <div ref={isOpen ? openPhotoRef : undefined} id={photoId} className="eaf-folder-reveal" data-open={isOpen}>
                       <AnimatePresence initial={false}>
-                        {isOpen && (
+                        {showPhoto && (
                           <motion.div
                             className="eaf-folder-photo-pop"
+                            aria-hidden={isPreview}
                             initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.94, rotate: -1.5 }}
                             animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
                             exit={reduceMotion ? undefined : { opacity: 0, y: 14, scale: 0.97 }}
                             transition={{ duration: reduceMotion ? 0 : 0.34, ease: EDITORIAL_EASE }}
                           >
-                            {event.image ? (
+                            {event.image && failedPhoto !== event.href ? (
                               <Image
                                 src={event.image}
                                 alt={`${event.edition} event photo`}
                                 fill
                                 sizes="(max-width: 680px) 88vw, (max-width: 980px) 38vw, 22vw"
                                 quality={95}
+                                onError={() => setFailedPhoto(event.href)}
                               />
                             ) : (
-                              <span className="eaf-folder-photo-fallback">{event.venue ?? "Photo unavailable"}</span>
+                              <span className="eaf-folder-photo-fallback">
+                                {failedPhoto === event.href ? "Photo unavailable" : event.venue ?? "Photo unavailable"}
+                              </span>
                             )}
                           </motion.div>
                         )}
                       </AnimatePresence>
-                      {isOpen && <span className="eaf-folder-reveal-label" aria-live="polite">{event.edition} · event photo</span>}
+                      {showPhoto && <span className="eaf-folder-reveal-label" aria-hidden={isPreview} aria-live={isOpen ? "polite" : undefined}>{event.edition} · event photo</span>}
                     </div>
                     <button
                       type="button"
@@ -488,8 +519,12 @@ export default function EventArchiveFolders({ events, archiveHref }: EventArchiv
                       data-open={isOpen}
                       aria-expanded={isOpen}
                       aria-controls={photoId}
-                      onClick={() => setOpenFolder(isOpen ? null : event.href)}
+                      onClick={() => {
+                        setOpenFolder(isOpen ? null : event.href);
+                        if (isOpen) setPreviewFolder(null);
+                      }}
                     >
+                      <span className="eaf-folder-depth" aria-hidden="true" />
                       <span className="eaf-folder-seam" aria-hidden="true" />
                       <span className="eaf-folder-topline">
                         <span>{event.edition}</span>

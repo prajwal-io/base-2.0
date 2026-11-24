@@ -15,6 +15,69 @@
 }
 
 @layer components {
+  .intro-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    background: #FAF7F2;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 180ms ease-out;
+    pointer-events: none;
+  }
+
+  .intro-loader[data-state="visible"] {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .intro-loader[data-state="exiting"] {
+    opacity: 0;
+  }
+
+  .intro-loader__mark {
+    position: relative;
+    display: grid;
+    width: min(72vw, 320px);
+    aspect-ratio: 1;
+    place-items: center;
+  }
+
+  .intro-loader__logo {
+    display: block;
+    width: 72%;
+    height: auto;
+  }
+
+  .intro-loader__ring {
+    position: absolute;
+    inset: 0;
+    border: 1px solid #E8E3DA;
+    border-top-color: #EA580C;
+    border-right-color: #087986;
+    border-radius: 50%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .intro-loader__ring {
+      animation: intro-loader-turn 1.1s linear infinite;
+    }
+
+    @keyframes intro-loader-turn {
+      to { transform: rotate(360deg); }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .intro-loader,
+    .intro-loader__ring {
+      animation: none;
+      transition: opacity 100ms linear;
+    }
+  }
+
   .site-icon-mark {
     display: grid;
     width: 2.75rem;

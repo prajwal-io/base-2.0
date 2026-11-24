@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { MotionConfig } from "framer-motion";
 import { Agentation } from "agentation";
 import { Navbar } from "@/components/layout/Navbar";
+import { IntroLoader } from "@/components/layout/IntroLoader";
 import { inter, displayFont, footerSerifFont } from "./fonts";
 import "./globals.css";
 
@@ -47,6 +48,7 @@ export default function RootLayout({
     >
       <body className="paper-bg text-charcoal-900 font-sans antialiased selection:bg-brand-amber-light selection:text-amber-900">
         <MotionConfig reducedMotion="user">
+          <IntroLoader />
           <div className="flex min-h-screen flex-col">
             <Navbar />
             {children}

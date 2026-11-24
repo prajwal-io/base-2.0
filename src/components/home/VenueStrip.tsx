@@ -63,7 +63,7 @@ const VENUE_LOGOS: VenueLogo[] = [
 
 export function VenueStrip() {
   return (
-    <section aria-labelledby="our-venues-heading" className="py-10 sm:py-12">
+    <section aria-labelledby="our-venues-heading" className="pb-10 pt-5 sm:pb-12 sm:pt-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl bg-white/95 border border-border-subtle px-6 py-7 sm:px-10 sm:py-8">
           {/* Header Row */}

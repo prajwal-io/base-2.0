@@ -71,7 +71,9 @@ export default async function TestimonialPage({ params }: TestimonialPageProps) 
                     <blockquote className="border-l-2 border-brand-amber pl-5 text-charcoal-950">
                       “{testimonial.quote}”
                     </blockquote>
-                    <p>{testimonial.longReview}</p>
+                    {testimonial.longReview.split(/\n\n+/).map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
                   </div>
                 ) : (
                   <blockquote className="font-serif text-2xl leading-snug text-charcoal-950 sm:text-3xl lg:text-4xl">

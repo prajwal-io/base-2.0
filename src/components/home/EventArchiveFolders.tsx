@@ -41,7 +41,7 @@ const DECK_VARIANTS = {
 
 const EAF_STYLES = `
 .eaf-section {
-  --eaf-orange: #ef4b13;
+  --eaf-orange: #EA580C;
   position: relative;
   overflow: hidden;
   background-color: var(--color-canvas-subtle);
@@ -262,11 +262,10 @@ const EAF_STYLES = `
   min-width: 0;
   flex-direction: column;
   border: 1px solid #c4a57c;
-  border-radius: 5px 13px 10px 8px;
+  min-height: 320px;
+  border-radius: 12px 14px 14px 12px;
   padding: 12px;
-  background:
-    repeating-linear-gradient(0deg, rgba(126, 87, 51, .025) 0 1px, transparent 1px 5px),
-    linear-gradient(145deg, var(--folder-paper-light), var(--folder-paper) 70%);
+  background: linear-gradient(145deg, var(--folder-paper-light), var(--folder-paper) 70%);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.9), inset 3px 0 0 rgba(165,124,72,.1), 0 3px 0 #b59368, 0 7px 12px rgba(22, 17, 12, .17);
   color: inherit;
   cursor: pointer;
@@ -274,10 +273,10 @@ const EAF_STYLES = `
   transition: transform 240ms cubic-bezier(.16,1,.3,1), box-shadow 240ms ease;
 }
 
-.eaf-folder-depth { position: absolute; z-index: -1; inset: 4px -4px -6px 4px; border: 1px solid #b99a70; border-radius: 5px 13px 10px 8px; background: linear-gradient(145deg, #f3e2c2, #ddc49d); box-shadow: 0 8px 14px rgba(22,17,12,.12); transform: translateZ(-8px); pointer-events: none; }
+.eaf-folder-depth { position: absolute; z-index: -1; inset: 4px -4px -6px 4px; border: 1px solid #b99a70; border-radius: 12px 14px 14px 12px; background: linear-gradient(145deg, #f3e2c2, #ddc49d); box-shadow: 0 8px 14px rgba(22,17,12,.12); transform: translateZ(-8px); pointer-events: none; }
 .eaf-folder-button:focus-visible, .eaf-folder-link:focus-visible { outline: 2px solid #9a3412; outline-offset: 4px; }
 .eaf-folder-button[data-open="true"] { transform: translateY(-2px); }
-.eaf-folder-seam { position: absolute; inset: 8px; border: 1px dashed rgba(138, 99, 57, .25); border-radius: 4px 10px 8px 6px; pointer-events: none; }
+.eaf-folder-seam { position: absolute; inset: 8px; border: 1px dashed rgba(138, 99, 57, .25); border-radius: 8px 10px 10px 8px; pointer-events: none; }
 .eaf-folder-topline { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 3px 3px 12px; color: #805b39; font-size: 9px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
 .eaf-folder-stamp { display: grid; width: 26px; height: 26px; place-items: center; border: 1px solid #c5a77e; border-radius: 50%; background: #f9ecd7; }
 .eaf-folder-content { display: flex; flex: 1; min-width: 0; flex-direction: column; }

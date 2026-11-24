@@ -68,6 +68,14 @@ export const TESTIMONIALS = [
     role: "Developer & Creator",
     avatar: "/images/avatar-meghana.jpg",
   },
+  {
+    slug: "guruvani-binneth",
+    quote: "BackToBase is the best student community in Hyderabad to turn classroom theory into real-world tech skills alongside approachable mentors and driven peers.",
+    longReview: "Joining the BacktoBase community in Hyderabad has been one of the most practical parts of my college journey so far. Before finding this group, most tech events I attended felt overly theoretical and disconnected from what companies actually look for. At BacktoBase, the sessions focus heavily on real-world skills like AI, data analytics, and building production-ready projects. One of the best parts is that the events are completely free for students, which makes quality mentorship accessible without any financial barrier. Attending offline meetups at actual tech offices around Hyderabad gave me a real glimpse into how industry teams work. The speakers and founders are super approachable, so you never feel awkward asking basic questions after a session. I also found the resume feedback and project review discussions much more honest and actionable than generic online advice. Instead of just listening to long lectures, we actually get to discuss ideas, get code feedback, and network with peers who are equally serious about building things. Meeting students from different colleges across the city helped me break out of my campus bubble and find people to collaborate with. The atmosphere is welcoming even if you are a beginner who is still figuring out your career path. Occasionally, seats fill up fast for popular offline editions, so you have to keep an eye on announcements and register early. Still, the organizers do a solid job keeping the sessions structured and focused on genuine learning rather than hype. It is especially helpful if you are trying to transition from classroom theory to internships or early tech roles. Overall, it feels less like a formal seminar series and more like a supportive peer group pushing each other to grow. I would definitely recommend BacktoBase to any student in Hyderabad looking for hands-on guidance and a strong tech network.",
+    author: "Guruvani Binneth",
+    role: "Community member",
+    avatar: "/images/guruvani-binneth.jpg",
+  },
 ] as const;
 
 export const FAQS = [

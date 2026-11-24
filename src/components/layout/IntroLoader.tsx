@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef, type AnimationEvent } from "react";
 
 type IntroPhase = "loading" | "handoff" | "complete";
 
@@ -11,8 +11,10 @@ export function IntroLoader({
   onReady,
 }: {
   phase: IntroPhase;
-  onReady: () => void;
+  onReady: (cssFallback?: boolean) => void;
 }) {
+  const loaderRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (phase !== "loading") return;
 
@@ -21,14 +23,17 @@ export function IntroLoader({
     let minimumTimer: number | undefined;
     const minimumDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 550 : 1050;
 
-    const finish = () => {
+    const finish = (cssFallback = false) => {
       if (finished) return;
       finished = true;
-      window.clearTimeout(fallbackTimer);
-      onReady();
+      onReady(cssFallback);
     };
 
     const onLoad = () => {
+      if (loaderRef.current && getComputedStyle(loaderRef.current).visibility === "hidden") {
+        finish(true);
+        return;
+      }
       window.clearTimeout(fallbackTimer);
       minimumTimer = window.setTimeout(
         finish,
@@ -36,8 +41,9 @@ export function IntroLoader({
       );
     };
 
-    const fallbackTimer = window.setTimeout(finish, 2400);
-    if (document.readyState === "complete") onLoad();
+    const fallbackTimer = window.setTimeout(() => finish(), 2400);
+    if (loaderRef.current && getComputedStyle(loaderRef.current).visibility === "hidden") finish(true);
+    else if (document.readyState === "complete") onLoad();
     else window.addEventListener("load", onLoad, { once: true });
 
     return () => {
@@ -46,6 +52,10 @@ export function IntroLoader({
       window.clearTimeout(fallbackTimer);
     };
   }, [onReady, phase]);
+
+  const handleAnimationEnd = (event: AnimationEvent<HTMLDivElement>) => {
+    if (event.animationName === "intro-loader-fail-open") onReady(true);
+  };
 
   if (phase === "complete") return null;
 
@@ -56,6 +66,8 @@ export function IntroLoader({
       role="status"
       aria-label="Loading BacktoBase"
       aria-hidden={phase === "handoff"}
+      onAnimationEnd={handleAnimationEnd}
+      ref={loaderRef}
     >
       <div className="intro-loader__mark">
         <span className="intro-loader__ring" aria-hidden="true" />

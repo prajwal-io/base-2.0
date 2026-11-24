@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MotionConfig } from "framer-motion";
 import { Agentation } from "agentation";
+import Script from "next/script";
 import { Navbar } from "@/components/layout/Navbar";
 import { IntroLoader } from "@/components/layout/IntroLoader";
 import { inter, displayFont, footerSerifFont } from "./fonts";
@@ -44,16 +45,20 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
+      suppressHydrationWarning
       className={`${inter.variable} ${displayFont.variable} ${footerSerifFont.variable}`}
     >
       <body className="paper-bg text-charcoal-900 font-sans antialiased selection:bg-brand-amber-light selection:text-amber-900">
         <MotionConfig reducedMotion="user">
           <IntroLoader />
-          <div className="flex min-h-screen flex-col">
+          <div data-intro-content className="flex min-h-screen flex-col">
             <Navbar />
             {children}
           </div>
         </MotionConfig>
+        <Script id="backtobase-intro-session" strategy="beforeInteractive">
+          {`try { if (sessionStorage.getItem("backtobase-intro-seen")) document.documentElement.setAttribute("data-intro-seen", "true"); } catch {}`}
+        </Script>
         {process.env.NODE_ENV === "development" && (
           <Agentation endpoint="http://localhost:4747" />
         )}

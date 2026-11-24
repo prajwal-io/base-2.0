@@ -10,16 +10,28 @@ export function IntroLoader() {
     const loader = loaderRef.current;
     if (!loader) return;
 
+    if (document.documentElement.hasAttribute("data-intro-seen")) {
+      loader.dataset.state = "hidden";
+      loader.setAttribute("aria-hidden", "true");
+      return;
+    }
+
     try {
-      if (sessionStorage.getItem("backtobase-intro-seen")) return;
+      if (sessionStorage.getItem("backtobase-intro-seen")) {
+        loader.dataset.state = "hidden";
+        loader.setAttribute("aria-hidden", "true");
+        return;
+      }
     } catch {
       // Keep the intro available when browser storage is disabled.
     }
 
+    const appContent = document.querySelector<HTMLElement>("[data-intro-content]");
     const startedAt = performance.now();
     let finished = false;
     let minimumTimer: number | undefined;
     let removeTimer: number | undefined;
+    const minimumDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 600 : 1050;
     const markSeenFrame = window.requestAnimationFrame(() => {
       try {
         sessionStorage.setItem("backtobase-intro-seen", "1");
@@ -34,19 +46,21 @@ export function IntroLoader() {
       window.clearTimeout(fallbackTimer);
       loader.dataset.state = "exiting";
       loader.setAttribute("aria-hidden", "true");
+      appContent?.removeAttribute("inert");
+      appContent?.removeAttribute("aria-hidden");
       removeTimer = window.setTimeout(() => {
         loader.dataset.state = "hidden";
-      }, 180);
+      }, 300);
     };
 
     const onLoad = () => {
       window.clearTimeout(fallbackTimer);
-      minimumTimer = window.setTimeout(finish, Math.max(0, 600 - (performance.now() - startedAt)));
+      minimumTimer = window.setTimeout(finish, Math.max(0, minimumDuration - (performance.now() - startedAt)));
     };
 
-    loader.dataset.state = "visible";
-    loader.setAttribute("aria-hidden", "false");
-    const fallbackTimer = window.setTimeout(finish, 1600);
+    appContent?.setAttribute("inert", "");
+    appContent?.setAttribute("aria-hidden", "true");
+    const fallbackTimer = window.setTimeout(finish, 2400);
     if (document.readyState === "complete") onLoad();
     else window.addEventListener("load", onLoad, { once: true });
 
@@ -56,6 +70,8 @@ export function IntroLoader() {
       window.clearTimeout(minimumTimer);
       window.clearTimeout(fallbackTimer);
       window.clearTimeout(removeTimer);
+      appContent?.removeAttribute("inert");
+      appContent?.removeAttribute("aria-hidden");
     };
   }, []);
 
@@ -63,10 +79,10 @@ export function IntroLoader() {
     <div
       ref={loaderRef}
       className="intro-loader"
-      data-state="hidden"
+      data-state="visible"
       role="status"
       aria-label="Loading BacktoBase"
-      aria-hidden="true"
+      aria-hidden="false"
     >
       <div className="intro-loader__mark">
         <span className="intro-loader__ring" aria-hidden="true" />
@@ -78,6 +94,9 @@ export function IntroLoader() {
           unoptimized
           className="intro-loader__logo"
         />
+        <span className="intro-loader__tagline" aria-hidden="true">
+          Learn. Connect. Grow.
+        </span>
       </div>
     </div>
   );

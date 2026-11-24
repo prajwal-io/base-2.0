@@ -10,7 +10,9 @@ type IntroPhase = "loading" | "handoff" | "complete";
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const [phase, setPhase] = useState<IntroPhase>("loading");
   const contentRef = useRef<HTMLDivElement>(null);
-  const startHandoff = useCallback(() => setPhase("handoff"), []);
+  const startHandoff = useCallback((cssFallback = false) => {
+    setPhase(cssFallback ? "complete" : "handoff");
+  }, []);
 
   useEffect(() => {
     const content = contentRef.current;

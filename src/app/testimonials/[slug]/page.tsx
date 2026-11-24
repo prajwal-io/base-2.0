@@ -64,11 +64,20 @@ export default async function TestimonialPage({ params }: TestimonialPageProps) 
               </header>
               <div>
                 <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.18em] text-brand-orange sm:text-xs">
-                  Full quote
+                  {"longReview" in testimonial ? "Full review" : "Full quote"}
                 </p>
-                <blockquote className="font-serif text-2xl leading-snug text-charcoal-950 sm:text-3xl lg:text-4xl">
-                  “{testimonial.quote}”
-                </blockquote>
+                {"longReview" in testimonial ? (
+                  <div className="space-y-5 font-serif text-lg leading-relaxed text-charcoal-800 sm:text-xl">
+                    <blockquote className="border-l-2 border-brand-amber pl-5 text-charcoal-950">
+                      “{testimonial.quote}”
+                    </blockquote>
+                    <p>{testimonial.longReview}</p>
+                  </div>
+                ) : (
+                  <blockquote className="font-serif text-2xl leading-snug text-charcoal-950 sm:text-3xl lg:text-4xl">
+                    “{testimonial.quote}”
+                  </blockquote>
+                )}
               </div>
             </div>
           </article>

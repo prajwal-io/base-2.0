@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { TestimonialCard, type TestimonialAuthor } from "@/components/ui/testimonial-card";
@@ -24,6 +24,7 @@ export function TestimonialsSection({
 }: TestimonialsSectionProps) {
   const marqueeRef = useRef<HTMLDivElement>(null);
   const inView = useInView(marqueeRef);
+  const [paused, setPaused] = useState(false);
 
   if (testimonials.length === 0) return null;
 
@@ -47,16 +48,26 @@ export function TestimonialsSection({
           <p className="max-w-2xl text-sm leading-relaxed text-charcoal-700 sm:text-base">
             {description}
           </p>
+          <button
+            type="button"
+            aria-controls="community-stories-track"
+            aria-pressed={paused}
+            onClick={() => setPaused((current) => !current)}
+            className="inline-flex min-h-11 items-center rounded-full border border-border-strong bg-white px-4 text-sm font-semibold text-charcoal-800 transition-colors hover:bg-canvas-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
+          >
+            {paused ? "Resume motion" : "Pause & browse reviews"}
+          </button>
         </div>
 
         <div
           ref={marqueeRef}
           data-in-view={inView}
+          data-paused={paused}
           className="testimonials-marquee-window w-full overflow-hidden"
           role="region"
           aria-label="Community testimonials"
         >
-          <div className="testimonials-marquee-track flex w-max">
+          <div id="community-stories-track" className="testimonials-marquee-track flex w-max">
             <div className="testimonials-marquee-group flex shrink-0 gap-4 pr-4">
               {testimonials.map((testimonial) => (
                 <TestimonialCard

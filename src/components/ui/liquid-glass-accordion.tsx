@@ -81,10 +81,10 @@ const NF_CSS = `
 .nf-water{position:absolute;left:${-PAD}px;top:${-PAD}px;z-index:-1;pointer-events:none}
 .nimbus-faq[data-gl="off"] .nf-water{display:none}
 .nf-pool{display:none;position:absolute;left:8px;right:8px;top:0;border-radius:${R}px;z-index:-1;pointer-events:none;
-  transition:transform .5s cubic-bezier(.3,1.3,.4,1),height .5s cubic-bezier(.25,.9,.3,1),opacity .3s;
+  transition:transform .3s cubic-bezier(.2,0,0,1),height .3s cubic-bezier(.2,0,0,1),opacity .2s;
   background:radial-gradient(120% 90% at 30% 0%,rgba(255,255,255,.8),rgba(255,255,255,0) 55%),rgba(254,243,199,.32);
-  box-shadow:inset 0 1px 1px rgba(255,255,255,.95),inset 0 -2px 8px rgba(245,158,11,.15),inset 0 0 0 1px rgba(255,255,255,.6),0 8px 20px -10px rgba(234,88,12,.25)}
-.nimbus-faq[data-tone="dark"] .nf-pool{background:radial-gradient(120% 90% at 30% 0%,rgba(255,255,255,.3),rgba(255,255,255,0) 55%),rgba(140,200,255,.18)}
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.95),inset 0 -2px 8px rgba(245,158,11,.12),inset 0 0 0 1px rgba(255,255,255,.6),0 8px 20px -10px rgba(234,88,12,.18)}
+.nimbus-faq[data-tone="dark"] .nf-pool{background:radial-gradient(120% 90% at 30% 0%,rgba(255,255,255,.3),rgba(255,255,255,0) 55%),rgba(8,121,134,.2)}
 .nimbus-faq[data-gl="off"] .nf-pool{display:block}
 .nf-item{position:relative}
 .nf-item+.nf-item::before{content:"";position:absolute;left:22px;right:22px;top:0;height:1px;background:var(--f-line);transition:opacity .3s}
@@ -97,23 +97,23 @@ const NF_CSS = `
 .nf-ico{position:relative;flex:none;width:28px;height:28px;border-radius:50%;color:var(--f-fg);
   background:radial-gradient(120% 120% at 30% 15%,rgba(255,255,255,.95),rgba(255,255,255,0) 60%),rgba(255,255,255,.45);
   box-shadow:inset 0 1px 1px rgba(255,255,255,.95),inset 0 -2px 4px rgba(245,158,11,.2),inset 0 0 0 1px rgba(255,255,255,.6),0 3px 8px -3px rgba(0,0,0,.15);
-  transition:transform .55s cubic-bezier(.3,1.6,.5,1)}
-.nimbus-faq[data-tone="dark"] .nf-ico{background:radial-gradient(120% 120% at 30% 15%,rgba(255,255,255,.45),rgba(255,255,255,0) 60%),rgba(140,200,255,.16);
+  transition:transform .28s cubic-bezier(.2,0,0,1)}
+.nimbus-faq[data-tone="dark"] .nf-ico{background:radial-gradient(120% 120% at 30% 15%,rgba(255,255,255,.45),rgba(255,255,255,0) 60%),rgba(8,121,134,.18);
   box-shadow:inset 0 1px 1px rgba(255,255,255,.55),inset 0 0 0 1px rgba(255,255,255,.22),0 3px 8px -3px rgba(0,0,0,.6)}
 .nf-ico::before,.nf-ico::after{content:"";position:absolute;left:50%;top:50%;width:11px;height:1.8px;margin:-.9px 0 0 -5.5px;border-radius:2px;background:currentColor;
-  transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
+  transition:transform .22s cubic-bezier(.2,0,0,1)}
 .nf-ico::after{transform:rotate(90deg)}
 .nf-item[data-open="true"] .nf-ico{transform:rotate(180deg);color:#EA580C}
 .nf-item[data-open="true"] .nf-ico::after{transform:rotate(90deg) scaleX(0)}
-.nf-ico[data-fx="drip"]{animation:nfDrip .7s cubic-bezier(.4,0,.3,1)}
+.nf-ico[data-fx="drip"]{animation:nfDrip .38s cubic-bezier(.2,0,0,1)}
 @keyframes nfDrip{0%{translate:0 0;scale:1}25%{translate:0 -5px;scale:.9 1.1}50%{translate:0 2px;scale:1.18 .84}72%{translate:0 -1px;scale:.96 1.04}100%{translate:0 0;scale:1}}
-.nf-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.25,.9,.3,1)}
+.nf-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s cubic-bezier(.2,0,0,1)}
 .nf-item[data-open="true"]>.nf-panel{grid-template-rows:1fr}
-.nf-inner{min-height:0;overflow:hidden;visibility:hidden;transition:visibility 0s .5s}
+.nf-inner{min-height:0;overflow:hidden;visibility:hidden;transition:visibility 0s .3s}
 .nf-item[data-open="true"] .nf-inner{visibility:visible;transition:visibility 0s}
-.nf-a{padding:0 64px 22px 22px;color:var(--f-soft);font-size:14px;line-height:1.65;opacity:0;transform:translateY(-6px);transition:opacity .25s,transform .4s}
+.nf-a{padding:0 64px 22px 22px;color:var(--f-soft);font-size:14px;line-height:1.65;opacity:0;transform:translateY(-4px);transition:opacity .18s,transform .22s}
 .nf-a>*:first-child{margin-top:0}.nf-a>*:last-child{margin-bottom:0}
-.nf-item[data-open="true"] .nf-a{opacity:1;transform:none;transition:opacity .4s .1s,transform .5s .06s cubic-bezier(.25,.9,.3,1)}
+.nf-item[data-open="true"] .nf-a{opacity:1;transform:none;transition:opacity .2s .04s,transform .25s .04s cubic-bezier(.2,0,0,1)}
 @media (max-width:520px){.nf-q{padding-left:18px;font-size:14.5px}.nf-a{padding:0 18px 20px 18px}}
 @media (prefers-reduced-motion:reduce){.nf-panel,.nf-inner,.nf-a,.nf-ico,.nf-ico::before,.nf-ico::after,.nf-pool,.nf-item::before{transition:none!important;animation:none!important}}
 `
@@ -149,20 +149,20 @@ void main(){
  float spec=pow(max(dot(reflect(-normalize(vec3(-.45,-.8,.85)),n),V),0.),70.);
  float spec2=pow(max(dot(reflect(-normalize(vec3(.6,.75,.7)),n),V),0.),22.)*.3;
  float fres=clamp((1.-n.z)*4.,0.,1.);
- vec3 irid=.5+.5*cos(6.2831*(vec3(0.,.33,.67)+fres*.85+p.x*.0028+p.y*.0015+uTime*.035));
+ vec3 irid=mix(vec3(.96,.79,.53),vec3(.08,.43,.46),clamp(fres,0.,1.));
  float pm=smoothstep(1.,-1.,dp);float dm=smoothstep(1.,-1.,dd)*smoothstep(1.,-2.,dp);
  float sh=smoothstep(9.,-9.,dropD(p-vec2(0.,5.)))*(1.-dm)*pm*(.11+.07*uDark);
- vec3 c=vec3(0.,.14,.36)*sh;float a=sh;
+ vec3 c=vec3(.02,.18,.19)*sh;float a=sh;
  float pa=clamp(pm*(fres*.5+spec*.9+spec2),0.,1.);
  c=mix(vec3(1.),irid,.5*fres)*pa+c*(1.-pa);a=pa+a*(1.-pa);
  float th=lens(dd,11.);
  float cs=caus((p+n.xy*th*18.)*.085,uTime*.9);
- vec3 tint=mix(vec3(.80,.95,1.),vec3(.55,.82,1.),uDark);
+ vec3 tint=mix(vec3(.95,.89,.78),vec3(.58,.76,.72),uDark);
  float rim=dm*(1.-smoothstep(0.,8.,-dd));
  float cres=dm*smoothstep(.12,.55,dot(n.xy,normalize(vec2(.55,.85))))*smoothstep(0.,3.,-dd);
  float body=.5+.5*clamp(-n.y*3.,-1.,1.);
  float da=dm*(.26+.14*body)*(1.-.35*uDark);vec3 dc=mix(tint,vec3(1.),body*.6);
- float la=rim*.22;vec3 lc=mix(vec3(0.,.42,.78),vec3(.1,.55,.95),uDark);dc=lc*la+dc*da*(1.-la);da=la+da*(1.-la);
+ float la=rim*.22;vec3 lc=mix(vec3(.72,.35,.12),vec3(.08,.43,.46),uDark);dc=lc*la+dc*da*(1.-la);da=la+da*(1.-la);
  la=clamp(cres*.7+smoothstep(.6,1.,cs)*.28*th*dm,0.,1.);dc=vec3(1.)*la+dc*(1.-la);da=la+da*(1.-la);
  la=clamp(dm*(spec*1.2+spec2*.5),0.,1.);dc=vec3(1.)*la+dc*(1.-la);da=la+da*(1.-la);
  la=dm*smoothstep(-2.,0.,dd)*.4;dc=mix(vec3(1.),irid,.35)*la+dc*(1.-la);da=la+da*(1.-la);

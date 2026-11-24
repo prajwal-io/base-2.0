@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -18,9 +18,18 @@ const NAV_ITEMS: (LiquidNavItem & { href: string })[] = [
   { label: "Contact Us", href: "/#contact-us", icon: <Mail aria-hidden="true" />, fx: "none" },
 ];
 
-export function Navbar() {
+const subscribeToMobileLayout = (onChange: () => void) => {
+  const query = window.matchMedia("(max-width: 767px)");
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+};
+
+const getMobileLayout = () => window.matchMedia("(max-width: 767px)").matches;
+
+export function Navbar({ introPhase = "complete" }: { introPhase?: "loading" | "handoff" | "complete" } = {}) {
   const pathname = usePathname();
   const reduceMotion = useReducedMotion();
+  const isMobileLayout = useSyncExternalStore(subscribeToMobileLayout, getMobileLayout, () => false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const mobileMenuButton = useRef<HTMLButtonElement>(null);
@@ -38,6 +47,28 @@ export function Navbar() {
     return exact === -1 ? 0 : exact;
   })();
   const activeNav = pendingNav ?? routeNav;
+  const mobileLogo = (
+    <Image
+      src="/images/backtobase-logo.png"
+      alt="BacktoBase"
+      width={977}
+      height={178}
+      unoptimized
+      className="block h-auto w-[126px] sm:w-[154px]"
+      priority
+    />
+  );
+  const desktopLogo = (
+    <Image
+      src="/images/backtobase-logo.png"
+      alt="BacktoBase"
+      width={977}
+      height={178}
+      unoptimized
+      className="block h-auto w-[154px]"
+      priority
+    />
+  );
 
   const selectNav = (index: number) => {
     const href = NAV_ITEMS[index]?.href;
@@ -105,15 +136,15 @@ export function Navbar() {
           aria-label="BacktoBase home"
           className="group flex md:hidden items-center rounded-full border border-[#E8E3DA] bg-white/90 px-3 py-2 shadow-pill backdrop-blur-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange sm:px-5"
         >
-          <Image
-            src="/images/backtobase-logo.png"
-            alt="BacktoBase"
-            width={977}
-            height={178}
-            unoptimized
-            className="block h-auto w-[126px] sm:w-[154px]"
-            priority
-          />
+          {introPhase === "complete" ? mobileLogo : introPhase === "handoff" && isMobileLayout ? (
+            <motion.span
+              layoutId="backtobase-intro-logo"
+              transition={{ type: "spring", duration: 0.58, bounce: 0 }}
+              className="block"
+            >
+              {mobileLogo}
+            </motion.span>
+          ) : null}
         </Link>
 
         <LiquidNavbar
@@ -125,15 +156,15 @@ export function Navbar() {
           compact={false}
           brand={
             <Link href="/" aria-label="BacktoBase home" className="nimbus-brand shrink-0">
-              <Image
-                src="/images/backtobase-logo.png"
-                alt="BacktoBase"
-                width={977}
-                height={178}
-                unoptimized
-                className="block h-auto w-[154px]"
-                priority
-              />
+              {introPhase === "complete" ? desktopLogo : introPhase === "handoff" && !isMobileLayout ? (
+                <motion.span
+                  layoutId="backtobase-intro-logo"
+                  transition={{ type: "spring", duration: 0.58, bounce: 0 }}
+                  className="block"
+                >
+                  {desktopLogo}
+                </motion.span>
+              ) : null}
             </Link>
           }
           className="!hidden md:!inline-flex md:col-start-2 md:row-start-1 md:justify-self-center"

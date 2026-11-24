@@ -1,102 +1,86 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { useEffect } from "react";
 
-export function IntroLoader() {
-  const loaderRef = useRef<HTMLDivElement>(null);
+type IntroPhase = "loading" | "handoff" | "complete";
 
+export function IntroLoader({
+  phase,
+  onReady,
+}: {
+  phase: IntroPhase;
+  onReady: () => void;
+}) {
   useEffect(() => {
-    const loader = loaderRef.current;
-    if (!loader) return;
+    if (phase !== "loading") return;
 
-    if (document.documentElement.hasAttribute("data-intro-seen")) {
-      loader.dataset.state = "hidden";
-      loader.setAttribute("aria-hidden", "true");
-      return;
-    }
-
-    try {
-      if (sessionStorage.getItem("backtobase-intro-seen")) {
-        loader.dataset.state = "hidden";
-        loader.setAttribute("aria-hidden", "true");
-        return;
-      }
-    } catch {
-      // Keep the intro available when browser storage is disabled.
-    }
-
-    const appContent = document.querySelector<HTMLElement>("[data-intro-content]");
     const startedAt = performance.now();
     let finished = false;
     let minimumTimer: number | undefined;
-    let removeTimer: number | undefined;
-    const minimumDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 600 : 1050;
-    const markSeenFrame = window.requestAnimationFrame(() => {
-      try {
-        sessionStorage.setItem("backtobase-intro-seen", "1");
-      } catch {
-        // Keep the intro available when browser storage is disabled.
-      }
-    });
+    const minimumDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 550 : 1050;
 
     const finish = () => {
       if (finished) return;
       finished = true;
       window.clearTimeout(fallbackTimer);
-      loader.dataset.state = "exiting";
-      loader.setAttribute("aria-hidden", "true");
-      appContent?.removeAttribute("inert");
-      appContent?.removeAttribute("aria-hidden");
-      removeTimer = window.setTimeout(() => {
-        loader.dataset.state = "hidden";
-      }, 300);
+      onReady();
     };
 
     const onLoad = () => {
       window.clearTimeout(fallbackTimer);
-      minimumTimer = window.setTimeout(finish, Math.max(0, minimumDuration - (performance.now() - startedAt)));
+      minimumTimer = window.setTimeout(
+        finish,
+        Math.max(0, minimumDuration - (performance.now() - startedAt)),
+      );
     };
 
-    appContent?.setAttribute("inert", "");
-    appContent?.setAttribute("aria-hidden", "true");
     const fallbackTimer = window.setTimeout(finish, 2400);
     if (document.readyState === "complete") onLoad();
     else window.addEventListener("load", onLoad, { once: true });
 
     return () => {
       window.removeEventListener("load", onLoad);
-      window.cancelAnimationFrame(markSeenFrame);
       window.clearTimeout(minimumTimer);
       window.clearTimeout(fallbackTimer);
-      window.clearTimeout(removeTimer);
-      appContent?.removeAttribute("inert");
-      appContent?.removeAttribute("aria-hidden");
     };
-  }, []);
+  }, [onReady, phase]);
+
+  if (phase === "complete") return null;
 
   return (
     <div
-      ref={loaderRef}
       className="intro-loader"
-      data-state="visible"
+      data-state={phase}
       role="status"
       aria-label="Loading BacktoBase"
-      aria-hidden="false"
+      aria-hidden={phase === "handoff"}
     >
       <div className="intro-loader__mark">
         <span className="intro-loader__ring" aria-hidden="true" />
-        <Image
-          src="/images/backtobase-logo.png"
-          alt=""
-          width={977}
-          height={178}
-          unoptimized
-          className="intro-loader__logo"
-        />
-        <span className="intro-loader__tagline" aria-hidden="true">
-          Learn. Connect. Grow.
-        </span>
+        {phase === "loading" && (
+          <motion.span
+            layoutId="backtobase-intro-logo"
+            transition={{ type: "spring", duration: 0.58, bounce: 0 }}
+            className="intro-loader__logo-shell"
+          >
+            <Image
+              src="/images/backtobase-logo.png"
+              alt=""
+              width={977}
+              height={178}
+              unoptimized
+              className="intro-loader__logo"
+              priority
+            />
+          </motion.span>
+        )}
+        {phase === "loading" && (
+          <span className="intro-loader__tagline" aria-hidden="true">
+            Learn. Connect. Grow.
+          </span>
+        )}
       </div>
     </div>
   );

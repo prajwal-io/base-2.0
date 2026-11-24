@@ -121,11 +121,9 @@ Every event teaches you something new, helps you build new connections, becomes 
   {
     slug: "vennela",
     quote: "My experience with BacktoBase has been truly rewarding. From learning new skills to working alongside passionate people, every step has helped me build confidence, grow, and network. Truly grateful for the support and guidance throughout! Special thanks to Yashwanth Anna for trusting me and giving me such a great opportunity to work in the core team. ♥️",
-    longReview: `My journey with BackToBase has been a truly rewarding and memorable experience. From learning new skills to working alongside passionate and like-minded people, every opportunity has helped me build confidence, expand my network, and grow both personally and professionally.
+    longReview: `My journey with BacktoBase is still fairly new, yet it has already made a massive impact on me in such a short time. I first came to know about the community through a friend, and my very first experience was attending Edition 6. Being there and interacting with so many driven people, seeing their work, and hearing their journeys left a lasting impression on me. Everyone’s story felt unique and inspiring, and that was the exact moment I realized I wanted to build a meaningful journey of my own. Since then, every event has taught me something new, helped me form genuine connections, and pushed me to grow both personally and professionally. Grateful to my friend for introducing me to this space, and thankful to the entire community for the constant learning, support, and valuable skills I get to take back every single time.
 
-What makes BackToBase special is its supportive environment, where everyone is encouraged to explore, take initiative, and step outside their comfort zones. Being part of the core team has given me valuable experiences, meaningful connections, and countless opportunities to learn.
-
-I'm truly grateful for the constant support, encouragement, and guidance throughout this journey. A special thanks to Yashwanth Anna for believing in me and giving me such a wonderful opportunity to be part of the core team. Looking forward to growing together and creating many more memories with this amazing community! ❤️`,
+If you have skills and are looking for a community to showcase your skills, explore more and improve your network then BacktoBase is the right community your looking for.`,
     author: "Vennela",
     role: "Community member",
     avatar: "/images/vennela.png",

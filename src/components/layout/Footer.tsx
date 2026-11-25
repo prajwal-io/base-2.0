@@ -73,6 +73,11 @@ const backtoBaseSocials: FooterSocial[] = [
     label: "BacktoBase on YouTube",
     href: "https://www.youtube.com/@BacktoBase_xyz",
   },
+  {
+    kind: "whatsapp",
+    label: "Join the BacktoBase WhatsApp community",
+    href: "https://chat.whatsapp.com/JLCaNCa00Vv1bP0s7fy6MC",
+  },
 ];
 
 const backtoBaseFooterLinks: FooterNavLink[] = [

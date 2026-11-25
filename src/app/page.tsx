@@ -15,7 +15,7 @@ import { getEditionPhoto } from "@/data/editionPhotos";
 export default function HomePage() {
   return (
     <div className="flex flex-1 flex-col bg-canvas-base selection:bg-brand-amber-light selection:text-amber-900">
-      <main className="flex-grow">
+      <main id="main-content" tabIndex={-1} className="flex-grow">
         <HeroSection communityStage={<HeroCommunityStage variant="floor" />} editionCount={EDITION_COUNT} />
         <StatsBar editionCount={EDITION_COUNT} venueCount={VENUE_COUNT} />
         <VenueStrip />

@@ -12,19 +12,19 @@ export const metadata = {
 export default function CommunityPage() {
   return (
     <div className="flex flex-1 flex-col bg-canvas-base">
-      <main className="flex-grow py-10 sm:py-16">
+      <main id="main-content" tabIndex={-1} className="flex-grow py-10 sm:py-16">
         <div className="relative isolate max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="max-w-3xl mb-12">
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-charcoal-600 hover:text-brand-orange mb-4 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-charcoal-600 hover:text-brand-orange-ink mb-4 transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Home</span>
             </Link>
             <div className="flex items-center gap-3 mb-2">
-              <span className="text-xs font-bold tracking-[0.2em] uppercase text-brand-orange">
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-brand-orange-ink">
                 People First
               </span>
               <div className="h-[1px] w-12 bg-charcoal-300" />
@@ -55,7 +55,7 @@ export default function CommunityPage() {
           {/* Community Values */}
           <section aria-labelledby="community-values-heading" className="mb-16">
             <div className="mb-7 max-w-2xl">
-              <span className="mb-2 block text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
+              <span className="mb-2 block text-xs font-bold uppercase tracking-[0.2em] text-brand-orange-ink">
                 What guides us
               </span>
               <h2 id="community-values-heading" className="font-display text-3xl font-black uppercase leading-tight tracking-tight text-charcoal-950 sm:text-4xl">
@@ -103,7 +103,7 @@ export default function CommunityPage() {
             </div>
             <Link
               href="/events"
-              className="inline-flex min-h-11 shrink-0 items-center gap-2 self-start rounded-full bg-brand-orange px-6 text-sm font-semibold text-white transition-colors hover:bg-brand-orange-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2 sm:self-center"
+              className="inline-flex min-h-11 shrink-0 items-center gap-2 self-start rounded-full bg-brand-orange-ink px-6 text-sm font-semibold text-white transition-colors hover:bg-brand-orange-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2 sm:self-center"
             >
               <span>Explore the editions</span>
               <ArrowRight className="w-4 h-4" />

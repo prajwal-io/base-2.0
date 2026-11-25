@@ -140,7 +140,7 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
                     aria-pressed={active}
                     className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-colors border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange ${
                       active
-                        ? "bg-brand-orange text-white border-brand-orange"
+                        ? "bg-brand-orange-ink text-white border-brand-orange-ink"
                         : "bg-canvas-base text-charcoal-700 border-border-subtle hover:border-border-strong"
                     }`}
                   >
@@ -161,7 +161,7 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
                     setTheme("All");
                     setVenue("All Venues");
                   }}
-                  className="inline-flex items-center gap-1 text-xs font-bold text-brand-orange hover:text-brand-orange-hover"
+                  className="inline-flex items-center gap-1 text-xs font-bold text-brand-orange-ink hover:text-brand-orange-hover"
                 >
                   <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
                   <span>Reset</span>
@@ -201,14 +201,14 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
               initial={reduceMotion ? false : { opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.12 }}
-              transition={{ duration: 0.45, delay: Math.min(idx * 0.05, 0.2) }}
-              className="rounded-3xl bg-white border border-border-subtle p-6 sm:p-8 lg:p-10 shadow-card hover:shadow-photo transition-shadow duration-300 scroll-mt-24"
+              transition={{ duration: 0.32, delay: Math.min(idx * 0.04, 0.12) }}
+              className="rounded-3xl bg-white border border-border-subtle p-6 sm:p-8 lg:p-10 shadow-card hover:shadow-photo transition-shadow duration-200 scroll-mt-24"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 {/* Left Column: Edition Metadata & Speakers */}
                 <div className="lg:col-span-7 flex flex-col">
                   <div className="flex flex-wrap items-center gap-3 mb-3">
-                    <span className="px-3 py-1 rounded-full bg-brand-amber-light text-brand-orange text-xs font-bold tracking-wide uppercase">
+                    <span className="px-3 py-1 rounded-full bg-brand-amber-light text-brand-orange-ink text-xs font-bold tracking-wide uppercase">
                       Edition {edition.editionNumber}
                     </span>
                     <span className="flex items-center gap-1 text-xs text-charcoal-600 font-semibold">
@@ -224,7 +224,7 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
                   <h2 className="font-display font-black text-2xl sm:text-3xl text-charcoal-950 mb-2">
                     {edition.title}
                   </h2>
-                  <p className="text-sm font-medium text-brand-orange mb-4">{edition.subtitle}</p>
+                  <p className="text-sm font-medium text-brand-orange-ink mb-4">{edition.subtitle}</p>
                   <p className="text-sm text-charcoal-700 leading-relaxed mb-6 font-normal">
                     {edition.overview}
                   </p>

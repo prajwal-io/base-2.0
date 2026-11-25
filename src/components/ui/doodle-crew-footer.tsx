@@ -1611,6 +1611,7 @@ const DCF_CSS = `
   --dcf-bg: #FFF8F0;
   --dcf-ink: #171717;
   --dcf-accent: #F4511E;
+  --dcf-accent-ink: #9A3412;
   --dcf-shade: #EFE4D4;
   --dcf-shadow: #E4D6C3;
   --dcf-font: "Bricolage Grotesque", "Inter Tight", sans-serif;
@@ -1867,7 +1868,7 @@ const DCF_CSS = `
   text-transform: uppercase;
   font-size: 0.78em;
   letter-spacing: 0.05em;
-  color: var(--dcf-accent);
+  color: var(--dcf-accent-ink);
 }
 
 @keyframes dcf-bubble-in {
@@ -2029,7 +2030,7 @@ const DCF_CSS = `
 }
 
 .dcf-footer-nav a:not(.dcf-footer-nav-emphasis):focus-visible {
-  color: var(--dcf-accent);
+  color: var(--dcf-accent-ink);
   outline: 2px solid var(--dcf-accent);
   outline-offset: 4px;
 }
@@ -2456,6 +2457,7 @@ export default function DoodleCrewFooter({
     "--dcf-bg": colors.background,
     "--dcf-ink": colors.ink,
     "--dcf-accent": colors.accent,
+    "--dcf-accent-ink": preset === "night" ? "#F4511E" : "#9A3412",
     "--dcf-shade": preset === "night" ? "#22242A" : "#EFE4D4",
     "--dcf-shadow": preset === "night" ? "#262830" : "#E5D8C5",
     "--dcf-font": fontFamily,
@@ -2786,7 +2788,7 @@ export default function DoodleCrewFooter({
                   style={
                     {
                       "--d": `${tl.word(index)}ms`,
-                      ...(isLast ? { color: "var(--dcf-accent)" } : null),
+                      ...(isLast ? { color: "var(--dcf-accent-ink)" } : null),
                     } as React.CSSProperties
                   }
                 >

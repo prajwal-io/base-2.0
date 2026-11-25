@@ -18,8 +18,6 @@ type Scene = keyof typeof artwork.crops;
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 // The hero shows the characters at a larger size than the shared footer treatment.
-const HERO_CREW_SRC = "/images/footer-community-crew-v3.png";
-
 function CrewScene({ scene, brandedLaptop = false }: { scene: Scene; brandedLaptop?: boolean }) {
   const crop = artwork.crops[scene];
 
@@ -31,7 +29,7 @@ function CrewScene({ scene, brandedLaptop = false }: { scene: Scene; brandedLapt
       viewBox={`${crop.x} 0 ${crop.width} ${artwork.height}`}
       overflow="hidden"
     >
-      <image href={HERO_CREW_SRC} width={artwork.width} height={artwork.height} preserveAspectRatio="none" />
+      <image href={artwork.src} width={artwork.width} height={artwork.height} preserveAspectRatio="none" />
       {brandedLaptop && (
         <g transform="matrix(1 -.08 -.24 1 1133 363)">
           <rect width="75" height="53" rx="7" fill="#f8efe2" stroke="#e2cdb4" strokeWidth="2" />
@@ -53,17 +51,9 @@ export function HeroCommunityStage({ variant }: { variant: CommunityStage }) {
             key={scene}
             aria-hidden="true"
             className={`row-start-1 flex h-24 items-end sm:h-44 lg:h-52 ${index === 0 ? "col-start-1 justify-end" : "col-start-3 justify-start"}`}
-            initial={reduced ? false : { opacity: 0, clipPath: "inset(100% 0 0)", x: index === 0 ? 32 : -32 }}
-            animate={{
-              opacity: 1,
-              clipPath: "inset(0% 0 0)",
-              x: 0,
-            }}
-            transition={{
-              opacity: { duration: reduced ? 0 : 0.45 },
-              clipPath: { duration: reduced ? 0 : 0.8, ease: EASE },
-              x: { duration: reduced ? 0 : 0.62, delay: reduced ? 0 : 0.62, ease: EASE },
-            }}
+            initial={reduced ? false : { opacity: 0, y: 8, x: index === 0 ? 12 : -12 }}
+            animate={{ opacity: 1, y: 0, x: 0 }}
+            transition={{ duration: reduced ? 0 : 0.38, delay: reduced ? 0 : index * 0.06, ease: EASE }}
           >
             <CrewScene scene={scene} />
           </motion.div>
@@ -72,7 +62,7 @@ export function HeroCommunityStage({ variant }: { variant: CommunityStage }) {
           className="col-start-2 row-start-1 pb-1"
           initial={reduced ? false : { opacity: 0.7, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: reduced ? 0 : 0.5, delay: reduced ? 0 : 0.92, ease: EASE }}
+          transition={{ duration: reduced ? 0 : 0.34, delay: reduced ? 0 : 0.12, ease: EASE }}
         >
           <Link
             href="/community"
@@ -98,9 +88,9 @@ export function HeroCommunityStage({ variant }: { variant: CommunityStage }) {
           <li key={scene} className="relative flex flex-col items-center justify-end text-center">
             <motion.div
               className="h-24 sm:h-40"
-              initial={reduced ? false : { opacity: 0.35, clipPath: "inset(0 100% 0 0)" }}
-              animate={{ opacity: 1, clipPath: "inset(0 0% 0 0)" }}
-              transition={{ duration: reduced ? 0 : 0.55, delay: reduced ? 0 : 0.15 + index * 0.52, ease: EASE }}
+              initial={reduced ? false : { opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: reduced ? 0 : 0.34, delay: reduced ? 0 : index * 0.12, ease: EASE }}
             >
               <CrewScene scene={scene} />
             </motion.div>
@@ -109,7 +99,7 @@ export function HeroCommunityStage({ variant }: { variant: CommunityStage }) {
                 className="-mt-1 size-2 rounded-full bg-brand-orange"
                 initial={reduced ? false : { opacity: 0.4, scale: 0.65 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: reduced ? 0 : 0.28, delay: reduced ? 0 : 0.57 + index * 0.52 }}
+                transition={{ duration: reduced ? 0 : 0.2, delay: reduced ? 0 : 0.12 + index * 0.12 }}
               />
             </div>
             <span className="mt-3 px-2 text-xs font-semibold text-charcoal-800 sm:text-sm">{label}</span>
@@ -134,7 +124,7 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
           className="absolute inset-x-[12%] inset-y-0 -z-10 origin-bottom bg-[radial-gradient(ellipse_at_bottom,#efbf86_0%,#f6e2c5_32%,transparent_71%)]"
           initial={reduced ? false : { opacity: 0.42, scaleX: 0.82 }}
           animate={{ opacity: 0.58, scaleX: 1 }}
-          transition={{ duration: reduced ? 0 : 0.7, delay: reduced ? 0 : 0.3, ease: EASE }}
+          transition={{ duration: reduced ? 0 : 0.42, delay: reduced ? 0 : 0.08, ease: EASE }}
         />
 
         <div className="relative z-10 mx-auto grid w-[min(74%,48rem)] grid-cols-[1fr_1.3fr_1fr] items-end border-b border-[#956040]/30">
@@ -142,7 +132,7 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
             className="relative flex h-[clamp(7.5rem,29vw,10rem)] min-w-0 justify-center sm:h-52 lg:h-[17rem]"
             initial={reduced ? false : { y: 6 }}
             animate={{ y: 0 }}
-            transition={{ duration: reduced ? 0 : 0.48, delay: reduced ? 0 : 0.12, ease: EASE }}
+            transition={{ duration: reduced ? 0 : 0.36, delay: reduced ? 0 : 0.04, ease: EASE }}
           >
             <div className="h-full min-w-0">
               <CrewScene scene="founder" />
@@ -154,13 +144,13 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
               className="absolute bottom-0 left-1/2 h-3 w-5/6 -translate-x-1/2 rounded-[50%] bg-[#b46528]/20"
               initial={reduced ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: reduced ? 0 : 0.45, delay: reduced ? 0 : 0.65 }}
+              transition={{ duration: reduced ? 0 : 0.3, delay: reduced ? 0 : 0.18 }}
             />
             <motion.div
               className="relative h-full min-w-0"
               initial={reduced ? false : { y: 8 }}
               animate={{ y: 0 }}
-              transition={{ duration: reduced ? 0 : 0.52, delay: reduced ? 0 : 0.2, ease: EASE }}
+              transition={{ duration: reduced ? 0 : 0.38, delay: reduced ? 0 : 0.08, ease: EASE }}
             >
               <div className="h-full min-w-0">
                 <CrewScene scene="builder" brandedLaptop />
@@ -172,7 +162,7 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
             className="flex h-[clamp(8.5rem,33vw,11rem)] min-w-0 justify-center sm:h-56 lg:h-[17.5rem]"
             initial={reduced ? false : { y: 6 }}
             animate={{ y: 0 }}
-            transition={{ duration: reduced ? 0 : 0.48, delay: reduced ? 0 : 0.28, ease: EASE }}
+            transition={{ duration: reduced ? 0 : 0.36, delay: reduced ? 0 : 0.12, ease: EASE }}
           >
             <div className="relative h-full min-w-0">
               <CrewScene scene="creator" />
@@ -190,7 +180,7 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
       <figcaption className="mt-4 text-center">
         <Link
           href="/events#edition-05"
-          className="inline-flex min-h-11 items-center gap-2 rounded text-sm font-semibold text-[#843918] hover:text-brand-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+          className="inline-flex min-h-11 items-center gap-2 rounded text-sm font-semibold text-[#843918] hover:text-brand-orange-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
         >
           <span className="relative">
             See students take the stage
@@ -199,7 +189,7 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
               className="absolute inset-x-0 -bottom-1 h-px origin-left bg-[#c88866]"
               initial={reduced ? false : { scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ duration: reduced ? 0 : 0.32, delay: reduced ? 0 : 0.75, ease: EASE }}
+              transition={{ duration: reduced ? 0 : 0.24, delay: reduced ? 0 : 0.2, ease: EASE }}
             />
           </span>
           <ArrowUpRight aria-hidden="true" className="size-4" />

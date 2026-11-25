@@ -18,7 +18,7 @@ export function FlowButton({ text = "Partner with us", compactText, href = PARTN
       target={href.startsWith("https://mail.google.com/") ? "_blank" : undefined}
       rel={href.startsWith("https://mail.google.com/") ? "noopener noreferrer" : undefined}
       onClick={onClick}
-      className={`group relative flex min-h-12 cursor-pointer items-center gap-2.5 overflow-hidden rounded-full border border-brand-orange/60 bg-transparent px-5 py-3.5 text-sm font-semibold text-charcoal-950 transition-[color,background-color,border-color,border-radius] duration-200 ease-out hover:rounded-xl hover:border-transparent hover:bg-brand-orange hover:text-charcoal-950 active:border-transparent active:bg-brand-orange active:text-charcoal-950 focus-visible:rounded-xl focus-visible:border-transparent focus-visible:bg-brand-orange focus-visible:text-charcoal-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2 ${className ?? ""}`}
+      className={`group relative flex min-h-12 cursor-pointer items-center gap-2.5 overflow-hidden rounded-full border border-brand-orange/60 bg-transparent px-5 py-3.5 text-sm font-semibold text-charcoal-950 transition-[color,background-color,border-color,border-radius,transform] duration-150 ease-out hover:rounded-xl hover:border-transparent hover:bg-brand-orange hover:text-charcoal-950 motion-safe:active:scale-[0.96] active:border-transparent active:bg-brand-orange active:text-charcoal-950 focus-visible:rounded-xl focus-visible:border-transparent focus-visible:bg-brand-orange focus-visible:text-charcoal-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2 ${className ?? ""}`}
     >
       {compactText ? (
         <>

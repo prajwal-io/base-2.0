@@ -23,7 +23,7 @@ export function CommunityJourney() {
 	return (
 		<section aria-labelledby="journey-heading" className="mb-16">
 			<div className="mb-7 max-w-2xl">
-				<span className="mb-2 block text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
+				<span className="mb-2 block text-xs font-bold uppercase tracking-[0.2em] text-brand-orange-ink">
 					A place to begin
 				</span>
 				<h2

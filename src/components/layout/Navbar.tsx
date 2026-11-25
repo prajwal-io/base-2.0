@@ -54,7 +54,7 @@ export function Navbar({ introPhase = "complete" }: { introPhase?: "loading" | "
       width={977}
       height={178}
       unoptimized
-      className="block h-auto w-[126px] sm:w-[154px]"
+      className="block h-auto w-[126px] max-[359px]:w-[110px] sm:w-[154px]"
       priority
     />
   );
@@ -134,12 +134,12 @@ export function Navbar({ introPhase = "complete" }: { introPhase?: "loading" | "
         <Link
           href="/"
           aria-label="BacktoBase home"
-          className="group flex md:hidden items-center rounded-full border border-[#E8E3DA] bg-white/90 px-3 py-2 shadow-pill backdrop-blur-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange sm:px-5"
+          className="group flex md:hidden items-center rounded-full border border-[#E8E3DA] bg-white/90 px-3 py-2 shadow-pill backdrop-blur-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange max-[359px]:px-2 sm:px-5"
         >
           {introPhase === "complete" ? mobileLogo : introPhase === "handoff" && isMobileLayout ? (
             <motion.span
               layoutId="backtobase-intro-logo"
-              transition={{ type: "spring", duration: 0.58, bounce: 0 }}
+              transition={{ type: "spring", duration: 0.14, bounce: 0 }}
               className="block"
             >
               {mobileLogo}
@@ -159,7 +159,7 @@ export function Navbar({ introPhase = "complete" }: { introPhase?: "loading" | "
               {introPhase === "complete" ? desktopLogo : introPhase === "handoff" && !isMobileLayout ? (
                 <motion.span
                   layoutId="backtobase-intro-logo"
-                  transition={{ type: "spring", duration: 0.58, bounce: 0 }}
+                  transition={{ type: "spring", duration: 0.14, bounce: 0 }}
                   className="block"
                 >
                   {desktopLogo}
@@ -172,7 +172,7 @@ export function Navbar({ introPhase = "complete" }: { introPhase?: "loading" | "
 
         {/* Right CTA Button */}
         <div className="col-start-2 flex items-center gap-2 justify-self-end sm:gap-3 md:col-start-3 md:row-start-1">
-          <FlowButton text="Partner with us" compactText="Partner" className="!pl-4 !pr-5 !text-sm !py-3" />
+          <FlowButton text="Partner with us" compactText="Partner" className="!pl-4 !pr-5 !text-sm !py-3 max-[359px]:!px-3" />
 
           {/* Mobile Menu Toggle Button */}
           <button
@@ -210,7 +210,7 @@ export function Navbar({ introPhase = "complete" }: { introPhase?: "loading" | "
                       setHash(new URL(item.href, window.location.href).hash);
                     }}
                     aria-current={routeNav === index ? "page" : undefined}
-                    className="flex items-center gap-3 rounded-2xl px-4 py-2.5 text-sm font-semibold text-charcoal-800 transition-colors hover:bg-canvas-subtle hover:text-charcoal-950 aria-[current=page]:bg-canvas-subtle aria-[current=page]:text-brand-orange"
+                    className="flex items-center gap-3 rounded-2xl px-4 py-2.5 text-sm font-semibold text-charcoal-800 transition-colors hover:bg-canvas-subtle hover:text-charcoal-950 aria-[current=page]:bg-canvas-subtle aria-[current=page]:text-brand-orange-ink"
                   >
                     <span className="flex w-4 h-4 items-center justify-center text-brand-orange [&_svg]:h-4 [&_svg]:w-4">{item.icon}</span>
                     <span>{item.label}</span>

@@ -42,14 +42,14 @@ export function MemberStories() {
               </Link>
 
               <div className="flex flex-col">
-                <span className="mb-2 block text-[11px] font-bold uppercase tracking-[0.18em] text-brand-orange sm:text-xs">
+                <span className="mb-2 block text-[11px] font-bold uppercase tracking-[0.18em] text-brand-orange-ink sm:text-xs">
                   Founder Spotlight
                 </span>
                 <h2
                   id="founder-spotlight-title"
                   className="mb-2 font-display text-2xl font-black text-charcoal-950 sm:text-3xl tracking-tight"
                 >
-                  <Link href="/founder" className="hover:text-brand-orange transition-colors">
+                  <Link href="/founder" className="hover:text-brand-orange-ink transition-colors">
                     {FOUNDER_PROFILE.name}
                   </Link>
                 </h2>
@@ -60,7 +60,7 @@ export function MemberStories() {
 
                 <Link
                   href="/founder"
-                  className="group inline-flex items-center gap-1.5 text-xs font-bold text-brand-orange hover:text-brand-orange-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange sm:text-sm"
+                  className="group inline-flex items-center gap-1.5 text-xs font-bold text-brand-orange-ink hover:text-brand-orange-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange sm:text-sm"
                 >
                   <span>Meet the Founder &amp; View Full Bio</span>
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

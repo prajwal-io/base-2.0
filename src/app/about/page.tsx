@@ -13,19 +13,19 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <div className="flex flex-1 flex-col bg-canvas-base">
-      <main className="flex-grow py-10 sm:py-16">
+      <main id="main-content" tabIndex={-1} className="flex-grow py-10 sm:py-16">
         <div className="relative isolate max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="max-w-3xl mb-12">
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-charcoal-600 hover:text-brand-orange mb-4 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-charcoal-600 hover:text-brand-orange-ink mb-4 transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Home</span>
             </Link>
             <div className="flex items-center gap-3 mb-2">
-              <span className="text-xs font-bold tracking-[0.2em] uppercase text-brand-orange">
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-brand-orange-ink">
                 The BacktoBase Story
               </span>
               <div className="h-[1px] w-12 bg-charcoal-300" />
@@ -116,7 +116,7 @@ export default function AboutPage() {
               href={CONTACT_US_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-orange hover:bg-brand-orange-hover text-white text-sm font-semibold tracking-wide transition-all shadow-md"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-orange-ink hover:bg-brand-orange-hover text-white text-sm font-semibold tracking-wide transition-all shadow-md"
             >
               <span>Contact us</span>
               <ArrowRight className="w-4 h-4" />

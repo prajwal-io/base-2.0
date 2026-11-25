@@ -2,13 +2,11 @@ import type { Metadata } from "next";
 import { Agentation } from "agentation";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { inter, displayFont, footerSerifFont } from "./fonts";
+import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ??
-      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"),
-  ),
+  metadataBase: siteUrl,
   title: "BacktoBase — Students, Builders, Creators, Founders & Professionals",
   description:
     "A student-driven community to learn, build, share, and grow together — from campuses to the real world. Founded by Yashwanth Bondapalli in Hyderabad.",

@@ -488,7 +488,7 @@ export default function EditorialLearnConnectGrow() {
                       onPointerEnter={(event) => {
                         if (event.pointerType === "mouse") setHoveredWord(idx);
                       }}
-                      onFocus={() => setHoveredWord(idx)}
+                      onFocus={() => selectStory(idx)}
                       onBlur={() => setHoveredWord((cur) => (cur === idx ? null : cur))}
                       onClick={() => selectStory(idx)}
                       initial={reduceMotion ? false : { y: "108%", skewY: 4, opacity: 0 }}
@@ -550,6 +550,7 @@ export default function EditorialLearnConnectGrow() {
                 onPointerEnter={(event) => {
                   if (event.pointerType === "mouse") setHoveredWord(idx);
                 }}
+                onFocus={() => selectStory(idx)}
                 onClick={() => selectStory(idx)}
               />
             ))}

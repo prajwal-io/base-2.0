@@ -86,7 +86,7 @@ export function FaqGlobeScene() {
               aria-hidden="true"
             >
               <image
-                href="/images/footer-community-crew-v3.png"
+                href={backtoBaseCrewArtwork.src}
                 width={backtoBaseCrewArtwork.width}
                 height={backtoBaseCrewArtwork.height}
               />
@@ -119,6 +119,7 @@ export function FaqGlobeScene() {
         }
         @media (max-width: 639px) {
           .faq-globe-scene { max-width: 260px; margin-top: 12px; }
+          .faq-globe-scene :is(.faq-globe-meridians, .faq-globe-star) { animation: none; }
         }
         @media (prefers-reduced-motion: reduce) {
           .faq-globe-scene :is(.faq-globe-meridians, .faq-globe-star) { animation: none; }

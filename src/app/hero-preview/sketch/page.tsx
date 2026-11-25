@@ -82,7 +82,7 @@ function SketchHandoff() {
 
 export default function SketchPreviewPage() {
   return (
-    <main className="flex-1 bg-canvas-base">
+    <main id="main-content" tabIndex={-1} className="flex-1 bg-canvas-base">
       <HeroSection rehearsal={<SketchHandoff />} editionCount={EDITION_COUNT} />
     </main>
   );

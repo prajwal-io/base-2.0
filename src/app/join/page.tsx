@@ -1,10 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { ArrowLeft, Send } from "lucide-react";
 import { Footer } from "@/components/layout/Footer";
-import { ArrowLeft, Send, Sparkles } from "lucide-react";
 import { CONTACT_EMAIL, createApplicationGmailUrl } from "@/data/contact";
+
+const labelClassName = "block text-[11px] font-bold uppercase tracking-[0.12em] text-charcoal-700";
+const controlClassName =
+  "mt-1.5 min-h-12 w-full rounded-xl border border-border-strong bg-canvas-subtle px-4 text-base text-charcoal-950 placeholder:text-charcoal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange-ink sm:text-sm";
 
 export default function JoinPage() {
   const [formData, setFormData] = useState({
@@ -23,73 +28,112 @@ export default function JoinPage() {
 
   return (
     <div className="flex flex-1 flex-col bg-canvas-base">
-      <main className="flex-grow py-10 sm:py-16">
-        <div className="relative isolate mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <main id="main-content" tabIndex={-1} className="flex-grow py-8 sm:py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-charcoal-600 hover:text-brand-orange mb-6 transition-colors"
+            className="mb-6 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-charcoal-700 transition-colors hover:text-brand-orange-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange-ink focus-visible:ring-offset-4"
           >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Back to Home</span>
+            <ArrowLeft aria-hidden="true" className="size-4" />
+            Back to Home
           </Link>
 
-            <div className="rounded-3xl bg-white border border-border-subtle p-8 sm:p-12 shadow-card">
-              <div className="flex items-center gap-2 text-brand-orange text-xs font-bold uppercase tracking-wider mb-2">
-                <Sparkles className="w-4 h-4" />
-                <span>Join the Hyderabad community</span>
-              </div>
-              <h1 className="font-display font-black text-3xl sm:text-4xl text-charcoal-950 uppercase tracking-tight mb-3">
-                Be a part of what&apos;s next.
+          <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] xl:gap-12">
+            <section aria-labelledby="join-title" className="lg:sticky lg:top-28">
+              <h1
+                id="join-title"
+                className="max-w-xl font-display text-4xl font-black uppercase leading-[0.98] tracking-[-0.03em] text-charcoal-950 sm:text-5xl lg:text-[3.25rem]"
+              >
+                Be a part of <span className="text-brand-orange-ink">what&apos;s next.</span>
               </h1>
-              <p className="text-sm text-charcoal-700 mb-8 font-normal leading-relaxed">
-                Join us to attend an edition, volunteer, speak, or mentor. BacktoBase brings students, builders, creators, founders, and professionals together to learn and share what they know.
+              <p className="mt-5 max-w-[52ch] text-base leading-7 text-charcoal-700">
+                Join us to attend an edition, volunteer, speak, or mentor. BacktoBase brings students,
+                builders, creators, founders, and professionals together to learn and share what they know.
               </p>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-charcoal-800">
+                {["Attend an edition", "Volunteer", "Speak or partner"].map((way) => (
+                  <li key={way} className="flex items-center gap-2">
+                    <span aria-hidden="true" className="size-1.5 rounded-full bg-brand-orange" />
+                    {way}
+                  </li>
+                ))}
+              </ul>
+
+              <figure className="mt-7 overflow-hidden rounded-2xl">
+                <Image
+                  src="/images/editions/07/photo.png"
+                  alt="BacktoBase members gathered together at an edition"
+                  width={1531}
+                  height={862}
+                  sizes="(min-width: 1024px) 38vw, 100vw"
+                  priority
+                  className="aspect-[2.4/1] w-full object-cover object-center sm:aspect-[16/9]"
+                />
+                <figcaption className="mt-2 text-xs text-charcoal-600">A BacktoBase community gathering</figcaption>
+              </figure>
+            </section>
+
+            <section
+              aria-labelledby="application-title"
+              className="rounded-2xl border border-border-subtle bg-white p-5 sm:p-7 lg:p-8"
+            >
+              <header className="mb-6">
+                <h2 id="application-title" className="font-display text-2xl font-extrabold text-charcoal-950">
+                  Tell us about you
+                </h2>
+                <p className="mt-2 text-sm leading-6 text-charcoal-700">
+                  Choose a starting point and share anything you&apos;d like us to know.
+                </p>
+              </header>
+
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
                   <div>
-                    <label htmlFor="join-name" className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
-                      Full Name *
+                    <label htmlFor="join-name" className={labelClassName}>
+                      Full name <span aria-hidden="true" className="text-brand-orange-ink">*</span>
                     </label>
                     <input
                       id="join-name"
                       type="text"
+                      autoComplete="name"
                       required
                       maxLength={120}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Yashwanth Bondapalli"
-                      className="w-full px-4 py-2.5 rounded-xl bg-canvas-subtle border border-border-strong text-charcoal-950 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange/40"
+                      className={controlClassName}
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="join-email" className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
-                      Email Address *
+                    <label htmlFor="join-email" className={labelClassName}>
+                      Email address <span aria-hidden="true" className="text-brand-orange-ink">*</span>
                     </label>
                     <input
                       id="join-email"
                       type="email"
+                      autoComplete="email"
                       required
                       maxLength={254}
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="you@domain.com"
-                      className="w-full px-4 py-2.5 rounded-xl bg-canvas-subtle border border-border-strong text-charcoal-950 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange/40"
+                      className={controlClassName}
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
                   <div>
-                    <label htmlFor="join-role" className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
+                    <label htmlFor="join-role" className={labelClassName}>
                       What best describes you?
                     </label>
                     <select
                       id="join-role"
                       value={formData.role}
                       onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl bg-canvas-subtle border border-border-strong text-charcoal-950 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange/40"
+                      className={controlClassName}
                     >
                       <option value="student">Student / Campus Learner</option>
                       <option value="developer">Software Engineer / Builder</option>
@@ -100,30 +144,31 @@ export default function JoinPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="join-institution" className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
-                      College / Company Name
+                    <label htmlFor="join-institution" className={labelClassName}>
+                      College / company name
                     </label>
                     <input
                       id="join-institution"
                       type="text"
+                      autoComplete="organization"
                       maxLength={160}
                       value={formData.institution}
                       onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
                       placeholder="e.g. CBIT, EPAM, Microsoft"
-                      className="w-full px-4 py-2.5 rounded-xl bg-canvas-subtle border border-border-strong text-charcoal-950 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange/40"
+                      className={controlClassName}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="join-interest" className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
-                    Primary Interest
+                  <label htmlFor="join-interest" className={labelClassName}>
+                    Primary interest
                   </label>
                   <select
                     id="join-interest"
                     value={formData.interest}
                     onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-canvas-subtle border border-border-strong text-charcoal-950 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange/40"
+                    className={controlClassName}
                   >
                     <option value="attending">Attending Upcoming Editions</option>
                     <option value="volunteering">Volunteering / Organizing Crew</option>
@@ -133,33 +178,41 @@ export default function JoinPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="join-message" className="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-1.5">
+                  <label htmlFor="join-message" className={labelClassName}>
                     What drives you to join BacktoBase?
                   </label>
                   <textarea
                     id="join-message"
-                    rows={3}
+                    rows={4}
                     maxLength={3000}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Tell us what you're building or hoping to learn..."
-                    className="w-full px-4 py-2.5 rounded-xl bg-canvas-subtle border border-border-strong text-charcoal-950 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange/40"
+                    className={`${controlClassName} min-h-32 resize-y py-3`}
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-full bg-brand-orange text-white font-display font-extrabold text-sm tracking-wide transition-colors hover:bg-brand-orange-hover flex items-center justify-center gap-2"
+                  className="flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full bg-brand-orange-ink px-5 py-3 font-display text-sm font-extrabold tracking-wide text-white transition-colors hover:bg-brand-orange-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange-ink focus-visible:ring-offset-2 motion-reduce:transition-none"
                 >
-                  <span>Continue in Gmail</span>
-                  <Send className="w-4 h-4" aria-hidden="true" />
+                  Continue in Gmail
+                  <Send aria-hidden="true" className="size-4" />
                 </button>
-                <p className="text-center text-xs leading-relaxed text-charcoal-600">
-                  This opens a Gmail draft addressed to <a className="font-semibold text-charcoal-800 underline underline-offset-2" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Review the details and send the email to reach the BacktoBase team.
+
+                <p className="text-center text-xs leading-relaxed text-charcoal-700">
+                  Your answers open in a Gmail draft. Nothing is sent until you review and send it. For help, email{" "}
+                  <a
+                    className="break-words font-semibold text-charcoal-900 underline underline-offset-2 decoration-brand-orange-ink/60"
+                    href={`mailto:${CONTACT_EMAIL}`}
+                  >
+                    {CONTACT_EMAIL}
+                  </a>
+                  .
                 </p>
               </form>
-            </div>
-
+            </section>
+          </div>
         </div>
       </main>
       <Footer />

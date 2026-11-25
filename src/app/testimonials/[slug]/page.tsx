@@ -34,11 +34,11 @@ export default async function TestimonialPage({ params }: TestimonialPageProps) 
 
   return (
     <div className="flex flex-1 flex-col bg-canvas-base">
-      <main className="flex flex-1 items-center py-12 sm:py-20">
+      <main id="main-content" tabIndex={-1} className="flex flex-1 items-center py-12 sm:py-20">
         <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
           <Link
             href="/#community-stories"
-            className="group mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-charcoal-700 transition-colors hover:text-brand-orange focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-4"
+            className="group mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-charcoal-700 transition-colors hover:text-brand-orange-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-4"
           >
             <ArrowLeft aria-hidden="true" className="size-4 transition-transform group-hover:-translate-x-1" />
             Back to community stories
@@ -56,14 +56,14 @@ export default async function TestimonialPage({ params }: TestimonialPageProps) 
                   className="size-12 rounded-full object-cover"
                 />
                 <div>
-                  <p className="font-display text-lg font-extrabold text-charcoal-950">
+                  <h1 className="font-display text-lg font-extrabold text-charcoal-950">
                     {testimonial.author}
-                  </p>
+                  </h1>
                   <p className="mt-1 text-sm text-charcoal-600">{testimonial.role}</p>
                 </div>
               </header>
               <div>
-                <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.18em] text-brand-orange sm:text-xs">
+                <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.18em] text-brand-orange-ink sm:text-xs">
                   {testimonial.longReview ? "Full review" : "Full quote"}
                 </p>
                 {testimonial.longReview ? (
@@ -86,7 +86,7 @@ export default async function TestimonialPage({ params }: TestimonialPageProps) 
 
           <Link
             href="/#community-stories"
-            className="mt-8 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-brand-orange hover:text-brand-orange-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-4"
+            className="mt-8 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-brand-orange-ink hover:text-brand-orange-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-4"
           >
             More community stories
             <ArrowUpRight aria-hidden="true" className="size-4" />

@@ -31,7 +31,7 @@ export function AnimatedHero({ editionCount }: { editionCount: number }) {
         className="mb-4 text-[11px] font-bold uppercase tracking-[0.18em] text-charcoal-700 sm:text-xs"
         initial={reduceMotion ? false : { opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: EDITORIAL_EASE }}
+        transition={{ duration: 0.34, ease: EDITORIAL_EASE }}
       >
         A Student-Driven Community
       </motion.p>
@@ -52,7 +52,7 @@ export function AnimatedHero({ editionCount }: { editionCount: number }) {
                       ? { transform: "translateY(0%)", opacity: 1 }
                       : { transform: actionNumber > index ? "translateY(-106%)" : "translateY(106%)", opacity: 0 }
                   }
-                  transition={{ duration: reduceMotion ? 0 : 0.32, ease: EDITORIAL_EASE }}
+                  transition={{ duration: reduceMotion ? 0 : 0.24, ease: EDITORIAL_EASE }}
                 >
                   {action}
                 </motion.span>
@@ -67,7 +67,7 @@ export function AnimatedHero({ editionCount }: { editionCount: number }) {
         className="mb-8 max-w-xl text-base font-normal leading-relaxed text-charcoal-700 sm:text-lg"
         initial={reduceMotion ? false : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: reduceMotion ? 0 : 0.2, ease: EDITORIAL_EASE }}
+        transition={{ duration: 0.4, delay: reduceMotion ? 0 : 0.1, ease: EDITORIAL_EASE }}
       >
         A community to learn, build, share, and grow together — from campuses to the real world.
       </motion.p>
@@ -76,7 +76,7 @@ export function AnimatedHero({ editionCount }: { editionCount: number }) {
         className="flex flex-wrap items-center justify-center gap-3 sm:gap-4"
         initial={reduceMotion ? false : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: reduceMotion ? 0 : 0.28, ease: EDITORIAL_EASE }}
+        transition={{ duration: 0.4, delay: reduceMotion ? 0 : 0.18, ease: EDITORIAL_EASE }}
       >
         <FlowButton href="/join" text="Join the Community" compactText="Join" />
         <Link

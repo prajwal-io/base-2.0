@@ -67,7 +67,7 @@ export function StatsBar({ editionCount, venueCount }: { editionCount: number; v
               <span className="text-[11px] font-bold uppercase tracking-wider text-charcoal-500">
                 Founded By
               </span>
-              <span className="text-sm sm:text-base font-display font-bold uppercase tracking-wide text-charcoal-950 group-hover:text-brand-orange transition-colors">
+              <span className="text-sm sm:text-base font-display font-bold uppercase tracking-wide text-charcoal-950 group-hover:text-brand-orange-ink transition-colors">
                 Yashwanth Bondapalli
               </span>
             </div>

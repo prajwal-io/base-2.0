@@ -48,7 +48,7 @@ export function TestimonialCard({ author, text, href, className }: TestimonialCa
             <p className="truncate text-xs text-charcoal-600">{author.handle}</p>
           </div>
         </div>
-        <span className="inline-flex shrink-0 items-center gap-1 text-xs font-bold text-brand-orange">
+        <span className="inline-flex shrink-0 items-center gap-1 text-xs font-bold text-brand-orange-ink">
           Read review
           <ArrowUpRight
             aria-hidden="true"

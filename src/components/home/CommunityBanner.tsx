@@ -13,7 +13,7 @@ export function CommunityBanner() {
               The Community
             </span>
             <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase tracking-tight">
-              Built by students. <span className="text-brand-cyan">Open to everyone.</span>
+              Built by students. <span className="text-brand-cyan-bright">Open to everyone.</span>
             </h2>
           </div>
 

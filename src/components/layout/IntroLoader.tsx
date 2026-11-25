@@ -18,39 +18,13 @@ export function IntroLoader({
   useEffect(() => {
     if (phase !== "loading") return;
 
-    const startedAt = performance.now();
-    let finished = false;
-    let minimumTimer: number | undefined;
-    const minimumDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 550 : 1050;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const timer = window.setTimeout(() => {
+      const cssFallback = loaderRef.current && getComputedStyle(loaderRef.current).visibility === "hidden";
+      onReady(Boolean(cssFallback));
+    }, reducedMotion ? 0 : 140);
 
-    const finish = (cssFallback = false) => {
-      if (finished) return;
-      finished = true;
-      onReady(cssFallback);
-    };
-
-    const onLoad = () => {
-      if (loaderRef.current && getComputedStyle(loaderRef.current).visibility === "hidden") {
-        finish(true);
-        return;
-      }
-      window.clearTimeout(fallbackTimer);
-      minimumTimer = window.setTimeout(
-        finish,
-        Math.max(0, minimumDuration - (performance.now() - startedAt)),
-      );
-    };
-
-    const fallbackTimer = window.setTimeout(() => finish(), 2400);
-    if (loaderRef.current && getComputedStyle(loaderRef.current).visibility === "hidden") finish(true);
-    else if (document.readyState === "complete") onLoad();
-    else window.addEventListener("load", onLoad, { once: true });
-
-    return () => {
-      window.removeEventListener("load", onLoad);
-      window.clearTimeout(minimumTimer);
-      window.clearTimeout(fallbackTimer);
-    };
+    return () => window.clearTimeout(timer);
   }, [onReady, phase]);
 
   const handleAnimationEnd = (event: AnimationEvent<HTMLDivElement>) => {
@@ -74,7 +48,7 @@ export function IntroLoader({
         {phase === "loading" && (
           <motion.span
             layoutId="backtobase-intro-logo"
-            transition={{ type: "spring", duration: 0.58, bounce: 0 }}
+            transition={{ type: "spring", duration: 0.14, bounce: 0 }}
             className="intro-loader__logo-shell"
           >
             <Image

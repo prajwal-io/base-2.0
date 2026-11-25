@@ -14,20 +14,20 @@ export const metadata = {
 export default function FounderPage() {
   return (
     <div className="flex flex-1 flex-col bg-canvas-base">
-      <main className="flex-grow py-10 sm:py-16">
+      <main id="main-content" tabIndex={-1} className="flex-grow py-10 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top Navigation */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-charcoal-600 hover:text-brand-orange transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-charcoal-600 hover:text-brand-orange-ink transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Home</span>
             </Link>
             <Link
               href="/about"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-charcoal-600 hover:text-brand-orange transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-charcoal-600 hover:text-brand-orange-ink transition-colors"
             >
               <span>About BacktoBase</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -73,7 +73,7 @@ export default function FounderPage() {
             aria-labelledby="story-heading"
             className="relative isolate overflow-hidden rounded-3xl bg-white border border-border-subtle shadow-card p-7 sm:p-10 mb-12"
           >
-            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-orange block mb-1">
+            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-orange-ink block mb-1">
               The Journey
             </span>
             <h2
@@ -105,7 +105,7 @@ export default function FounderPage() {
           >
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
               <div>
-                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-orange block mb-1">
+                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-orange-ink block mb-1">
                   Profile &amp; Credentials
                 </span>
                 <h2
@@ -142,7 +142,7 @@ export default function FounderPage() {
               href={CONTACT_US_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-orange hover:bg-brand-orange-hover text-white text-sm font-semibold tracking-wide transition-all shadow-md"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-orange-ink hover:bg-brand-orange-hover text-white text-sm font-semibold tracking-wide transition-all shadow-md"
             >
               <span>Contact us</span>
               <ArrowRight className="w-4 h-4" />

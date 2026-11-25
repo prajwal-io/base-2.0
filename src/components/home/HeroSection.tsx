@@ -49,7 +49,7 @@ export function HeroSection({
           className="mb-4"
           initial={reduceMotion ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: EDITORIAL_EASE }}
+          transition={{ duration: 0.34, ease: EDITORIAL_EASE }}
         >
           <span className="text-[11px] sm:text-xs font-bold tracking-[0.18em] uppercase text-charcoal-700">
             A Student-Driven Community
@@ -65,8 +65,8 @@ export function HeroSection({
                 initial={reduceMotion ? false : { y: "105%", opacity: 0 }}
                 animate={{ y: "0%", opacity: 1 }}
                 transition={{
-                  duration: 0.68,
-                  delay: reduceMotion ? 0 : 0.06 + idx * 0.065,
+                  duration: 0.42,
+                  delay: reduceMotion ? 0 : 0.04 + idx * 0.04,
                   ease: EDITORIAL_EASE,
                 }}
               >
@@ -81,7 +81,7 @@ export function HeroSection({
           className="text-base sm:text-lg text-charcoal-700 max-w-xl font-normal leading-relaxed mb-8"
           initial={reduceMotion ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: reduceMotion ? 0 : 0.36, ease: EDITORIAL_EASE }}
+          transition={{ duration: 0.4, delay: reduceMotion ? 0 : 0.1, ease: EDITORIAL_EASE }}
         >
           A community to learn, build, share, and grow together — from campuses to the real world.
         </motion.p>
@@ -91,13 +91,13 @@ export function HeroSection({
           className="flex flex-wrap items-center justify-center gap-3 sm:gap-4"
           initial={reduceMotion ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: reduceMotion ? 0 : 0.44, ease: EDITORIAL_EASE }}
+          transition={{ duration: 0.4, delay: reduceMotion ? 0 : 0.18, ease: EDITORIAL_EASE }}
         >
           <FlowButton text="Partner with us" />
 
           <Link
             href="/events"
-            className="group inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/85 hover:bg-white border border-border-strong text-charcoal-900 text-sm font-semibold shadow-sm hover:shadow-card transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
+            className="group inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/85 hover:bg-white border border-border-strong text-charcoal-900 text-sm font-semibold shadow-sm hover:shadow-card transition-[background-color,border-color,box-shadow,transform] duration-200 motion-safe:active:scale-[0.96] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
           >
             <span>Explore {editionCount} Editions</span>
             <ArrowUpRight

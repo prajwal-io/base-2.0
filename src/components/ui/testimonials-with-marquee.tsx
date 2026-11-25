@@ -36,7 +36,7 @@ export function TestimonialsSection({
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-10 sm:gap-14">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 px-4 text-center sm:px-6">
-          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-orange sm:text-xs">
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-orange-ink sm:text-xs">
             Voices of the community
           </p>
           <h2

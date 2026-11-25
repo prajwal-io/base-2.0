@@ -10,7 +10,7 @@ export default function HeroPreviewPage() {
   const [replay, setReplay] = useState(0);
 
   return (
-    <main className="flex-1 bg-canvas-base">
+    <main id="main-content" tabIndex={-1} className="flex-1 bg-canvas-base">
       <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-2 px-4 pt-6">
         {COMMUNITY_STAGES.map(({ id, label }) => (
           <button

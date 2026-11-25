@@ -31,8 +31,10 @@ const config: Config = {
         },
         brand: {
           orange: "#EA580C",
-          "orange-hover": "#D94E07",
+          "orange-ink": "#B93800",
+          "orange-hover": "#9A3412",
           amber: "#F59E0B",
+          "amber-ink": "#8A5A00",
           "amber-light": "#FEF3C7",
           "amber-dark": "#D97706",
           cyan: "#087986",

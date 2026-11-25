@@ -54,7 +54,7 @@ export function Navbar({ introPhase = "complete" }: { introPhase?: "loading" | "
       width={977}
       height={178}
       unoptimized
-      className="block h-auto w-[126px] sm:w-[154px]"
+      className="block h-auto w-[126px] max-[360px]:w-[112px] sm:w-[154px]"
       priority
     />
   );
@@ -172,7 +172,7 @@ export function Navbar({ introPhase = "complete" }: { introPhase?: "loading" | "
 
         {/* Right CTA Button */}
         <div className="col-start-2 flex items-center gap-2 justify-self-end sm:gap-3 md:col-start-3 md:row-start-1">
-          <FlowButton text="Partner with us" compactText="Partner" className="!pl-4 !pr-5 !text-sm !py-3" />
+          <FlowButton text="Partner with us" compactText="Partner" className="!pl-4 !pr-5 !text-sm !py-3 max-[360px]:!gap-2 max-[360px]:!px-3" />
 
           {/* Mobile Menu Toggle Button */}
           <button
@@ -210,7 +210,7 @@ export function Navbar({ introPhase = "complete" }: { introPhase?: "loading" | "
                       setHash(new URL(item.href, window.location.href).hash);
                     }}
                     aria-current={routeNav === index ? "page" : undefined}
-                    className="flex items-center gap-3 rounded-2xl px-4 py-2.5 text-sm font-semibold text-charcoal-800 transition-colors hover:bg-canvas-subtle hover:text-charcoal-950 aria-[current=page]:bg-canvas-subtle aria-[current=page]:text-brand-orange"
+                    className="flex min-h-11 items-center gap-3 rounded-2xl px-4 py-2.5 text-sm font-semibold text-charcoal-800 transition-colors hover:bg-canvas-subtle hover:text-charcoal-950 aria-[current=page]:bg-canvas-subtle aria-[current=page]:text-brand-orange"
                   >
                     <span className="flex w-4 h-4 items-center justify-center text-brand-orange [&_svg]:h-4 [&_svg]:w-4">{item.icon}</span>
                     <span>{item.label}</span>

@@ -149,7 +149,7 @@ export default function JoinPage() {
 
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-full bg-brand-orange text-white font-display font-extrabold text-sm tracking-wide transition-colors hover:bg-brand-orange-hover flex items-center justify-center gap-2"
+                  className="flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-brand-orange px-4 font-display text-sm font-extrabold tracking-wide text-white transition-colors hover:bg-brand-orange-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
                 >
                   <span>Continue in Gmail</span>
                   <Send className="w-4 h-4" aria-hidden="true" />

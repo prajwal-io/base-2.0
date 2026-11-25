@@ -106,7 +106,7 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
                   type="button"
                   onClick={() => setTheme(item)}
                   aria-pressed={active}
-                  className={`relative px-4 py-2 rounded-full text-xs font-bold tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange ${
+                  className={`relative inline-flex min-h-11 items-center px-4 rounded-full text-xs font-bold tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange ${
                     active ? "text-white" : "text-charcoal-700 hover:text-charcoal-950 bg-canvas-subtle"
                   }`}
                 >
@@ -138,7 +138,7 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
                     type="button"
                     onClick={() => setVenue(v)}
                     aria-pressed={active}
-                    className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-colors border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange ${
+                    className={`inline-flex min-h-11 items-center px-3 rounded-full text-[11px] font-semibold transition-colors border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange ${
                       active
                         ? "bg-brand-orange text-white border-brand-orange"
                         : "bg-canvas-base text-charcoal-700 border-border-subtle hover:border-border-strong"
@@ -161,7 +161,7 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
                     setTheme("All");
                     setVenue("All Venues");
                   }}
-                  className="inline-flex items-center gap-1 text-xs font-bold text-brand-orange hover:text-brand-orange-hover"
+                  className="inline-flex min-h-11 items-center gap-1 rounded-full px-2 text-xs font-bold text-brand-orange hover:text-brand-orange-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
                 >
                   <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
                   <span>Reset</span>
@@ -187,7 +187,7 @@ export function EventsArchiveClient({ editions }: { editions: Edition[] }) {
               setTheme("All");
               setVenue("All Venues");
             }}
-            className="px-5 py-2.5 rounded-full bg-brand-dark-pill text-white text-xs font-bold uppercase tracking-wider"
+            className="inline-flex min-h-11 items-center justify-center rounded-full bg-brand-dark-pill px-5 text-xs font-bold uppercase tracking-wider text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
           >
             Show All {editions.length} Editions
           </button>

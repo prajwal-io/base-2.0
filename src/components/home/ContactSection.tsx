@@ -23,7 +23,7 @@ export function ContactSection() {
 
   return (
     <section ref={sectionRef} id="contact-us" aria-labelledby="contact-title" data-visible={sectionInView} className="contact-section scroll-mt-24 px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
-      <div className="mx-auto grid max-w-7xl items-center gap-8 rounded-[2rem] border border-border-subtle bg-[#f3e9db] p-5 sm:gap-10 sm:p-9 lg:grid-cols-[0.9fr_1.1fr] lg:p-12">
+      <div className="mx-auto grid max-w-7xl items-center gap-8 rounded-3xl border border-border-subtle bg-[#f3e9db] p-5 sm:gap-10 sm:p-9 lg:grid-cols-[0.9fr_1.1fr] lg:p-12">
         <div className="min-w-0">
           <ContactIllustration visible={sectionInView} sent={sent} titleId="contact-title" />
           <div className="mx-auto mt-6 max-w-sm text-center">

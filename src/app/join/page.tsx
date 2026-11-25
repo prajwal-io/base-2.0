@@ -98,6 +98,8 @@ export default function JoinPage() {
                       type="text"
                       autoComplete="name"
                       required
+                      pattern=".*\S.*"
+                      title="Enter at least one non-space character."
                       maxLength={120}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}

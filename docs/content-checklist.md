@@ -35,9 +35,13 @@ All factual community details must derive from verified source PDFs or be marked
 - Medicover Hospitals / HealthNavig, Hyderabad
 
 ## 4. Content Tracking & Placeholders
-- **Member Stories**:
-  - Sriya Reddy (Student Builder) — Quote from approved homepage design: "BacktoBase gave me the right people, the right conversations, and the nudge to actually build."
-  - Aditya Varma (Product at Microsoft) — Quote from approved homepage design: "What I love most is the community — it's open, helpful, and rooted in learning."
-  - Meghana K. (Developer & Creator) — Quote from approved homepage design: "I went from attending my first edition to speaking at a later one — the journey has been incredible."
+- **Published Member Stories** are maintained in src/data/communityData.ts and were supplied or approved by the site owner:
+  - Bhargavi M
+  - Goutham Sai
+  - Guruvani Binneth — site owner confirmed the review is genuine and approved for publication on Nov 25, 2026.
+  - Hasini
+  - Lohith Sai
+  - Spandhana Chowdhary
+  - Vennela
 - **Founder Statement**: Approved bio from homepage design.
 - **Video Highlight**: Homepage shows a "Coming Soon" notice until an approved video source is supplied.

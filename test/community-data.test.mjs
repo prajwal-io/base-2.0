@@ -1,6 +1,14 @@
 import assert from "node:assert/strict";
+import { existsSync } from "node:fs";
 import test from "node:test";
-import { EDITIONS, EDITION_COUNT, normalizeVenue, TEAM_MEMBERS, VENUE_COUNT } from "../src/data/communityData.ts";
+import {
+  EDITIONS,
+  EDITION_COUNT,
+  normalizeVenue,
+  TEAM_MEMBERS,
+  TESTIMONIALS,
+  VENUE_COUNT,
+} from "../src/data/communityData.ts";
 
 test("all nine edition records are present", () => {
   assert.deepEqual(EDITIONS.map((edition) => edition.editionNumber), [
@@ -53,4 +61,14 @@ test("event hosts and additional contributors remain recorded", () => {
   const latestEdition = EDITIONS.find((edition) => edition.editionNumber === "09");
   assert.ok(latestEdition?.hosts?.includes("Dileep Sajja (Growth Strategist)"));
   assert.ok(latestEdition?.supporters?.includes("Health Navig Private Limited"));
+});
+
+test("testimonial slugs are unique and each story portrait exists", () => {
+  const slugs = new Set();
+
+  for (const testimonial of TESTIMONIALS) {
+    assert.ok(!slugs.has(testimonial.slug), "duplicate testimonial slug: " + testimonial.slug);
+    slugs.add(testimonial.slug);
+    assert.ok(existsSync("public" + testimonial.avatar), "missing portrait: " + testimonial.avatar);
+  }
 });

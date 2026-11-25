@@ -44,7 +44,7 @@ export function Navbar({ introPhase = "complete" }: { introPhase?: "loading" | "
     }
     if (pathname.startsWith("/founder")) return 3; // About
     const exact = NAV_ITEMS.findIndex((item) => item.href === pathname);
-    return exact === -1 ? 0 : exact;
+    return exact;
   })();
   const activeNav = pendingNav ?? routeNav;
   const mobileLogo = (

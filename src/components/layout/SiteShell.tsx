@@ -9,7 +9,9 @@ type IntroPhase = "loading" | "handoff" | "complete";
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const [phase, setPhase] = useState<IntroPhase>("loading");
+  const [clientReady, setClientReady] = useState(false);
   const startHandoff = useCallback((cssFallback = false) => {
+    setClientReady(true);
     setPhase(cssFallback ? "complete" : "handoff");
   }, []);
 
@@ -20,13 +22,15 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
     return () => window.clearTimeout(timer);
   }, [phase]);
 
+  const contentBlocked = clientReady && phase !== "complete";
+
   return (
     <MotionConfig reducedMotion="user">
       <LayoutGroup id="backtobase-shell">
         <IntroLoader phase={phase} onReady={startHandoff} />
         <div
-          inert={phase !== "complete"}
-          aria-hidden={phase !== "complete"}
+          inert={contentBlocked}
+          aria-hidden={contentBlocked}
           data-intro-content
           className="flex min-h-screen flex-col"
         >

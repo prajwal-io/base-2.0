@@ -180,19 +180,34 @@ const EAF_STYLES = `
 }
 
 .eaf-dot {
-  height: 6px;
+  display: grid;
   width: 24px;
-  border-radius: 999px;
+  height: 24px;
+  flex: 0 0 24px;
+  place-items: center;
+  border-radius: 50%;
   border: 0;
   padding: 0;
-  background: rgba(52, 41, 31, 0.24);
+  background: transparent;
   cursor: pointer;
-  transition: width 240ms cubic-bezier(0.16, 1, 0.3, 1), background-color 200ms ease;
+}
+
+.eaf-dot::before {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(52, 41, 31, 0.3);
+  content: "";
+  transition: background-color 200ms ease, transform 200ms ease;
 }
 
 .eaf-dot[data-active="true"] {
-  width: 44px;
+  background: transparent;
+}
+
+.eaf-dot[data-active="true"]::before {
   background: var(--eaf-orange);
+  transform: scale(1.2);
 }
 
 .eaf-page-label {
@@ -324,10 +339,9 @@ const EAF_STYLES = `
   }
 
   .eaf-dot {
+    width: 44px;
     height: 44px;
-    min-width: 44px;
-    border-block: 19px solid transparent;
-    background-clip: padding-box;
+    flex-basis: 44px;
   }
 
   .eaf-stage {

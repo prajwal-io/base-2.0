@@ -88,7 +88,7 @@ const NIMBUS_CSS = `
 .nimbus-nav .nimbus-item[aria-current="page"] .nv-ico{background:transparent;color:#B94706}
 .nimbus-nav .nv-ico svg,.nimbus-nav .nimbus-item[aria-current="page"] .nv-ico svg{transform:none;transition:none;filter:none;animation:none}
 .nimbus-nav .nv-ico::before,.nimbus-nav .nv-ico::after{display:none;content:none}
-@media (min-width:768px) and (max-width:1279px){.nimbus-nav[data-brand="true"] .nimbus-brand{padding-inline:8px;margin-right:2px}.nimbus-nav[data-brand="true"] .nimbus-brand img{width:116px}.nimbus-nav[data-brand="true"] .nimbus-item{gap:0;padding:0 7px}.nimbus-nav[data-brand="true"] .nimbus-item .nimbus-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.nimbus-nav[data-brand="true"] .nimbus-item .nv-ico{width:24px;height:24px}.nimbus-nav[data-brand="true"] .nimbus-item .nv-ico svg{width:16px;height:16px}}
+@media (min-width:1024px) and (max-width:1279px){.nimbus-nav[data-brand="true"] .nimbus-brand{padding-inline:8px;margin-right:2px}.nimbus-nav[data-brand="true"] .nimbus-brand img{width:116px}.nimbus-nav[data-brand="true"] .nimbus-item{gap:0;padding:0 7px}.nimbus-nav[data-brand="true"] .nimbus-item .nimbus-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.nimbus-nav[data-brand="true"] .nimbus-item .nv-ico{width:24px;height:24px}.nimbus-nav[data-brand="true"] .nimbus-item .nv-ico svg{width:16px;height:16px}}
 @media (prefers-reduced-motion:reduce){.nv-ico svg,.nv-ico::before,.nv-ico::after,.nv-door{animation:none!important;transition:none}.nimbus-brand{transition:none}}
 `
 

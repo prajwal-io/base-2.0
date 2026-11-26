@@ -4,7 +4,8 @@ import { Footer } from "@/components/layout/Footer";
 import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 import { FOUNDER_PROFILE } from "@/data/founderData";
 import { EDITION_COUNT } from "@/data/communityData";
-import { CONTACT_US_URL } from "@/data/contact";
+import { CONTACT_US_MAILTO_URL, CONTACT_US_URL } from "@/data/contact";
+import { ResponsiveEmailLink } from "@/components/ui/ResponsiveEmailLink";
 
 export const metadata = {
   title: "Yashwanth Bondapalli — Founder @ BacktoBase",
@@ -138,15 +139,10 @@ export default function FounderPage() {
               <span>Explore All {EDITION_COUNT} Editions</span>
               <ArrowRight className="w-4 h-4 text-brand-cyan" />
             </Link>
-            <Link
-              href={CONTACT_US_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-orange-ink hover:bg-brand-orange-hover text-white text-sm font-semibold tracking-wide transition-all shadow-md"
-            >
+            <ResponsiveEmailLink desktopHref={CONTACT_US_URL} mobileHref={CONTACT_US_MAILTO_URL} className="items-center gap-2 px-6 py-3 rounded-full bg-brand-orange-ink hover:bg-brand-orange-hover text-white text-sm font-semibold tracking-wide transition-all shadow-md">
               <span>Contact us</span>
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </ResponsiveEmailLink>
           </div>
         </div>
       </main>

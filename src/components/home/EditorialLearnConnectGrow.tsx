@@ -2,7 +2,8 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
-import { PARTNER_CONTACT_URL } from "@/data/contact";
+import { PARTNER_CONTACT_MAILTO_URL, PARTNER_CONTACT_URL } from "@/data/contact";
+import { ResponsiveEmailLink } from "@/components/ui/ResponsiveEmailLink";
 import {
   AnimatePresence,
   motion,
@@ -20,6 +21,7 @@ interface PillarStory {
   copy: string;
   ctaLabel: string;
   ctaHref: string;
+  ctaMobileHref?: string;
 }
 
 const PILLARS: readonly PillarStory[] = [
@@ -46,6 +48,7 @@ const PILLARS: readonly PillarStory[] = [
     copy: "Sharpen your skills, get direct feedback from builders and leaders, and grow from attending your first edition to shaping the next one.",
     ctaLabel: "Partner with us",
     ctaHref: PARTNER_CONTACT_URL,
+    ctaMobileHref: PARTNER_CONTACT_MAILTO_URL,
   },
 ] as const;
 
@@ -571,17 +574,17 @@ export default function EditorialLearnConnectGrow() {
                 <p className="lcg-eyebrow lcg-eyebrow--story">{activePillar.eyebrow}</p>
                 <h3 className="lcg-story-heading">{activePillar.heading}</h3>
                 <p className="lcg-copy">{activePillar.copy}</p>
-                <Link
-                  className="lcg-link"
-                  href={activePillar.ctaHref}
-                  target={activePillar.ctaHref.startsWith("https://mail.google.com/") ? "_blank" : undefined}
-                  rel={activePillar.ctaHref.startsWith("https://mail.google.com/") ? "noopener noreferrer" : undefined}
-                >
-                  <span>{activePillar.ctaLabel}</span>
-                  <span className="lcg-link-arrow" aria-hidden="true">
-                    ↗
-                  </span>
-                </Link>
+                {activePillar.ctaMobileHref ? (
+                  <ResponsiveEmailLink className="lcg-link" desktopHref={activePillar.ctaHref} mobileHref={activePillar.ctaMobileHref}>
+                    <span>{activePillar.ctaLabel}</span>
+                    <span className="lcg-link-arrow" aria-hidden="true">↗</span>
+                  </ResponsiveEmailLink>
+                ) : (
+                  <Link className="lcg-link" href={activePillar.ctaHref}>
+                    <span>{activePillar.ctaLabel}</span>
+                    <span className="lcg-link-arrow" aria-hidden="true">↗</span>
+                  </Link>
+                )}
               </motion.div>
             </AnimatePresence>
           </div>

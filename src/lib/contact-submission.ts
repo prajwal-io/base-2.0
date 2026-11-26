@@ -1,9 +1,9 @@
-import { createGmailComposeUrl } from "../data/contact";
+import { createGmailComposeUrl, createMailtoComposeUrl } from "../data/contact";
 
 export type ContactState =
   | { status: "idle" | "sent" }
-  | { status: "error"; message: string; draftUrl?: string }
-  | { status: "draft"; draftUrl: string };
+  | { status: "error"; message: string; draftUrl?: string; mobileDraftUrl?: string }
+  | { status: "draft"; draftUrl: string; mobileDraftUrl: string };
 
 export interface ContactMessage {
   name: string;
@@ -41,8 +41,11 @@ export function createContactSubmission({
 
     const subject = "Website inquiry — BacktoBase";
     const body = `Name: ${name}\nReply email: ${email}\n\n${message}`;
-    const draftUrl = createGmailComposeUrl(subject, body);
-    if (!isDeliveryConfigured()) return { status: "draft", draftUrl };
+    const drafts = {
+      draftUrl: createGmailComposeUrl(subject, body),
+      mobileDraftUrl: createMailtoComposeUrl(subject, body),
+    };
+    if (!isDeliveryConfigured()) return { status: "draft", ...drafts };
 
     let ip: string | null;
     try {
@@ -50,22 +53,22 @@ export function createContactSubmission({
       if (!ip) {
         return {
           status: "error",
-          message: "Direct delivery is temporarily unavailable. Use the Gmail draft instead.",
-          draftUrl,
+          message: "Direct delivery is temporarily unavailable. Use the email draft instead.",
+          ...drafts,
         };
       }
       if (!(await checkRateLimit(ip))) {
         return {
           status: "error",
-          message: "Too many messages from this connection. Try again later or use the Gmail draft.",
-          draftUrl,
+          message: "Too many messages from this connection. Try again later or use the email draft.",
+          ...drafts,
         };
       }
     } catch {
       return {
         status: "error",
-        message: "Direct delivery is temporarily unavailable. Use the Gmail draft instead.",
-        draftUrl,
+        message: "Direct delivery is temporarily unavailable. Use the email draft instead.",
+        ...drafts,
       };
     }
 
@@ -77,8 +80,8 @@ export function createContactSubmission({
 
     return {
       status: "error",
-      message: "Your message could not be sent. Try again or open it in Gmail.",
-      draftUrl,
+      message: "Your message could not be sent. Try again or open the email draft.",
+      ...drafts,
     };
   };
 }

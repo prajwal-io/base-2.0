@@ -24,7 +24,7 @@ export function HyderabadSkyline() {
           fill
           sizes="22vw"
           className="object-cover object-left-bottom opacity-100"
-          priority
+          loading="eager"
         />
       </div>
       <div className="absolute bottom-0 right-0 h-[88%] w-[22%] overflow-hidden sm:h-[94%] sm:w-[22%]">
@@ -33,6 +33,7 @@ export function HyderabadSkyline() {
           alt=""
           fill
           sizes="22vw"
+          loading="eager"
           className="object-cover object-right-bottom opacity-100"
         />
       </div>

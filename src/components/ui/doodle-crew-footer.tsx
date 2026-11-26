@@ -50,6 +50,7 @@ export interface FooterSocial {
 export interface FooterNavLink {
   label: string;
   href: string;
+  mobileHref?: string;
   emphasis?: boolean;
   target?: "_blank" | "_self";
   rel?: string;
@@ -2008,6 +2009,13 @@ const DCF_CSS = `
   transition: color 160ms ease, text-decoration-color 160ms ease;
 }
 
+.dcf-footer-nav .dcf-footer-nav-desktop { display: none; }
+.dcf-footer-nav .dcf-footer-nav-mobile { display: inline-flex; }
+@media (min-width: 1024px) {
+  .dcf-footer-nav .dcf-footer-nav-desktop { display: inline-flex; }
+  .dcf-footer-nav .dcf-footer-nav-mobile { display: none; }
+}
+
 .dcf-footer-nav .dcf-footer-nav-emphasis {
   min-height: 34px;
   padding: 0 14px;
@@ -2810,7 +2818,16 @@ export default function DoodleCrewFooter({
           <div className="dcf-bottom">
             {links.length > 0 && (
               <nav className="dcf-footer-nav" aria-label="Footer navigation">
-                {links.map((item) => (
+                {links.map((item) => item.mobileHref ? (
+                  <React.Fragment key={item.href}>
+                    <Link href={item.href} target={item.target} rel={item.rel} className={`dcf-footer-nav-desktop${item.emphasis ? " dcf-footer-nav-emphasis" : ""}`}>
+                      {item.label}
+                    </Link>
+                    <Link href={item.mobileHref} className={`dcf-footer-nav-mobile${item.emphasis ? " dcf-footer-nav-emphasis" : ""}`}>
+                      {item.label}
+                    </Link>
+                  </React.Fragment>
+                ) : (
                   <Link
                     key={item.href}
                     href={item.href}

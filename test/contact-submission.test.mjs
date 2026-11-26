@@ -42,6 +42,8 @@ test("without SMTP delivery, a valid submission returns a Gmail draft", async ()
   assert.equal(result.status, "draft");
   assert.equal(new URL(result.draftUrl).searchParams.get("to"), "backtobase2025@gmail.com");
   assert.match(new URL(result.draftUrl).searchParams.get("body"), /Jamie Lee/);
+  assert.match(result.mobileDraftUrl, /^mailto:backtobase2025@gmail\.com\?/);
+  assert.match(new URLSearchParams(result.mobileDraftUrl.split("?")[1]).get("body"), /Jamie Lee/);
   assert.deepEqual(calls.rateLimit, []);
   assert.deepEqual(calls.send, []);
 });
@@ -53,6 +55,7 @@ test("a rate-limited submission is not sent and includes a Gmail fallback", asyn
   assert.equal(result.status, "error");
   assert.match(result.message, /Too many messages/);
   assert.ok("draftUrl" in result);
+  assert.ok("mobileDraftUrl" in result);
   assert.deepEqual(calls.send, []);
 });
 
@@ -63,6 +66,7 @@ test("if the shared limiter fails closed to email and offers the draft", async (
   assert.equal(result.status, "error");
   assert.match(result.message, /temporarily unavailable/);
   assert.ok("draftUrl" in result);
+  assert.ok("mobileDraftUrl" in result);
   assert.deepEqual(calls.send, []);
 });
 
@@ -73,6 +77,7 @@ test("without a trusted client IP, direct email is blocked and the draft remains
   assert.equal(result.status, "error");
   assert.match(result.message, /Direct delivery is temporarily unavailable/);
   assert.ok("draftUrl" in result);
+  assert.ok("mobileDraftUrl" in result);
   assert.deepEqual(calls.rateLimit, []);
   assert.deepEqual(calls.send, []);
 });
@@ -97,6 +102,7 @@ test("a rejected email returns an actionable error and draft", async () => {
   assert.equal(result.status, "error");
   assert.match(result.message, /could not be sent/);
   assert.ok("draftUrl" in result);
+  assert.ok("mobileDraftUrl" in result);
 });
 
 test("an email transport failure returns an actionable error and draft", async () => {
@@ -106,4 +112,5 @@ test("an email transport failure returns an actionable error and draft", async (
   assert.equal(result.status, "error");
   assert.match(result.message, /could not be sent/);
   assert.ok("draftUrl" in result);
+  assert.ok("mobileDraftUrl" in result);
 });

@@ -19,12 +19,12 @@ const NAV_ITEMS: (LiquidNavItem & { href: string })[] = [
 ];
 
 const subscribeToMobileLayout = (onChange: () => void) => {
-  const query = window.matchMedia("(max-width: 767px)");
+  const query = window.matchMedia("(max-width: 1023px)");
   query.addEventListener("change", onChange);
   return () => query.removeEventListener("change", onChange);
 };
 
-const getMobileLayout = () => window.matchMedia("(max-width: 767px)").matches;
+const getMobileLayout = () => window.matchMedia("(max-width: 1023px)").matches;
 
 export function Navbar({ introPhase = "complete" }: { introPhase?: "loading" | "handoff" | "complete" } = {}) {
   const pathname = usePathname();
@@ -112,7 +112,7 @@ export function Navbar({ introPhase = "complete" }: { introPhase?: "loading" | "
       if (event.matches) setMobileMenuOpen(false);
     };
 
-    const desktopBreakpoint = window.matchMedia("(min-width: 768px)");
+    const desktopBreakpoint = window.matchMedia("(min-width: 1024px)");
     document.addEventListener("keydown", closeOnEscape);
     document.addEventListener("pointerdown", closeOnOutsidePointer);
     desktopBreakpoint.addEventListener("change", closeAtDesktopBreakpoint);
@@ -129,12 +129,12 @@ export function Navbar({ introPhase = "complete" }: { introPhase?: "loading" | "
       ref={headerRef}
       className="sticky top-0 z-50 w-full pt-3 pb-2 px-4 sm:px-6 lg:px-8 pointer-events-none"
     >
-      <div className="relative mx-auto grid min-h-[54px] max-w-7xl grid-cols-[auto_minmax(0,1fr)] items-center pointer-events-auto md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
+      <div className="relative mx-auto grid min-h-[54px] max-w-7xl grid-cols-[auto_minmax(0,1fr)] items-center pointer-events-auto lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
         {/* Mobile-only logo pill (on desktop the logo lives inside the nav pill) */}
         <Link
           href="/"
           aria-label="BacktoBase home"
-          className="group flex md:hidden items-center rounded-full border border-[#E8E3DA] bg-white/90 px-3 py-2 shadow-pill backdrop-blur-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange max-[359px]:px-2 sm:px-5"
+          className="group flex lg:hidden items-center rounded-full border border-[#E8E3DA] bg-white/90 px-3 py-2 shadow-pill backdrop-blur-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange max-[359px]:px-2 sm:px-5"
         >
           {introPhase === "complete" ? mobileLogo : introPhase === "handoff" && isMobileLayout ? (
             <motion.span
@@ -167,11 +167,11 @@ export function Navbar({ introPhase = "complete" }: { introPhase?: "loading" | "
               ) : null}
             </Link>
           }
-          className="!hidden md:!inline-flex md:col-start-2 md:row-start-1 md:justify-self-center"
+          className="!hidden lg:!inline-flex lg:col-start-2 lg:row-start-1 lg:justify-self-center"
         />
 
         {/* Right CTA Button */}
-        <div className="col-start-2 flex items-center gap-2 justify-self-end sm:gap-3 md:col-start-3 md:row-start-1">
+        <div className="col-start-2 flex items-center gap-2 justify-self-end sm:gap-3 lg:col-start-3 lg:row-start-1">
           <FlowButton text="Partner with us" compactText="Partner" className="!pl-4 !pr-5 !text-sm !py-3 max-[359px]:!px-3" />
 
           {/* Mobile Menu Toggle Button */}
@@ -179,7 +179,7 @@ export function Navbar({ introPhase = "complete" }: { introPhase?: "loading" | "
             ref={mobileMenuButton}
             type="button"
             onClick={() => setMobileMenuOpen((open) => !open)}
-            className="grid size-11 place-items-center rounded-full border border-[#E8E3DA] bg-white/90 text-charcoal-900 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange md:hidden"
+            className="grid size-11 place-items-center rounded-full border border-[#E8E3DA] bg-white/90 text-charcoal-900 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange lg:hidden"
             aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
@@ -197,7 +197,7 @@ export function Navbar({ introPhase = "complete" }: { introPhase?: "loading" | "
             animate={{ opacity: 1, transform: "translateY(0px)" }}
             exit={reduceMotion ? undefined : { opacity: 0, transform: "translateY(-6px)" }}
             transition={{ duration: reduceMotion ? 0 : 0.18, ease: [0.23, 1, 0.32, 1] }}
-            className="pointer-events-auto absolute inset-x-4 top-full mx-auto max-h-[calc(100dvh-5.5rem)] max-w-sm overflow-y-auto overscroll-contain rounded-3xl border border-[#E8E3DA] bg-white/95 p-4 shadow-xl backdrop-blur-sm md:hidden"
+            className="pointer-events-auto absolute inset-x-4 top-full mx-auto max-h-[calc(100dvh-5.5rem)] max-w-sm overflow-y-auto overscroll-contain rounded-3xl border border-[#E8E3DA] bg-white/95 p-4 shadow-xl backdrop-blur-sm lg:hidden"
           >
             <nav id="mobile-navigation" aria-label="Mobile navigation" className="flex flex-col gap-1">
               {NAV_ITEMS.map((item, index) => {

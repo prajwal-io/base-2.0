@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { MouseEventHandler } from "react";
-import { PARTNER_CONTACT_URL } from "@/data/contact";
+import { PARTNER_CONTACT_MAILTO_URL, PARTNER_CONTACT_URL } from "@/data/contact";
 
 type FlowButtonProps = {
   text?: string;
@@ -12,20 +12,16 @@ type FlowButtonProps = {
 };
 
 export function FlowButton({ text = "Partner with us", compactText, href = PARTNER_CONTACT_URL, className, onClick }: FlowButtonProps) {
-  return (
-    <Link
-      href={href}
-      target={href.startsWith("https://mail.google.com/") ? "_blank" : undefined}
-      rel={href.startsWith("https://mail.google.com/") ? "noopener noreferrer" : undefined}
-      onClick={onClick}
-      className={`group relative flex min-h-12 cursor-pointer items-center gap-2.5 overflow-hidden rounded-full border border-brand-orange/60 bg-transparent px-5 py-3.5 text-sm font-semibold text-charcoal-950 transition-[color,background-color,border-color,border-radius,transform] duration-150 ease-out hover:rounded-xl hover:border-transparent hover:bg-brand-orange hover:text-charcoal-950 motion-safe:active:scale-[0.96] active:border-transparent active:bg-brand-orange active:text-charcoal-950 focus-visible:rounded-xl focus-visible:border-transparent focus-visible:bg-brand-orange focus-visible:text-charcoal-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2 ${className ?? ""}`}
-    >
+  const mobileHref = href === PARTNER_CONTACT_URL ? PARTNER_CONTACT_MAILTO_URL : undefined;
+  const linkClassName = `group relative flex min-h-12 cursor-pointer items-center gap-2.5 overflow-hidden rounded-full border border-brand-orange/60 bg-transparent px-5 py-3.5 text-sm font-semibold text-charcoal-950 transition-[color,background-color,border-color,border-radius,transform] duration-150 ease-out hover:rounded-xl hover:border-transparent hover:bg-brand-orange hover:text-charcoal-950 motion-safe:active:scale-[0.96] active:border-transparent active:bg-brand-orange active:text-charcoal-950 focus-visible:rounded-xl focus-visible:border-transparent focus-visible:bg-brand-orange focus-visible:text-charcoal-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2 ${className ?? ""}`;
+  const content = () => (
+    <>
       {compactText ? (
         <>
-          <span className="relative z-[1] hidden sm:inline">
+          <span className="relative z-[1] hidden lg:inline">
             {text}
           </span>
-          <span className="relative z-[1] sm:hidden">
+          <span className="relative z-[1] lg:hidden">
             {compactText}
           </span>
         </>
@@ -42,6 +38,25 @@ export function FlowButton({ text = "Partner with us", compactText, href = PARTN
         aria-hidden="true"
         className="relative z-[1] h-4 w-4 shrink-0 text-charcoal-950 transition-transform duration-200 ease-out motion-safe:group-hover:translate-x-1 group-focus-visible:translate-x-1 group-active:translate-x-1 motion-reduce:transition-none"
       />
+    </>
+  );
+
+  const renderLink = (linkHref: string, responsiveClassName = "", mobile = false) => (
+    <Link
+      href={linkHref}
+      target={!mobile && linkHref.startsWith("https://mail.google.com/") ? "_blank" : undefined}
+      rel={!mobile && linkHref.startsWith("https://mail.google.com/") ? "noopener noreferrer" : undefined}
+      onClick={onClick}
+      className={`${responsiveClassName} ${linkClassName}`}
+    >
+      {content()}
     </Link>
   );
+
+  return mobileHref ? (
+    <>
+      {renderLink(href, "hidden lg:flex")}
+      {renderLink(mobileHref, "flex lg:hidden", true)}
+    </>
+  ) : renderLink(href);
 }

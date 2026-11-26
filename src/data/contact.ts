@@ -12,8 +12,14 @@ export function createGmailComposeUrl(subject: string, body = ""): string {
   return `https://mail.google.com/mail/?${params.toString()}`;
 }
 
+export function createMailtoComposeUrl(subject: string, body = ""): string {
+  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 export const PARTNER_CONTACT_URL = createGmailComposeUrl("Partnership inquiry — BacktoBase");
 export const CONTACT_US_URL = createGmailComposeUrl("Contact BacktoBase");
+export const PARTNER_CONTACT_MAILTO_URL = createMailtoComposeUrl("Partnership inquiry — BacktoBase");
+export const CONTACT_US_MAILTO_URL = createMailtoComposeUrl("Contact BacktoBase");
 
 export interface JoinApplication {
   name: string;
@@ -24,7 +30,7 @@ export interface JoinApplication {
   message: string;
 }
 
-export function createApplicationGmailUrl(application: JoinApplication): string {
+function createApplicationDraft(application: JoinApplication) {
   const subjectName = application.name.replace(/[\r\n]+/g, " ").trim();
   const roles: Record<string, string> = {
     student: "Student / Campus Learner",
@@ -42,7 +48,7 @@ export function createApplicationGmailUrl(application: JoinApplication): string 
   const body = [
     "BacktoBase community application",
     "",
-    `Name: ${application.name.trim()}`,
+    `Name: ${subjectName}`,
     `Email: ${application.email.trim()}`,
     `Role: ${roles[application.role] ?? application.role}`,
     `College / company: ${application.institution.trim() || "Not provided"}`,
@@ -52,5 +58,15 @@ export function createApplicationGmailUrl(application: JoinApplication): string 
     application.message.trim() || "Not provided",
   ].join("\n");
 
-  return createGmailComposeUrl(`Community application from ${subjectName}`, body);
+  return { subject: `Community application from ${subjectName}`, body };
+}
+
+export function createApplicationGmailUrl(application: JoinApplication): string {
+  const { subject, body } = createApplicationDraft(application);
+  return createGmailComposeUrl(subject, body);
+}
+
+export function createApplicationMailtoUrl(application: JoinApplication): string {
+  const { subject, body } = createApplicationDraft(application);
+  return createMailtoComposeUrl(subject, body);
 }

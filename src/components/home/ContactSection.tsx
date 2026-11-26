@@ -5,7 +5,8 @@ import { ArrowUpRight, Send } from "lucide-react";
 import { useInView } from "framer-motion";
 import { submitContact } from "@/app/contact-actions";
 import { ContactIllustration } from "@/components/home/ContactIllustration";
-import { CONTACT_EMAIL, CONTACT_US_URL } from "@/data/contact";
+import { CONTACT_EMAIL, CONTACT_US_MAILTO_URL, CONTACT_US_URL } from "@/data/contact";
+import { ResponsiveEmailLink } from "@/components/ui/ResponsiveEmailLink";
 import type { ContactState } from "@/lib/contact-submission";
 
 const initialState: ContactState = { status: "idle" };
@@ -20,6 +21,7 @@ export function ContactSection() {
   const sectionInView = useInView(sectionRef, { amount: 0.12 });
   const sent = state.status === "sent";
   const draft = "draftUrl" in state ? state.draftUrl : undefined;
+  const mobileDraft = "mobileDraftUrl" in state ? state.mobileDraftUrl : undefined;
 
   return (
     <section ref={sectionRef} id="contact-us" aria-labelledby="contact-title" data-visible={sectionInView} className="contact-section scroll-mt-24 px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
@@ -28,9 +30,9 @@ export function ContactSection() {
           <ContactIllustration visible={sectionInView} sent={sent} titleId="contact-title" />
           <div className="mx-auto mt-6 max-w-sm text-center">
             <p className="text-sm leading-relaxed text-charcoal-700 sm:text-base">Have a question, an idea, or a partnership in mind? We’d love to hear from you.</p>
-            <a href={CONTACT_US_URL} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex min-h-11 max-w-full items-center gap-1 text-sm font-semibold text-[#803b21] underline underline-offset-4">
+            <ResponsiveEmailLink desktopHref={CONTACT_US_URL} mobileHref={CONTACT_US_MAILTO_URL} className="mt-3 min-h-11 max-w-full items-center gap-1 text-sm font-semibold text-[#803b21] underline underline-offset-4">
               <span className="break-all">{CONTACT_EMAIL}</span><ArrowUpRight className="size-4 shrink-0" aria-hidden="true" />
-            </a>
+            </ResponsiveEmailLink>
           </div>
         </div>
 
@@ -59,16 +61,16 @@ export function ContactSection() {
                   {pending ? "Submitting…" : "Submit message"}
                   <Send className="size-4" aria-hidden="true" />
                 </button>
-                {draft && (
-                  <a href={draft} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-[#803b21] underline underline-offset-4">
-                    Open Gmail draft <ArrowUpRight className="size-4" aria-hidden="true" />
-                  </a>
+                {draft && mobileDraft && (
+                  <ResponsiveEmailLink desktopHref={draft} mobileHref={mobileDraft} className="min-h-11 items-center gap-1 text-sm font-semibold text-[#803b21] underline underline-offset-4">
+                    Open email draft <ArrowUpRight className="size-4" aria-hidden="true" />
+                  </ResponsiveEmailLink>
                 )}
               </div>
               <div role="status" className="text-sm leading-relaxed text-charcoal-700">
                 {state.status === "error" && state.message}
-                {state.status === "draft" && "Your draft is ready. Open Gmail and press Send to deliver your message."}
-                {state.status === "idle" && "We’ll send it directly when delivery is available, or prepare a Gmail draft for you to send."}
+                {state.status === "draft" && "Your draft is ready. Open your email app and press Send to deliver your message."}
+                {state.status === "idle" && "We’ll send it directly when delivery is available, or prepare an email draft for you to send."}
               </div>
             </form>
           )}

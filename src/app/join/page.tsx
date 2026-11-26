@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { ArrowLeft, Send } from "lucide-react";
 import { Footer } from "@/components/layout/Footer";
-import { CONTACT_EMAIL, createApplicationGmailUrl } from "@/data/contact";
+import { CONTACT_EMAIL, CONTACT_US_MAILTO_URL, CONTACT_US_URL, createApplicationGmailUrl, createApplicationMailtoUrl } from "@/data/contact";
+import { ResponsiveEmailLink } from "@/components/ui/ResponsiveEmailLink";
 
 const labelClassName = "block text-[11px] font-bold uppercase tracking-[0.12em] text-charcoal-700";
 const controlClassName =
@@ -23,7 +24,8 @@ export default function JoinPage() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    window.location.assign(createApplicationGmailUrl(formData));
+    const isMobileLayout = window.matchMedia("(max-width: 1023px)").matches;
+    window.location.assign(isMobileLayout ? createApplicationMailtoUrl(formData) : createApplicationGmailUrl(formData));
   };
 
   return (
@@ -198,18 +200,15 @@ export default function JoinPage() {
                   type="submit"
                   className="flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full bg-brand-orange-ink px-5 py-3 font-display text-sm font-extrabold tracking-wide text-white transition-colors hover:bg-brand-orange-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange-ink focus-visible:ring-offset-2 motion-reduce:transition-none"
                 >
-                  Continue in Gmail
+                  Continue to email
                   <Send aria-hidden="true" className="size-4" />
                 </button>
 
                 <p className="text-center text-xs leading-relaxed text-charcoal-700">
-                  Your answers open in a Gmail draft. Nothing is sent until you review and send it. For help, email{" "}
-                  <a
-                    className="break-words font-semibold text-charcoal-900 underline underline-offset-2 decoration-brand-orange-ink/60"
-                    href={`mailto:${CONTACT_EMAIL}`}
-                  >
+                  Your answers open in an email draft. Nothing is sent until you review and send it. For help, email{" "}
+                  <ResponsiveEmailLink desktopHref={CONTACT_US_URL} mobileHref={CONTACT_US_MAILTO_URL} className="break-words font-semibold text-charcoal-900 underline underline-offset-2 decoration-brand-orange-ink/60">
                     {CONTACT_EMAIL}
-                  </a>
+                  </ResponsiveEmailLink>
                   .
                 </p>
               </form>

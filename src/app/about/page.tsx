@@ -3,7 +3,8 @@ import { Footer } from "@/components/layout/Footer";
 import { ArrowLeft, ArrowRight, Hammer, Mic2, MessagesSquare } from "lucide-react";
 import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 import { FOUNDER_PROFILE } from "@/data/founderData";
-import { CONTACT_US_URL } from "@/data/contact";
+import { CONTACT_US_MAILTO_URL, CONTACT_US_URL } from "@/data/contact";
+import { ResponsiveEmailLink } from "@/components/ui/ResponsiveEmailLink";
 
 export const metadata = {
   title: "About BacktoBase — Mission, Philosophy & Founder",
@@ -112,15 +113,10 @@ export default function AboutPage() {
             <h3 className="font-display font-bold text-2xl text-charcoal-950 mb-3">
               Want to speak, volunteer, or partner with us?
             </h3>
-            <Link
-              href={CONTACT_US_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-orange-ink hover:bg-brand-orange-hover text-white text-sm font-semibold tracking-wide transition-all shadow-md"
-            >
+            <ResponsiveEmailLink desktopHref={CONTACT_US_URL} mobileHref={CONTACT_US_MAILTO_URL} className="items-center gap-2 px-6 py-3 rounded-full bg-brand-orange-ink hover:bg-brand-orange-hover text-white text-sm font-semibold tracking-wide transition-all shadow-md">
               <span>Contact us</span>
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </ResponsiveEmailLink>
           </div>
 
         </div>

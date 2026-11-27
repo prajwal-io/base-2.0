@@ -41,6 +41,7 @@ All factual community details must derive from verified source PDFs or be marked
   - Guruvani Binneth — site owner confirmed the review is genuine and approved for publication on Nov 25, 2026.
   - Hasini
   - Lohith Sai
+  - Sachin Agarwal
   - Spandhana Chowdhary
   - Vennela
 - **Founder Statement**: Approved bio from homepage design.

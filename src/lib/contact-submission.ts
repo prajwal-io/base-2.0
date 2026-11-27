@@ -16,6 +16,7 @@ interface ContactSubmissionDependencies {
   isDeliveryConfigured: () => boolean;
   checkRateLimit: (ip: string) => Promise<boolean>;
   sendEmail: (contact: ContactMessage) => Promise<boolean>;
+  recordFailure?: (stage: "client_ip" | "rate_limit" | "email_delivery", error?: unknown) => void;
 }
 
 export function createContactSubmission({
@@ -23,6 +24,7 @@ export function createContactSubmission({
   isDeliveryConfigured,
   checkRateLimit,
   sendEmail,
+  recordFailure = () => {},
 }: ContactSubmissionDependencies) {
   return async (_previous: ContactState, form: FormData): Promise<ContactState> => {
     const field = (key: string) => {
@@ -50,13 +52,24 @@ export function createContactSubmission({
     let ip: string | null;
     try {
       ip = await getClientIp();
-      if (!ip) {
-        return {
-          status: "error",
-          message: "Direct delivery is temporarily unavailable. Use the email draft instead.",
-          ...drafts,
-        };
-      }
+    } catch (error) {
+      recordFailure("client_ip", error);
+      return {
+        status: "error",
+        message: "Direct delivery is temporarily unavailable. Use the email draft instead.",
+        ...drafts,
+      };
+    }
+    if (!ip) {
+      recordFailure("client_ip");
+      return {
+        status: "error",
+        message: "Direct delivery is temporarily unavailable. Use the email draft instead.",
+        ...drafts,
+      };
+    }
+
+    try {
       if (!(await checkRateLimit(ip))) {
         return {
           status: "error",
@@ -64,7 +77,8 @@ export function createContactSubmission({
           ...drafts,
         };
       }
-    } catch {
+    } catch (error) {
+      recordFailure("rate_limit", error);
       return {
         status: "error",
         message: "Direct delivery is temporarily unavailable. Use the email draft instead.",
@@ -74,7 +88,9 @@ export function createContactSubmission({
 
     try {
       if (await sendEmail({ name, email, message })) return { status: "sent" };
-    } catch {
+      recordFailure("email_delivery");
+    } catch (error) {
+      recordFailure("email_delivery", error);
       // Offer the same message as a draft if direct delivery fails.
     }
 

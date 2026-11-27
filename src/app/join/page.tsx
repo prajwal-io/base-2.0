@@ -24,7 +24,7 @@ export default function JoinPage() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const isMobileLayout = window.matchMedia("(max-width: 1023px)").matches;
+    const isMobileLayout = window.matchMedia("(max-width: 1023px), (pointer: coarse)").matches;
     window.location.assign(isMobileLayout ? createApplicationMailtoUrl(formData) : createApplicationGmailUrl(formData));
   };
 

@@ -41,6 +41,16 @@ const handleContactSubmission = createContactSubmission({
   isDeliveryConfigured: () => Boolean(process.env.CONTACT_SMTP_APP_PASSWORD?.trim()),
   checkRateLimit: checkContactRateLimit,
   sendEmail: sendContactEmail,
+  recordFailure: (stage, error) => {
+    const code = error && typeof error === "object" && "code" in error && typeof error.code === "string"
+      ? error.code
+      : undefined;
+    console.error("Contact submission failed", {
+      stage,
+      errorType: error instanceof Error ? error.name : error === undefined ? undefined : typeof error,
+      code,
+    });
+  },
 });
 
 export async function submitContact(previous: ContactState, form: FormData): Promise<ContactState> {

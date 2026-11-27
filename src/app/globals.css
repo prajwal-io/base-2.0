@@ -391,3 +391,13 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #B8B0A2;
 }
+
+@media (pointer: coarse) {
+  .responsive-email-link-desktop {
+    display: none !important;
+  }
+
+  .responsive-email-link-mobile {
+    display: inline-flex !important;
+  }
+}

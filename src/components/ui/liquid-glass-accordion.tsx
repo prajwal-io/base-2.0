@@ -209,7 +209,7 @@ function makeState() {
     w: 0,
     h: 0,
     ch: 0,
-    visible: true,
+    visible: false,
     reduce: false,
     raf: 0,
     last: 0,
@@ -407,15 +407,16 @@ export function LiquidAccordion({
 
   const loop = React.useCallback(() => {
     const s = st.current
-    if (s.raf) return
+    if (s.raf || !s.visible || document.hidden) return
     s.last = performance.now()
     const tick = (now: number) => {
       const dt = Math.min((now - s.last) / 1000, 1 / 30)
       s.last = now
       step(dt, now)
       draw()
-      const busy = s.moving || s.rips.length || s.sats.length || s.mouse.s > 0.01
-      if (s.visible && !document.hidden && (!s.reduce || busy)) s.raf = requestAnimationFrame(tick)
+      const pointerSettling = Math.abs(s.mouse.s - Number(s.mouse.on)) > 0.01
+      const busy = s.moving || s.rips.length > 0 || s.sats.length > 0 || pointerSettling
+      if (s.visible && !document.hidden && busy) s.raf = requestAnimationFrame(tick)
       else s.raf = 0
     }
     s.raf = requestAnimationFrame(tick)
@@ -456,11 +457,23 @@ export function LiquidAccordion({
     const s = st.current
     s.reduce = !!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
     const cv = canvasRef.current
-    s.glc = cv ? initGL(cv) : null
-    if (!s.glc) setGl("off")
+    let glInitialized = false
+    const initializeGL = () => {
+      if (glInitialized) return
+      glInitialized = true
+      s.glc = cv ? initGL(cv) : null
+      if (!s.glc) setGl("off")
+    }
     const lost = (e: Event) => { e.preventDefault(); s.glc = null; setGl("off") }
     cv?.addEventListener("webglcontextlost", lost)
-    const io = new IntersectionObserver(([e]) => { s.visible = e.isIntersecting; if (s.visible) loop() })
+    const io = new IntersectionObserver(([e]) => {
+      s.visible = e.isIntersecting
+      if (s.visible) {
+        initializeGL()
+        resize()
+        loop()
+      }
+    })
     if (rootRef.current) io.observe(rootRef.current)
     const vis = () => { if (s.visible && !document.hidden) loop() }
     document.addEventListener("visibilitychange", vis)

@@ -156,6 +156,14 @@ I'm truly grateful for the experiences, opportunities, and friendships I've gain
     role: "Community member and content creator",
     avatar: "/images/spandhana-chowdhary.png",
   },
+  {
+    slug: "sachin-agarwal",
+    quote: "Back to Base is a warm, welcoming community that brings people together. Being part of it has been a truly rewarding experience.",
+    longReview: "My experience with Back to Base has been wonderful. The community is supportive, and the team puts real thought into every interaction and event. I've met inspiring people, learned a lot, and always come away feeling more connected and energised. The genuine care behind everything they do stands out. I'd recommend Back to Base to anyone looking for a meaningful community to be part of.",
+    author: "Sachin Agarwal",
+    role: "Staff Software Engineer at Blue Yonder",
+    avatar: "/images/sachin-agarwal.png",
+  },
 ] as const;
 
 export const FAQS = [

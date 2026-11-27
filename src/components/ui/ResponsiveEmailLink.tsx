@@ -10,10 +10,10 @@ type ResponsiveEmailLinkProps = {
 export function ResponsiveEmailLink({ desktopHref, mobileHref, className = "", children }: ResponsiveEmailLinkProps) {
   return (
     <>
-      <a href={desktopHref} target="_blank" rel="noopener noreferrer" className={`!hidden lg:!inline-flex ${className}`}>
+      <a href={desktopHref} target="_blank" rel="noopener noreferrer" className={`responsive-email-link-desktop hidden lg:inline-flex ${className}`}>
         {children}
       </a>
-      <a href={mobileHref} className={`!inline-flex lg:!hidden ${className}`}>
+      <a href={mobileHref} className={`responsive-email-link-mobile inline-flex lg:hidden ${className}`}>
         {children}
       </a>
     </>

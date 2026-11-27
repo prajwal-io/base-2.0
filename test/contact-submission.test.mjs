@@ -12,12 +12,13 @@ function makeForm(overrides = {}) {
 }
 
 function makeAction(overrides = {}) {
-  const calls = { rateLimit: [], send: [] };
+  const calls = { rateLimit: [], send: [], failures: [] };
   const action = createContactSubmission({
     getClientIp: async () => "203.0.113.8",
     isDeliveryConfigured: () => true,
     checkRateLimit: async (ip) => { calls.rateLimit.push(ip); return true; },
     sendEmail: async (contact) => { calls.send.push(contact); return true; },
+    recordFailure: (...failure) => { calls.failures.push(failure); },
     ...overrides,
   });
   return { action, calls };
@@ -57,6 +58,7 @@ test("a rate-limited submission is not sent and includes a Gmail fallback", asyn
   assert.ok("draftUrl" in result);
   assert.ok("mobileDraftUrl" in result);
   assert.deepEqual(calls.send, []);
+  assert.deepEqual(calls.failures, []);
 });
 
 test("if the shared limiter fails closed to email and offers the draft", async () => {
@@ -68,6 +70,8 @@ test("if the shared limiter fails closed to email and offers the draft", async (
   assert.ok("draftUrl" in result);
   assert.ok("mobileDraftUrl" in result);
   assert.deepEqual(calls.send, []);
+  assert.equal(calls.failures[0][0], "rate_limit");
+  assert.match(calls.failures[0][1].message, /Redis unavailable/);
 });
 
 test("without a trusted client IP, direct email is blocked and the draft remains available", async () => {
@@ -106,11 +110,12 @@ test("a rejected email returns an actionable error and draft", async () => {
 });
 
 test("an email transport failure returns an actionable error and draft", async () => {
-  const { action } = makeAction({ sendEmail: async () => { throw new Error("SMTP unavailable"); } });
+  const { action, calls } = makeAction({ sendEmail: async () => { throw new Error("SMTP unavailable"); } });
   const result = await action({ status: "idle" }, makeForm());
 
   assert.equal(result.status, "error");
   assert.match(result.message, /could not be sent/);
   assert.ok("draftUrl" in result);
   assert.ok("mobileDraftUrl" in result);
+  assert.deepEqual(calls.failures, [["email_delivery", new Error("SMTP unavailable")]]);
 });

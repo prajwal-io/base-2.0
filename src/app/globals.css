@@ -168,9 +168,30 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  :target {
+    scroll-margin-top: 6.5rem;
+  }
+
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-brand-orange);
+    outline-offset: 3px;
+  }
+
+  :where(input:not([type="checkbox"]), select, textarea) {
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+  }
+
+  :where(input:not([type="checkbox"]), select, textarea):hover:not(:focus-visible) {
+    border-color: #B8B0A2;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
+    }
+
+    :where(input:not([type="checkbox"]), select, textarea) {
+      transition: none;
     }
   }
 

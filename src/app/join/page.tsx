@@ -10,7 +10,7 @@ import { ResponsiveEmailLink } from "@/components/ui/ResponsiveEmailLink";
 
 const labelClassName = "block text-[11px] font-bold uppercase tracking-[0.12em] text-charcoal-700";
 const controlClassName =
-  "mt-1.5 min-h-12 w-full rounded-xl border border-border-strong bg-canvas-subtle px-4 text-base text-charcoal-950 placeholder:text-charcoal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange-ink sm:text-sm";
+  "mt-1.5 min-h-12 w-full rounded-xl border border-border-strong bg-canvas-subtle px-4 text-base text-charcoal-950 placeholder:text-charcoal-500 transition-[border-color,box-shadow] duration-150 hover:border-charcoal-400 focus-visible:outline-none focus-visible:border-brand-orange-ink focus-visible:ring-2 focus-visible:ring-brand-orange-ink motion-reduce:transition-none sm:text-sm";
 
 export default function JoinPage() {
   const [formData, setFormData] = useState({
@@ -198,7 +198,7 @@ export default function JoinPage() {
 
                 <button
                   type="submit"
-                  className="flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full bg-brand-orange-ink px-5 py-3 font-display text-sm font-extrabold tracking-wide text-white transition-colors hover:bg-brand-orange-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange-ink focus-visible:ring-offset-2 motion-reduce:transition-none"
+                  className="flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full bg-brand-orange-ink px-5 py-3 font-display text-sm font-extrabold tracking-wide text-white transition-[background-color,transform] duration-150 hover:bg-brand-orange-hover motion-safe:active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange-ink focus-visible:ring-offset-2 motion-reduce:transition-none"
                 >
                   Continue to email
                   <Send aria-hidden="true" className="size-4" />

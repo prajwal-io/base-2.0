@@ -134,7 +134,7 @@ export function Navbar({ introPhase = "complete" }: { introPhase?: "loading" | "
         <Link
           href="/"
           aria-label="BacktoBase home"
-          className="group flex lg:hidden items-center rounded-full border border-[#E8E3DA] bg-white/90 px-3 py-2 shadow-pill backdrop-blur-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange max-[359px]:px-2 sm:px-5"
+          className="group flex lg:hidden items-center rounded-full border border-[#E8E3DA] bg-white/90 px-3 py-2 shadow-pill backdrop-blur-md transition-transform duration-150 hover:scale-[1.015] motion-safe:active:scale-[0.985] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange motion-reduce:transition-none max-[359px]:px-2 sm:px-5"
         >
           {introPhase === "complete" ? mobileLogo : introPhase === "handoff" && isMobileLayout ? (
             <motion.span
@@ -179,7 +179,7 @@ export function Navbar({ introPhase = "complete" }: { introPhase?: "loading" | "
             ref={mobileMenuButton}
             type="button"
             onClick={() => setMobileMenuOpen((open) => !open)}
-            className="grid size-11 place-items-center rounded-full border border-[#E8E3DA] bg-white/90 text-charcoal-900 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange lg:hidden"
+            className="grid size-11 place-items-center rounded-full border border-[#E8E3DA] bg-white/90 text-charcoal-900 shadow-sm transition-[background-color,transform] duration-150 hover:bg-canvas-subtle motion-safe:active:scale-[0.96] aria-expanded:bg-canvas-subtle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange motion-reduce:transition-none lg:hidden"
             aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"

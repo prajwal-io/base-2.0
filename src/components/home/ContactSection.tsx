@@ -10,7 +10,7 @@ import { ResponsiveEmailLink } from "@/components/ui/ResponsiveEmailLink";
 import type { ContactState } from "@/lib/contact-submission";
 
 const initialState: ContactState = { status: "idle" };
-const fieldStyle = "mt-2 w-full rounded-xl border border-border-strong bg-canvas-base px-3.5 py-2.5 text-base font-normal text-charcoal-950 outline-none focus-visible:ring-2 focus-visible:ring-brand-orange";
+const fieldStyle = "mt-2 w-full rounded-xl border border-border-strong bg-canvas-base px-3.5 py-2.5 text-base font-normal text-charcoal-950 outline-none transition-[border-color,box-shadow] duration-150 hover:border-charcoal-400 focus-visible:border-brand-orange focus-visible:ring-2 focus-visible:ring-brand-orange motion-reduce:transition-none";
 
 export function ContactSection() {
   const [state, submit, pending] = useActionState(submitContact, initialState);
@@ -57,7 +57,7 @@ export function ContactSection() {
               </label>
               <div hidden><label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                <button type="submit" disabled={pending} className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#243d3b] px-5 text-sm font-semibold text-white transition-colors hover:bg-[#36534e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-70">
+                <button type="submit" disabled={pending} className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#243d3b] px-5 text-sm font-semibold text-white transition-[background-color,transform] duration-150 hover:bg-[#36534e] motion-safe:active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-70 motion-reduce:transition-none">
                   {pending ? "Submitting…" : "Submit message"}
                   <Send className="size-4" aria-hidden="true" />
                 </button>

@@ -403,6 +403,7 @@ export function LiquidAccordion({
     s.rips.forEach((p) => (p.age += dt))
     s.rips = s.rips.filter((p) => p.age < 2.4)
     s.mouse.s += ((s.mouse.on ? 1 : 0) - s.mouse.s) * Math.min(1, dt * 7)
+    return still
   }, [target])
 
   const loop = React.useCallback(() => {
@@ -412,10 +413,10 @@ export function LiquidAccordion({
     const tick = (now: number) => {
       const dt = Math.min((now - s.last) / 1000, 1 / 30)
       s.last = now
-      step(dt, now)
+      const geometrySettled = step(dt, now)
       draw()
       const pointerSettling = Math.abs(s.mouse.s - Number(s.mouse.on)) > 0.01
-      const busy = s.moving || s.rips.length > 0 || s.sats.length > 0 || pointerSettling
+      const busy = s.moving || !geometrySettled || s.rips.length > 0 || s.sats.length > 0 || pointerSettling
       if (s.visible && !document.hidden && busy) s.raf = requestAnimationFrame(tick)
       else s.raf = 0
     }

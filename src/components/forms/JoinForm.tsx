@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { Send } from "lucide-react";
 import { prepareJoin } from "@/app/join-actions";
 import type { JoinState } from "@/lib/join-submission";
@@ -12,19 +12,27 @@ const labelClass = "block text-sm font-semibold text-charcoal-900";
 
 export default function JoinForm() {
   const [state, action, pending] = useActionState(prepareJoin, initialState);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
+  const [interests, setInterests] = useState<string[]>([]);
+
+  function toggleInterest(value: string, checked: boolean) {
+    setInterests((current) => checked ? [...current, value] : current.filter((interest) => interest !== value));
+  }
 
   return (
     <form action={action} className="space-y-5" aria-label="Join the BacktoBase community">
       <div className="grid gap-4 sm:grid-cols-2">
         <label className={labelClass} htmlFor="join-name">Full name
-          <input id="join-name" name="name" autoComplete="name" required maxLength={120} className={fieldClass} />
+          <input id="join-name" name="name" autoComplete="name" required maxLength={120} className={fieldClass} value={name} onChange={(event) => setName(event.target.value)} />
         </label>
         <label className={labelClass} htmlFor="join-email">Email address
-          <input id="join-email" name="email" type="email" autoComplete="email" required maxLength={254} className={fieldClass} />
+          <input id="join-email" name="email" type="email" autoComplete="email" required maxLength={254} className={fieldClass} value={email} onChange={(event) => setEmail(event.target.value)} />
         </label>
       </div>
       <label className={labelClass} htmlFor="join-role">Profession or current role <span className="font-normal text-charcoal-600">(optional)</span>
-        <input id="join-role" name="role" maxLength={120} placeholder="Student, engineer, mentor, creator…" className={fieldClass} />
+        <input id="join-role" name="role" maxLength={120} placeholder="Student, engineer, mentor, creator…" className={fieldClass} value={role} onChange={(event) => setRole(event.target.value)} />
       </label>
       <fieldset>
         <legend className={labelClass}>Areas of interest <span className="font-normal text-charcoal-600">(optional)</span></legend>
@@ -37,7 +45,7 @@ export default function JoinForm() {
             ["partnerships", "Explore a partnership"],
           ].map(([value, label]) => (
             <label key={value} className="flex min-h-11 items-center gap-3 rounded-xl border border-border-subtle bg-white px-3 text-sm text-charcoal-800">
-              <input name="interests" type="checkbox" value={value} className="size-4 accent-brand-orange" />{label}
+              <input name="interests" type="checkbox" value={value} checked={interests.includes(value)} onChange={(event) => toggleInterest(value, event.target.checked)} className="size-4 accent-brand-orange" />{label}
             </label>
           ))}
         </div>

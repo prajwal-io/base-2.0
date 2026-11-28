@@ -69,7 +69,7 @@ export function ContactSection() {
               </div>
               <div role="status" className="text-sm leading-relaxed text-charcoal-700">
                 {state.status === "error" && state.message}
-                {state.status === "draft" && "Your draft is ready. Open your email app and press Send to deliver your message."}
+                {state.status === "draft" && "Your email draft is ready. Copy the email details, open your email app, paste them into the draft, then send it."}
                 {state.status === "idle" && "We’ll send it directly when delivery is available, or prepare an email draft for you to send."}
               </div>
             </form>

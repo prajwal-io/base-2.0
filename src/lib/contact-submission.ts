@@ -72,7 +72,7 @@ export function createContactSubmission({
       recordFailure("client_ip", error);
       return {
         status: "error",
-        message: "Direct delivery is temporarily unavailable. Use the email draft instead.",
+        message: "Direct delivery is temporarily unavailable. Copy the email details, open an email draft, paste them in, then send it.",
         ...drafts,
       };
     }
@@ -80,7 +80,7 @@ export function createContactSubmission({
       recordFailure("client_ip");
       return {
         status: "error",
-        message: "Direct delivery is temporarily unavailable. Use the email draft instead.",
+        message: "Direct delivery is temporarily unavailable. Copy the email details, open an email draft, paste them in, then send it.",
         ...drafts,
       };
     }
@@ -89,7 +89,7 @@ export function createContactSubmission({
       if (!(await checkRateLimit(ip))) {
         return {
           status: "error",
-          message: "Too many messages from this connection. Try again later or use the email draft.",
+          message: "Too many messages from this connection. Try again later, or copy the email details into an email draft, paste them in, then send it.",
           ...drafts,
         };
       }
@@ -97,7 +97,7 @@ export function createContactSubmission({
       recordFailure("rate_limit", error);
       return {
         status: "error",
-        message: "Direct delivery is temporarily unavailable. Use the email draft instead.",
+        message: "Direct delivery is temporarily unavailable. Copy the email details, open an email draft, paste them in, then send it.",
         ...drafts,
       };
     }
@@ -112,7 +112,7 @@ export function createContactSubmission({
 
     return {
       status: "error",
-      message: "Your message could not be sent. Try again or open the email draft.",
+      message: "Your message could not be sent. Try again, or copy the email details into an email draft, paste them in, then send it.",
       ...drafts,
     };
   };

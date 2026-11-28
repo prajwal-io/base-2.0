@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { Send } from "lucide-react";
 import { submitContact } from "@/app/contact-actions";
 import type { ContactState } from "@/lib/contact-submission";
@@ -11,6 +11,10 @@ const fieldClass = "mt-2 w-full rounded-xl border border-border-strong bg-white 
 
 export default function ContactForm({ className }: { className?: string }) {
   const [state, action, pending] = useActionState(submitContact, initialState);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [category, setCategory] = useState("general");
+  const [message, setMessage] = useState("");
   const sent = state.status === "sent";
 
   if (sent) return <p role="status" className="rounded-2xl border border-border-subtle bg-white p-8 text-center text-lg font-semibold text-charcoal-900">Thanks for reaching out. Your message was sent.</p>;
@@ -19,14 +23,14 @@ export default function ContactForm({ className }: { className?: string }) {
     <form action={action} aria-label="Contact BacktoBase" className={`grid gap-5 ${className ?? ""}`}>
       <div className="grid gap-4 sm:grid-cols-2">
         <label htmlFor="contact-name" className="text-sm font-semibold text-charcoal-900">Full name
-          <input id="contact-name" name="name" autoComplete="name" required maxLength={100} className={fieldClass} />
+          <input id="contact-name" name="name" autoComplete="name" required maxLength={100} className={fieldClass} value={name} onChange={(event) => setName(event.target.value)} />
         </label>
         <label htmlFor="contact-email" className="text-sm font-semibold text-charcoal-900">Email address
-          <input id="contact-email" name="email" type="email" autoComplete="email" required maxLength={254} className={fieldClass} />
+          <input id="contact-email" name="email" type="email" autoComplete="email" required maxLength={254} className={fieldClass} value={email} onChange={(event) => setEmail(event.target.value)} />
         </label>
       </div>
       <label htmlFor="contact-category" className="text-sm font-semibold text-charcoal-900">What can we help with?
-        <select id="contact-category" name="category" className={fieldClass}>
+        <select id="contact-category" name="category" className={fieldClass} value={category} onChange={(event) => setCategory(event.target.value)}>
           <option value="general">General enquiries</option>
           <option value="community">Community support</option>
           <option value="mentor">Mentor enquiries</option>
@@ -35,7 +39,7 @@ export default function ContactForm({ className }: { className?: string }) {
         </select>
       </label>
       <label htmlFor="contact-message" className="text-sm font-semibold text-charcoal-900">Message
-        <textarea id="contact-message" name="message" rows={5} required maxLength={2000} className={`${fieldClass} resize-y`} />
+        <textarea id="contact-message" name="message" rows={5} required maxLength={2000} className={`${fieldClass} resize-y`} value={message} onChange={(event) => setMessage(event.target.value)} />
       </label>
       <div className="hidden" aria-hidden="true"><label htmlFor="contact-website">Website</label><input id="contact-website" name="website" tabIndex={-1} autoComplete="off" /></div>
       <div className="flex flex-wrap items-center gap-4">
@@ -47,7 +51,7 @@ export default function ContactForm({ className }: { className?: string }) {
       </div>
       <p role="status" aria-live="polite" className="text-sm leading-relaxed text-charcoal-700">
         {state.status === "idle" && "The form will send your enquiry when delivery is configured, or prepare an email draft for you to send."}
-        {state.status === "draft" && "Your draft is ready. Open your email app and press Send to deliver your message."}
+        {state.status === "draft" && "Your email draft is ready. Copy the email details, open your email app, paste them into the draft, then send it."}
         {state.status === "error" && state.message}
       </p>
     </form>

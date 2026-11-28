@@ -70,6 +70,7 @@ test("if the shared limiter fails closed to email and offers the draft", async (
 
   assert.equal(result.status, "error");
   assert.match(result.message, /temporarily unavailable/);
+  assert.match(result.message, /copy the email details.*paste them in/i);
   assert.ok("draftUrl" in result);
   assert.ok("mobileDraftUrl" in result);
   assert.deepEqual(calls.send, []);
@@ -83,6 +84,7 @@ test("without a trusted client IP, direct email is blocked and the draft remains
 
   assert.equal(result.status, "error");
   assert.match(result.message, /Direct delivery is temporarily unavailable/);
+  assert.match(result.message, /copy the email details.*paste them in/i);
   assert.ok("draftUrl" in result);
   assert.ok("mobileDraftUrl" in result);
   assert.deepEqual(calls.rateLimit, []);
@@ -121,6 +123,7 @@ test("a rejected email returns an actionable error and draft", async () => {
 
   assert.equal(result.status, "error");
   assert.match(result.message, /could not be sent/);
+  assert.match(result.message, /copy the email details.*paste them in/i);
   assert.ok("draftUrl" in result);
   assert.ok("mobileDraftUrl" in result);
 });

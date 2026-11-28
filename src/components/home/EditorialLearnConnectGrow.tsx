@@ -2,8 +2,6 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
-import { PARTNER_CONTACT_MAILTO_URL, PARTNER_CONTACT_URL } from "@/data/contact";
-import { ResponsiveEmailLink } from "@/components/ui/ResponsiveEmailLink";
 import {
   AnimatePresence,
   motion,
@@ -21,7 +19,6 @@ interface PillarStory {
   copy: string;
   ctaLabel: string;
   ctaHref: string;
-  ctaMobileHref?: string;
 }
 
 const PILLARS: readonly PillarStory[] = [
@@ -31,7 +28,7 @@ const PILLARS: readonly PillarStory[] = [
     heading: "Real-world insights from people who actually build.",
     copy: "Move past textbook theory with live engineering teardowns, candid founder talks, and practical sessions led by active industry practitioners.",
     ctaLabel: "Explore all editions",
-    ctaHref: "/events",
+    ctaHref: "/editions",
   },
   {
     word: "CONNECT.",
@@ -39,16 +36,23 @@ const PILLARS: readonly PillarStory[] = [
     heading: "A student community that turns curiosity into opportunity.",
     copy: "Work on real ideas, meet industry professionals, and build alongside ambitious peers, mentors, and future collaborators.",
     ctaLabel: "Find your people",
-    ctaHref: "/community",
+    ctaHref: "/connect",
+  },
+  {
+    word: "BUILD.",
+    eyebrow: "03 / Put ideas into practice",
+    heading: "Bring a rough idea into the room.",
+    copy: "Share what you are learning, ask for feedback, and find people who can help you take a next step.",
+    ctaLabel: "See community highlights",
+    ctaHref: "/highlights",
   },
   {
     word: "GROW.",
-    eyebrow: "03 / From attendee to voice",
+    eyebrow: "04 / From attendee to voice",
     heading: "Step onto the stage and level up your craft together.",
     copy: "Sharpen your skills, get direct feedback from builders and leaders, and grow from attending your first edition to shaping the next one.",
     ctaLabel: "Partner with us",
-    ctaHref: PARTNER_CONTACT_URL,
-    ctaMobileHref: PARTNER_CONTACT_MAILTO_URL,
+    ctaHref: "/contact",
   },
 ] as const;
 
@@ -574,17 +578,10 @@ export default function EditorialLearnConnectGrow() {
                 <p className="lcg-eyebrow lcg-eyebrow--story">{activePillar.eyebrow}</p>
                 <h3 className="lcg-story-heading">{activePillar.heading}</h3>
                 <p className="lcg-copy">{activePillar.copy}</p>
-                {activePillar.ctaMobileHref ? (
-                  <ResponsiveEmailLink className="lcg-link" desktopHref={activePillar.ctaHref} mobileHref={activePillar.ctaMobileHref}>
-                    <span>{activePillar.ctaLabel}</span>
-                    <span className="lcg-link-arrow" aria-hidden="true">↗</span>
-                  </ResponsiveEmailLink>
-                ) : (
-                  <Link className="lcg-link" href={activePillar.ctaHref}>
-                    <span>{activePillar.ctaLabel}</span>
-                    <span className="lcg-link-arrow" aria-hidden="true">↗</span>
-                  </Link>
-                )}
+                <Link className="lcg-link" href={activePillar.ctaHref}>
+                  <span>{activePillar.ctaLabel}</span>
+                  <span className="lcg-link-arrow" aria-hidden="true">↗</span>
+                </Link>
               </motion.div>
             </AnimatePresence>
           </div>

@@ -2819,7 +2819,7 @@ export default function DoodleCrewFooter({
             {links.length > 0 && (
               <nav className="dcf-footer-nav" aria-label="Footer navigation">
                 {links.map((item) => item.mobileHref ? (
-                  <React.Fragment key={item.href}>
+                  <React.Fragment key={item.label}>
                     <Link href={item.href} target={item.target} rel={item.rel} className={`dcf-footer-nav-desktop${item.emphasis ? " dcf-footer-nav-emphasis" : ""}`}>
                       {item.label}
                     </Link>
@@ -2829,7 +2829,7 @@ export default function DoodleCrewFooter({
                   </React.Fragment>
                 ) : (
                   <Link
-                    key={item.href}
+                    key={item.label}
                     href={item.href}
                     target={item.target}
                     rel={item.rel}

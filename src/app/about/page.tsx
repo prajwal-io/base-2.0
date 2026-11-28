@@ -1,14 +1,17 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Footer } from "@/components/layout/Footer";
 import { ArrowLeft, ArrowRight, Hammer, Mic2, MessagesSquare } from "lucide-react";
 import { CustomVisualSlot } from "@/components/ui/CustomVisualSlot";
 import { FOUNDER_PROFILE } from "@/data/founderData";
 import { CONTACT_US_MAILTO_URL, CONTACT_US_URL } from "@/data/contact";
 import { ResponsiveEmailLink } from "@/components/ui/ResponsiveEmailLink";
+import { EDITIONS, TEAM_MEMBERS } from "@/data/communityData";
+import { getEditionPhoto } from "@/data/editionPhotos";
 
 export const metadata = {
-  title: "About BacktoBase — Mission, Philosophy & Founder",
-  description: "Learn about BacktoBase, founded by Yashwanth Bondapalli to bridge students with the real world.",
+  title: "About BacktoBase — Story, Mission & Community",
+  description: "Discover the story, purpose, values and people behind BacktoBase, a community connecting campus and industry through learning, connection and building.",
 };
 
 export default function AboutPage() {
@@ -27,18 +30,38 @@ export default function AboutPage() {
             </Link>
             <div className="flex items-center gap-3 mb-2">
               <span className="text-xs font-bold tracking-[0.2em] uppercase text-brand-orange-ink">
-                The BacktoBase Story
+                A movement beyond campus
               </span>
               <div className="h-[1px] w-12 bg-charcoal-300" />
             </div>
-            <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-charcoal-950 mb-4">
-              From Campuses<br />
-              <span className="text-brand-cyan">To The Real World.</span>
+            <h1 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-charcoal-950 mb-4">
+              More Than An Event.<br />
+              <span className="text-brand-cyan">A Movement.</span>
             </h1>
             <p className="text-base sm:text-lg text-charcoal-700 leading-relaxed font-normal">
-              BacktoBase was founded on a simple idea: students build confidence and career momentum when they learn alongside people working in the industry.
+              BacktoBase brings students, professionals, mentors, creators and industry leaders together through practical learning, meaningful connections and real-world experiences.
             </p>
           </div>
+
+          <section aria-labelledby="purpose-title" className="mb-16">
+            <div className="mb-6 max-w-3xl">
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-orange-ink">Our purpose</p>
+              <h2 id="purpose-title" className="mt-2 font-display text-2xl font-black uppercase tracking-tight text-charcoal-950 sm:text-3xl">From learning to building, together.</h2>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {[
+                { title: "Purpose", copy: "Bring campus and industry closer through practical conversations and shared experiences." },
+                { title: "Mission", copy: "Make room for people to learn from practitioners, connect with one another, and share what they are building." },
+                { title: "Vision", copy: "A community where everyone has a place and every journey can move from learning to building." },
+              ].map((item, index) => (
+                <article key={item.title} className="rounded-2xl border border-border-subtle bg-white p-6 shadow-card">
+                  <span className="text-xs font-bold tabular-nums text-brand-orange-ink">0{index + 1}</span>
+                  <h3 className="mt-4 font-display text-xl font-bold text-charcoal-950">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-charcoal-700">{item.copy}</p>
+                </article>
+              ))}
+            </div>
+          </section>
 
           {/* Philosophy Pillars */}
           <div className="mb-16 grid grid-cols-1 gap-7 border-y border-[#d5c8b9] py-7 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-3 lg:gap-0 lg:py-8">
@@ -73,6 +96,33 @@ export default function AboutPage() {
             </article>
           </div>
 
+          <section id="journey" aria-labelledby="milestones-title" className="mb-16 scroll-mt-28">
+            <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-orange-ink">A journey built one edition at a time</p>
+                <h2 id="milestones-title" className="mt-2 font-display text-2xl font-black uppercase tracking-tight text-charcoal-950 sm:text-3xl">Moments that shaped the movement</h2>
+              </div>
+              <Link href="/editions" className="inline-flex min-h-11 items-center gap-2 self-start text-sm font-semibold text-charcoal-800 underline decoration-brand-orange/50 underline-offset-4 hover:text-brand-orange-ink sm:self-auto">
+                Browse all editions <ArrowRight aria-hidden="true" className="size-4" />
+              </Link>
+            </div>
+            <ol className="grid gap-4 md:grid-cols-3">
+              {EDITIONS.filter(({ editionNumber }) => ["01", "05", "09"].includes(editionNumber)).map((edition) => {
+                const photo = getEditionPhoto(edition.editionNumber);
+                return (
+                  <li key={edition.editionNumber} className="overflow-hidden rounded-2xl border border-border-subtle bg-white shadow-card">
+                    {photo && <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} sizes="(max-width: 767px) 100vw, 33vw" className="aspect-[1.75/1] w-full object-cover" />}
+                    <div className="p-5">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-orange-ink">Edition {edition.editionNumber} · {edition.date}</p>
+                      <h3 className="mt-2 font-display text-lg font-bold text-charcoal-950">{edition.title}</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-charcoal-700">{edition.theme} · {edition.venue}</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          </section>
+
           {/* Founder Section */}
           <section id="founder" className="rounded-3xl bg-canvas-dark text-white p-8 sm:p-12 lg:p-16 mb-16 overflow-hidden relative shadow-2xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -105,6 +155,28 @@ export default function AboutPage() {
                   </Link>
                 </div>
               </div>
+            </div>
+          </section>
+
+          <section aria-labelledby="people-title" className="mb-16 rounded-3xl border border-border-subtle bg-white p-6 shadow-card sm:p-9">
+            <div className="mb-5 max-w-2xl">
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-orange-ink">People who make it happen</p>
+              <h2 id="people-title" className="mt-2 font-display text-2xl font-black uppercase tracking-tight text-charcoal-950 sm:text-3xl">A founder, a team, a wider community.</h2>
+              <p className="mt-2 text-sm leading-relaxed text-charcoal-700">BacktoBase is founded by {FOUNDER_PROFILE.name} and shaped by the people who show up, share their work and help each edition happen.</p>
+            </div>
+            <ul className="flex flex-wrap gap-2" aria-label="BacktoBase team and community contributors">
+              {TEAM_MEMBERS.map((member) => <li key={member} className="rounded-full border border-border-strong bg-canvas-subtle px-3.5 py-2 text-xs font-semibold text-charcoal-800">{member}</li>)}
+            </ul>
+          </section>
+
+          <section aria-labelledby="ecosystem-title" className="mb-12 grid gap-7 rounded-3xl bg-canvas-subtle p-6 sm:p-9 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-orange-ink">One community, many journeys</p>
+              <h2 id="ecosystem-title" className="mt-2 font-display text-2xl font-black uppercase tracking-tight text-charcoal-950 sm:text-3xl">Everyone has a place.</h2>
+            </div>
+            <div>
+              <p className="text-sm leading-relaxed text-charcoal-700">Students, professionals, mentors, entrepreneurs, developers, creators, institutions and companies can all take part. Meet people, join a conversation, share an idea, mentor someone or help bring a gathering to life.</p>
+              <Link href="/connect" className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-brand-orange-ink px-5 text-sm font-semibold text-white hover:bg-brand-orange-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2">Join the movement <ArrowRight aria-hidden="true" className="size-4" /></Link>
             </div>
           </section>
 

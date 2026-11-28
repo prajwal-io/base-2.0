@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { HeroSection } from "@/components/home/HeroSection";
 import { HeroCommunityStage } from "@/components/home/HeroCommunityStage";
 import { StatsBar } from "@/components/home/StatsBar";
@@ -11,6 +12,12 @@ import { ContactSection } from "@/components/home/ContactSection";
 import { Footer } from "@/components/layout/Footer";
 import { EDITIONS, EDITION_COUNT, VENUE_COUNT } from "@/data/communityData";
 import { getEditionPhoto } from "@/data/editionPhotos";
+import { HomepageExperienceLinks, UpcomingEventsNote } from "@/components/home/HomepageExperienceLinks";
+
+export const metadata: Metadata = {
+  title: "BacktoBase — A Movement Beyond Campus",
+  description: "From campus to industry. From learning to building. A growing community connecting students, professionals, mentors, creators and industry leaders through practical learning, meaningful connections and real-world experiences.",
+};
 
 export default function HomePage() {
   return (
@@ -18,6 +25,7 @@ export default function HomePage() {
       <main id="main-content" tabIndex={-1} className="flex-grow">
         <HeroSection communityStage={<HeroCommunityStage variant="floor" />} editionCount={EDITION_COUNT} />
         <StatsBar editionCount={EDITION_COUNT} venueCount={VENUE_COUNT} />
+        <UpcomingEventsNote />
         <VenueStrip />
         <EditorialLearnConnectGrow />
         <EventArchiveFolders
@@ -34,6 +42,7 @@ export default function HomePage() {
           }))}
         />
         <CommunityBanner />
+        <HomepageExperienceLinks />
         <MemberStories />
         <FaqSection />
         <ContactSection />

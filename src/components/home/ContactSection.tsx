@@ -7,6 +7,7 @@ import { submitContact } from "@/app/contact-actions";
 import { ContactIllustration } from "@/components/home/ContactIllustration";
 import { CONTACT_EMAIL, CONTACT_US_MAILTO_URL, CONTACT_US_URL } from "@/data/contact";
 import { ResponsiveEmailLink } from "@/components/ui/ResponsiveEmailLink";
+import { EmailDraftActions } from "@/components/forms/EmailDraftActions";
 import type { ContactState } from "@/lib/contact-submission";
 
 const initialState: ContactState = { status: "idle" };
@@ -20,8 +21,11 @@ export function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const sectionInView = useInView(sectionRef, { amount: 0.12 });
   const sent = state.status === "sent";
-  const draft = "draftUrl" in state ? state.draftUrl : undefined;
-  const mobileDraft = "mobileDraftUrl" in state ? state.mobileDraftUrl : undefined;
+  const drafts = "draftUrl" in state && typeof state.draftUrl === "string" &&
+    "mobileDraftUrl" in state && typeof state.mobileDraftUrl === "string" &&
+    typeof state.draftText === "string"
+    ? { gmailUrl: state.draftUrl, mailtoUrl: state.mobileDraftUrl, draftText: state.draftText }
+    : undefined;
 
   return (
     <section ref={sectionRef} id="contact-us" aria-labelledby="contact-title" data-visible={sectionInView} className="contact-section scroll-mt-24 px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
@@ -61,11 +65,7 @@ export function ContactSection() {
                   {pending ? "Submitting…" : "Submit message"}
                   <Send className="size-4" aria-hidden="true" />
                 </button>
-                {draft && mobileDraft && (
-                  <ResponsiveEmailLink desktopHref={draft} mobileHref={mobileDraft} className="min-h-11 items-center gap-1 text-sm font-semibold text-[#803b21] underline underline-offset-4">
-                    Open email draft <ArrowUpRight className="size-4" aria-hidden="true" />
-                  </ResponsiveEmailLink>
-                )}
+                {drafts && <EmailDraftActions {...drafts} />}
               </div>
               <div role="status" className="text-sm leading-relaxed text-charcoal-700">
                 {state.status === "error" && state.message}

@@ -22,7 +22,7 @@ export function IntroLoader({
     const timer = window.setTimeout(() => {
       const cssFallback = loaderRef.current && getComputedStyle(loaderRef.current).visibility === "hidden";
       onReady(Boolean(cssFallback));
-    }, reducedMotion ? 0 : 140);
+    }, reducedMotion ? 0 : 2160);
 
     return () => window.clearTimeout(timer);
   }, [onReady, phase]);
@@ -64,7 +64,11 @@ export function IntroLoader({
         )}
         {phase === "loading" && (
           <span className="intro-loader__tagline" aria-hidden="true">
-            Learn. Connect. Grow.
+            {["Learn.", "Connect.", "Grow."].map((word, index) => (
+              <span key={word} style={{ animationDelay: `${index * 70}ms` }}>
+                {word}
+              </span>
+            ))}
           </span>
         )}
       </div>

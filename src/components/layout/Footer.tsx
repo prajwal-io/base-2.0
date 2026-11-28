@@ -7,7 +7,6 @@ import DoodleCrewFooter, {
 } from "@/components/ui/doodle-crew-footer";
 import { displayFont, footerSerifFont } from "@/app/fonts";
 import { backtoBaseCrewArtwork } from "@/data/crewArtwork";
-import { CONTACT_US_MAILTO_URL, CONTACT_US_URL } from "@/data/contact";
 
 const backtoBaseCrew: CrewMember[] = [
   {
@@ -82,11 +81,14 @@ const backtoBaseSocials: FooterSocial[] = [
 
 const backtoBaseFooterLinks: FooterNavLink[] = [
   { label: "Home", href: "/" },
-  { label: "Events", href: "/events" },
-  { label: "Community", href: "/community" },
-  { label: "About", href: "/about" },
-  { label: "Join", href: "/join", emphasis: true },
-  { label: "Contact us", href: CONTACT_US_URL, mobileHref: CONTACT_US_MAILTO_URL, target: "_blank", rel: "noopener noreferrer" },
+  { label: "About Us", href: "/about" },
+  { label: "Connect", href: "/connect" },
+  { label: "Highlights", href: "/highlights" },
+  { label: "Editions", href: "/editions" },
+  { label: "Videos", href: "/videos" },
+  { label: "Community Reviews", href: "/reviews" },
+  { label: "Contact Us", href: "/contact" },
+  { label: "Join BacktoBase", href: "/connect", emphasis: true },
 ];
 
 export function Footer() {
@@ -95,7 +97,7 @@ export function Footer() {
       id="footer"
       className="backtobase-footer"
       wordmark="BACKTOBASE"
-      tagline="Learn. Connect. Grow."
+      tagline="A movement beyond campus."
       crew={backtoBaseCrew}
       crewArtwork={backtoBaseCrewArtwork}
       doodleCount={0}

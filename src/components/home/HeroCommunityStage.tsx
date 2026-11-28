@@ -117,7 +117,7 @@ function TakeTheFloor({ reduced }: { reduced: boolean }) {
   const inView = useInView(stageRef);
 
   return (
-    <figure ref={stageRef} data-in-view={inView} className="hero-crew-stage relative mx-auto mt-5 w-full max-w-5xl px-3 sm:mt-6 sm:px-8">
+    <figure ref={stageRef} data-in-view={inView} className="hero-crew-stage relative mx-auto mt-3 w-full max-w-5xl px-3 sm:mt-5 sm:px-8">
       <div aria-hidden="true" className="relative isolate px-1 sm:px-4">
         <HyderabadSkyline />
         <motion.div

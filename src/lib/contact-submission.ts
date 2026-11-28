@@ -1,14 +1,24 @@
 import { createGmailComposeUrl, createMailtoComposeUrl } from "../data/contact";
 
+const CONTACT_CATEGORIES = new Set(["general", "community", "mentor", "corporate", "institutional"]);
+const CONTACT_CATEGORY_LABELS = {
+  general: "General enquiry",
+  community: "Community support",
+  mentor: "Mentor enquiry",
+  corporate: "Corporate partnership",
+  institutional: "Institutional collaboration",
+} as const;
+
 export type ContactState =
   | { status: "idle" | "sent" }
-  | { status: "error"; message: string; draftUrl?: string; mobileDraftUrl?: string }
-  | { status: "draft"; draftUrl: string; mobileDraftUrl: string };
+  | { status: "error"; message: string; draftText?: string; draftUrl?: string; mobileDraftUrl?: string }
+  | { status: "draft"; draftText: string; draftUrl: string; mobileDraftUrl: string };
 
 export interface ContactMessage {
   name: string;
   email: string;
   message: string;
+  category?: "general" | "community" | "mentor" | "corporate" | "institutional";
 }
 
 interface ContactSubmissionDependencies {
@@ -35,17 +45,23 @@ export function createContactSubmission({
     const name = field("name");
     const email = field("email");
     const message = field("message");
+    const rawCategory = field("category");
     if (field("website") || !name || name.length > 100 ||
       email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
-      !message || message.length > 2000) {
+      !message || message.length > 2000 || (rawCategory && !CONTACT_CATEGORIES.has(rawCategory))) {
       return { status: "error", message: "Check your name, email address and message, then try again." };
     }
 
-    const subject = "Website inquiry — BacktoBase";
-    const body = `Name: ${name}\nReply email: ${email}\n\n${message}`;
+    const category = rawCategory ? rawCategory as NonNullable<ContactMessage["category"]> : undefined;
+    const categoryLabel = category && CONTACT_CATEGORY_LABELS[category];
+    const subject = category && category !== "general"
+      ? `Website inquiry — ${categoryLabel} — BacktoBase`
+      : "Website inquiry — BacktoBase";
+    const body = `${categoryLabel ? `Enquiry type: ${categoryLabel}\n` : ""}Name: ${name}\nReply email: ${email}\n\n${message}`;
     const drafts = {
-      draftUrl: createGmailComposeUrl(subject, body),
-      mobileDraftUrl: createMailtoComposeUrl(subject, body),
+      draftText: body,
+      draftUrl: createGmailComposeUrl(subject),
+      mobileDraftUrl: createMailtoComposeUrl(subject),
     };
     if (!isDeliveryConfigured()) return { status: "draft", ...drafts };
 
@@ -87,7 +103,7 @@ export function createContactSubmission({
     }
 
     try {
-      if (await sendEmail({ name, email, message })) return { status: "sent" };
+      if (await sendEmail({ name, email, message, ...(category ? { category } : {}) })) return { status: "sent" };
       recordFailure("email_delivery");
     } catch (error) {
       recordFailure("email_delivery", error);

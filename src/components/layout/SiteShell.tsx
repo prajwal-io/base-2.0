@@ -17,7 +17,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (phase !== "handoff") return;
-    const duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 140;
+    const duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 300;
     const timer = window.setTimeout(() => setPhase("complete"), duration);
     return () => window.clearTimeout(timer);
   }, [phase]);

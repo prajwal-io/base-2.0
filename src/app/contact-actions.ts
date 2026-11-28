@@ -6,10 +6,19 @@ import { CONTACT_EMAIL } from "@/data/contact";
 import { checkContactRateLimit } from "@/lib/contact-rate-limit";
 import { createContactSubmission, type ContactMessage, type ContactState } from "@/lib/contact-submission";
 
-const sendContactEmail = async ({ name, email, message }: ContactMessage) => {
+const categoryLabels = {
+  general: "General enquiry",
+  community: "Community support",
+  mentor: "Mentor enquiry",
+  corporate: "Corporate partnership",
+  institutional: "Institutional collaboration",
+} as const;
+
+const sendContactEmail = async ({ name, email, message, category }: ContactMessage) => {
   const user = process.env.CONTACT_SMTP_USER || CONTACT_EMAIL;
   const pass = process.env.CONTACT_SMTP_APP_PASSWORD?.replace(/\s/g, "");
   if (!pass) return false;
+  const categoryLabel = category && categoryLabels[category];
 
   const transport = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -24,8 +33,8 @@ const sendContactEmail = async ({ name, email, message }: ContactMessage) => {
     from: { name: "BacktoBase website", address: user },
     to: CONTACT_EMAIL,
     replyTo: { name, address: email },
-    subject: "Website inquiry — BacktoBase",
-    text: `Name: ${name}\nReply email: ${email}\n\n${message}`,
+    subject: category && category !== "general" ? `Website inquiry — ${categoryLabel} — BacktoBase` : "Website inquiry — BacktoBase",
+    text: `${categoryLabel ? `Enquiry type: ${categoryLabel}\n` : ""}Name: ${name}\nReply email: ${email}\n\n${message}`,
     disableFileAccess: true,
     disableUrlAccess: true,
   });

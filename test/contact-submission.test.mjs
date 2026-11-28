@@ -42,9 +42,12 @@ test("without SMTP delivery, a valid submission returns a Gmail draft", async ()
 
   assert.equal(result.status, "draft");
   assert.equal(new URL(result.draftUrl).searchParams.get("to"), "backtobase2025@gmail.com");
-  assert.match(new URL(result.draftUrl).searchParams.get("body"), /Jamie Lee/);
+  assert.equal(new URL(result.draftUrl).searchParams.get("body"), null);
+  assert.match(result.draftText, /Jamie Lee/);
+  assert.match(result.draftText, /jamie@example\.com/);
+  assert.doesNotMatch(result.draftUrl, /Jamie|jamie|learn%20more/i);
   assert.match(result.mobileDraftUrl, /^mailto:backtobase2025@gmail\.com\?/);
-  assert.match(new URLSearchParams(result.mobileDraftUrl.split("?")[1]).get("body"), /Jamie Lee/);
+  assert.equal(new URLSearchParams(result.mobileDraftUrl.split("?")[1]).get("body"), null);
   assert.deepEqual(calls.rateLimit, []);
   assert.deepEqual(calls.send, []);
 });
@@ -97,6 +100,19 @@ test("an allowed submission sends the trimmed message and reports success", asyn
     email: "jamie@example.com",
     message: "I would like to learn more.",
   }]);
+});
+
+test("contact categories are validated and included in the prepared message", async () => {
+  const { action, calls } = makeAction({ isDeliveryConfigured: () => false });
+  const result = await action({ status: "idle" }, makeForm({ category: "corporate" }));
+
+  assert.equal(result.status, "draft");
+  assert.match(new URL(result.draftUrl).searchParams.get("su"), /Corporate partnership/);
+  assert.match(result.draftText, /Enquiry type: Corporate partnership/);
+  assert.equal(new URL(result.draftUrl).searchParams.get("body"), null);
+  assert.deepEqual(calls.send, []);
+  const invalid = await action({ status: "idle" }, makeForm({ category: "arbitrary" }));
+  assert.equal(invalid.status, "error");
 });
 
 test("a rejected email returns an actionable error and draft", async () => {

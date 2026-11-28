@@ -118,10 +118,12 @@ export function HeroBackground({ variant }: { variant: HeroDirection }) {
         return (
           <>
             <motion.g
-              initial={reduced ? false : { x: -72, y: 22 * entry, opacity: 0 }}
-              animate={{ x: 0, y: 0, opacity: 1 }}
-              transition={{ duration: 1.05, ease: EASE }}
+              style={{ transformBox: "fill-box", transformOrigin: left ? "left center" : "right center" }}
+              initial={reduced ? false : { x: 42 * entry, y: 22 * entry, scaleX: 0.08, opacity: 0 }}
+              animate={{ x: 0, y: 0, scaleX: 1, opacity: 1 }}
+              transition={{ duration: 0.9, ease: EASE }}
             >
+              <path d={fold.silhouette} fill={accent} fillOpacity=".22" />
               <path d={fold.silhouette} fill={INK} opacity=".07" transform="translate(7 11)" />
               <path d={fold.surface} fill={accent} fillOpacity=".24" />
               <path d={fold.seam} fill={accent} fillOpacity=".35" />
@@ -174,7 +176,7 @@ export function HeroBackground({ variant }: { variant: HeroDirection }) {
           <svg
             key={side}
             viewBox="0 0 370 500"
-            className={`absolute top-1/2 w-36 -translate-y-1/2 opacity-45 sm:w-[22%] sm:opacity-100 lg:w-[24%] xl:w-[28%] ${left ? "-left-24 sm:left-0" : "-right-24 -scale-x-100 sm:right-0"}`}
+            className={`absolute top-1/2 w-40 -translate-y-1/2 opacity-55 sm:w-[22%] sm:opacity-100 lg:w-[24%] xl:w-[28%] ${left ? "-left-20 sm:left-0" : "-right-20 -scale-x-100 sm:right-0"}`}
             focusable="false"
           >
             <defs>

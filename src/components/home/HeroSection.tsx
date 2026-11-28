@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { FlowButton } from "@/components/ui/flow-button";
-import { AnimatedHero } from "@/components/ui/animated-hero";
+import { Phase2HeroCopy } from "@/components/home/Phase2HeroCopy";
 import { FEATURED_HERO, HeroBackground, type HeroDirection } from "./HeroBackground";
 import { HeroCrew, type HeroCrewDirection, type RollCallCut } from "./HeroCrew";
 
@@ -38,11 +38,11 @@ export function HeroSection({
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative isolate overflow-hidden pb-12 pt-6 sm:pb-16 sm:pt-10 lg:pb-20 lg:pt-14">
-      {!crew && !rehearsal && !communityStage && <HeroBackground variant={variant} />}
+    <section className="relative isolate overflow-hidden pb-10 pt-4 sm:pb-14 sm:pt-8 lg:pb-18 lg:pt-12">
+      {!crew && !rehearsal && <HeroBackground variant={variant} />}
       <div className={rehearsal ? "mx-auto grid max-w-7xl items-center gap-10 px-5 lg:grid-cols-2 lg:px-8" : "px-4 sm:px-6 lg:px-8"}>
       {communityStage ? (
-        <AnimatedHero editionCount={editionCount} />
+        <Phase2HeroCopy />
       ) : (
         <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
         <motion.div

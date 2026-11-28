@@ -78,7 +78,7 @@ export function VenueStrip() {
                   id="our-venues-heading"
                   className="font-display text-xs sm:text-sm font-extrabold tracking-[0.2em] uppercase text-charcoal-950"
                 >
-                  Our Venues
+                  The Venue Partners
                 </h2>
               </div>
               <span
